@@ -54,6 +54,12 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Nam
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
 Write-Host "Disabled Action Center"
 
+Write-Host "Running O&O Shutup with ooshutup10Richard.cfg Settings"
+Import-Module BitsTransfer
+Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Richard_Public/main/ooshutup10Richard.cfg" -Destination ooshutup10Richard.cfg
+Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
+./OOSU10.exe ooshutup10Richard.cfg /quiet
+
 Write-Host "Disabling Telemetry..."
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
@@ -317,18 +323,13 @@ $services = @(
 # Services which cannot be disabled
 #"WdNisSvc"
 )
+
 foreach ($service in $services) {
 # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
 
 Write-Host "Setting $service StartupType to Manual"
 Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
 }
-
-Write-Host "Running O&O Shutup with ooshutup10Richard.cfg Settings"
-Import-Module BitsTransfer
-Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Richard_Public/main/ooshutup10Richard.cfg" -Destination ooshutup10Richard.cfg
-Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
-./OOSU10.exe ooshutup10Richard.cfg /quiet
 
 Write-Host "Disabling OneDrive..."
 If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive")) {
