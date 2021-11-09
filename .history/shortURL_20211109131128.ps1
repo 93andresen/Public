@@ -3,7 +3,7 @@ Write-Host "Checking winget..."
 
 # Check if winget is installed
 if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
-    'Winget Already Installed'
+
 }  
 else{
     # Installing winget from the Microsoft Store
@@ -16,7 +16,7 @@ else{
 
 
 
-if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
+if (Test-Path C:\Program Files\AutoHotkey\AutoHotkey.exe){
     'Autohotkey Already Installed'
 }  
 else{
@@ -24,5 +24,4 @@ else{
     winget install -e Lexikos.AutoHotkey | Out-Host
     Write-Host "Installed Autohotkey"
 }
-
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JXaDr'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JXaDr'))
