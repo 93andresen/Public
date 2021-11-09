@@ -28,13 +28,13 @@ else{
 }
 Set-Location C:\zzz_temp
 # Source file location
-$source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/ahk_script_test_delete.ahk'
+$source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/RunAnywhere.ahk'
 # Destination to save the file
-$destination = 'ahk_script_test_delete.ahk'
+$destination = 'RunAnywhere.ahk'
 #Download the file
 Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\ahk_script_test_delete.ahk
-'running c:\zzz_temp\ahk_script_test_delete.ahk'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAnywhere.ahk
+'running c:\zzz_temp\RunAnywhere.ahk'
 
 #Set-Location C:\
 #Remove-Item C:\zzz_temp -Recurse
