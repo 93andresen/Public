@@ -25,7 +25,10 @@ FileCreateDir, C:\!\Torrents
 FileCreateDir, C:\!\Videos
 FileCreateDir, C:\!\Pictures
 
-Tooltip, Directories Created, cup firefox SetDefaultBrowser, , max
+Tooltip, Directories Created, running Windows10Debloater_Fork_Richard.ps1
+runwait, powershell.exe iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10Debloater_Fork_Richard.ps1|iex
+
+Tooltip, cup firefox SetDefaultBrowser, , max
 runwait, powershell.exe cup firefox SetDefaultBrowser, , max
 runwait, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , max ;this will set the x64 Firefox as my default
 
@@ -33,17 +36,14 @@ Tooltip, Installing VERACRYPT (Innstallation is not silent because of fast boot)
 run, powershell.exe cup spotify --ignore-checksums -y, , max
 runwait, powershell.exe cup veracrypt --ignore-checksums -y, , max
 
-Tooltip, running Windows10Debloater_Fork_Richard.ps1
-runwait, powershell.exe iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10Debloater_Fork_Richard.ps1|iex,,max
-
 temp=%A_WorkingDir%
-FileCreateDir, C:\zzz_temp
-SetWorkingDir, C:\zzz_temp
+FileCreateDir, C:\zzz_temp\
+SetWorkingDir, C:\zzz_temp\
 Tooltip, Maybe need "App Installer" (Used to at least)`n`nSILENT_INSTALL_AFTER_THIS
 runwait, powershell.exe iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4')), , max   ;Chris Titus
 SetWorkingDir, %temp%
-FileMove, C:\zzz_temp\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
-;FileRemoveDir, C:\zzz_temp, 1
+FileMove, C:\zzz_temp\\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
+;FileRemoveDir, C:\zzz_temp\, 1
 
 
 ;SILENT_INSTALL_AFTER_THIS__________________________________________________________________________

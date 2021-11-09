@@ -1,15 +1,9 @@
-if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
-    'Chocolatey Allready Installed'
-}  
-else{
-    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    'Installing Chocolatey'
-    iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    choco feature enable -n=allowGlobalConfirmation -y
-}
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+'Installing Chocolatey'
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+Tooltip, choco feature enable -n=allowGlobalConfirmation -y
+choco feature enable -n=allowGlobalConfirmation -y
 
-
-choco install Autohotkey
 
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'Autohotkey Already Installed'
