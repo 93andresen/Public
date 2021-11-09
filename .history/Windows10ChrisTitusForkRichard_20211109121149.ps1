@@ -1,7 +1,3 @@
-Write-Host "Creating Restore Point incase something bad happens"
-Enable-ComputerRestore -Drive "C:\"
-Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
-
 Write-Host "Enabling Dark Mode"
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
 Write-Host "Enabled Dark Mode"
@@ -33,6 +29,33 @@ Get-ChildItem -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundA
 }
 Write-Host "Disabled Background application access"
 
+Write-Host "Disabling OneDrive..."
+If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive")) {
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" | Out-Null
+}
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC" -Type DWord -Value 1
+Write-Host "Uninstalling OneDrive..."
+Stop-Process -Name "OneDrive" -ErrorAction SilentlyContinue
+Start-Sleep -s 2
+$onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
+If (!(Test-Path $onedrive)) {
+    $onedrive = "$env:SYSTEMROOT\System32\OneDriveSetup.exe"
+}
+Start-Process $onedrive "/uninstall" -NoNewWindow -Wait
+Start-Sleep -s 2
+Stop-Process -Name "explorer" -ErrorAction SilentlyContinue
+Start-Sleep -s 2
+Remove-Item -Path "$env:USERPROFILE\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:PROGRAMDATA\Microsoft OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:SYSTEMDRIVE\OneDriveTemp" -Force -Recurse -ErrorAction SilentlyContinue
+If (!(Test-Path "HKCR:")) {
+    New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT | Out-Null
+}
+Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
+Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
+Write-Host "Disabled OneDrive"
+
 Write-Host "Adjusting visual effects for performance..."
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
@@ -53,6 +76,10 @@ If (!(Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer")) {
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "DisableNotificationCenter" -Type DWord -Value 1
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications" -Name "ToastEnabled" -Type DWord -Value 0
 Write-Host "Disabled Action Center"
+
+Write-Host "Creating Restore Point incase something bad happens"
+Enable-ComputerRestore -Drive "C:\"
+Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
 
 Write-Host "Running O&O Shutup with Recommended Settings"
 Import-Module BitsTransfer
@@ -331,31 +358,4 @@ Write-Host "Setting $service StartupType to Manual"
 Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
 }
 
-Write-Host "Disabling OneDrive..."
-If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive")) {
-    New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" | Out-Null
-}
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\OneDrive" -Name "DisableFileSyncNGSC" -Type DWord -Value 1
-Write-Host "Uninstalling OneDrive..."
-Stop-Process -Name "OneDrive" -ErrorAction SilentlyContinue
-Start-Sleep -s 2
-$onedrive = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
-If (!(Test-Path $onedrive)) {
-    $onedrive = "$env:SYSTEMROOT\System32\OneDriveSetup.exe"
-}
-Start-Process $onedrive "/uninstall" -NoNewWindow -Wait
-Start-Sleep -s 2
-Stop-Process -Name "explorer" -ErrorAction SilentlyContinue
-Start-Sleep -s 2
-Remove-Item -Path "$env:USERPROFILE\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-Remove-Item -Path "$env:LOCALAPPDATA\Microsoft\OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-Remove-Item -Path "$env:PROGRAMDATA\Microsoft OneDrive" -Force -Recurse -ErrorAction SilentlyContinue
-Remove-Item -Path "$env:SYSTEMDRIVE\OneDriveTemp" -Force -Recurse -ErrorAction SilentlyContinue
-If (!(Test-Path "HKCR:")) {
-    New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT | Out-Null
-}
-Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
-Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
-Write-Host "Disabled OneDrive"
-
-Write-Host "ChrisTitus Part of Script Completed"
+Write-Host "Essential Tweaks Completed - Please Reboot"
