@@ -56,9 +56,9 @@ Write-Host "Disabled Action Center"
 
 Write-Host "Running O&O Shutup with Recommended Settings"
 Import-Module BitsTransfer
-Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Richard_Public/main/ooshutup10Richard.cfg" -Destination ooshutup10Richard.cfg
+Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Richard_Public/main/ooshutup10Richard.cfg" -Destination ooshutup10.cfg
 Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
-./OOSU10.exe ooshutup10Richard.cfg /quiet
+./OOSU10.exe ooshutup10.cfg /quiet
 
 Write-Host "Disabling Telemetry..."
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
