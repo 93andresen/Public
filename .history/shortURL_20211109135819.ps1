@@ -27,7 +27,7 @@ else{
     mkdir C:\zzz_temp
 }
 
-Set-Location C:\zzz_temp
+cd C:\zzz_temp
 # Source file location
 $source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/ahk_script_test_delete.ahk'
 # Destination to save the file
@@ -36,4 +36,5 @@ $destination = 'ahk_script_test_delete.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
 
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\ahk_script_test_delete.ahk
-Remove-Item C:\zzz_temp
+
+
