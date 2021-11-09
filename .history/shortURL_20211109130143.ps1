@@ -1,11 +1,12 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+'Downloading files to c:\zzz_temp'
 if (Test-Path "C:\zzz_temp"){
 }  
 else{
     mkdir C:\zzz_temp
 }
 Set-Location C:\zzz_temp
-'Downloaded files will be saved in c:\zzz_temp'
+
 
 iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10ChrisTitusForkRichard.ps1|iex
 
