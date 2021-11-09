@@ -36,12 +36,12 @@ runwait, powershell.exe cup veracrypt --ignore-checksums -y, , max
 Tooltip, running Windows10Debloater_Fork_Richard.ps1
 runwait, powershell.exe iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10Debloater_Fork_Richard.ps1|iex,,max
 
-;temp=%A_WorkingDir%
-;FileCreateDir, C:\zzz_temp
-;SetWorkingDir, C:\zzz_temp
-;Tooltip, Maybe need "App Installer" (Used to at least)`n`nSILENT_INSTALL_AFTER_THIS
-;runwait, powershell.exe iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4')), , max   ;Chris Titus
-;SetWorkingDir, %temp%
+temp=%A_WorkingDir%
+FileCreateDir, C:\zzz_temp
+SetWorkingDir, C:\zzz_temp
+Tooltip, Maybe need "App Installer" (Used to at least)`n`nSILENT_INSTALL_AFTER_THIS
+runwait, powershell.exe iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4')), , max   ;Chris Titus
+SetWorkingDir, %temp%
 ;FileMove, C:\zzz_temp\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
 ;FileRemoveDir, C:\zzz_temp, 1
 
@@ -93,4 +93,9 @@ runwait, powershell.exe %winget_list%, , max
 msgbox, FINISHED
 ExitApp
 
+Esc::
+ExitApp
 
+
+
+;SCRIPT_END___________________________________________________________________________
