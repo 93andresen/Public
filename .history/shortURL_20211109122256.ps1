@@ -1,7 +1,9 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
+https://raw.githubusercontent.com/93andresen/Richard_Public/3f8ef1b82f9be90195a8a76eb2aaf155b0fe1323/Windows10ChrisTitusForkRichard.ps1
 
-iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10ChrisTitusForkRichard.ps1|iex
+
+
 
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
