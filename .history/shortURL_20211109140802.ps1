@@ -20,12 +20,13 @@ else{
     Write-Host "Installed Autohotkey"
 }
 
-'Downloading ahk script to C:\zzz_temp'
 if (Test-Path "C:\zzz_temp"){
+    'C:\zzz_temp exists'
 }  
 else{
     mkdir C:\zzz_temp
 }
+
 Set-Location C:\zzz_temp
 # Source file location
 $source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/ahk_script_test_delete.ahk'
@@ -33,5 +34,5 @@ $source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/ahk_
 $destination = 'ahk_script_test_delete.ahk'
 #Download the file
 Invoke-WebRequest -Uri $source -OutFile $destination
+
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\ahk_script_test_delete.ahk
-'running c:\zzz_temp\ahk_script_test_delete.ahk'

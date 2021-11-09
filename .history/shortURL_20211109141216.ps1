@@ -34,4 +34,4 @@ $destination = 'ahk_script_test_delete.ahk'
 #Download the file
 Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\ahk_script_test_delete.ahk
-'running c:\zzz_temp\ahk_script_test_delete.ahk'
+'Finished...'
