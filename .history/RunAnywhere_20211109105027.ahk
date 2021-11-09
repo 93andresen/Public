@@ -25,9 +25,8 @@ FileCreateDir, C:\!\Torrents
 FileCreateDir, C:\!\Videos
 FileCreateDir, C:\!\Pictures
 
-Tooltip, Directories Created, running Windows10Debloater_Fork_Richard.ps1
-runwait, powershell.exe iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10Debloater_Fork_Richard.ps1|iex
-
+Tooltip, Directories Created, 
+https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10Debloater_Fork_Richard.ps1
 Tooltip, Installing Chocolatey
 runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')), , max
 Tooltip, choco feature enable -n=allowGlobalConfirmation -y
