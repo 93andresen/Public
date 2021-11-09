@@ -19,8 +19,7 @@ winget install -e Lexikos.AutoHotkey | Out-Host
 Write-Host "Installed Autohotkey"
 
 if (Test-Path C:\Program Files\AutoHotkey\AutoHotkey.exe){
-    'found Autohotkey.exe and will run ahk script'
-    iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JXaDr'))
+    'found Autohotkey.exe'
     & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\!\GitHubClonedRepositories\Richard_Public\FreshWindows.ahk
 }  
 else{
