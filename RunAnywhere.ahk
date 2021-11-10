@@ -6,7 +6,7 @@ SetWorkingDir, %A_ScriptDir%
 
 FIRST_NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp
 
-NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream f.lux launchy Everything fastcopy keepass th-ch-youtube-music steam crystaldiskinfo irfanview irfanviewplugins treesizefree SetDefaultBrowser vscode revo-uninstaller qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram
+NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream f.lux launchy Everything fastcopy keepass th-ch-youtube-music steam crystaldiskinfo irfanview irfanviewplugins treesizefree SetDefaultBrowser vscode revo-uninstaller qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
