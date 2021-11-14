@@ -51,7 +51,7 @@ else{
 }
 
 
-$source = 'https://raw.githubusercontent.com/93andresen/Richard_Public/main/RunAnywhere.ahk'
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAnywhere.ahk'
 $destination = 'RunAnywhere.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAnywhere.ahk
