@@ -1,0 +1,16 @@
+before script: run internet explorer, press button or else iex commands break
+Uninstall the windows spotify
+
+In the Script>
+download and run runasUser and runasAdmin
+
+good solution for early cloneapp maybe
+maybe pre install and after
+
+classic shell popup press some button (then import my settings)
+
+for gods sake, remove the tooltips... and maybe minimize windows
+
+keepass (needs its own line cus dont ignore checksums)
+classicshell fastcopy vscode should be installed first
+
