@@ -6,7 +6,7 @@ SetWorkingDir, %A_ScriptDir%
 
 FIRST_NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp
 
-NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream f.lux launchy Everything fastcopy keepass th-ch-youtube-music steam crystaldiskinfo irfanview irfanviewplugins treesizefree SetDefaultBrowser vscode revo-uninstaller qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana rainmeter
+NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream f.lux equalizerapo launchy Everything fastcopy keepass th-ch-youtube-music steam crystaldiskinfo irfanview irfanviewplugins treesizefree SetDefaultBrowser vscode revo-uninstaller qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana rainmeter
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -14,22 +14,24 @@ KEEPASS_AND_PLUGINS = keepass keepass-plugin-trayrecent keepass-plugin-qrcodegen
 
 YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubikey-neo-manager yubikey-personalization-tool yubikey-manager
 
+
 FileCreateDir, %A_Desktop%\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
-FileCreateDir, C:\zzz_Spotify_Offline_Storage
-FileCreateDir, C:\!\Code\GitHub
-FileCreateDir, C:\!\Empty_Folder_Do_Not_Delete
-FileCreateDir, C:\!\Desktop
-FileCreateDir, C:\!\Documents
-FileCreateDir, C:\!\Downloads
-FileCreateDir, C:\!\Torrents
-FileCreateDir, C:\!\Videos
-FileCreateDir, C:\!\Pictures
+FileCreateDir, C:\FolderStructurePasteInC
+FileCreateDir, C:\FolderStructurePasteInC\zzz_Spotify_Offline_Storage
+FileCreateDir, C:\FolderStructurePasteInC\!\Code\GitHub
+FileCreateDir, C:\FolderStructurePasteInC\!\Empty_Folder_Do_Not_Delete
+FileCreateDir, C:\FolderStructurePasteInC\!\Desktop
+FileCreateDir, C:\FolderStructurePasteInC\!\Documents
+FileCreateDir, C:\FolderStructurePasteInC\!\Downloads
+FileCreateDir, C:\FolderStructurePasteInC\!\Torrents
+FileCreateDir, C:\FolderStructurePasteInC\!\Videos
+FileCreateDir, C:\FolderStructurePasteInC\!\Pictures
 
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y, , max
 
 ;Tooltip, Directories Created, Installing Firefox and setting it as Default Browser
 
-runwait, powershell.exe cup firefox SetDefaultBrowser, , max
+runwait, powershell.exe cup SetDefaultBrowser firefox, , max
 runwait, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , max ;this will set the x64 Firefox as my default
 
 ;Tooltip, Installing VERACRYPT (Innstallation is not silent because of fast boot) --ignore-checksums -y -  `nnSpotify Install tends to bug out and never complete, so i install it now using "run" instead of runwait and let it complete before Chris Titus Windows 10 Debloater Script is finished
