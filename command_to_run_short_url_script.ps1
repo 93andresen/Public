@@ -1,4 +1,10 @@
-iwr git.io/JXaaD|iex
+iwr git.io/J1kbW|iex
+#iwr https://git.io/J1kbW|iex
+
+#iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/J1kbW'))
+
+
+#iwr git.io/JXaaD|iex
 #iwr https://git.io/JXaaD|iex
 
 #iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JXaaD'))

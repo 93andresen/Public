@@ -132,11 +132,6 @@ Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
 Set-Service "dmwappushservice" -StartupType Disabled
 Write-Host "Enabling F8 boot menu options..."
 bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
-Write-Host "Stopping and disabling Home Groups services..."
-Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
-Set-Service "HomeGroupListener" -StartupType Disabled
-Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
-Set-Service "HomeGroupProvider" -StartupType Disabled
 Write-Host "Disabling Remote Assistance..."
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowToGetHelp" -Type DWord -Value 0
 Write-Host "Disabling Storage Sense..."
@@ -200,9 +195,9 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSp
 #Write-Host "Installing Windows Media Player..."
 #Enable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -NoRestart -WarningAction SilentlyContinue | Out-Null
 
-Write-Host "Disable News and Interests"
-Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
-# Remove "News and Interest" from taskbar
+#Write-Host "Disable News and Interests"
+#Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
+Write-Host "Remove "News and Interest" from taskbar"
 Set-ItemProperty -Path  "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
 
 # remove "Meet Now" button from taskbar
@@ -276,7 +271,7 @@ $services = @(
 #"BFE"                                         #Disables Base Filtering Engine (BFE) (is a service that manages firewall and Internet Protocol security)
 #"BrokerInfrastructure"                         #Disables Windows infrastructure service that controls which background tasks can run on the system.
 "SCardSvr"                                      #Disables Windows smart card
-"EntAppSvc"                                     #Disables enterprise application management.
+#"EntAppSvc"                                     #Disables enterprise application management.
 "BthAvctpSvc"                                   #Disables AVCTP service (if you use  Bluetooth Audio Device or Wireless Headphones. then don't disable this)
 #"FrameServer"                                   #Disables Windows Camera Frame Server(this allows multiple clients to access video frames from camera devices.)
 "Browser"                                       #Disables computer browser
