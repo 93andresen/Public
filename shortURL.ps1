@@ -7,7 +7,7 @@ else{
 Set-Location C:\zzz_temp
 'Downloaded files will be saved in c:\zzz_temp'
 
-iwr https://raw.githubusercontent.com/93andresen/Richard_Public/main/Windows10ChrisTitusForkRichard.ps1|iex
+iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1|iex
 
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
