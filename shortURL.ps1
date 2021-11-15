@@ -9,6 +9,7 @@ Set-Location C:\zzz_temp
 
 iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1|iex
 
+
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
 }  
