@@ -1,4 +1,4 @@
-Write-Host "Creating Restore Point incase something bad happens"
+Write-Host "Creating Ststem Restore Point"
 Enable-ComputerRestore -Drive "C:\"
 Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
 

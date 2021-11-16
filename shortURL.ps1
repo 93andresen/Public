@@ -1,3 +1,4 @@
+'Downloaded files will be saved in c:\zzz_temp'
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 if (Test-Path "C:\zzz_temp"){
 }  
@@ -5,10 +6,7 @@ else{
     mkdir C:\zzz_temp
 }
 Set-Location C:\zzz_temp
-'Downloaded files will be saved in c:\zzz_temp'
-
-iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1|iex
-
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
 
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
