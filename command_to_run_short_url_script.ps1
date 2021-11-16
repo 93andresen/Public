@@ -1,4 +1,7 @@
 
+iwr git.io/J13Mt|iex
+#iwr https://git.io/J13Mt|iex
+
 iwr git.io/J13iA|iex
 #iwr https://git.io/J13iA|iex
 
