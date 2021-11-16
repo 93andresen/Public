@@ -6,7 +6,7 @@ SetWorkingDir, %A_ScriptDir%
 
 FIRST_NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip classic-shell sysinternals cloneapp
 
-NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode revo-uninstaller f.lux launchy authy-desktop Everything fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana rainmeter
+NESSESCARY_APPS = rainmeter firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode revo-uninstaller f.lux launchy authy-desktop Everything fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -16,16 +16,16 @@ YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubike
 
 
 FileCreateDir, %A_Desktop%\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
-FileCreateDir, C:\FolderStructurePasteInC
-FileCreateDir, C:\FolderStructurePasteInC\zzz_Spotify_Offline_Storage
-FileCreateDir, C:\FolderStructurePasteInC\!\Code\GitHub
-FileCreateDir, C:\FolderStructurePasteInC\!\Empty_Folder_Do_Not_Delete
-FileCreateDir, C:\FolderStructurePasteInC\!\Desktop
-FileCreateDir, C:\FolderStructurePasteInC\!\Documents
-FileCreateDir, C:\FolderStructurePasteInC\!\Downloads
-FileCreateDir, C:\FolderStructurePasteInC\!\Torrents
-FileCreateDir, C:\FolderStructurePasteInC\!\Videos
-FileCreateDir, C:\FolderStructurePasteInC\!\Pictures
+FileCreateDir, C:\C_FolderStructure
+FileCreateDir, C:\C_FolderStructure\zzz_Spotify_Offline_Storage
+FileCreateDir, C:\C_FolderStructure\!\Code\GitHub
+FileCreateDir, C:\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
+FileCreateDir, C:\C_FolderStructure\!\Desktop
+FileCreateDir, C:\C_FolderStructure\!\Documents
+FileCreateDir, C:\C_FolderStructure\!\Downloads
+FileCreateDir, C:\C_FolderStructure\!\Torrents
+FileCreateDir, C:\C_FolderStructure\!\Videos
+FileCreateDir, C:\C_FolderStructure\!\Pictures
 
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y, , max
 

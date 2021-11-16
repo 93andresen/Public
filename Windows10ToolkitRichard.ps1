@@ -8,6 +8,9 @@ else{
 Set-Location C:\zzz_temp
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
 
+
+# INSTALLING CHOCOLATEY AND WINGET
+
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
 }  
@@ -50,11 +53,16 @@ else{
 }
 
 
+
+#RUNNING MY AHK_SCRIPT
+
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
 $destination = 'Windows10ToolkitRichard.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
 'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
+
+
 
 #Set-Location C:\
 #Remove-Item C:\zzz_temp -Recurse
