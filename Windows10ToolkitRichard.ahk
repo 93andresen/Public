@@ -14,18 +14,18 @@ KEEPASS_AND_PLUGINS = keepass keepass-plugin-trayrecent keepass-plugin-qrcodegen
 
 YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubikey-neo-manager yubikey-personalization-tool yubikey-manager
 
+FileCreateDir, c:\zzz_temp\C_FolderStructure
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Code\GitHub
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Desktop
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Documents
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Downloads
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Torrents
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Videos
+FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Pictures
 
-FileCreateDir, %A_Desktop%\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
-FileCreateDir, C:\C_FolderStructure
-FileCreateDir, C:\C_FolderStructure\zzz_Spotify_Offline_Storage
-FileCreateDir, C:\C_FolderStructure\!\Code\GitHub
-FileCreateDir, C:\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
-FileCreateDir, C:\C_FolderStructure\!\Desktop
-FileCreateDir, C:\C_FolderStructure\!\Documents
-FileCreateDir, C:\C_FolderStructure\!\Downloads
-FileCreateDir, C:\C_FolderStructure\!\Torrents
-FileCreateDir, C:\C_FolderStructure\!\Videos
-FileCreateDir, C:\C_FolderStructure\!\Pictures
+
 
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y, , max
 
@@ -84,7 +84,7 @@ runwait, powershell.exe %winget_list%, , max
 
 
 
-
+C:\Users\93and\AppData\Local\Programs\youtube-music
 
 
 
