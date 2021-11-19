@@ -62,6 +62,21 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
 'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
 
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
+$destination = 'Windows10ToolkitRichard.ahk'
+Invoke-WebRequest -Uri $source -OutFile $destination
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
+'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
+
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
+$destination = 'Windows10ToolkitRichard.ahk'
+Invoke-WebRequest -Uri $source -OutFile $destination
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
+'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
+
+
+
+
 
 
 #Set-Location C:\
