@@ -56,27 +56,23 @@ else{
 
 #RUNNING MY AHK_SCRIPT
 
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+$destination = 'RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+Invoke-WebRequest -Uri $source -OutFile $destination
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+'running c:\zzz_temp\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsUserCOPY_WILL_NOT_SYNC.ahk'
+$destination = 'RunAsUserCOPY_WILL_NOT_SYNC.ahk'
+Invoke-WebRequest -Uri $source -OutFile $destination
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+'running c:\zzz_temp\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
+
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
 $destination = 'Windows10ToolkitRichard.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
 'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
-
-$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
-$destination = 'Windows10ToolkitRichard.ahk'
-Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
-'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
-
-$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
-$destination = 'Windows10ToolkitRichard.ahk'
-Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
-'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
-
-
-
-
 
 
 #Set-Location C:\

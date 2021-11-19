@@ -84,7 +84,7 @@ runwait, powershell.exe %winget_list%, , max
 
 
 
-C:\Users\93and\AppData\Local\Programs\youtube-music
+
 
 
 
