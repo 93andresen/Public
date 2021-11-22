@@ -4,9 +4,13 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, force
 SetWorkingDir, %A_ScriptDir%
 
-FIRST_NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip classic-shell sysinternals cloneapp
+FIRST_NESSESCARY_APPS = firefox autohotkey fastcopy python 7zip classic-shell altsnap sizer sysinternals cloneapp
 
-NESSESCARY_APPS = rainmeter firefox autohotkey fastcopy python 7zip winrar classic-shell sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode revo-uninstaller f.lux launchy authy-desktop Everything fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
+NESSESCARY_APPS = rainmeter firefox autohotkey fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode git revo-uninstaller f.lux launchy authy-desktop Everything fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable defraggler libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
+
+/*
+OTHER 
+*/
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -14,16 +18,16 @@ KEEPASS_AND_PLUGINS = keepass keepass-plugin-trayrecent keepass-plugin-qrcodegen
 
 YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubikey-neo-manager yubikey-personalization-tool yubikey-manager
 
-FileCreateDir, c:\zzz_temp\C_FolderStructure
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Code\GitHub
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Desktop
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Documents
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Downloads
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Torrents
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Videos
-FileCreateDir, c:\zzz_temp\C_FolderStructure\!\Pictures
+
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Code\GitHub
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Desktop
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Documents
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Downloads
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Torrents
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Videos
+FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Pictures
 
 
 
@@ -39,13 +43,13 @@ run, powershell.exe cup spotify --ignore-checksums -y, , max
 runwait, powershell.exe cup veracrypt --ignore-checksums -y, , max
 
 ;temp=%A_WorkingDir%
-;FileCreateDir, C:\zzz_temp
-;SetWorkingDir, C:\zzz_temp
+;FileCreateDir, c:\temp_Windows10ToolkitRichard
+;SetWorkingDir, c:\temp_Windows10ToolkitRichard
 ;;Tooltip, Maybe need "App Installer" (Used to at least)`n`nSILENT_INSTALL_AFTER_THIS
 ;runwait, powershell.exe iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4')), , max   ;Chris Titus
 ;SetWorkingDir, %temp%
-;FileMove, C:\zzz_temp\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
-;FileRemoveDir, C:\zzz_temp, 1
+;FileMove, c:\temp_Windows10ToolkitRichard\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
+;FileRemoveDir, c:\temp_Windows10ToolkitRichard, 1
 
 
 ;SILENT_INSTALL_AFTER_THIS__________________________________________________________________________
