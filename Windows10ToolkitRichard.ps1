@@ -75,5 +75,6 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
 
 
+
 #Set-Location C:\
-#Remove-Item C:\zzz_temp -Recurse
+Remove-Item C:\zzz_temp -Recurse
