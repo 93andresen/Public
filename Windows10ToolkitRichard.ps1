@@ -1,11 +1,11 @@
-'Downloaded files will be saved in c:\zzz_temp'
+'Downloaded files will be saved in c:\temp_Windows10ToolkitRichard'
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-if (Test-Path "C:\zzz_temp"){
+if (Test-Path "C:\temp_Windows10ToolkitRichard"){
 }  
 else{
-    mkdir C:\zzz_temp
+    mkdir C:\temp_Windows10ToolkitRichard
 }
-Set-Location C:\zzz_temp
+Set-Location C:\temp_Windows10ToolkitRichard
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
 
 
@@ -59,22 +59,22 @@ else{
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 $destination = 'RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
-'running c:\zzz_temp\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+'running c:\temp_Windows10ToolkitRichard\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsUserCOPY_WILL_NOT_SYNC.ahk'
 $destination = 'RunAsUserCOPY_WILL_NOT_SYNC.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\RunAsUserCOPY_WILL_NOT_SYNC.ahk
-'running c:\zzz_temp\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+'running c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
 $destination = 'Windows10ToolkitRichard.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\zzz_temp\Windows10ToolkitRichard.ahk
-'running c:\zzz_temp\Windows10ToolkitRichard.ahk'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk
+'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
 
 
 
 #Set-Location C:\
-#Remove-Item C:\zzz_temp -Recurse
+#Remove-Item C:\temp_Windows10ToolkitRichard -Recurse

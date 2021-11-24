@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, force
 SetWorkingDir, %A_ScriptDir%
 
-FIRST_NESSESCARY_APPS = firefox edgedeflector SetDefaultBrowser autohotkey fastcopy python 7zip classic-shell altsnap sizer sysinternals cloneapp
+FIRST_NESSESCARY_APPS = firefox SetDefaultBrowser edgedeflector autohotkey fastcopy python 7zip classic-shell altsnap sizer sysinternals cloneapp
 
 NESSESCARY_APPS = rainmeter firefox autohotkey fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
 
@@ -139,7 +139,7 @@ runwait, powershell.exe cup %YUBIKEY_APPS% --ignore-checksums -y, , max
 
 runwait, powershell.exe choco install virtualbox --version 6.0.24 --ignore-checksums -y, , max
 ;runwait, powershell.exe choco pin add -n virtualbox, , max
-runwait, cmd.exe bcdedit /set hypervisorlaunchtype off, , max
+runwait, cmd.exe /c bcdedit /set hypervisorlaunchtype off, , max
 
 
 ;Tooltip, %WINGET_APPS%
