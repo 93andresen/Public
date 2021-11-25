@@ -6,7 +6,9 @@ else{
     mkdir C:\temp_Windows10ToolkitRichard
 }
 Set-Location C:\temp_Windows10ToolkitRichard
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
+
+
+
 
 
 # INSTALLING CHOCOLATEY AND WINGET
@@ -54,6 +56,8 @@ else{
 
 
 
+
+
 #RUNNING MY AHK_SCRIPT
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
@@ -68,6 +72,11 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk
 'running c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
 
+
+#RUNNING MY ChrisTitusForkRichard
+
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
+
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
 $destination = 'Windows10ToolkitRichard.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
@@ -75,6 +84,3 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
 
 
-
-#Set-Location C:\
-#Remove-Item C:\temp_Windows10ToolkitRichard -Recurse
