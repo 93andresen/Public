@@ -58,7 +58,7 @@ else{
 
 
 
-#RUNNING MY AHK_SCRIPT
+#RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 $destination = 'RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
@@ -76,6 +76,10 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 #RUNNING MY ChrisTitusForkRichard
 
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
+
+
+
+#RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ahk'
 $destination = 'Windows10ToolkitRichard.ahk'

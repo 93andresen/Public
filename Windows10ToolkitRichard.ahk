@@ -4,9 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, force
 SetWorkingDir, %A_ScriptDir%
 
-FIRST_NESSESCARY_APPS = firefox SetDefaultBrowser edgedeflector autohotkey fastcopy python 7zip classic-shell altsnap sizer sysinternals cloneapp
-
-NESSESCARY_APPS = rainmeter firefox autohotkey fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree SetDefaultBrowser vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
+NESSESCARY_APPS = rainmeter firefox SetDefaultBrowser edgedeflector autohotkey chocolatey-misc-helpers.extension fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -20,8 +18,7 @@ MAYBE_AND_OTHER:
 
     simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
-TEMP!!!!!!!!!!!!!!!!!!!!!!!!!!! THESE I KEPT: plex plexmediaserver tidytabs workspacer chocolatey-misc-helpers.extension dropit jre8 spicetify-cli virtualbox vlc winamp spacesniffer wiztree git.install github-desktop shutup10 yubico-authenticator yubikey-manager yubikey-personalization-tool yubikey-piv-manager androidstudio adb wsl2 junction-link-magic gh act-cli git-lfs
-TEMP!!!!!!!!!!!!!!!!!!!!!!!!!!! THESE I UNINSTALLED rufus bitwarden-cli plex-home-theater sandboxie.install linkshellextension internet-download-manager pingplotter rammap regexcoach accesschk windows-kill fileoptimizer vmmap npackd.install drivermax adwcleaner cmdutils recycle rbcmd recyclenow minibin deletefiles duplicatecleaner alldup googleearthpro imagemanager laps lastactivityview lastfmscrobbler musicbee netscan powerautomatedesktop putty regexpixie freedownloadmanager Setup-Assistant shellbagsview ShellTools shman Shotcut Silverlight songr specialfoldersview strokesplus.portable SwissFileKnife sysexp urbackup-client VirtualCloneDrive terminal-icons.powershell tidystart.powershell windirstat winauth ultimate-settings-panel vortex windows-admin-center windowsrepair cmdutils ecm raidrive dolphin neovim smartftp playnite opendns-updater desktop-notifications-for-android-chrome vhdattach reprofiler tccle taskschedulerview mailer siv partitionmasterfree partitionwizard perfmonitor2 fluent-terminal ln ntfslinksview defprof linkshellextension supercopier ultracopier GoogleChrome.Canary webstorm gimp
+
 
 LIB_BAD:
 choco install ntfssecurity-psmodule performance-monitor pal tidystart.powershell
@@ -62,15 +59,8 @@ C:\Users\pass9\OneDrive\Documents\WindowsPowerShell\
 
 https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
-___________________________________________________________________________________________________________
 
-choco install snort
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-What is Snort?
-Snort is an open source network intrusion prevention system, capable of performing real-time traffic analysis and packet logging on IP networks. It can perform protocol analysis, content searching/matching, and can be used to detect a variety of attacks and probes, such as buffer overflows, stealth port scans, CGI attacks, SMB probes, OS fingerprinting attempts, and much more.
 
-What can I do with Snort?
-Snort has three primary uses: It can be used as a straight packet sniffer like tcpdump, a packet logger (useful for network traffic debugging, etc), or as a full blown network intrusion prevention system.
 
 */
 
@@ -113,8 +103,6 @@ runwait, powershell.exe cup veracrypt --ignore-checksums -y, , max
 
 
 ;SILENT_INSTALL_AFTER_THIS__________________________________________________________________________
-;Tooltip, cup chocolatey-misc-helpers.extension --ignore-checksums -y
-runwait, powershell.exe cup chocolatey-misc-helpers.extension --ignore-checksums -y, , max
 
 ;Tooltip, %FIRST_NESSESCARY_APPS%  --ignore-checksums -y`n`n
 runwait, powershell.exe cup %FIRST_NESSESCARY_APPS% --ignore-checksums -y, , max
@@ -123,10 +111,7 @@ runwait, powershell.exe cup %FIRST_NESSESCARY_APPS% --ignore-checksums -y, , max
 runwait, powershell.exe cup keepass -y, , max
 
 ;Tooltip, c:\python39\python.exe -m pip install --upgrade pip
-runwait, powershell.exe c:\python39\python.exe -m pip install --upgrade pip, , max
-
-;Tooltip, c:\python310\python.exe -m pip install --upgrade pip
-runwait, powershell.exe c:\python310\python.exe -m pip install --upgrade pip, , max
+runwait, powershell.exe python -m pip install --upgrade pip, , max
 
 ;Tooltip, %NESSESCARY_APPS% --ignore-checksums -y
 runwait, powershell.exe cup %NESSESCARY_APPS% --ignore-checksums -y, , max
