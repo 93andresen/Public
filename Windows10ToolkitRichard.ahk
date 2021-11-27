@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, force
 SetWorkingDir, %A_ScriptDir%
 
-NESSESCARY_APPS = rainmeter firefox SetDefaultBrowser edgedeflector autohotkey chocolatey-misc-helpers.extension fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx winja.install epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
+NESSESCARY_APPS = rainmeter firefox SetDefaultBrowser edgedeflector autohotkey chocolatey-misc-helpers.extension fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet youtube-dl choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -14,9 +14,9 @@ YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubike
 
 /*
 MAYBE_AND_OTHER:
-    rufus bitwarden-cli plex plexmediaserver plex-home-theater tidytabs workspacer sandboxie.install linkshellextension internet-download-manager pingplotter rammap regexcoach accesschk windows-kill fileoptimizer chocolatey-misc-helpers.extension vmmap npackd.install drivermax adwcleaner cmdutils recycle rbcmd recyclenow minibin deletefiles duplicatecleaner alldup dropit googleearthpro imagemanager jre8 laps lastactivityview lastfmscrobbler musicbee netscan powerautomatedesktop putty regexpixie freedownloadmanager Setup-Assistant shellbagsview ShellTools shman Shotcut Silverlight songr specialfoldersview spicetify-cli strokesplus.portable SwissFileKnife sysexp urbackup-client virtualbox VirtualCloneDrive vlc winamp spacesniffer terminal-icons.powershell tidystart.powershell windirstat wiztree winauth ultimate-settings-panel vortex windows-admin-center windowsrepair cmdutils ecm FileOptimizer git.install github-desktop shutup10 raidrive yubico-authenticator yubikey-manager yubikey-personalization-tool yubikey-piv-manager dolphin androidstudio neovim smartftp adb playnite opendns-updater desktop-notifications-for-android-chrome vhdattach reprofiler tccle taskschedulerview mailer siv partitionmasterfree partitionwizard perfmonitor2 fluent-terminal wsl2 ln junction-link-magic ntfslinksview defprof linkshellextension supercopier ultracopier gh act-cli git-lfs GoogleChrome.Canary webstorm gimp win-vind wsl-kalilinux ganttproject defraggler vagrant vagrant-manager
+rufus bitwarden-cli plex plexmediaserver plex-home-theater tidytabs workspacer sandboxie.install linkshellextension internet-download-manager pingplotter rammap regexcoach accesschk windows-kill fileoptimizer chocolatey-misc-helpers.extension vmmap npackd.install drivermax adwcleaner cmdutils recycle rbcmd recyclenow minibin deletefiles duplicatecleaner alldup dropit googleearthpro imagemanager jre8 laps lastactivityview lastfmscrobbler musicbee netscan powerautomatedesktop putty regexpixie freedownloadmanager Setup-Assistant shellbagsview ShellTools shman Shotcut Silverlight songr specialfoldersview spicetify-cli strokesplus.portable SwissFileKnife sysexp urbackup-client virtualbox VirtualCloneDrive vlc winamp spacesniffer terminal-icons.powershell tidystart.powershell windirstat wiztree winauth ultimate-settings-panel vortex windows-admin-center windowsrepair cmdutils ecm FileOptimizer git.install github-desktop shutup10 raidrive yubico-authenticator yubikey-manager yubikey-personalization-tool yubikey-piv-manager dolphin androidstudio neovim smartftp adb playnite opendns-updater desktop-notifications-for-android-chrome vhdattach reprofiler tccle taskschedulerview mailer siv partitionmasterfree partitionwizard perfmonitor2 fluent-terminal wsl2 ln junction-link-magic ntfslinksview defprof linkshellextension supercopier ultracopier gh act-cli git-lfs GoogleChrome.Canary webstorm gimp win-vind wsl-kalilinux ganttproject defraggler vagrant vagrant-manager
 
-    simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
+simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
 
 
@@ -86,27 +86,15 @@ runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y, , ma
 ;Tooltip, Directories Created, Installing Firefox and setting it as Default Browser
 
 runwait, powershell.exe cup SetDefaultBrowser firefox, , max
-runwait, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , max ;this will set the x64 Firefox as my default
+run, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , min ;this will set the x64 Firefox as my default
 
 ;Tooltip, Installing VERACRYPT (Innstallation is not silent because of fast boot) --ignore-checksums -y -  `nnSpotify Install tends to bug out and never complete, so i install it now using "run" instead of runwait and let it complete before Chris Titus Windows 10 Debloater Script is finished
 run, powershell.exe cup spotify --ignore-checksums -y, , max
+run, powershell.exe cup winja --ignore-checksums -y, , max
 runwait, powershell.exe cup veracrypt --ignore-checksums -y, , max
-
-;temp=%A_WorkingDir%
-;FileCreateDir, c:\temp_Windows10ToolkitRichard
-;SetWorkingDir, c:\temp_Windows10ToolkitRichard
-;;Tooltip, Maybe need "App Installer" (Used to at least)`n`nSILENT_INSTALL_AFTER_THIS
-;runwait, powershell.exe iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/JJ8R4')), , max   ;Chris Titus
-;SetWorkingDir, %temp%
-;FileMove, c:\temp_Windows10ToolkitRichard\ooshutup10.cfg, C:\!\Format\App_Settings\Chris_Titus_Debloater_ooshutup10.cfg
-;FileRemoveDir, c:\temp_Windows10ToolkitRichard, 1
 
 
 ;SILENT_INSTALL_AFTER_THIS__________________________________________________________________________
-
-;Tooltip, %FIRST_NESSESCARY_APPS%  --ignore-checksums -y`n`n
-runwait, powershell.exe cup %FIRST_NESSESCARY_APPS% --ignore-checksums -y, , max
-
 ;Tooltip, ONLY KEEPASS (Because I don't ignore checksums on keepass)
 runwait, powershell.exe cup keepass -y, , max
 
