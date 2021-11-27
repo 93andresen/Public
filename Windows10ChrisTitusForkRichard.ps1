@@ -101,7 +101,7 @@ Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupT
 
 Write-Host "Running O&O Shutup with ooshutup10Richard.cfg Settings"
 Import-Module BitsTransfer
-Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Public/main/ConfigurationFiles/ooshutup10Richard.cfg" -Destination ooshutup10Richard.cfg
+Start-BitsTransfer -Source "https://raw.githubusercontent.com/93andresen/Public/main/ooshutup10Richard.cfg" -Destination ooshutup10Richard.cfg
 Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
 ./OOSU10.exe ooshutup10Richard.cfg /quiet
 
