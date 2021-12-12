@@ -349,7 +349,7 @@ return
 
 
     ^+F9::
-        IniWrite, 1, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_ADMIN.ini, Section, ran_by_hotkey
+        IniWrite, 1, C:\!\TEMP\InifilesAndOther\Autorun_ADMIN.ini, Section, ran_by_hotkey
         run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_ADMIN.ahk
     return
     ^+F10::

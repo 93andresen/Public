@@ -76,7 +76,7 @@ Invoke-WebRequest -Uri $source -OutFile $destination
 #RUNNING MY ChrisTitusForkRichard
 
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1'))
-
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/93andresen/Public/main/Windows10DebloaterSycnexForkRichard.ps1'))
 
 
 #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard

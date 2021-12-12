@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, force
 SetWorkingDir, %A_ScriptDir%
 
-NESSESCARY_APPS = rainmeter firefox SetDefaultBrowser edgedeflector autohotkey chocolatey-misc-helpers.extension fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet yt-dlp choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk signal telegram voicemeeter-banana vlc
+NESSESCARY_APPS = rainmeter firefox SetDefaultBrowser edgedeflector autohotkey chocolatey-misc-helpers.extension fastcopy python 7zip winrar classic-shell notepadplusplus intel-dsa altsnap sizer sysinternals cloneapp google-drive-file-stream treesizefree vscode gh git github revo-uninstaller f.lux launchy authy-desktop Everything plex plexmediaserver fastcopy th-ch-youtube-music winamp equalizerapo steam crystaldiskinfo irfanview irfanviewplugins qalculate throttlestop duplicati microsoft-windows-terminal PowerShell mpc-be greenshot speedyfox geforce-experience msiafterburner directx epicgameslauncher glaryutilities-free peazip copyq discord eartrumpet yt-dlp choco-package-list-backup battle.net plasso ds4windows obs powertoys workspacer malwarebytes thunderbird qbittorrent webtorrent-desktop ffmpeg regcool.portable libreoffice-fresh openjdk vcredist140 signal telegram voicemeeter-banana vlc
 
 WINGET_APPS = Appest.TickTick Shabinder.SpotiFlyer kite.kite
 
@@ -29,8 +29,11 @@ Advanced File Copier    9NBLGGH1185X
 SteelSeries.GG
 
 LINKS:
+https://freefilesync.org/download/FreeFileSync_11.15_Windows_Setup.exe
 https://downloads.yubico.com/products/Yubico-Login-for-Windows-2.0.3-win64.msi
 https://maxlauncher.sourceforge.io/downloads.html
+https://aka.ms/vs/17/release/vc_redist.x64.exe  ;Permalink for latest supported x64 version. The X64 redistributable package contains both ARM64 and X64 binaries. This package makes it easy to install required Visual C++ ARM64 binaries when the X64 redistributable is installed on an ARM64 device.
+
 EMULATORS:
 genymotion dosbox ppsspp mame pcsx2 fs-uae snes9x scummvm visualboyadvance nestopia project64 emulationstation fusion
 WINDOWS_STORE:
