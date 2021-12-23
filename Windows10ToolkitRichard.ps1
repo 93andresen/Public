@@ -59,13 +59,13 @@ Set-Location C:\temp_Windows10ToolkitRichard
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 $destination = 'RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
-#& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
 'running c:\temp_Windows10ToolkitRichard\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
 
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/RunAsUserCOPY_WILL_NOT_SYNC.ahk'
 $destination = 'RunAsUserCOPY_WILL_NOT_SYNC.ahk'
 Invoke-WebRequest -Uri $source -OutFile $destination
-#& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk
 'running c:\temp_Windows10ToolkitRichard\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
 
 
