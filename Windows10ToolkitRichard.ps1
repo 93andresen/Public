@@ -1,15 +1,4 @@
-'Downloaded files will be saved in c:\temp_Windows10ToolkitRichard'
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-if (Test-Path "C:\temp_Windows10ToolkitRichard"){
-}  
-else{
-    mkdir C:\temp_Windows10ToolkitRichard
-}
-Set-Location C:\temp_Windows10ToolkitRichard
-
-
-
-
 
 # INSTALLING CHOCOLATEY AND WINGET
 
@@ -57,6 +46,13 @@ else{
 
 
 
+'Downloaded files will be saved in c:\temp_Windows10ToolkitRichard'
+if (Test-Path "C:\temp_Windows10ToolkitRichard"){
+}  
+else{
+    mkdir C:\temp_Windows10ToolkitRichard
+}
+Set-Location C:\temp_Windows10ToolkitRichard
 
 #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
 

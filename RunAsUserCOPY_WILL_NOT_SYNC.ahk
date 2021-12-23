@@ -1,10 +1,17 @@
-;RunAsUser
-
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance,force
 #Persistent
+#Include, AutohotkeyFucktions.ahk
+
+if A_ComputerName = G3-2
+{
+    Tooltip, RunAsUser.ahk`n`nA_ComputerName = G3-2`nExiting App...
+    sleep, 5000
+    ExitApp
+}
+
 CoordMode, Screen
 Tooltip, ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
 sleep, 100
@@ -14,8 +21,6 @@ return
 ^+F8::
 run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_RESTRICTED.ahk
 return
-
-^+!t::
 
 return
 !t::
@@ -63,12 +68,6 @@ send, {;}{Down}{Left}
 return
 
 
-^F2::
-WinGetActiveStats, Title, Width, Height, X, Y
-clipboard=%Title%, %Width%, %Height%, %X%, %Y%
-ExitApp
-
-
 ::aaaa::ADMIN_
 
 
@@ -89,28 +88,42 @@ return
 #!b::	;Open Folder ! Explorer
 run, E:\!
 return
-
 #!d::	;Open Folder ! Explorer
-run, K:\c_dynamic
+RunActivate("Downloads", "explorer.exe", "c:\!\Downloads", "0", maximize)
+;winmaximize
+sleep, 300
+MouseClickDrag_func("left", "501", "21", "947", "9", "2")
+
 return
 #!f::	;Open Folder ! Explorer
-run, L:\d_dynamic
+run, K:\c_dynamic
 return
 #!g::	;Open Folder ! Explorer
+run, L:\d_dynamic
+return
+#!h::	;Open Folder ! Explorer
 run, M:\e_dynamic
 return
-
 #!n::	;Open Folder ! Explorer
 run, R:\My Drive
 return
 #!j::	;Open Folder ! Explorer
 run, S:\My Drive
 return
-
 #!a::	;Open Folder ! Explorer
 run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey
 return
-
+#!t::
+path_c = c:\!\Torrents
+path_d = d:\!\Torrents
+path_e = e:\!\Torrents
+if FileExist(path_c)
+	run, %path_c%
+if FileExist(path_d)
+	run, %path_d%
+if FileExist(path_e)
+	run, %path_e%
+return
 
 Launch_App1::
 msgbox, Launch_App1 button pressed!
@@ -150,22 +163,4 @@ return
 ;!.::
 ;send, #0
 ;return
-
-
-Esc::
-ExitApp
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,13 +1,17 @@
-;RunAsAdmin.ahk
-
+#Include, AutohotkeyFucktions.ahk
 CoordMode, Screen
-
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, force
 #Persistent
 
+if A_ComputerName = G3-2
+{
+    Tooltip, RunAsAdmin.ahk`n`nA_ComputerName = G3-2`nExiting App...
+    sleep, 5000
+    ExitApp
+}
 IniWrite, 0, C:\!\ScriptsNotSynced\remember_ADMINMouseLayout.ini, 500, remember
 
 ;^down
@@ -20,7 +24,7 @@ goto, RELOADHERE
 
 
 
-Mbutton::
+~Mbutton::
 WinGetActiveTitle, AT
 if AT contains Visual Studio Code
 {
@@ -59,45 +63,20 @@ if spotify_PID=%AT_PID%
 }
 return
 
-::wintit::
-    WinGetActiveTitle, clipboard
-Return
-::getprocess::
-WinGet, activePath, ProcessPath, % "ahk_id" winActive("A")	; activePath is the output variable and can be named anything you like, ProcessPath is a fixed parameter, specifying the action of the winget command.
-clipboard = %activePath%
-sleep, 1000
+
+
+
+
+
+
+^+!s::
+sleep, 500
+RunActivate("C:\!\KeePass\synced\rezet.kdbx - KeePass", "", "C:\!\KeePass\synced\rezet.kdbx", 0, maximize)
 return
 
-
-
-
-
-
-;~^p::
-    WinGetActiveTitle, AT
-    if AT contains :\
-    {
-        MouseGetPos, mx, my
-        MouseClick, right, %mx%, %my%, 1, 0
-        sleep, 2000
-        send, {down 18}
-        sleep, 20
-        send, {right}
-        sleep, 150
-        send, {down 6}
-        sleep, 10
-        send, {enter}
-        winwaitactive, Add to Archive
-        send, ^a{right}{left 3}
-        send, _PASSWORD_IS_123
-        send, {tab 16}123{enter}
-    return
-    send, {f2}
-    sleep, 200
-    send, ^a{right}{left 3}_PASSWORD_IS_123{enter}
-}
+^!+F1::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\7zipTEMP_PASSWORD_IS_123.ahk
 return
-
 
 ;Enter::
 send, #5
@@ -108,15 +87,7 @@ send, #7
 return
 
 
-click Down left
-keywait END
-click Up left
-return
-PgDn::
-    click Down right
-    keywait PgDn
-    click Up right
-return
+
 
 
 ;run, C:\!\Code\GitHub\93andresen_Scripts\
@@ -149,12 +120,6 @@ sleep, 500
 send, ^v`n`n___________________________________________________________________________________________________________`n`n
 sleep, 1500
 winactivate, Brave
-return
-^+!home::
-MouseGetPos, MX, MY
-PixelGetColor, COL, MX, MY, RGB
-sleep, 100
-clipboard = %MX%, %MY%, %COL%
 return
 send, ^c
 sleep, 200
@@ -269,9 +234,11 @@ Return
     ;run, powershell.exe, C:\!\Code\GitHub\93andresen_Scripts\Powershell\Downloads\SendEmail.ps1
     
     ^F1::
+        CoordMode, Mouse, Screen
         MouseGetPos, MX, MY
+        sleep, 100
         Tooltip, %MX%, %MY%
-        clipboard="%MX%", "%MY%"
+        clipboard=%MX%, %MY%
         sleep, 1000
         Tooltip, 
     return
@@ -303,7 +270,7 @@ Return
     run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Spotify\SpotifyAddSongToPlaylist.ahk
         return
     
-    ^+d::
+    ;^+d::
         BlockInput, MouseMove
         MouseGetPos, MMX, MMY
         MouseClick, Right, MMX, MMY
@@ -312,32 +279,67 @@ Return
         send, {enter}
         BlockInput, MouseMoveOff
     Return
-    
-    ::ee::
-        send, ExitApp
-    Return
-    ::tt::
-        send, Tooltip,{space}
-    return
-    ::ss::
-        send, send,{space}
-    return
-    ::sss::
-        send, sleep,{space}
-    return
-    ::rr::
-        send, run,{space}
-    return
-    ::rrr::
-        send, runwait, 
-    return
-    ::rrrr::
-        send, return
-    return
-    F7::
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\start_macro_recording.ahk
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\waitformacrowindow.ahk
-    return
+
+::tt::
+send, Tooltip,{space}
+return
+::ss::
+send, send,{space}
+return
+::sss::
+send, sleep,{space}
+return
+::rr::
+send, run,{space}
+return
+::rrr::
+send, runwait,{space}
+return
+::rrrr::
+send, return
+return
+::ee::
+send, ExitApp
+Return
+::eee::
+send, Esc::{enter}ExitApp{enter}
+Return
+::tttt::
+send, tr
+sleep, 700
+send, {down 1}
+Return
+pass93andresen@gmail.com
+::rlrlgl::
+SetKeyDelay, 3, 3
+sleep, 500
+sendevent, {backspace 10}
+sleep, 100
+sendevent, HEEEY good luck have fun :D
+SetKeyDelay, 10, 10
+return
+::rlrlsry::
+SetKeyDelay, 3, 3
+sleep, 500
+sendevent, {backspace 10}
+sleep, 100
+sendevent, havent played in a long time and have to rank up again its a little unfair sorry :/
+SetKeyDelay, 10, 10
+return
+::rlrlsry::
+SetKeyDelay, 3, 3
+sleep, 500
+sendevent, {backspace 10}
+sleep, 100
+sendevent, havent played in a long time and have to rank up again its a little unfair sorry :/
+SetKeyDelay, 10, 10
+return
+::wintit::
+WinGetActiveTitle, clipboard
+return
+F7::
+    run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\start_macro_recording.ahk
+return
 
 ^|::
 Tooltip, .
@@ -347,20 +349,55 @@ run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\NNNAutohotkey.ahk
 Tooltip, 
 return
 
+^+F1::
+CoordMode, Mouse, Screen
+MouseGetPos, MX, MY
+sleep, 100
+clipboard = mouse_click_func("%MX%", "%MY%")
+send, mouse_click_func("%MX%", "%MY%"){enter}
+return
+^+F2::
+CoordMode, Mouse, Screen
+MouseGetPos, MX, MY
+sleep, 100
+clipboard = mouse_rightclick_func("%MX%", "%MY%")
+send, mouse_rightclick_func("%MX%", "%MY%"){enter}
+return
+^+F3::
+CoordMode, Pixel, Screen
+MouseGetPos, mx, my
+PixelGetColor, color, mx, my, RGB
+;send, WaitForPixelColor("%mx%", "%my%", "%color%", "ms")
+;send, {enter}{left 2}^+{left}
+clipboard = WaitForPixelColor(%mx%, %my%, %color%, ms)
+sleep, 100
+return
+^+F4::
+WinGetActiveStats, Title, Width, Height, X, Y
+clipboard=%Title%, %Width%, %Height%, %X%, %Y%
+send, %Title%, %Width%, %Height%, %X%, %Y%
+return
 
-    ^+F9::
-        IniWrite, 1, C:\!\TEMP\InifilesAndOther\Autorun_ADMIN.ini, Section, ran_by_hotkey
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_ADMIN.ahk
-    return
-    ^+F10::
-        runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk
-    return
-    ^+F11::
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Update_Fast.ahk
-    return
-    ^+F12::
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Update.ahk
-    Return
+^+F5::
+WinGet, activePath, ProcessPath, % "ahk_id" winActive("A")	; activePath is the output variable and can be named anything you like, ProcessPath is a fixed parameter, specifying the action of the winget command.
+clipboard = %activePath%
+send, %activePath%
+return
+
+
+^+F9::
+IniWrite, 1, C:\!\TEMP\InifilesAndOther\Autorun_ADMIN.ini, Section, ran_by_hotkey
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_ADMIN.ahk
+return
+^+F10::
+runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk
+return
+^+F11::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Update_Fast.ahk
+return
+^+F12::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Update.ahk
+Return
     ::tittit::
         WinGetActiveTitle, clipboard
         if clipboard Contains Visual Studio Code
@@ -584,26 +621,6 @@ return
             
             
             
-            ; Windows-Shift-S: launches new Chrome instance or activates existing one (and opens new tab)
-            #+s::
-                SetTitleMatchMode, 2
-                if WinExist("ahk_class Chrome_WidgetWin_1") {
-                    ifWinNotActive, ahk_class Chrome_WidgetWin_1
-                    {
-                        WinActivate, ahk_class Chrome_WidgetWin_1
-                        WinWaitActive
-                    }
-                    Send, ^t ; shortcut for new tab
-                } else {
-                    Run "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-                    Sleep 100
-                    WinActivate
-                    WinWaitActive
-                }
-            return
-            
-            
-            
             Check:
                 IfGreater, A_TimeIdle, 3000
                 {
@@ -730,51 +747,6 @@ return
 
 
 
-
-
-            ^+e::
-            WinGetActiveTitle, AT
-            if AT contains :\
-            {
-                tmp=%clipboard%
-                send, ^c
-                ;sleep, 60
-                path=%clipboard%
-                clipboard=%path%
-                Tooltip, %path%
-                sleep, 500
-                Tooltip, 
-                return
-            }
-            if AT contains Visual Studio Code
-            {
-                MSGBOX, VIEW EXPLORER!!! mHOOOWWWW
-            }
-            return
-            send, ^c
-            sleep, 60
-            path=%clipboard%
-            clipboard=%tmp%
-            path_parsing := SubStr(path, 1, instr(path, "\", false, -1)-1)	;Remove chars to the right of \
-            ;Tooltip, path_parsing=%path_parsing%
-            ;sleep, 400
-            len_path := StrLen(path)
-            len_path_parsing := StrLen(path_parsing)
-            ;Tooltip, %len_path% %len_path_parsing%
-            ;sleep, 400
-            len_path -= %len_path_parsing%
-            ;Tooltip, %len_path% %len_path_parsing%
-            ;sleep, 400
-            path_parsed_left := SubStr(path_parsing, 1, instr(path_parsing, ":\", false, -1)-1)
-            len_path_parsed_left := StrLen(path_parsed_left)
-            ;Tooltip, %len_path% %len_path_parsing% %len_path_parsed_left%
-            ;sleep, 400
-            path_parsed_complete := SubStr(path_parsing, len_path_parsed_left, instr(path_parsing, "\", false, -1))
-            run, %path_parsed_complete%
-            Tooltip, %path_parsed_complete%
-            sleep, 500
-            Tooltip, 
-            return
             
             
             NewStr := StrReplace(clipboard, """")
@@ -1249,14 +1221,14 @@ return
             }
             return
             
-            ^+F3:: Winset, Alwaysontop, , Administrator: Windows PowerShell
+            ;^+F3:: Winset, Alwaysontop, , Administrator: Windows PowerShell
             Return
-            
-            !A::Send, Autohotkey{Spacebar}
+            !a::Send, Autohotkey
             return
-            !C::send, chocolatey
+            !v::Send, Visual Studio Code
             return
-            
+            !c::send, chocolatey
+            return
             
             ;Run Applizations=========================================================================
             ;[Right-ALT]
@@ -1318,7 +1290,7 @@ return
             
             
             ^!+F12::
-                run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\kill_apps_rocketleague.ahk
+                run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_APPS.ahk
             return
             ^!o::
                 run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\c
@@ -1349,22 +1321,68 @@ return
             MsgBox You pressed and released the CapsLock key.
             return
             
-            
-            ^q::
-                send, !{f4}
-            return
-            
+^q::
+ToggleFirefoxYoutube()
+return
+;~^+a::
+Process, Exist, KeePass.exe
+if Errorlevel = 0
+{
+    FileAppend, 1, C:\!\ScriptsNotSynced\autotupe_NOW.txt
+    run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\autotype_keepass.ahk
+}
+return
+
+::iiiii::
+send, {#}Include, AutohotkeyFucktions.ahk{right}
+sleep, 1
+send, {left}
+return
 
 
+^+e::
+WinGetActiveTitle, AT
+if AT contains :\
+{
+    ;tmp=%clipboard%
+    send, ^c
+    sleep, 50
+    path=%clipboard%
+    sleep, 10
+    clipboard=%path%
+    Tooltip, %path%
+    ;GetParentDir(path)
+    sleep, 500
+    Tooltip, 
+    return
+}
 
-
-
-Esc::
-ExitApp
-  
-
-
-
+;^+f1::
+return
+send, ^c
+sleep, 60
+path=%clipboard%
+clipboard=%tmp%
+path_parsing := SubStr(path, 1, instr(path, "\", false, -1)-1)	;Remove chars to the right of \
+;Tooltip, path_parsing=%path_parsing%
+;sleep, 400
+len_path := StrLen(path)
+len_path_parsing := StrLen(path_parsing)
+;Tooltip, %len_path% %len_path_parsing%
+;sleep, 400
+len_path -= %len_path_parsing%
+;Tooltip, %len_path% %len_path_parsing%
+;sleep, 400
+path_parsed_left := SubStr(path_parsing, 1, instr(path_parsing, ":\", false, -1)-1)
+len_path_parsed_left := StrLen(path_parsed_left)
+;Tooltip, %len_path% %len_path_parsing% %len_path_parsed_left%
+;sleep, 400
+path_parsed_complete := SubStr(path_parsing, len_path_parsed_left, instr(path_parsing, "\", false, -1))
+run, %path_parsed_complete%
+Tooltip, %path_parsed_complete%
+sleep, 500
+Tooltip, 
+return
 
 
 
