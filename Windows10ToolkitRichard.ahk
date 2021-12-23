@@ -14,7 +14,7 @@ YUBIKEY_APPS = yubico-authenticator wincrypt-sshagent yubikey-piv-manager yubike
 
 /*
 MAYBE_AND_OTHER:
-rufus bitwarden-cli plex plexmediaserver plex-home-theater tidytabs workspacer sandboxie.install linkshellextension internet-download-manager pingplotter rammap regexcoach accesschk windows-kill fileoptimizer chocolatey-misc-helpers.extension vmmap npackd.install drivermax adwcleaner cmdutils recycle rbcmd recyclenow minibin deletefiles duplicatecleaner alldup dropit googleearthpro imagemanager jre8 laps lastactivityview lastfmscrobbler musicbee netscan powerautomatedesktop putty regexpixie freedownloadmanager Setup-Assistant shellbagsview ShellTools shman Shotcut Silverlight songr specialfoldersview spicetify-cli strokesplus.portable SwissFileKnife sysexp urbackup-client virtualbox VirtualCloneDrive vlc winamp spacesniffer terminal-icons.powershell tidystart.powershell windirstat wiztree winauth ultimate-settings-panel vortex windows-admin-center windowsrepair cmdutils ecm FileOptimizer git.install github-desktop shutup10 raidrive yubico-authenticator yubikey-manager yubikey-personalization-tool yubikey-piv-manager dolphin androidstudio neovim smartftp adb playnite opendns-updater desktop-notifications-for-android-chrome vhdattach reprofiler tccle taskschedulerview mailer siv partitionmasterfree partitionwizard perfmonitor2 fluent-terminal wsl2 ln junction-link-magic ntfslinksview defprof linkshellextension supercopier ultracopier gh act-cli git-lfs GoogleChrome.Canary webstorm gimp win-vind wsl-kalilinux ganttproject defraggler vagrant vagrant-manager googlephotos
+rufus bitwarden-cli plex plexmediaserver plex-home-theater tidytabs workspacer sandboxie.install linkshellextension internet-download-manager pingplotter rammap regexcoach accesschk windows-kill fileoptimizer chocolatey-misc-helpers.extension vmmap npackd.install drivermax adwcleaner cmdutils recycle rbcmd recyclenow minibin deletefiles duplicatecleaner alldup dropit googleearthpro imagemanager jre8 laps lastactivityview lastfmscrobbler musicbee netscan powerautomatedesktop putty regexpixie freedownloadmanager Setup-Assistant shellbagsview ShellTools shman Shotcut Silverlight songr specialfoldersview spicetify-cli strokesplus.portable SwissFileKnife sysexp urbackup-client virtualbox VirtualCloneDrive vlc winamp spacesniffer terminal-icons.powershell tidystart.powershell windirstat wiztree winauth ultimate-settings-panel vortex windows-admin-center windowsrepair cmdutils ecm FileOptimizer git.install github-desktop shutup10 raidrive yubico-authenticator yubikey-manager yubikey-personalization-tool yubikey-piv-manager dolphin androidstudio neovim smartftp adb playnite opendns-updater desktop-notifications-for-android-chrome vhdattach reprofiler tccle taskschedulerview mailer siv partitionmasterfree partitionwizard perfmonitor2 fluent-terminal wsl2 ln junction-link-magic ntfslinksview defprof linkshellextension supercopier ultracopier gh act-cli git-lfs GoogleChrome.Canary webstorm gimp win-vind wsl-kalilinux ganttproject defraggler vagrant vagrant-manager googlephotos filebot alldup mp3tag
 
 simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
@@ -69,12 +69,12 @@ SetNumLockState, On
 FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
 ;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Code\GitHub
 FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Desktop
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Documents
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Downloads
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Desktop
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Documents
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Downloads
 FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Torrents
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Videos
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Pictures
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Videos
+;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Pictures
 
 
 
@@ -124,6 +124,8 @@ ExitApp
 
 
 
+Esc::
+ExitApp
 
 
 

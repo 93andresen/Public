@@ -1354,12 +1354,18 @@ return
                 send, !{f4}
             return
             
-            
-            
-            
-            
-            
 
-            
-            
-            
+
+
+
+
+Esc::
+ExitApp
+  
+
+
+
+
+
+
+

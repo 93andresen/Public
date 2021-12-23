@@ -151,3 +151,21 @@ return
 ;send, #0
 ;return
 
+
+Esc::
+ExitApp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
