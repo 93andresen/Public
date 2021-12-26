@@ -4,7 +4,6 @@ CoordMode, Screen
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, force
-#Persistent
 
 if A_ComputerName = G3-2
 {
