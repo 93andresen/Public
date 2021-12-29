@@ -1,7 +1,7 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-#SingleInstance, force
+#SingleInstance, Force
 SetWorkingDir, %A_ScriptDir%
 
 /*
@@ -56,27 +56,93 @@ C:\Users\pass9\OneDrive\Documents\WindowsPowerShell\
 https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 */
 
-C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Nessescary_List.txt
-C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Maybe_And_Other_List.txt
-C:\!\Code\GitHub\93andresen_Scripts\Public\Winget_List.txt
-C:\!\Code\GitHub\93andresen_Scripts\Public\Keepass_And_Plugins_List.txt
-C:\!\Code\GitHub\93andresen_Scripts\Public\Yubikey_Apps_List.txt
 
 
-#SingleInstance, Force
-SendMode Input
-SetWorkingDir, %A_ScriptDir%
-Gui, Add, Tab2,, First Tab|Second Tab|Third Tab  ; Tab2 vs. Tab requires [v1.0.47.05+].
-loop, read, 
-Gui, Add, Checkbox, vMyCheckbox, Sample checkbox1
-Gui, Tab, 2
-Gui, Add, Radio, vMyRadio, Sample radio1
-Gui, Add, Radio,, Sample radio2
-Gui, Tab, 3
-Gui, Add, Edit, vMyEdit r5  ; r5 means 5 rows tall.
+
+
+UrlDownloadToFile, URL, Filename
+
+
+
+
+;C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Nessescary_List.txt
+;C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Maybe_And_Other_List.txt
+;C:\!\Code\GitHub\93andresen_Scripts\Public\Winget_List.txt
+;C:\!\Code\GitHub\93andresen_Scripts\Public\Keepass_And_Plugins_List.txt
+;C:\!\Code\GitHub\93andresen_Scripts\Public\Yubikey_Apps_List.txt
+
+Gui, Add, Tab2,, 1 Nessescary Apps|2 Nessescary Apps|3 Nessescary Apps|4 Nessescary Apps|5 Maybe And Other|6 Maybe And Other|7 Maybe And Other|8 Maybe And Other|9 Maybe And Other|10 Maybe And Other|11 Maybe And Other|12 Keepass|13 Keepass|14 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
+loop, read, C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Nessescary_List.txt
+{
+    Gui, Tab, 1
+    if A_Index>30
+    {
+        Gui, Tab, 2
+        if A_Index>60
+        {
+            Gui, Tab, 3
+            if A_Index>90
+            {
+                Gui, Tab, 4
+            }
+        }
+    }
+    Gui, Add, Checkbox, tab1_%A_Index%, %A_LoopReadLine%
+}
+loop, read, C:\!\Code\GitHub\93andresen_Scripts\Public\Chocolatey_Apps_Maybe_And_Other_List.txt
+{
+    Gui, Tab, 5
+    if A_Index>30
+    {
+        Gui, Tab, 6
+        if A_Index>60
+        {
+            Gui, Tab, 7
+            if A_Index>90
+            {
+                Gui, Tab, 8
+                if A_Index>120
+                {
+                    Gui, Tab, 9
+                    if A_Index>150
+                    {
+                        Gui, Tab, 10
+                        if A_Index>180
+                        {
+                            Gui, Tab, 11
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Gui, Add, Checkbox, tab1_%A_Index%, %A_LoopReadLine%
+}
+loop, read, C:\!\Code\GitHub\93andresen_Scripts\Public\Keepass_And_Plugins_List.txt
+{
+    Gui, Tab, 12
+    if A_Index>30
+    {
+        Gui, Tab, 13
+    }
+    Gui, Add, Checkbox, tab1_%A_Index%, %A_LoopReadLine%
+}
+loop, read, C:\!\Code\GitHub\93andresen_Scripts\Public\Yubikey_Apps_List.txt
+{
+    Gui, Tab, 14
+    Gui, Add, Checkbox, tab7_checkbox_%A_Index%, %A_LoopReadLine%
+}
+loop, read, C:\!\Code\GitHub\93andresen_Scripts\Public\Winget_List.txt
+{
+    Gui, Tab, 15
+    Gui, Add, Checkbox, tab5_checkbox_%A_Index%, %A_LoopReadLine%
+}
+Gui, Tab, 16
+Gui, Add, Edit, tab8_extra r30  ; r30 means 30 rows tall.
 Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
+;Gui, Show, x115 y87 h709 w1327, New GUI Window
 return
 
 ButtonOK:
@@ -85,6 +151,40 @@ GuiEscape:
 Gui, Submit  ; Save each control's contents to its associated variable.
 MsgBox You entered:`n%MyCheckbox%`n%MyRadio%`n%MyEdit%
 ExitApp
+
+
+
+;_________________________________________________________________________________________
+;Gui, Add, Tab2,, First Tab|Second Tab|Third Tab  ; Tab2 vs. Tab requires [v1.0.47.05+].
+;Gui, Add, Checkbox, vMyCheckbox, Sample checkbox
+;Gui, Tab, 2
+;Gui, Add, Radio, vMyRadio, Sample radio1
+;Gui, Add, Radio,, Sample radio2
+;Gui, Tab, 3
+;Gui, Add, Edit, vMyEdit r5  ; r5 means 5 rows tall.
+;Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
+;Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
+;Gui, Show
+;return
+;
+;ButtonOK:
+;GuiClose:
+;GuiEscape:
+;Gui, Submit  ; Save each control's contents to its associated variable.
+;MsgBox You entered:`n%MyCheckbox%`n%MyRadio%`n%MyEdit%
+;ExitApp
+;_________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
 
 SetCapsLockState, Off
 SetNumLockState, On

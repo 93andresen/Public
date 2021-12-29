@@ -1,0 +1,6 @@
+Yubico-authenticator
+Wincrypt-sshagent
+Yubikey-piv-manager
+Yubikey-neo-manager
+Yubikey-personalization-tool
+Yubikey-manager

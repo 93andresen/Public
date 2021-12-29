@@ -1,6 +1,0 @@
-yubico-authenticator
-wincrypt-sshagent
-yubikey-piv-manager
-yubikey-neo-manager
-yubikey-personalization-tool
-yubikey-manager
