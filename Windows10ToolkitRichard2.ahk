@@ -112,12 +112,12 @@ if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
     runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y > Installing_Applications_Output.txt,,min
     run, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , min ;this will set the x64 Firefox as my default
 }
-runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y > Installing_Applications_Output.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y > Installing_Applications_Output.txt,,min
-runwait, powershell.exe winget install %PICKED_Winget_List% > Installing_Applications_Output.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Installing_Applications_Output.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt,,min
+runwait, powershell.exe winget install %PICKED_Winget_List% > Installing_Applications_Output_Winget_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Installing_Applications_Output_Keepass_And_Plugins_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output_Yubikey_Apps_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,min
 
 
 /*
