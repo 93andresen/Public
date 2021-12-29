@@ -65,6 +65,8 @@ ButtonINSTALL:
 gui, Submit  ; Save each control's contents to its associated variable.
 
 
+
+
 count=1
 loop 500
 {
@@ -117,6 +119,11 @@ runwait, powershell,exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Ins
 runwait, powershell,exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output.txt,,min
 runwait, powershell,exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output.txt,,min
 
+
+/*
+
+
+
 ;Tooltip, Installing VERACRYPT (Innstallation is not silent because of fast boot) --ignore-checksums -y -  `nnSpotify Install tends to bug out and never complete, so i install it now using "run" instead of runwait and let it complete before Chris Titus Windows 10 Debloater Script is finished
 run, powershell.exe cup spotify --ignore-checksums -y,,min
 run, powershell.exe cup winja --ignore-checksums -y,,min
@@ -150,11 +157,9 @@ FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
 FileDelete, WINGET_APPS_LIST_TEMP.txt
 runwait, powershell.exe %winget_list%,,min
 
-
+*/
 msgbox, FINISHED
 ExitApp
-
-
 
 Esc::
 ExitApp
