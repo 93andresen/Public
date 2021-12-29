@@ -3,51 +3,66 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
+; If the script is not elevated, relaunch as administrator and kill current instance:
+
+full_command_line := DllCall("GetCommandLine", "str")
+
+if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+{
+    try ; leads to having the script re-launching itself as administrator
+    {
+        if A_IsCompiled
+            Run *RunAs "%A_ScriptFullPath%" /restart
+        else
+            Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
+    }
+    ExitApp
+}
+
+
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
 
 
-gui, GUI2:Add, Tab2,, Pick Applications to Install 2/2
-gui, GUI2:add, Text,, Keepass And Plugins:
+gui, Add, Tab2,, Pick Applications to Install 2/2
+gui, add, Text,, Keepass And Plugins:
 loop, read, Keepass_And_Plugins_List.txt
 {
-    gui, GUI2:Tab, 1
+    gui, Tab, 1
     if	!Mod(A_Index, 30)
-        gui, GUI2:add, Text, ys, 
-    gui, GUI2:add, checkbox, vcheckbox3_%A_Index%, %A_LoopReadLine%
+        gui, add, Text, ys, 
+    gui, add, checkbox, vcheckbox3_%A_Index%, %A_LoopReadLine%
 }
-gui, GUI2:add, Text, ys, Yubikey Apps:
+gui, add, Text, ys, Yubikey Apps:
 loop, read, Yubikey_Apps_List.txt
 {
-    ;gui, GUI2:Tab, 2
+    ;gui, Tab, 2
     if	!Mod(A_Index, 30)
-        gui, GUI2:add, Text, ys
-    gui, GUI2:add, checkbox, vcheckbox4_%A_Index%, %A_LoopReadLine%
+        gui, add, Text, ys
+    gui, add, checkbox, vcheckbox4_%A_Index%, %A_LoopReadLine%
 }
-gui, GUI2:add, Text, ys, Winget Apps:
+gui, add, Text, ys, Winget Apps:
 loop, read, Winget_List.txt
 {
-    ;gui, GUI2:Tab, 2
+    ;gui, Tab, 2
     if	!Mod(A_Index, 30)
-        gui, GUI2:add, Text, ys
-    gui, GUI2:add, checkbox, vcheckbox5_%A_Index%, %A_LoopReadLine%
+        gui, add, Text, ys
+    gui, add, checkbox, vcheckbox5_%A_Index%, %A_LoopReadLine%
 }
-gui, GUI2:add, Text, ys, Extra Chocolatey Apps (1 per line):
-gui, GUI2:Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
-gui, GUI2:Tab  ; i.e. subsequently-added controls will not belong to the tab control.
-gui, GUI2:Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
-gui, GUI2:Show
+gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
+gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
+gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
+gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
+gui, Show
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
-;gui, GUI2:Show, x115 y87 h709 w1327, New GUI Window
+;gui, Show, x115 y87 h709 w1327, New GUI Window
 return
 
 
 ButtonINSTALL:
-gui, GUI2:Submit  ; Save each control's contents to its associated variable.
-MsgBox You entered:`n%MyCheckbox%`n%MyRadio%`n%MyEdit%
-ExitApp
+gui, Submit  ; Save each control's contents to its associated variable.
 
 
 count=1
