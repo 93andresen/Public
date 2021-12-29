@@ -1,6 +1,6 @@
 Rainmeter
+Setdefaultbrowser
 Firefox
-SetDefaultBrowser
 Edgedeflector
 Autohotkey
 Chocolatey-misc-helpers.extension

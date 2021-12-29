@@ -74,10 +74,6 @@ Git.install
 Github-desktop
 Shutup10
 Raidrive
-Yubico-authenticator
-Yubikey-manager
-Yubikey-personalization-tool
-Yubikey-piv-manager
 Dolphin
 Androidstudio
 Neovim
@@ -122,10 +118,4 @@ Alldup
 Mp3tag
 Mousewithoutborders
 Sharemouse
-Choco
-Install
-Freedownloadmanagerchoco
-Install
-Freedownloadmanagerchoco
-Install
 Freedownloadmanager

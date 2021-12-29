@@ -46,7 +46,7 @@ else{
 
 
 
-'Downloaded files will be saved in c:\temp_Windows10ToolkitRichard'
+'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 if (Test-Path "C:\temp_Windows10ToolkitRichard"){
 }  
 else{
