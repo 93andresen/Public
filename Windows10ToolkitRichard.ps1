@@ -43,7 +43,7 @@ else{
     }
 }
 
-
+choco uninstall explorer-winconfig;choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'"
 
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'

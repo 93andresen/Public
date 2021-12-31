@@ -19,7 +19,6 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
     ExitApp
 }
 
-
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
