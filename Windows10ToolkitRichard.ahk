@@ -87,7 +87,7 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 */
 
-runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup boxstarter;import-module Boxstarter.WinConfig;Disable-GameBarTips;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
+runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
 
 SetCapsLockState, Off
 SetNumLockState, On
@@ -102,6 +102,11 @@ FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Torrents
 ;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Videos
 ;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Pictures
 
+filedelete, Windows10ToolkitRichard2.ahk
+UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard2.ahk, Windows10ToolkitRichard2.ahk
+
+FileCreateDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
 
 filedelete, Chocolatey_Apps_Nessescary_List.txt
 filedelete, Chocolatey_Apps_Maybe_And_Other_List.txt
@@ -117,7 +122,7 @@ filedelete, PICKED_Yubikey_Apps_List.txt
 filedelete, Extra_Chocolatey_Apps.txt
 filedelete, PICKED_Extra_Chocolatey_Apps.txt
 
-filedelete, Windows10ToolkitRichard2.ahk
+
 
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Chocolatey_Apps_Nessescary_List.txt, Chocolatey_Apps_Nessescary_List.txt
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Chocolatey_Apps_Maybe_And_Other_List.txt, Chocolatey_Apps_Maybe_And_Other_List.txt
@@ -125,7 +130,7 @@ UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Appl
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Keepass_And_Plugins_List.txt, Keepass_And_Plugins_List.txt
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Yubikey_Apps_List.txt, Yubikey_Apps_List.txt
 
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard2.ahk, Windows10ToolkitRichard2.ahk
+
 
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
 Gui, Add, Tab2,, Pick Applications to Install 1/2
@@ -137,6 +142,7 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
     if	!Mod(A_Index, 30)
         gui, add, Text, ys, 
     gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
+    appname1_%A_Index% = %A_LoopReadLine%
 }
 gui, add, Text, ys, Maybe And Other:
 gui, add, checkbox, vALL2, Check All - Maybe And Other
@@ -146,6 +152,7 @@ loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
     if	!Mod(A_Index, 30)
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
+    appname2_%A_Index% = %A_LoopReadLine%
 }
 Gui, Tab, 16
 Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
@@ -185,19 +192,20 @@ loop
     sleep, 100
 }
 
-msgbox, rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 GuiClose:
 GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
 ExitApp
 ButtonContinueToPage2/2:
+run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
 count=1
 loop 500
 {
     if checkbox1_%count% = 1
     {
-        FileAppend, checkbox1_%count%%A_Space%, PICKED_Chocolatey_Apps_Nessescary_List.txt
+        FileAppend, % appname1_%count%, PICKED_Chocolatey_Apps_Nessescary_List.txt
+        FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Nessescary_List.txt
     }
     count+=1
 }
@@ -206,13 +214,11 @@ loop 500
 {
     if checkbox2_%count% = 1
     {
-        FileAppend, checkbox2_%count%%A_Space%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+        FileAppend, % appname2_%count%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+        FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
     }
     count+=1
 }
-run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
-ExitApp
-run, Windows10ToolkitRichard2.ahk
 ExitApp
 
 

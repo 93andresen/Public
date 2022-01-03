@@ -20,8 +20,8 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 
-FileCreateDir, C:\temp_Windows10ToolkitRichard
-SetWorkingDir, C:\temp_Windows10ToolkitRichard
+FileCreateDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
 
 
 
@@ -34,6 +34,7 @@ loop, read, Keepass_And_Plugins_List.txt
     if	!Mod(A_Index, 30)
         gui, add, Text, ys, 
     gui, add, checkbox, vcheckbox3_%A_Index%, %A_LoopReadLine%
+    appname3_%A_Index% = %A_LoopReadLine%
 }
 gui, add, Text, ys, Yubikey Apps:
 gui, add, checkbox, vALL4, Check All - Yubikey Apps
@@ -43,6 +44,7 @@ loop, read, Yubikey_Apps_List.txt
     if	!Mod(A_Index, 30)
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox4_%A_Index%, %A_LoopReadLine%
+    appname4_%A_Index% = %A_LoopReadLine%
 }
 gui, add, Text, ys, Winget Apps:
 loop, read, Winget_List.txt
@@ -51,6 +53,7 @@ loop, read, Winget_List.txt
     if	!Mod(A_Index, 30)
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox5_%A_Index%, %A_LoopReadLine%
+    appname5_%A_Index% = %A_LoopReadLine%
 }
 gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
 gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
@@ -101,7 +104,8 @@ loop 500
 {
     if checkbox3_%count% = 1
     {
-        FileAppend, checkbox3_%count%%A_Space%, PICKED_Winget_List.txt
+        FileAppend, % appname3_%count%, PICKED_Winget_List.txt
+        FileAppend, %A_Space%, PICKED_Winget_List.txt
     }
 }
 count=1
@@ -109,7 +113,8 @@ loop 500
 {
     if checkbox4_%count% = 1
     {
-        FileAppend, checkbox4_%count%%A_Space%, PICKED_Keepass_And_Plugins_List.txt
+        FileAppend, % appname4_%count%, PICKED_Keepass_And_Plugins_List.txt
+        FileAppend, %A_Space%, PICKED_Keepass_And_Plugins_List.txt
     }
     count+=1
 }
@@ -118,7 +123,8 @@ loop 500
 {
     if checkbox5_%count% = 1
     {
-        FileAppend, checkbox5_%count%%A_Space%, PICKED_Yubikey_Apps_List.txt
+        FileAppend, % appname5_%count%, PICKED_Yubikey_Apps_List.txt
+        FileAppend, %A_Space%, PICKED_Yubikey_Apps_List.txt
     }
     count+=1
 }
