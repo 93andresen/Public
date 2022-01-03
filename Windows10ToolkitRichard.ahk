@@ -92,19 +92,18 @@ FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
 FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
 FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
 runwait, powershell.exe cup abc-update,,max
+if FileExist("C:\temp_Windows10ToolkitRichard\progress.ini")
+    IniRead, reboots, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
+    if task_created != 1
+        MAKE TASK Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+else
+    IniWrite, 0, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
+
 runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
+IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
+
 SetCapsLockState, Off
 SetNumLockState, On
-
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\WinSettings.{ED7BA470-8E54-465E-825C-99712043E01C}
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Code\GitHub
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Empty_Folder_Do_Not_Delete
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Desktop
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Documents
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Downloads
-FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Torrents
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Videos
-;FileCreateDir, c:\temp_Windows10ToolkitRichard\C_FolderStructure\!\Pictures
 
 filedelete, Windows10ToolkitRichard2.ahk
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard2.ahk, Windows10ToolkitRichard2.ahk
@@ -201,7 +200,7 @@ GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
 ExitApp
 ButtonContinueToPage2/2:
-run, Windows10ToolkitRichard2.ahk
+run, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
 count=1
 loop 500

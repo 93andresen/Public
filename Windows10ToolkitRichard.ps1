@@ -1,5 +1,22 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
+'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
+if (Test-Path "C:\temp_Windows10ToolkitRichard"){
+}  
+else{
+    mkdir C:\temp_Windows10ToolkitRichard
+}
+Set-Location C:\temp_Windows10ToolkitRichard
+
+Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard"
+Enable-ComputerRestore -Drive "C:\"
+Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
+
+$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ps1'
+$destination = 'Windows10ToolkitRichard.ps1'
+Invoke-WebRequest -Uri $source -OutFile $destination
+'Downloading a copy of this script so i can make a task in task scheduler for automatic resume after reboots'
+
 # INSTALLING CHOCOLATEY AND WINGET
 
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
@@ -43,15 +60,6 @@ else{
     }
 }
 
-
-
-'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
-if (Test-Path "C:\temp_Windows10ToolkitRichard"){
-}  
-else{
-    mkdir C:\temp_Windows10ToolkitRichard
-}
-Set-Location C:\temp_Windows10ToolkitRichard
 
 #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
 
