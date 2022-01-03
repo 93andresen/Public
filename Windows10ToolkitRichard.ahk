@@ -84,11 +84,10 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 ;     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop install git
 ;     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop update
 ;}
-                   
-
-
 
 */
+
+runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup boxstarter;import-module Boxstarter.WinConfig;Disable-GameBarTips;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
 
 SetCapsLockState, Off
 SetNumLockState, On
@@ -131,6 +130,7 @@ UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Wind
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
 Gui, Add, Tab2,, Pick Applications to Install 1/2
 gui, add, Text,, Nessescary Apps:
+gui, add, checkbox, vALL1, Check All - Nessescary Applications
 loop, read, Chocolatey_Apps_Nessescary_List.txt
 {
     Gui, Tab, 1
@@ -139,6 +139,7 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
     gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
 }
 gui, add, Text, ys, Maybe And Other:
+gui, add, checkbox, vALL2, Check All - Maybe And Other
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
 {
     ;Gui, Tab, 2
@@ -151,11 +152,40 @@ Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left corner.
 Gui, Show
+
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-;Gui, Show, x115 y87 h709 w1327, New GUI Window
-return
 
+
+loop
+{
+    GuiControlGet, check,, Button1
+    if (check = 1 and check_ran != 1)
+    {
+        check_ran=1
+        HookGUICheckboxes(check, "1", "78")
+    }
+    else if (check = 0 and check_ran != 0)
+    {
+        HookGUICheckboxes(check, "1", "78")
+        check_ran=0
+    }
+
+    GuiControlGet, check,, Button79
+    if (check = 1 and check_ran2 != 1)
+    {
+        HookGUICheckboxes(check, "79", "200")
+        check_ran2=1
+    }
+    else if (check = 0 and check_ran2 != 0)
+    {
+        HookGUICheckboxes(check, "79", "200")
+        check_ran2=0
+    }
+    sleep, 100
+}
+
+msgbox, rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
 GuiClose:
 GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
@@ -169,6 +199,7 @@ loop 500
     {
         FileAppend, checkbox1_%count%%A_Space%, PICKED_Chocolatey_Apps_Nessescary_List.txt
     }
+    count+=1
 }
 count=1
 loop 500
@@ -177,6 +208,38 @@ loop 500
     {
         FileAppend, checkbox2_%count%%A_Space%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
     }
+    count+=1
 }
+run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
+ExitApp
 run, Windows10ToolkitRichard2.ahk
 ExitApp
+
+
+
+Esc::
+ExitApp
+
+
+
+
+HookGUICheckboxes(check, from, too)
+{
+    too += 1
+    count=%from%
+    loop
+    {
+        loop
+        {
+            GuiControlGet, Button%count% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+            if Button%count%!=%check%
+                ControlClick, Button%count%
+            else if Button%count%=%check%
+                break
+        }
+        count+=1
+        if count = %too%
+            break
+    }
+}
+

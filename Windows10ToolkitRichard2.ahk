@@ -27,6 +27,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
 gui, Add, Tab2,, Pick Applications to Install 2/2
 gui, add, Text,, Keepass And Plugins:
+gui, add, checkbox, vALL3, Check All - Keepass and All Plugins
 loop, read, Keepass_And_Plugins_List.txt
 {
     gui, Tab, 1
@@ -35,6 +36,7 @@ loop, read, Keepass_And_Plugins_List.txt
     gui, add, checkbox, vcheckbox3_%A_Index%, %A_LoopReadLine%
 }
 gui, add, Text, ys, Yubikey Apps:
+gui, add, checkbox, vALL4, Check All - Yubikey Apps
 loop, read, Yubikey_Apps_List.txt
 {
     ;gui, Tab, 2
@@ -55,10 +57,37 @@ gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
 gui, Show
-WinWaitActive, Windows10ToolkitRichard.ahk
-WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
-;gui, Show, x115 y87 h709 w1327, New GUI Window
-return
+WinWaitActive, Windows10ToolkitRichard2.ahk
+WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
+
+
+loop
+{
+    GuiControlGet, check,, Button1
+    if (check = 1 and check_ran3 != 1)
+    {
+        HookGUICheckboxes(check, "1", "44")
+        check_ran3=1
+    }
+    else if (check = 0 and check_ran3 != 0)
+    {
+        HookGUICheckboxes(check, "1", "44")
+        check_ran3=0
+    }
+
+    GuiControlGet, check,, Button45
+    if (check = 1 and check_ran4 != 1)
+    {
+        HookGUICheckboxes(check, "45", "51")
+        check_ran4=1
+    }
+    else if (check = 0 and check_ran4 != 0)
+    {
+        HookGUICheckboxes(check, "45", "51")
+        check_ran4=0
+    }
+    sleep, 100
+}
 
 
 ButtonINSTALL:
@@ -82,6 +111,7 @@ loop 500
     {
         FileAppend, checkbox4_%count%%A_Space%, PICKED_Keepass_And_Plugins_List.txt
     }
+    count+=1
 }
 count=1
 loop 500
@@ -90,6 +120,7 @@ loop 500
     {
         FileAppend, checkbox5_%count%%A_Space%, PICKED_Yubikey_Apps_List.txt
     }
+    count+=1
 }
 FileAppend, %tab_extra%, Extra_Chocolatey_Apps.txt
 loop, read, Extra_Chocolatey_Apps.txt
@@ -165,13 +196,21 @@ Esc::
 ExitApp
 
 
-
-
-
-
-
-
-
-
-
-
+HookGUICheckboxes(check, from, too)
+{ 
+    count=%from%
+    loop
+    {
+        loop
+        {
+            GuiControlGet, Button%count% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+            if Button%count%!=%check%
+                ControlClick, Button%count%
+            else if Button%count%=%check%
+                break
+        }
+        count+=1
+        if count > %too%
+            break
+    }
+}
