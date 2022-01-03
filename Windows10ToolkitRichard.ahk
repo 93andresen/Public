@@ -88,7 +88,11 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 */
 
 runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
-
+FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
+FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
+runwait, powershell.exe cup abc-update,,max
+runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
 SetCapsLockState, Off
 SetNumLockState, On
 
