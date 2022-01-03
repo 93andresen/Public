@@ -1,6 +1,6 @@
-Write-Host "Creating Ststem Restore Point"
+Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard"
 Enable-ComputerRestore -Drive "C:\"
-Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
+Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
 
 # Service tweaks to Manual 
 
