@@ -12,6 +12,11 @@ Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows1
 Enable-ComputerRestore -Drive "C:\"
 Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
 
+$source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
+$destination = 'Windows10ToolkitRichard.ps1'
+Invoke-WebRequest -Uri $source -OutFile $destination
+'Downloading Public Folder as zip'
+
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ps1'
 $destination = 'Windows10ToolkitRichard.ps1'
 Invoke-WebRequest -Uri $source -OutFile $destination
