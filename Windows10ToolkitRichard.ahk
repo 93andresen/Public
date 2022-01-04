@@ -188,7 +188,7 @@ loop
     GuiControlGet, check,, Button%countlines1%
     if (check = 1 and check_ran2 != 1)
     {
-        HookGUICheckboxes(check, countlines1, countlines3)
+        HookGUICheckboxes(check, countlines1, countlines2)
     }
     else if (check = 0 and check_ran2 != 0)
     {
