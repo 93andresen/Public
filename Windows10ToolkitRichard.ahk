@@ -174,8 +174,8 @@ loop
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
     {
-        check_ran=1
         HookGUICheckboxes(check, "1", "78")
+        check_ran=1
     }
     else if (check = 0 and check_ran != 0)
     {
