@@ -95,7 +95,7 @@ runwait, powershell.exe cup abc-update,,max
 if FileExist("C:\temp_Windows10ToolkitRichard\progress.ini")
     IniRead, reboots, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
     if task_created != 1
-        MAKE TASK Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        msgbox, MAKE TASK HERE Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 else
     IniWrite, 0, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
 
