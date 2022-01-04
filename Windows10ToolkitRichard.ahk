@@ -146,8 +146,9 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
         gui, add, Text, ys, 
     gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
     appname1_%A_Index% = %A_LoopReadLine%
-    countlines1 += 1
+    countlines += 1
 }
+countlines1 = countlines
 gui, add, Text, ys, Maybe And Other:
 gui, add, checkbox, vALL2, Check All - Maybe And Other
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
@@ -157,8 +158,9 @@ loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
     appname2_%A_Index% = %A_LoopReadLine%
-    countlines1 += 1
+    countlines += 1
 }
+countlines2 = countlines
 Gui, Tab, 16
 Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
@@ -174,24 +176,23 @@ loop
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
     {
-        HookGUICheckboxes(check, "1", "78")
+        HookGUICheckboxes(check, "1", countlines1)
         check_ran=1
     }
     else if (check = 0 and check_ran != 0)
     {
-        HookGUICheckboxes(check, "1", "78")
+        HookGUICheckboxes(check, "1", countlines1)
         check_ran=0
     }
-
-    GuiControlGet, check,, Button79
+    countlines1 += 1
+    GuiControlGet, check,, Button%countlines1%
     if (check = 1 and check_ran2 != 1)
     {
-        HookGUICheckboxes(check, "79", "200")
-        check_ran2=1
+        HookGUICheckboxes(check, countlines2, countlines3)
     }
     else if (check = 0 and check_ran2 != 0)
     {
-        HookGUICheckboxes(check, "79", "200")
+        HookGUICheckboxes(check, countlines2, countlines3)
         check_ran2=0
     }
     sleep, 100
