@@ -16,7 +16,8 @@ $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 'Downloading Public Folder as zip'
-Expand-Archive -Force C:\path\to\archive.zip C:\where\to\extract\to
+Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard\Public-main
+
 $source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ps1'
 $destination = 'Windows10ToolkitRichard.ps1'
 Invoke-WebRequest -Uri $source -OutFile $destination
