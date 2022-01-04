@@ -119,10 +119,3 @@ Mp3tag
 Mousewithoutborders
 Sharemouse
 Freedownloadmanager
-directoryopus
-filezilla
-winscp
-doublecmd
-beyondcompare
-abc-update
-0install
