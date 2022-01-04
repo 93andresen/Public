@@ -157,7 +157,7 @@ loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
     appname2_%A_Index% = %A_LoopReadLine%
-    countlines2 += 1
+    countlines1 += 1
 }
 Gui, Tab, 16
 Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
@@ -174,13 +174,11 @@ loop
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
     {
-        countlines
         HookGUICheckboxes(check, "1", "78")
         check_ran=1
     }
     else if (check = 0 and check_ran != 0)
     {
-        countlines
         HookGUICheckboxes(check, "1", "78")
         check_ran=0
     }
@@ -188,13 +186,11 @@ loop
     GuiControlGet, check,, Button79
     if (check = 1 and check_ran2 != 1)
     {
-        countlines
         HookGUICheckboxes(check, "79", "200")
         check_ran2=1
     }
     else if (check = 0 and check_ran2 != 0)
     {
-        countlines
         HookGUICheckboxes(check, "79", "200")
         check_ran2=0
     }
