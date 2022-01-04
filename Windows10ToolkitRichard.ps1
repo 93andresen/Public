@@ -13,7 +13,7 @@ Enable-ComputerRestore -Drive "C:\"
 Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
 
 $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
-$destination = 'Windows10ToolkitRichard.ps1'
+$destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 'Downloading Public Folder as zip'
 
