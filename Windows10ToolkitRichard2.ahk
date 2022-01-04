@@ -75,25 +75,24 @@ loop
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran3 != 1)
     {
-        HookGUICheckboxes(check, "1", "44")
-        HookGUICheckboxes(check, countlines1, countlines2)
+        HookGUICheckboxes(check, "1", countlines1)
         check_ran3=1
     }
     else if (check = 0 and check_ran3 != 0)
     {
-        HookGUICheckboxes(check, "1", "44")
+        HookGUICheckboxes(check, "1", countlines1)
         check_ran3=0
     }
 
     GuiControlGet, check,, Button45
     if (check = 1 and check_ran4 != 1)
     {
-        HookGUICheckboxes(check, "45", "51")
+        HookGUICheckboxes(check, countlines1, countlines2)
         check_ran4=1
     }
     else if (check = 0 and check_ran4 != 0)
     {
-        HookGUICheckboxes(check, "45", "51")
+        HookGUICheckboxes(check, countlines1, countlines2)
         check_ran4=0
     }
     sleep, 100
