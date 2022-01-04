@@ -37,6 +37,7 @@ loop, read, Keepass_And_Plugins_List.txt
     appname3_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
+countlines2 = countlines
 gui, add, Text, ys, Yubikey Apps:
 gui, add, checkbox, vALL4, Check All - Yubikey Apps
 loop, read, Yubikey_Apps_List.txt
@@ -48,6 +49,7 @@ loop, read, Yubikey_Apps_List.txt
     appname4_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
+countlines2 = countlines
 gui, add, Text, ys, Winget Apps:
 loop, read, Winget_List.txt
 {
@@ -58,6 +60,7 @@ loop, read, Winget_List.txt
     appname5_%A_Index% = %A_LoopReadLine%
     countline += 1
 }
+countlines2 = countlines
 gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
 gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
