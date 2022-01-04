@@ -146,6 +146,7 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
         gui, add, Text, ys, 
     gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
     appname1_%A_Index% = %A_LoopReadLine%
+    countlines1 += 1
 }
 gui, add, Text, ys, Maybe And Other:
 gui, add, checkbox, vALL2, Check All - Maybe And Other
@@ -156,6 +157,7 @@ loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
     appname2_%A_Index% = %A_LoopReadLine%
+    countlines2 += 1
 }
 Gui, Tab, 16
 Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
