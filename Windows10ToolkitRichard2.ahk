@@ -73,8 +73,8 @@ loop
     if (check = 1 and check_ran3 != 1)
     {
         HookGUICheckboxes(check, "1", "44")
-        check_ran3=1
         HookGUICheckboxes(check, countlines1, countlines2)
+        check_ran3=1
     }
     else if (check = 0 and check_ran3 != 0)
     {
