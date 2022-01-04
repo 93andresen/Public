@@ -46,7 +46,7 @@ loop, read, Yubikey_Apps_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox4_%A_Index%, %A_LoopReadLine%
     appname4_%A_Index% = %A_LoopReadLine%
-    countlines += 1
+    countlines4 += 1
 }
 gui, add, Text, ys, Winget Apps:
 loop, read, Winget_List.txt
@@ -56,6 +56,7 @@ loop, read, Winget_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox5_%A_Index%, %A_LoopReadLine%
     appname5_%A_Index% = %A_LoopReadLine%
+    countline5 += 1
 }
 gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
 gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
