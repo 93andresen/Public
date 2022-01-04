@@ -469,11 +469,6 @@ Return
                 sleep, 200
                 clipboard = %temp%
             Return
-            +Enter::
-                send, ^{a}
-                send, ^{c}
-                send, {Enter}
-            Return
             ;run, wmic service Groupy call StartService
             
             ;md "C:\!\Paths\Sources\Programs(Merged)""
