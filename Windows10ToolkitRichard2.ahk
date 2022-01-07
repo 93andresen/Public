@@ -54,7 +54,7 @@ loop, read, Winget_List.txt
         gui, add, Text, ys
     gui, add, checkbox, vcheckbox5_%A_Index%, %A_LoopReadLine%
     appname5_%A_Index% = %A_LoopReadLine%
-    countline += 1
+    countlines += 1
 }
 countlines3 = countlines
 gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
@@ -79,7 +79,7 @@ loop
         HookGUICheckboxes(check, "1", countlines1)
         check_ran3=0
     }
-
+    
     GuiControlGet, check,, Button45
     if (check = 1 and check_ran4 != 1)
     {
@@ -93,7 +93,6 @@ loop
     }
     sleep, 100
 }
-return
 
 ButtonINSTALL:
 gui, Submit  ; Save each control's contents to its associated variable.
