@@ -119,6 +119,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 Gui, Add, Tab2,, Pick Applications to Install 1/2
 gui, add, Text,, Nessescary Apps:
 gui, add, checkbox, vALL1, Check All - Nessescary Applications
+countlines += 1
 loop, read, Chocolatey_Apps_Nessescary_List.txt
 {
     Gui, Tab, 1
@@ -130,7 +131,9 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
 }
 countlines1 = %countlines%
 gui, add, Text, ys, Maybe And Other:
+countlines += 1
 gui, add, checkbox, vALL2, Check All - Maybe And Other
+countlines += 1
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
 {
     ;Gui, Tab, 2
@@ -149,10 +152,11 @@ Gui, Show
 
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-
+sleep, 1000
 check_ran=0
 loop
 {
+    Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
     {
