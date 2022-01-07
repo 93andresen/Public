@@ -163,6 +163,14 @@ runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Ins
 runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output_Yubikey_Apps_List.txt,,min
 runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,min
 
+;Tooltip, %WINGET_APPS%
+FileDelete, WINGET_APPS_LIST_TEMP.txt
+loop, Parse, WINGET_APPS, %A_Space%
+FileAppend, winget install %A_LoopField%;, WINGET_APPS_LIST_TEMP.txt
+FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
+FileDelete, WINGET_APPS_LIST_TEMP.txt
+runwait, powershell.exe %winget_list%,,min
+
 
 /*
 
@@ -193,13 +201,7 @@ runwait, powershell.exe cup %YUBIKEY_APPS% --ignore-checksums -y,,min
 runwait, cmd.exe /c bcdedit /set hypervisorlaunchtype off,,min
 
 
-;Tooltip, %WINGET_APPS%
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-loop, Parse, WINGET_APPS, %A_Space%
-FileAppend, winget install %A_LoopField%;, WINGET_APPS_LIST_TEMP.txt
-FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-runwait, powershell.exe %winget_list%,,min
+
 
 */
 msgbox, FINISHED
