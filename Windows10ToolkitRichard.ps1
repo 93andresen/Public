@@ -2,6 +2,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 if (Test-Path "C:\temp_Windows10ToolkitRichard"){
+    Remove-Item "C:\temp_Windows10ToolkitRichard"
 }  
 else{
     mkdir C:\temp_Windows10ToolkitRichard
@@ -15,13 +16,9 @@ Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -Resto
 $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
-'Downloading Public Folder as zip'
+'Downloading 93andresen Public Folder as zip'
 Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard\Public-main
-
-$source = 'https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard.ps1'
-$destination = 'Windows10ToolkitRichard.ps1'
-Invoke-WebRequest -Uri $source -OutFile $destination
-'Downloading a copy of this script so i can make a task in task scheduler for automatic resume after reboots'
+Remove-Item "C:\temp_Windows10ToolkitRichard\Public-main.zip"
 
 # INSTALLING CHOCOLATEY AND WINGET
 
