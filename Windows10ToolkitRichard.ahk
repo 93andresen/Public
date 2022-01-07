@@ -170,7 +170,7 @@ Gui, Show
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
 
-
+check_ran=0
 loop
 {
     GuiControlGet, check,, Button1
@@ -184,7 +184,7 @@ loop
         HookGUICheckboxes(check, "1", countlines1)
         check_ran=0
     }
-    countlines1 += 1
+    ;countlines1 += 1   WHAT THE FUCK IS THIS FOR????
     GuiControlGet, check,, Button%countlines1%
     if (check = 1 and check_ran2 != 1)
     {

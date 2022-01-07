@@ -65,7 +65,7 @@ gui, Show
 WinWaitActive, Windows10ToolkitRichard2.ahk
 WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
 
-
+check_ran=0
 loop
 {
     GuiControlGet, check,, Button1
