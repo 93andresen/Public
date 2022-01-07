@@ -185,7 +185,7 @@ FileAppend, %Installing_Applications_Output_Winget_List%, C:\temp_Windows10Toolk
 FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
 FileAppend, %Installing_Applications_Output_Winget_List%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
-msgbox, FINISHED`n`nClicking OK will fill clipboard with the path to the LOG file
+msgbox, FINISHED`n`nClicking OK will fill clipboard with the path to the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 ExitApp
 
