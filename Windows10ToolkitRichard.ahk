@@ -130,10 +130,10 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
     countlines += 1
 }
 countlines1 = %countlines%
+countlines += 1
+check_button_2 := % countlines
 gui, add, Text, ys, Maybe And Other:
-countlines += 1
 gui, add, checkbox, vALL2, Check All - Maybe And Other
-countlines += 1
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
 {
     ;Gui, Tab, 2
@@ -152,8 +152,7 @@ Gui, Show
 
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%
-sleep, 10000
+Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%`ncheck_button_2=%check_button_2%
 check_ran=0
 loop
 {
@@ -168,14 +167,15 @@ loop
         HookGUICheckboxes(check, "1", countlines1)
         check_ran=0
     }
-    GuiControlGet, check,, Button%countlines1%
+    GuiControlGet, check,, Button%check_button_2%
     if (check = 1 and check_ran2 != 1)
     {
-        HookGUICheckboxes(check, countlines1, countlines2)
+        HookGUICheckboxes(check, check_button_2, countlines2)
+        check_ran2=1
     }
     else if (check = 0 and check_ran2 != 0)
     {
-        HookGUICheckboxes(check, countlines1, countlines2)
+        HookGUICheckboxes(check, check_button_2, countlines2)
         check_ran2=0
     }
     sleep, 100
@@ -186,7 +186,6 @@ GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
 ExitApp
 ButtonContinueToPage2/2:
-ExitApp
 run, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
 
@@ -194,7 +193,7 @@ FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 
 count=1
-loop 500
+loop %countlines2%
 {
     if checkbox1_%count% = 1
     {
@@ -204,7 +203,7 @@ loop 500
     count+=1
 }
 count=1
-loop 500
+loop %countlines2%
 {
     if checkbox2_%count% = 1
     {
