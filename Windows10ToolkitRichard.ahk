@@ -3,6 +3,8 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
+goto, HERETEMP
+
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
 full_command_line := DllCall("GetCommandLine", "str")
@@ -102,13 +104,15 @@ else
 runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
 IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
 
+
 SetCapsLockState, Off
 SetNumLockState, On
 
-
+HERETEMP:
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
+
 
 
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
@@ -124,7 +128,7 @@ loop, read, Chocolatey_Apps_Nessescary_List.txt
     appname1_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
-countlines1 = countlines
+countlines1 = %countlines%
 gui, add, Text, ys, Maybe And Other:
 gui, add, checkbox, vALL2, Check All - Maybe And Other
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
@@ -136,7 +140,7 @@ loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
     appname2_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
-countlines2 = countlines
+countlines2 = %countlines%
 Gui, Tab, 16
 Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
@@ -160,7 +164,6 @@ loop
         HookGUICheckboxes(check, "1", countlines1)
         check_ran=0
     }
-    ;countlines1 += 1   WHAT THE FUCK IS THIS FOR????
     GuiControlGet, check,, Button%countlines1%
     if (check = 1 and check_ran2 != 1)
     {

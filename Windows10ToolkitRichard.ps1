@@ -4,10 +4,10 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 if (Test-Path "C:\temp_Windows10ToolkitRichard"){
     Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard" -Force -Recurse
 }
-Start-Sleep -5000
+Start-Sleep 5000
 mkdir C:\temp_Windows10ToolkitRichard
 Set-Location C:\temp_Windows10ToolkitRichard
-Start-Sleep -5000
+Start-Sleep 5000
 Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard"
 Enable-ComputerRestore -Drive "C:\"
 Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
