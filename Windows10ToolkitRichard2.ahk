@@ -62,7 +62,7 @@ loop, read, Winget_List.txt
     countlines += 1
 }
 countlines3 = countlines
-gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
+gui, add, Text, ys, Extra Chocolatey Apps (Seperate with spaces):
 gui, Add, Edit, vtab_extra r30  ; r30 means 30 rows tall.
 gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
@@ -116,17 +116,7 @@ loop %countlines2%
 {
     if checkbox3_%count% = 1
     {
-        winget_app = % appname3_%count%
-        FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
-        FileAppend, %A_Space%, PICKED_Winget_List.txt
-    }
-}
-count=1
-loop %countlines2%
-{
-    if checkbox4_%count% = 1
-    {
-        keepass_app = % appname4_%count%
+        keepass_app = % appname3_%count%
         FileAppend, %keepass_app%, PICKED_Keepass_And_Plugins_List.txt
         FileAppend, %A_Space%, PICKED_Keepass_And_Plugins_List.txt
     }
@@ -135,20 +125,31 @@ loop %countlines2%
 count=1
 loop %countlines2%
 {
-    if checkbox5_%count% = 1
+    if checkbox4_%count% = 1
     {
-        yubiket_apps = % appname5_%count%
-        FileAppend, %yubiket_apps%, PICKED_Yubikey_Apps_List.txt
+        yubikey_apps = % appname4_%count%
+        FileAppend, %yubikey_apps%, PICKED_Yubikey_Apps_List.txt
         FileAppend, %A_Space%, PICKED_Yubikey_Apps_List.txt
     }
     count+=1
 }
+count=1
+loop %countlines2%
+{
+    if checkbox5_%count% = 1
+    {
+        winget_app = % appname5_%count%
+        FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
+        FileAppend, %A_Space%, PICKED_Winget_List.txt
+    }
+}
+
 FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_Apps.txt
 loop, read, PICKED_Extra_Chocolatey_Apps.txt
 {
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
-ExitApp
+
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
