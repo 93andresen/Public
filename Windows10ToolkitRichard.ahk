@@ -145,7 +145,6 @@ Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
 Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left corner.
 Gui, Show
-
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
 check_ran=0

@@ -25,6 +25,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 gui, Add, Tab2,, Pick Applications to Install 2/2
 gui, add, Text,, Keepass And Plugins:
 gui, add, checkbox, vALL3, Check All - Keepass and All Plugins
+countlines += 1
 loop, read, Keepass_And_Plugins_List.txt
 {
     gui, Tab, 1
@@ -34,7 +35,9 @@ loop, read, Keepass_And_Plugins_List.txt
     appname3_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
-countlines1 = countlines
+countlines1 = %countlines%
+countlines += 1
+check_button_3 := % countlines
 gui, add, Text, ys, Yubikey Apps:
 gui, add, checkbox, vALL4, Check All - Yubikey Apps
 loop, read, Yubikey_Apps_List.txt
@@ -46,7 +49,8 @@ loop, read, Yubikey_Apps_List.txt
     appname4_%A_Index% = %A_LoopReadLine%
     countlines += 1
 }
-countlines2 = countlines
+countlines2 = %countlines%
+countlines += 1
 gui, add, Text, ys, Winget Apps:
 loop, read, Winget_List.txt
 {
@@ -65,7 +69,6 @@ gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
 gui, Show
 WinWaitActive, Windows10ToolkitRichard2.ahk
 WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
-
 check_ran=0
 loop
 {
@@ -81,15 +84,15 @@ loop
         check_ran3=0
     }
     
-    GuiControlGet, check,, Button45
+    GuiControlGet, check,, Button%check_button_3%
     if (check = 1 and check_ran4 != 1)
     {
-        HookGUICheckboxes(check, countlines1, countlines2)
+        HookGUICheckboxes(check, check_button_3, countlines2)
         check_ran4=1
     }
     else if (check = 0 and check_ran4 != 0)
     {
-        HookGUICheckboxes(check, countlines1, countlines2)
+        HookGUICheckboxes(check, check_button_3, countlines2)
         check_ran4=0
     }
     sleep, 100
@@ -150,6 +153,8 @@ runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+
+ExitApp
 
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
