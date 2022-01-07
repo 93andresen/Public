@@ -148,6 +148,9 @@ fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,min
 runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,min
 
+FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
     runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y > Installing_Applications_Output.txt,,min
@@ -174,9 +177,34 @@ FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Ou
 FileAppend, Installing_Applications_Output_Winget_List, Installing_Applications_LOG.txt
 
 
+msgbox, FINISHED
+ExitApp
+
+Esc::
+ExitApp
+
+
+HookGUICheckboxes(check, from, too)
+{ 
+    count=%from%
+    loop
+    {
+        loop
+        {
+            GuiControlGet, Button%count% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+            if Button%count%!=%check%
+                ControlClick, Button%count%
+            else if Button%count%=%check%
+                break
+        }
+        count+=1
+        if count > %too%
+            break
+    }
+}
+
+
 /*
-
-
 
 ;Tooltip, Installing VERACRYPT (Innstallation is not silent because of fast boot) --ignore-checksums -y -  `nnSpotify Install tends to bug out and never complete, so i install it now using "run" instead of runwait and let it complete before Chris Titus Windows 10 Debloater Script is finished
 run, powershell.exe cup spotify --ignore-checksums -y,,min
@@ -206,28 +234,5 @@ runwait, cmd.exe /c bcdedit /set hypervisorlaunchtype off,,min
 
 
 */
-msgbox, FINISHED
-ExitApp
-
-Esc::
-ExitApp
 
 
-HookGUICheckboxes(check, from, too)
-{ 
-    count=%from%
-    loop
-    {
-        loop
-        {
-            GuiControlGet, Button%count% ; Retrieves 1 if it is checked, 0 if it is unchecked.
-            if Button%count%!=%check%
-                ControlClick, Button%count%
-            else if Button%count%=%check%
-                break
-        }
-        count+=1
-        if count > %too%
-            break
-    }
-}
