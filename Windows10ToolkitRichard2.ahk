@@ -98,9 +98,8 @@ loop
 ButtonINSTALL:
 gui, Submit  ; Save each control's contents to its associated variable.
 
-
-FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 
 count=1
 loop 500
