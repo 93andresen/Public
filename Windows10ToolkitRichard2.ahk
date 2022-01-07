@@ -145,23 +145,23 @@ fileread, PICKED_Yubikey_Apps_List, PICKED_Yubikey_Apps_List.txt
 fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
 
 
-runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,min
-runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,min
+runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,max
+runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
-    runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y | Tee-Object -file Installing_Applications_Output.txt,,min
-    run, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , min ;this will set the x64 Firefox as my default
+    runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Firefox.txt,,max
+    runwait, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB | Tee-Object -file Installing_Applications_Output_SetDefaultBrowser.txt,,max
 }
-runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y | Tee-Object -file Installing_Applications_Output_Keepass_And_Plugins_List.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object -file Installing_Applications_Output_Yubikey_Apps_List.txt,,min
-runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,min
-runwait, powershell.exe %PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt,,max
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt,,max
+runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y | Tee-Object -file Installing_Applications_Output_Keepass_And_Plugins_List.txt,,max
+runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object -file Installing_Applications_Output_Yubikey_Apps_List.txt,,max
+runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,max
+runwait, powershell.exe %PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,max
 
 FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt
 FileAppend, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
