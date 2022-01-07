@@ -1,5 +1,7 @@
 Rainmeter
 Powertoys
+Plasso
+Regcool.portable
 7zip
 Vscode
 Setdefaultbrowser
@@ -49,14 +51,12 @@ Eartrumpet
 Yt-dlp
 Choco-package-list-backup
 Battle.net
-Plasso
 Ds4windows
 Obs
 Malwarebytes
 Thunderbird
 Qbittorrent
 Ffmpeg
-Regcool.portable
 Dropit
 Jre8
 Openjdk
