@@ -140,6 +140,13 @@ loop, read, Extra_Chocolatey_Apps.txt
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
 
+FileDelete, WINGET_APPS_LIST_TEMP.txt
+loop, Parse, WINGET_APPS, %A_Space%
+FileAppend, winget install %A_LoopField%;, WINGET_APPS_LIST_TEMP.txt
+FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
+FileDelete, WINGET_APPS_LIST_TEMP.txt
+runwait, powershell.exe %winget_list%,,min
+
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
@@ -162,14 +169,6 @@ runwait, powershell.exe winget install %PICKED_Winget_List% --accept-package-agr
 runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Installing_Applications_Output_Keepass_And_Plugins_List.txt,,min
 runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output_Yubikey_Apps_List.txt,,min
 runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,min
-
-;Tooltip, %WINGET_APPS%
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-loop, Parse, WINGET_APPS, %A_Space%
-FileAppend, winget install %A_LoopField%;, WINGET_APPS_LIST_TEMP.txt
-FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-runwait, powershell.exe %winget_list%,,min
 
 
 /*
