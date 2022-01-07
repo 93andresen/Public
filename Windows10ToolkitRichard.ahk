@@ -152,7 +152,6 @@ Gui, Show
 
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%`ncheck_button_2=%check_button_2%
 check_ran=0
 loop
 {
