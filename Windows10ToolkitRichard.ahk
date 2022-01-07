@@ -152,11 +152,11 @@ Gui, Show
 
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-sleep, 1000
+Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%
+sleep, 10000
 check_ran=0
 loop
 {
-    Tooltip, countlines1=%countlines1%`ncountlines2=%countlines2%
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
     {
@@ -186,6 +186,7 @@ GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
 ExitApp
 ButtonContinueToPage2/2:
+ExitApp
 run, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
 
