@@ -108,8 +108,8 @@ SetNumLockState, On
 filedelete, Windows10ToolkitRichard2.ahk
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard2.ahk, Windows10ToolkitRichard2.ahk
 
-FileCreateDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
+FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 
 filedelete, Chocolatey_Apps_Nessescary_List.txt
 filedelete, Chocolatey_Apps_Maybe_And_Other_List.txt
