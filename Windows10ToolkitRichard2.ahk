@@ -110,7 +110,8 @@ loop 500
 {
     if checkbox3_%count% = 1
     {
-        FileAppend, % appname3_%count%, PICKED_Winget_List.txt
+        winget_app = % appname3_%count%
+        FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
         FileAppend, %A_Space%, PICKED_Winget_List.txt
     }
 }
@@ -140,13 +141,6 @@ loop, read, Extra_Chocolatey_Apps.txt
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
 
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-loop, Parse, WINGET_APPS, %A_Space%
-FileAppend, winget install %A_LoopField%;, WINGET_APPS_LIST_TEMP.txt
-FileRead, winget_list, WINGET_APPS_LIST_TEMP.txt
-FileDelete, WINGET_APPS_LIST_TEMP.txt
-runwait, powershell.exe %winget_list%,,min
-
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
@@ -163,6 +157,13 @@ if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
     runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y > Installing_Applications_Output.txt,,min
     run, powershell.exe SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB, , min ;this will set the x64 Firefox as my default
 }
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Installing_Applications_Output_Keepass_And_Plugins_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y > Installing_Applications_Output_Yubikey_Apps_List.txt,,min
+runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y > Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,min
+runwait, powershell.exe %PICKED_Winget_List% > Installing_Applications_Output_Winget_List.txt,,min
+
 runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt,,min
 runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y > Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt,,min
 runwait, powershell.exe choco upgrade %PICKED_Keepass_And_Plugins_List% -y > Installing_Applications_Output_Keepass_And_Plugins_List.txt,,min
