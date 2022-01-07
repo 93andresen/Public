@@ -149,8 +149,7 @@ fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
 
 
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,min
-runwait, choco feature enable -n
- allowEmptyChecksums
+runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,min
 
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
