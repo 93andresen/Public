@@ -63,7 +63,7 @@ loop, read, Winget_List.txt
 }
 countlines3 = countlines
 gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
-gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
+gui, Add, Edit, vtab_extra r30  ; r30 means 30 rows tall.
 gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
 gui, Show
@@ -104,8 +104,15 @@ gui, Submit  ; Save each control's contents to its associated variable.
 FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 
+Filedelete, PICKED_Chocolatey_Apps_Nessescary_List.txt
+Filedelete, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+Filedelete, PICKED_Winget_List.txt
+Filedelete, PICKED_Keepass_And_Plugins_List.txt
+Filedelete, PICKED_Yubikey_Apps_List.txt
+Filedelete, PICKED_Extra_Chocolatey_Apps.txt
+
 count=1
-loop 500
+loop %countlines2%
 {
     if checkbox3_%count% = 1
     {
@@ -115,31 +122,33 @@ loop 500
     }
 }
 count=1
-loop 500
+loop %countlines2%
 {
     if checkbox4_%count% = 1
     {
-        FileAppend, % appname4_%count%, PICKED_Keepass_And_Plugins_List.txt
+        keepass_app = % appname4_%count%
+        FileAppend, %keepass_app%, PICKED_Keepass_And_Plugins_List.txt
         FileAppend, %A_Space%, PICKED_Keepass_And_Plugins_List.txt
     }
     count+=1
 }
 count=1
-loop 500
+loop %countlines2%
 {
     if checkbox5_%count% = 1
     {
-        FileAppend, % appname5_%count%, PICKED_Yubikey_Apps_List.txt
+        yubiket_apps = % appname5_%count%
+        FileAppend, %yubiket_apps%, PICKED_Yubikey_Apps_List.txt
         FileAppend, %A_Space%, PICKED_Yubikey_Apps_List.txt
     }
     count+=1
 }
-FileAppend, %tab_extra%, Extra_Chocolatey_Apps.txt
-loop, read, Extra_Chocolatey_Apps.txt
+FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_Apps.txt
+loop, read, PICKED_Extra_Chocolatey_Apps.txt
 {
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
-
+ExitApp
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
@@ -154,7 +163,6 @@ runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 
-ExitApp
 
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
