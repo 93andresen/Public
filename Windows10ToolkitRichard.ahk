@@ -205,6 +205,10 @@ ExitApp
 ButtonContinueToPage2/2:
 run, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
+
+FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
+
 count=1
 loop 500
 {
