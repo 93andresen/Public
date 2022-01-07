@@ -14,3 +14,4 @@ for gods sake, remove the tooltips... and maybe minimize windows
 keepass (needs its own line cus dont ignore checksums)
 classicshell fastcopy vscode should be installed first
 
+Add spotify (as a standalone seperate process) and make sure to uninstall windows version first
