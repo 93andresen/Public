@@ -110,7 +110,6 @@ Defraggler
 Vagrant
 Vagrant-manager
 Googlephotos
-Filebot
 Mp3tag
 Sharemouse
 directoryopus
