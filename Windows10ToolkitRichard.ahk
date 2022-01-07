@@ -40,7 +40,7 @@ SteelSeries.GG
 BinanceTech.Binance
 
 LINKS:
-https://freefilesync.org/download/FreeFileSync_11.15_Windows_Setup.exe
+https://freefilesync.org/download.php
 https://downloads.yubico.com/products/Yubico-Login-for-Windows-2.0.3-win64.msi
 https://maxlauncher.sourceforge.io/downloads.html
 https://aka.ms/vs/17/release/vc_redist.x64.exe  ;Permalink for latest supported x64 version. The X64 redistributable package contains both ARM64 and X64 binaries. This package makes it easy to install required Visual C++ ARM64 binaries when the X64 redistributable is installed on an ARM64 device.
