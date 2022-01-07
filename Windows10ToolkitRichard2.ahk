@@ -175,7 +175,7 @@ FileRead, Installing_Applications_Output_Extra_Chocolatey_Apps, Installing_Appli
 FileAppend, Installing_Applications_Output_Extra_Chocolatey_Apps, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
 FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
 FileAppend, Installing_Applications_Output_Winget_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-
+dir | Tee-Object -file C:\temp_Windows10ToolkitRichard\xxxxxxxxxxxxx\dir.txt
 
 msgbox, FINISHED
 ExitApp
