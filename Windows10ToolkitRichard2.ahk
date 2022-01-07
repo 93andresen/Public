@@ -163,6 +163,11 @@ runwait, powershell.exe choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object
 runwait, powershell.exe choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt,,max
 runwait, powershell.exe %PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,max
 
+
+FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_Firefox.txt
+FileAppend, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
+FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_SetDefaultBrowser.txt
+FileAppend, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
 FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt
 FileAppend, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
 FileRead, Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List, Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt
@@ -176,7 +181,11 @@ FileAppend, Installing_Applications_Output_Extra_Chocolatey_Apps, C:\temp_Window
 FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
 FileAppend, Installing_Applications_Output_Winget_List, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
 
-msgbox, FINISHED
+FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
+FileAppend, Installing_Applications_Output_Winget_List, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+
+msgbox, FINISHED`n`nClicking OK will fill clipboard with the path to the LOG file
+clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 ExitApp
 
 Esc::
