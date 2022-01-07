@@ -105,34 +105,10 @@ IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
 SetCapsLockState, Off
 SetNumLockState, On
 
-filedelete, Windows10ToolkitRichard2.ahk
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/Windows10ToolkitRichard2.ahk, Windows10ToolkitRichard2.ahk
-
-FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
-
-filedelete, Chocolatey_Apps_Nessescary_List.txt
-filedelete, Chocolatey_Apps_Maybe_And_Other_List.txt
-filedelete, Winget_List.txt
-filedelete, Keepass_And_Plugins_List.txt
-filedelete, Yubikey_Apps_List.txt
-
-filedelete, PICKED_Chocolatey_Apps_Nessescary_List.txt
-filedelete, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
-filedelete, PICKED_Winget_List.txt
-filedelete, PICKED_Keepass_And_Plugins_List.txt
-filedelete, PICKED_Yubikey_Apps_List.txt
-filedelete, Extra_Chocolatey_Apps.txt
-filedelete, PICKED_Extra_Chocolatey_Apps.txt
 
 
-
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Chocolatey_Apps_Nessescary_List.txt, Chocolatey_Apps_Nessescary_List.txt
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Chocolatey_Apps_Maybe_And_Other_List.txt, Chocolatey_Apps_Maybe_And_Other_List.txt
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Winget_List.txt, Winget_List.txt
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Keepass_And_Plugins_List.txt, Keepass_And_Plugins_List.txt
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/ApplicationLists/Yubikey_Apps_List.txt, Yubikey_Apps_List.txt
-
+FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
 
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].

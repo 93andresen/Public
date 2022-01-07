@@ -19,7 +19,8 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
     ExitApp
 }
 
-
+FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
 gui, Add, Tab2,, Pick Applications to Install 2/2
 gui, add, Text,, Keepass And Plugins:

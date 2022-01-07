@@ -17,7 +17,7 @@ $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 'Downloading 93andresen Public Folder as zip'
-Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard\Public-main
+Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard
 Remove-Item "C:\temp_Windows10ToolkitRichard\Public-main.zip"
 
 # INSTALLING CHOCOLATEY AND WINGET
