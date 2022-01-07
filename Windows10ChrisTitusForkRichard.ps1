@@ -132,12 +132,6 @@ Remove-Item -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse 
 Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" -Recurse -ErrorAction SilentlyContinue
 Write-Host "Disabled OneDrive"
 
-Write-Host "ChrisTitus Part of Script Completed"
-
-
-
-
-
 
 
 
@@ -383,3 +377,6 @@ Set-Service "DiagTrack" -StartupType Disabled
 
 Write-Host "Showing known file extensions..."
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
+
+Write-Host "ChrisTitus Part of Script Completed"
+
