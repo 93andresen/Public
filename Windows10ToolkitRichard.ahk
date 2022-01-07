@@ -3,8 +3,6 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
-goto, HERETEMP
-
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
 full_command_line := DllCall("GetCommandLine", "str")
@@ -107,8 +105,6 @@ IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
 
 SetCapsLockState, Off
 SetNumLockState, On
-
-HERETEMP:
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
