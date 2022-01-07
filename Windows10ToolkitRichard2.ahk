@@ -20,10 +20,6 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 
-FileCreateDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\InstallingApplicationsLists
-
-
 
 gui, Add, Tab2,, Pick Applications to Install 2/2
 gui, add, Text,, Keepass And Plugins:
