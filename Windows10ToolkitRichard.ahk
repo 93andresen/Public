@@ -197,7 +197,7 @@ loop
     }
     sleep, 100
 }
-
+return
 GuiClose:
 GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
