@@ -4,7 +4,7 @@ CoordMode, Screen
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, force
 
-if A_ComputerName = G3-2
+if A_ComputerName = G3-3
 {
     Tooltip, RunAsAdmin.ahk`n`nA_ComputerName = G3-2`nExiting App...
     sleep, 5000
