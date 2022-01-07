@@ -19,6 +19,8 @@ Cloneapp
 Epicgameslauncher
 Google-drive-file-stream
 Treesizefree
+Spacesniffer
+Shutup10
 Revo-uninstaller
 Gh
 Git
@@ -67,8 +69,5 @@ Vlc
 Freedownloadmanager
 Spicetify-cli
 Terminal-icons.powershell
-Spacesniffer
-Wiztree
-Shutup10
 adobereader
 googlechrome
