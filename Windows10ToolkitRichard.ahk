@@ -3,6 +3,10 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
+
+script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+
+
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
 full_command_line := DllCall("GetCommandLine", "str")
@@ -87,7 +91,7 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 */
 
-runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
+
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
 FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
 FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
@@ -105,11 +109,11 @@ else
 
 runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt,,max
 IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
-
-run, powershell.exe C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1
+runwait, powershell.exe cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar,,max
+run, powershell.exe %script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1
 run, powershell.exe choco uninstall explorer-winconfig
 run, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'"
-run, powershell.exe C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1
+run, powershell.exe %script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1
 
 
 SetCapsLockState, Off
