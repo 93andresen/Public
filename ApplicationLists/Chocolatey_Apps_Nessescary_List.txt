@@ -1,3 +1,4 @@
+veracrypt
 Rainmeter
 Powertoys
 Plasso
