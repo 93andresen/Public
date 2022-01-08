@@ -95,12 +95,21 @@ runwait, powershell.exe cup abc-update,,max
 if FileExist("C:\temp_Windows10ToolkitRichard\progress.ini")
     IniRead, reboots, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
     if task_created != 1
-        msgbox, MAKE TASK HERE Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    {
+        Tooltip, MAKE TASK HERE Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        sleep, 5000
+        Tooltip, 
+    }
 else
     IniWrite, 0, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
 
 runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt,,max
 IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
+
+run, powershell.exe C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1
+run, powershell.exe choco uninstall explorer-winconfig
+run, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'"
+run, powershell.exe C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1
 
 
 SetCapsLockState, Off

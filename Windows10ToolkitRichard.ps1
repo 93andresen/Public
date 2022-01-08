@@ -67,12 +67,6 @@ choco feature enable -n allowEmptyChecksums -y
 'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
 
-#RUNNING MY ChrisTitusForkRichard
-C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1
-choco uninstall explorer-winconfig
-choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'"
-C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1
-
 
 #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
 'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
