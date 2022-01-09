@@ -28,7 +28,7 @@ else{
 }
 if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
     'Winget Already Installed'
-}  
+}
 else{
     # Installing winget from the Microsoft Store
     Write-Host "Winget not found, installing it now."
@@ -37,7 +37,8 @@ else{
     Wait-Process -Id $nid
     Write-Host Winget Installed
 }
-
+choco feature enable -n=allowGlobalConfirmation
+choco feature enable -n allowEmptyChecksums
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'Autohotkey Already Installed'
 }  
@@ -57,8 +58,7 @@ else{
         }
     }
 }
-choco feature enable -n=allowGlobalConfirmation -y
-choco feature enable -n allowEmptyChecksums -y
+
 
 #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
 
