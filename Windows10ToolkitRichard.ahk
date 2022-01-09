@@ -90,6 +90,7 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 ;}
 
 */
+FileCreateShortcut, Target, C:\My Shortcut.lnk [, WorkingDir, Args
 C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk
 C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
