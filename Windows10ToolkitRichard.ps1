@@ -43,7 +43,7 @@ if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'Autohotkey Already Installed'
 }  
 else{
-    choco install Autohotkey
+    choco install Autohotkey -y
     if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
         'Chocolatey Sucsessfully installed Autohotkey'
     }  
