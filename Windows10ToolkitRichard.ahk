@@ -90,25 +90,12 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 ;}
 
 */
-FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
 FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
 FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
 runwait, powershell.exe cup abc-update;ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt;cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar;%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1;choco uninstall explorer-winconfig;choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'";%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1,,max
-if FileExist("C:\temp_Windows10ToolkitRichard\progress.ini")
-{
-    IniRead, reboots, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
-    if task_created != 1
-    {
-        Tooltip, MAKE TASK HERE Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-        sleep, 5000
-        Tooltip, 
-    }
-}
-else
-    IniWrite, 0, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
-IniWrite, 1, C:\temp_Windows10ToolkitRichard\progress.ini, Section, reboots
-
+FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 
 SetCapsLockState, Off
 SetNumLockState, On
