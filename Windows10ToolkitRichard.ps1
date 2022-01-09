@@ -72,5 +72,19 @@ choco feature enable -n allowEmptyChecksums -y
 'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
 & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
 
+function Delete-FolderAndContents {
+    # http://stackoverflow.com/a/9012108
 
+    param(
+        [Parameter(Mandatory=$true, Position=1)] [string] $folder_path
+    )
+
+    process {
+        $child_items = ([array] (Get-ChildItem -Path $folder_path -Recurse -Force))
+        if ($child_items) {
+            $null = $child_items | Remove-Item -Force -Recurse
+        }
+        $null = Remove-Item $folder_path -Force
+    }
+}
 
