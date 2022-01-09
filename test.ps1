@@ -1,4 +1,4 @@
-$user = "$env:computername\NT AUTHORITY\SYSTEM"
+$user = "NT AUTHORITY\SYSTEM"
 $path = 
 $action = New-ScheduledTaskAction -Execute 'C:\Program Files\AutoHotkey\AutoHotkey.exe' -Argument 'C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk'
 $trigger = New-ScheduledTaskTrigger -AtLogon
