@@ -15,7 +15,7 @@ $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 'Downloading 93andresen Public Folder as zip'
 Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard
-Remove-Item "C:\temp_Windows10ToolkitRichard\Public-main.zip"
+Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
 
 # INSTALLING CHOCOLATEY AND WINGET
 
