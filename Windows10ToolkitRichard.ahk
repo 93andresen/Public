@@ -91,7 +91,7 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 */
 
-
+C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
 FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
 FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
