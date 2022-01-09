@@ -3,5 +3,5 @@ $trigger = New-ScheduledTaskTrigger -AtLogon
 $name = \*
 $principal = "$env:computername\Administrator"
 $settings = New-ScheduledTaskSettingsSet
-$task = New-ScheduledTask -Action $action -Principal $principal -Trigger $trigger -Settings $settings
+$task = New-ScheduledTask -Action $action -TaskName $name -Principal $principal -Trigger $trigger -Settings $settings
 Register-ScheduledTask $task -Force
