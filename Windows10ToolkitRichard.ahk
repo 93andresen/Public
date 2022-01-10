@@ -179,7 +179,8 @@ GuiEscape:
 msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
 ExitApp
 ButtonContinueToPage2/2:
-run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
+;run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 Gui, Submit  ; Save each control's contents to its associated variable.
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
