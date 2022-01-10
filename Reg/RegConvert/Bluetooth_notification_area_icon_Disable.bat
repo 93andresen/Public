@@ -6,7 +6,7 @@ call :RegExport
 Exit
 
 :RegExport
-Set RegFile="%Temp%\~iidpgco.tmp"
+Set RegFile="%Temp%\~spyaedi.tmp"
 
 If Exist %RegFile% (
  Attrib -R -S -H %RegFile% &  Del /F /Q %RegFile%
@@ -15,7 +15,7 @@ If Exist %RegFile% (
 > %RegFile% Echo Windows Registry Editor Version 5.00
 >> %RegFile% Echo.
 >> %RegFile% Echo [HKEY_CURRENT_USER\Control Panel\Bluetooth]
->> %RegFile% Echo "Notification Area Icon"=dword:00000001
+>> %RegFile% Echo "Notification Area Icon"=dword:00000000
 
 Start /Wait %systemroot%\Regedit.exe /S %RegFile%
 Del %RegFile%

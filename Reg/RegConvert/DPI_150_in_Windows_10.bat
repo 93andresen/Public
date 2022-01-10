@@ -6,7 +6,7 @@ call :RegExport
 Exit
 
 :RegExport
-Set RegFile="%Temp%\~sgasnld.tmp"
+Set RegFile="%Temp%\~mmcyjgl.tmp"
 
 If Exist %RegFile% (
  Attrib -R -S -H %RegFile% &  Del /F /Q %RegFile%
