@@ -100,6 +100,10 @@ runwait, powershell.exe cup abc-update;ABC-Update.exe /A:Install /R:10 /T:Driver
 FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 
+
+C:\!\Code\GitHub\93andresen_Scripts\Public\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat
+C:\!\Code\GitHub\93andresen_Scripts\Public\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat
+
 SetCapsLockState, Off
 SetNumLockState, On
 
