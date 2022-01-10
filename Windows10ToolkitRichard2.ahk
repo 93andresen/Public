@@ -139,7 +139,6 @@ loop %countlines2%
     {
         winget_app = % appname5_%count%
         FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
-        Tooltip, %winget_app%
     }
     count+=1
 }
@@ -150,16 +149,15 @@ loop, read, PICKED_Extra_Chocolatey_Apps.txt
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
 
+runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,max
+runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
+
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
 fileread, PICKED_Keepass_And_Plugins_List, PICKED_Keepass_And_Plugins_List.txt
 fileread, PICKED_Yubikey_Apps_List, PICKED_Yubikey_Apps_List.txt
 fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
-
-
-runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,max
-runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
