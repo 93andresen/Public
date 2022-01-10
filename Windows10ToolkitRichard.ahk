@@ -26,6 +26,9 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
+goto, TTEMP
+
+
 /*
 MAYBE_AND_OTHER:
 
@@ -99,6 +102,8 @@ filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\P
 
 SetCapsLockState, Off
 SetNumLockState, On
+
+TTEMP:
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
