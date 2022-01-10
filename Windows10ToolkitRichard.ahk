@@ -123,7 +123,7 @@ countlines1 = %countlines%
 countlines += 1
 check_button_2 := % countlines
 gui, add, Text, ys, Maybe And Other:
-Gui, Add, CheckBox, gGoHereWhenClicked2, Check All - Nessescary Applications
+Gui, Add, CheckBox, gGoHereWhenClicked2, Check All - Maybe And Other
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
 {
     ;Gui, Tab, 2
