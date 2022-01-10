@@ -140,8 +140,8 @@ loop %countlines2%
         winget_app = % appname5_%count%
         FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
         Tooltip, %winget_app%
-        sleep, 200
     }
+    count+=1
 }
 
 FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_Apps.txt
