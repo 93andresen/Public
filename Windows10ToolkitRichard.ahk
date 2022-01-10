@@ -123,7 +123,7 @@ countlines1 = %countlines%
 countlines += 1
 check_button_2 := % countlines
 gui, add, Text, ys, Maybe And Other:
-gui, add, checkbox, vALL2, Check All - Maybe And Other
+Gui, Add, CheckBox, gGoHereWhenClicked2, Check All - Nessescary Applications
 loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
 {
     ;Gui, Tab, 2
@@ -154,6 +154,8 @@ else if (check = 0 and check_ran != 0)
     HookGUICheckboxes(check, "1", countlines1)
     check_ran=0
 }
+return
+GoHereWhenClicked2:
 GuiControlGet, check,, Button%check_button_2%
 if (check = 1 and check_ran2 != 1)
 {
