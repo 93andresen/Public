@@ -143,12 +143,13 @@ loop %countlines2%
     count+=1
 }
 
-FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_Apps.txt
-loop, read, PICKED_Extra_Chocolatey_Apps.txt
+FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_AppsTEMP.txt
+
+loop, read, PICKED_Extra_Chocolatey_AppsTEMP.txt
 {
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
-
+filedelete, PICKED_Extra_Chocolatey_AppsTEMP.txt
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,max
 runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 
