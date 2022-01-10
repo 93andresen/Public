@@ -141,9 +141,8 @@ Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left
 Gui, Show
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-
-GoHereWhenClicked1:
 check_ran=0
+GoHereWhenClicked1:
 GuiControlGet, check,, Button1
 if (check = 1 and check_ran != 1)
 {
