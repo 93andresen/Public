@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\Search FOLDER with &Everything]
+"Icon"="\"C:\\Program Files\\Everything\\Everything.ico\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\Search FOLDER with &Everything\Command]
+@="\"C:\\Program Files\\Everything\\Everything.exe\" -path \"%1\""
+
