@@ -39,7 +39,7 @@ countlines1 = %countlines%
 countlines += 1
 check_button_3 := % countlines
 gui, add, Text, ys, Yubikey Apps:
-gui, add, checkbox, vALL4, Check All - Yubikey Apps
+Gui, Add, CheckBox, gGoHereWhenClicked4, Check All - Yubikey Apps
 loop, read, Yubikey_Apps_List.txt
 {
     ;gui, Tab, 2
@@ -70,7 +70,7 @@ gui, Show
 WinWaitActive, Windows10ToolkitRichard2.ahk
 WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
 check_ran=0
-
+GoHereWhenClicked3:
 GuiControlGet, check,, Button1
 if (check = 1 and check_ran3 != 1)
 {
@@ -83,7 +83,7 @@ else if (check = 0 and check_ran3 != 0)
     check_ran3=0
 }
 return
-gGoHereWhenClicked4:
+GoHereWhenClicked4:
 GuiControlGet, check,, Button%check_button_3%
 if (check = 1 and check_ran4 != 1)
 {
