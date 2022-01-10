@@ -72,31 +72,31 @@ WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - 
 check_ran=0
 loop
 {
-    GuiControlGet, check,, Button1
-    if (check = 1 and check_ran3 != 1)
-    {
-        HookGUICheckboxes(check, "1", countlines1)
-        check_ran3=1
-    }
-    else if (check = 0 and check_ran3 != 0)
-    {
-        HookGUICheckboxes(check, "1", countlines1)
-        check_ran3=0
-    }
-    
-    GuiControlGet, check,, Button%check_button_3%
-    if (check = 1 and check_ran4 != 1)
-    {
-        HookGUICheckboxes(check, check_button_3, countlines2)
-        check_ran4=1
-    }
-    else if (check = 0 and check_ran4 != 0)
-    {
-        HookGUICheckboxes(check, check_button_3, countlines2)
-        check_ran4=0
-    }
-    sleep, 100
+GuiControlGet, check,, Button1
+if (check = 1 and check_ran3 != 1)
+{
+    HookGUICheckboxes(check, "1", countlines1)
+    check_ran3=1
 }
+else if (check = 0 and check_ran3 != 0)
+{
+    HookGUICheckboxes(check, "1", countlines1)
+    check_ran3=0
+}
+return
+
+GuiControlGet, check,, Button%check_button_3%
+if (check = 1 and check_ran4 != 1)
+{
+    HookGUICheckboxes(check, check_button_3, countlines2)
+    check_ran4=1
+}
+else if (check = 0 and check_ran4 != 0)
+{
+    HookGUICheckboxes(check, check_button_3, countlines2)
+    check_ran4=0
+}
+return
 
 ButtonINSTALL:
 gui, Submit  ; Save each control's contents to its associated variable.
