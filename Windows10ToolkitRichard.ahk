@@ -108,7 +108,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
 Gui, Add, Tab2,, Pick Applications to Install 1/2
 gui, add, Text,, Nessescary Apps:
-Gui, Add, CheckBox, gGoHereWhenClicked1, Check All - Nessescary Applications
+gui, add, checkbox, vALL1, Check All - Nessescary Applications
 countlines += 1
 loop, read, Chocolatey_Apps_Nessescary_List.txt
 {
@@ -141,32 +141,33 @@ Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left
 Gui, Show
 WinWaitActive, Windows10ToolkitRichard.ahk
 WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-
-GoHereWhenClicked1:
 check_ran=0
-GuiControlGet, check,, Button1
-if (check = 1 and check_ran != 1)
+loop
 {
-    HookGUICheckboxes(check, "1", countlines1)
-    check_ran=1
+    GuiControlGet, check,, Button1
+    if (check = 1 and check_ran != 1)
+    {
+        HookGUICheckboxes(check, "1", countlines1)
+        check_ran=1
+    }
+    else if (check = 0 and check_ran != 0)
+    {
+        HookGUICheckboxes(check, "1", countlines1)
+        check_ran=0
+    }
+    GuiControlGet, check,, Button%check_button_2%
+    if (check = 1 and check_ran2 != 1)
+    {
+        HookGUICheckboxes(check, check_button_2, countlines2)
+        check_ran2=1
+    }
+    else if (check = 0 and check_ran2 != 0)
+    {
+        HookGUICheckboxes(check, check_button_2, countlines2)
+        check_ran2=0
+    }
+    sleep, 100
 }
-else if (check = 0 and check_ran != 0)
-{
-    HookGUICheckboxes(check, "1", countlines1)
-    check_ran=0
-}
-GuiControlGet, check,, Button%check_button_2%
-if (check = 1 and check_ran2 != 1)
-{
-    HookGUICheckboxes(check, check_button_2, countlines2)
-    check_ran2=1
-}
-else if (check = 0 and check_ran2 != 0)
-{
-    HookGUICheckboxes(check, check_button_2, countlines2)
-    check_ran2=0
-}
-return
 
 GuiClose:
 GuiEscape:
