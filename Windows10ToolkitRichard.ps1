@@ -45,7 +45,7 @@ if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
 else{
     choco install Autohotkey -y
     if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
-        'Chocolatey Sucse                                    ssfully installed Autohotkey'
+        'Chocolatey Sucsessfully installed Autohotkey'
     }  
     else{
         winget install -e Lexikos.AutoHotkey | Out-Host
