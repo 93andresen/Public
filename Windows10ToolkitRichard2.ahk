@@ -133,15 +133,15 @@ loop %countlines2%
     count+=1
 }
 count=1
-loop %countlines2%
-{
-    if checkbox5_%count% = 1
-    {
-        winget_app = % appname5_%count%
-        FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
-        msgbox, %winget_app%
-    }
-}
+;loop %countlines2%
+;{
+;    if checkbox5_%count% = 1
+;    {
+;        winget_app = % appname5_%count%
+;        FileAppend, winget install %winget_app% --accept-package-agreements --accept-source-agreements;, PICKED_Winget_List.txt
+;        msgbox, %winget_app%
+;    }
+;}
 
 FileAppend, %tab_extra%, PICKED_Extra_Chocolatey_Apps.txt
 loop, read, PICKED_Extra_Chocolatey_Apps.txt
