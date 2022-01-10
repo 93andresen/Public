@@ -24,7 +24,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
 gui, Add, Tab2,, Pick Applications to Install 2/2
 gui, add, Text,, Keepass And Plugins:
-gui, add, checkbox, vALL3, Check All - Keepass and All Plugins
+Gui, Add, CheckBox, gGoHereWhenClicked3, Check All - Keepass and All Plugins
 countlines += 1
 loop, read, Keepass_And_Plugins_List.txt
 {
