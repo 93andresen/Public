@@ -183,6 +183,7 @@ AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
 AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
 AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 
+clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 ExitApp
