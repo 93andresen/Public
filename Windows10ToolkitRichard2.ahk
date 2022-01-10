@@ -162,8 +162,8 @@ fileread, PICKED_Keepass_And_Plugins_List, PICKED_Keepass_And_Plugins_List.txt
 fileread, PICKED_Yubikey_Apps_List, PICKED_Yubikey_Apps_List.txt
 fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
 
-FileCreateDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\ApplicationLists
+FileCreateDir, C:\temp_Windows10ToolkitRichard\Installing_Applications_Output
+SetWorkingDir, C:\temp_Windows10ToolkitRichard\Installing_Applications_Output
 
 
 if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
