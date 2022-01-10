@@ -150,8 +150,10 @@ loop, read, PICKED_Extra_Chocolatey_AppsTEMP.txt
     FileAppend, %A_LoopReadLine%%A_Space%, PICKED_Extra_Chocolatey_Apps.txt
 }
 filedelete, PICKED_Extra_Chocolatey_AppsTEMP.txt
+
 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation -y,,max
 runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
+
 
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
