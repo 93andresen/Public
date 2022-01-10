@@ -172,39 +172,30 @@ if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 }
 runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt;choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt;choco upgrade %PICKED_Keepass_And_Plugins_List% -y | Tee-Object -file Installing_Applications_Output_Keepass_And_Plugins_List.txt;choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object -file Installing_Applications_Output_Yubikey_Apps_List.txt;choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt;%PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,max
 
-OutputLog()
-FileRead, readfilevar, %readfile%
-FileAppend, readfilevar, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
 
 
-FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_Firefox.txt
-FileAppend, %Installing_Applications_Output_Chocolatey_Apps_Nessescary_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_SetDefaultBrowser.txt
+AppendFileToLog("Installing_Applications_Output_Firefox.txt")
+AppendFileToLog("Installing_Applications_Output_SetDefaultBrowser.txt")
+AppendFileToLog("Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt")
+AppendFileToLog("Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt")
+AppendFileToLog("Installing_Applications_Output_Keepass_And_Plugins_List.txt")
+AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
+AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
+AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 
-FileAppend, %Installing_Applications_Output_Chocolatey_Apps_Nessescary_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List, Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt
-FileAppend, %Installing_Applications_Output_Chocolatey_Apps_Nessescary_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List, Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt
-FileAppend, %Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Keepass_And_Plugins_List, Installing_Applications_Output_Keepass_And_Plugins_List.txt
-FileAppend, %Installing_Applications_Output_Keepass_And_Plugins_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Yubikey_Apps_List, Installing_Applications_Output_Yubikey_Apps_List.txt
-FileAppend, %Installing_Applications_Output_Yubikey_Apps_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Extra_Chocolatey_Apps, Installing_Applications_Output_Extra_Chocolatey_Apps.txt
-FileAppend, %Installing_Applications_Output_Extra_Chocolatey_Apps%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
-FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
-FileAppend, %Installing_Applications_Output_Winget_List%, C:\temp_Windows10ToolkitRichard\Installing_Applications_LOG.txt
+msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
-FileRead, Installing_Applications_Output_Winget_List, Installing_Applications_Output_Winget_List.txt
-FileAppend, %Installing_Applications_Output_Winget_List%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-
-msgbox, FINISHED`n`nClicking OK will fill clipboard with the path to the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 ExitApp
 
 Esc::
 ExitApp
 
+
+AppendFileToLog(readfile)
+{
+    FileRead, readfilevar, %readfile%
+    FileAppend, `n%readfilevar%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+}
 
 HookGUICheckboxes(check, from, too)
 { 
