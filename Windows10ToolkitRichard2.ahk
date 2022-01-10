@@ -62,7 +62,7 @@ loop, read, Winget_List.txt
     countlines += 1
 }
 countlines3 = countlines
-gui, add, Text, ys, Extra Chocolatey Apps (Seperate with spaces):
+gui, add, Text, ys, Extra Chocolatey Apps (1 per line):
 gui, Add, Edit, vtab_extra r30  ; r30 means 30 rows tall.
 gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
