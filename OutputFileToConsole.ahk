@@ -11,14 +11,12 @@ logfile=%1%
 x=1
 loop
 {
-    msgbox, fffffffff
     FileReadLine, v, %logfile%, %x%
     if Errorlevel=0
     {
-        if v=""
+        if v=
         {
-            msgbox, ggggggggg
-            Stdout("hjkhjk")
+            Stdout("`n")
         }
         else
             Stdout(v)	;output to new console
@@ -28,8 +26,6 @@ loop
     {
         sleep, 100
     }
-    clipboard=%v% %errorlevel%
-    msgbox, %v% %errorlevel%
 }
 
 Print(string){
