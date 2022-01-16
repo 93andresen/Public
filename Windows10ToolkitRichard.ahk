@@ -25,7 +25,8 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
-fileappend, Console Output,  C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 run, C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 
