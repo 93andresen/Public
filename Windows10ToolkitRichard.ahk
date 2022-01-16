@@ -33,7 +33,7 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 inirw("r", "update")
 inirw("r", "debloat")
 inirw("r", "apps")
-
+logg()
 
 /*
 MAYBE_AND_OTHER:
