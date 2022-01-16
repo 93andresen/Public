@@ -26,7 +26,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
-run, 
+run, C:\!\Code\GitHub\93andresen_Scripts\Public\UserCkeckboxesStart.ahk
 
 ;goto, TTEMP
 
