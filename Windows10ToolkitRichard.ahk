@@ -110,7 +110,7 @@ if update = 1
 {
     FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
     RunPowershellLog("cup abc-update")
-    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,min
     RunPowershellLog("cup Boxstarter")
     RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate")
     filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
@@ -291,14 +291,14 @@ logg(x)
 }
 RunPowershellLog(command)
 {
-    runwait, powershell.exe %command% | Tee-Object -file powershelllogtemp.txt
+    runwait, powershell.exe %command% | Tee-Object -file powershelllogtemp.txt,,min
     FileRead, powershelllogtemp, powershelllogtemp.txt
     filedelete, powershelllogtemp.txt
     logg(powershelllogtemp)
 }
 RunPowershellWinConfigLog()
 {
-    runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file powershelllogtemp.txt
+    runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file powershelllogtemp.txt,,min
     FileRead, powershelllogtemp, powershelllogtemp.txt
     filedelete, powershelllogtemp.txt
     logg(powershelllogtemp)
