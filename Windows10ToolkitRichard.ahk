@@ -28,18 +28,18 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard
 filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 run, C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-loop 10
+loop 20
 {
-    WinActivate, C:\Program Files\AutoHotkey\AutoHotkey.exe, Console Output
+    WinActivate, C:\Program Files\AutoHotkey\AutoHotkey.exe
     WinGetActiveTitle, AT
     if AT = C:\Program Files\AutoHotkey\AutoHotkey.exe
         break
-    sleep, 200
+    sleep, 100
 }
-WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe, Console Output
-WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, Console Output, Windows Toolkit Richard Console Output
+WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
+WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
-WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output, Console Output
+WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output, Console Output
 sleep, 10000
 ExitApp
 update := inirw("r", "update")
