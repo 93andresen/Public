@@ -16,7 +16,10 @@ loop
     if Errorlevel=0
     {
         if v=""
+        {
+            msgbox, ggggggggg
             Stdout("hjkhjk")
+        }
         else
             Stdout(v)	;output to new console
         x+=1
