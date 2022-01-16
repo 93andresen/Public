@@ -39,8 +39,9 @@ loop 10
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe, Console Output
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, Console Output, Windows Toolkit Richard Console Output
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
-
-
+WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output, Console Output
+sleep, 10000
+ExitApp
 update := inirw("r", "update")
 debloat := inirw("r", "debloat")
 apps := inirw("r", "apps")
