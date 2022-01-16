@@ -11,7 +11,8 @@ logfile=%1%
 x=1
 loop
 {
-    
+    clipboard=%v% %errorlevel%
+    msgbox, %v% %errorlevel%
     FileReadLine, v, %logfile%, %x%
     if Errorlevel=0
     {
