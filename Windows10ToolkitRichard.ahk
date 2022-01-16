@@ -34,10 +34,14 @@ inirw("r", "update")
 inirw("r", "debloat")
 inirw("r", "apps")
 
-logg("Update Windows - was Picked")
-logg("Debloat Windows (Including OneDrive) - was Picked")
-logg("Install Applications (Lets you choose Applications) - was Picked")
+if update = 1
+    logg("Update Windows - was Picked")
+if debloat = 1
+    logg("Debloat Windows (Including OneDrive) - was Picked")
+if apps = 1
+    logg("Install Applications (Lets you choose Applications) - was Picked")
 
+msgbox, %update% %debloat% %apps% 
 /*
 MAYBE_AND_OTHER:
 
@@ -229,6 +233,7 @@ if apps = 1
 
     ;run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
     run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+    ExitApp
 }
 logg("FINISHED")
 ExitApp
