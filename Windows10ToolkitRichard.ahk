@@ -231,7 +231,6 @@ if apps = 1
     run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 }
 logg("FINISHED")
-return
 ExitApp
 
 
