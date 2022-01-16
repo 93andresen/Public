@@ -32,9 +32,6 @@ if debloat = 1
     inirw("w", "debloat", "1")
 if apps = 1
     inirw("w", "apps", "1")
-
-inirw("r", "apps")
-
 ExitApp
 
 

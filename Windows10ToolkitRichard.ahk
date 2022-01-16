@@ -29,6 +29,9 @@ fileappend, Console Output,  C:\temp_Windows10ToolkitRichard\Windows10ToolkitRic
 run, C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 
+inirw("r", "update")
+inirw("r", "debloat")
+inirw("r", "apps")
 
 
 /*
