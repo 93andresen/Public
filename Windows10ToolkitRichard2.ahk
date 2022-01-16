@@ -252,9 +252,9 @@ runwait, cmd.exe /c bcdedit /set hypervisorlaunchtype off,,min
 inirw(rw, key, value:="")
 {
     if rw=w
-        IniWrite, %value%, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+        IniWrite, %value%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%
     else if rw=r
-        IniRead, value, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+        IniRead, value, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%
     Else
         msgbox, ERROR, rw was not r or w`nrw=%rw%
     return %value%
