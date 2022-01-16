@@ -99,18 +99,22 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 */
 
-
-FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
-
-RunPowershellLog("cup abc-update")
-runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-RunPowershellLog("cup Boxstarter")
+if update = 1
+{
+    FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+    RunPowershellLog("cup abc-update")
+    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    RunPowershellLog("cup Boxstarter")
+    RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate")
+    filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+}
+if debloat = 1
+{
+    RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
+    ;RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
+}
 RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
 RunPowershellWinConfigLog()
-RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
-RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
-
-filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat
@@ -118,108 +122,112 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and
 SetCapsLockState, Off
 SetNumLockState, On
 
-
-
-FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
-
-;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
-Gui, Add, Tab2,, Pick Applications to Install 1/2
-gui, add, Text,, Nessescary Apps:
-Gui, Add, CheckBox, gGoHereWhenClicked1, Check All - Nessescary Applications
-countlines += 1
-loop, read, Chocolatey_Apps_Nessescary_List.txt
+if apps = 1
 {
-    Gui, Tab, 1
-    if	!Mod(A_Index, 30)
-        gui, add, Text, ys, 
-    gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
-    appname1_%A_Index% = %A_LoopReadLine%
+
+    FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
+    SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
+
+    ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
+    Gui, Add, Tab2,, Pick Applications to Install 1/2
+    gui, add, Text,, Nessescary Apps:
+    Gui, Add, CheckBox, gGoHereWhenClicked1, Check All - Nessescary Applications
     countlines += 1
-}
-countlines1 = %countlines%
-countlines += 1
-check_button_2 := % countlines
-gui, add, Text, ys, Maybe And Other:
-Gui, Add, CheckBox, gGoHereWhenClicked2, Check All - Maybe And Other
-loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
-{
-    ;Gui, Tab, 2
-    if	!Mod(A_Index, 30)
-        gui, add, Text, ys
-    gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
-    appname2_%A_Index% = %A_LoopReadLine%
+    loop, read, Chocolatey_Apps_Nessescary_List.txt
+    {
+        Gui, Tab, 1
+        if	!Mod(A_Index, 30)
+            gui, add, Text, ys, 
+        gui, add, checkbox, vcheckbox1_%A_Index%, %A_LoopReadLine%
+        appname1_%A_Index% = %A_LoopReadLine%
+        countlines += 1
+    }
+    countlines1 = %countlines%
     countlines += 1
-}
-countlines2 = %countlines%
-Gui, Tab, 16
-Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
-Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
-Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left corner.
-Gui, Show
-WinWaitActive, Windows10ToolkitRichard.ahk
-WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
-check_ran=0
-GoHereWhenClicked1:
-GuiControlGet, check,, Button1
-if (check = 1 and check_ran != 1)
-{
-    HookGUICheckboxes(check, "1", countlines1)
-    check_ran=1
-}
-else if (check = 0 and check_ran != 0)
-{
-    HookGUICheckboxes(check, "1", countlines1)
+    check_button_2 := % countlines
+    gui, add, Text, ys, Maybe And Other:
+    Gui, Add, CheckBox, gGoHereWhenClicked2, Check All - Maybe And Other
+    loop, read, Chocolatey_Apps_Maybe_And_Other_List.txt
+    {
+        ;Gui, Tab, 2
+        if	!Mod(A_Index, 30)
+            gui, add, Text, ys
+        gui, add, checkbox, vcheckbox2_%A_Index%, %A_LoopReadLine%
+        appname2_%A_Index% = %A_LoopReadLine%
+        countlines += 1
+    }
+    countlines2 = %countlines%
+    Gui, Tab, 16
+    Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
+    Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
+    Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left corner.
+    Gui, Show
+    WinWaitActive, Windows10ToolkitRichard.ahk
+    WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
     check_ran=0
-}
-return
-GoHereWhenClicked2:
-GuiControlGet, check,, Button%check_button_2%
-if (check = 1 and check_ran2 != 1)
-{
-    HookGUICheckboxes(check, check_button_2, countlines2)
-    check_ran2=1
-}
-else if (check = 0 and check_ran2 != 0)
-{
-    HookGUICheckboxes(check, check_button_2, countlines2)
-    check_ran2=0
-}
-return
-
-GuiClose:
-GuiEscape:
-msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
-ExitApp
-ButtonContinueToPage2/2:
-Gui, Submit  ; Save each control's contents to its associated variable.
-
-FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
-SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
-
-count=1
-loop %countlines2%
-{
-    if checkbox1_%count% = 1
+    GoHereWhenClicked1:
+    GuiControlGet, check,, Button1
+    if (check = 1 and check_ran != 1)
     {
-        FileAppend, % appname1_%count%, PICKED_Chocolatey_Apps_Nessescary_List.txt
-        FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Nessescary_List.txt
+        HookGUICheckboxes(check, "1", countlines1)
+        check_ran=1
     }
-    count+=1
-}
-count=1
-loop %countlines2%
-{
-    if checkbox2_%count% = 1
+    else if (check = 0 and check_ran != 0)
     {
-        FileAppend, % appname2_%count%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
-        FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+        HookGUICheckboxes(check, "1", countlines1)
+        check_ran=0
     }
-    count+=1
-}
+    return
+    GoHereWhenClicked2:
+    GuiControlGet, check,, Button%check_button_2%
+    if (check = 1 and check_ran2 != 1)
+    {
+        HookGUICheckboxes(check, check_button_2, countlines2)
+        check_ran2=1
+    }
+    else if (check = 0 and check_ran2 != 0)
+    {
+        HookGUICheckboxes(check, check_button_2, countlines2)
+        check_ran2=0
+    }
+    return
 
-;run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
-run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+    GuiClose:
+    GuiEscape:
+    msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
+    ExitApp
+    ButtonContinueToPage2/2:
+    Gui, Submit  ; Save each control's contents to its associated variable.
+
+    FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
+    SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
+
+    count=1
+    loop %countlines2%
+    {
+        if checkbox1_%count% = 1
+        {
+            FileAppend, % appname1_%count%, PICKED_Chocolatey_Apps_Nessescary_List.txt
+            FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Nessescary_List.txt
+        }
+        count+=1
+    }
+    count=1
+    loop %countlines2%
+    {
+        if checkbox2_%count% = 1
+        {
+            FileAppend, % appname2_%count%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+            FileAppend, %A_Space%, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
+        }
+        count+=1
+    }
+
+    ;run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
+    run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+}
+logg("FINISHED")
+return
 ExitApp
 
 
