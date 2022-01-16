@@ -52,7 +52,7 @@ if debloat = 1
 if apps = 1
     logg("Install Applications (Lets you choose Applications) - was Picked")
 
-RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
+runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file powershelllogtemp.txt,,min
 ExitApp
 /*
 MAYBE_AND_OTHER:
