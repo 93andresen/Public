@@ -20,12 +20,23 @@ Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
 
-counter=1
+count=1
 loop 3
 {
-    ControlClick, Button%counter%, %A_ScriptName%
-    counter+=1
+    loop
+    {
+        GuiControlGet, Button%count%, %A_ScriptName% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+        if Button%count%!=1
+            ControlClick, Button%count%
+        else if Button%count%=1
+            break
+    }
+    count+=1
 }
+
+
+
+
 return
 
 ButtonOK:
