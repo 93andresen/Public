@@ -19,7 +19,6 @@ Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
 Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
-
 count=1
 loop 3
 {
@@ -33,10 +32,6 @@ loop 3
     }
     count+=1
 }
-
-
-
-
 return
 
 ButtonOK:
@@ -51,7 +46,6 @@ if debloat = 1
     inirw("w", "debloat", "1")
 if apps = 1
     inirw("w", "apps", "1")
-
 
 ExitApp
 
