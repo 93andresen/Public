@@ -5,7 +5,6 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
-#Include, AutohotkeyFucktions.ahk
 
 
 logfile=%1%
