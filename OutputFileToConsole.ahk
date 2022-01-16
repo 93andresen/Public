@@ -26,6 +26,7 @@ loop
     {
         sleep, 100
     }
+    sleep, 200
 }
 
 Print(string){
