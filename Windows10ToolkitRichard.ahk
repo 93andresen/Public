@@ -40,8 +40,7 @@ WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
-sleep, 10000
-ExitApp
+
 update := inirw("r", "update")
 debloat := inirw("r", "debloat")
 apps := inirw("r", "apps")
