@@ -179,6 +179,7 @@ if apps = 1
     Gui, Add, Edit, tab_extra r30  ; r30 means 30 rows tall.
     Gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
     Gui, Add, Button, default xm, ContinueToPage2/2  ; xm puts it at the bottom left corner.
+    WinSet, AlwaysOnTop, off, Windows Toolkit Richard Console Output
     Gui, Show
     WinWaitActive, Windows10ToolkitRichard.ahk
     WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
@@ -213,6 +214,7 @@ if apps = 1
     GuiClose:
     GuiEscape:
     msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
+    WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output
     ExitApp
     ButtonContinueToPage2/2:
     Gui, Submit  ; Save each control's contents to its associated variable.

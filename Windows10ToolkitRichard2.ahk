@@ -98,6 +98,7 @@ else if (check = 0 and check_ran4 != 0)
 return
 
 ButtonINSTALL:
+WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output
 gui, Submit  ; Save each control's contents to its associated variable.
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
