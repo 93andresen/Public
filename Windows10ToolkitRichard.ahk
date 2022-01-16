@@ -39,7 +39,7 @@ loop 20
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
-WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output, Console Output
+WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 sleep, 10000
 ExitApp
 update := inirw("r", "update")
