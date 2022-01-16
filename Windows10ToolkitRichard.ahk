@@ -33,8 +33,11 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 inirw("r", "update")
 inirw("r", "debloat")
 inirw("r", "apps")
-logg()
 
+logg("Update Windows was Picked")
+logg("Debloat Windows (Including OneDrive) was Picked")
+logg("Install Applications (Lets you choose Applications) was Picked")
+sleep, 5000
 /*
 MAYBE_AND_OTHER:
 
