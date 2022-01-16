@@ -128,8 +128,8 @@ if update = 1
 }
 if debloat = 1
 {
-    RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
-    ;RunPowershellLog("%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
+    RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
+    ;RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
 }
 RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
 RunPowershellWinConfigLog()
@@ -304,7 +304,7 @@ logg(x)
 }
 RunPowershellLog(command)
 {
-    runwait, powershell.exe %command% | Tee-Object -file powershelllogtemp.txt,,min
+    runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file powershelllogtemp.txt,,min
     FileRead, powershelllogtemp, powershelllogtemp.txt
     logg(powershelllogtemp)
     filedelete, powershelllogtemp.txt
