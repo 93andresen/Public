@@ -18,14 +18,14 @@ loop
         Stdout(v)	;output to new console
         x+=1
     }
-    clipboard=%v%
-    msgbox, %v%
-    else if v=
+    else if v=""
         Stdout("`n")
     else
     {
         sleep, 100
     }
+    clipboard=%v%
+    msgbox, %v%
 }
 
 Print(string){
