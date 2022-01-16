@@ -19,13 +19,13 @@ loop
         x+=1
     }
     else if v=""
-        Stdout("`n")
+        Stdout("hjkhjk")
     else
     {
         sleep, 100
     }
-    clipboard=%v%
-    msgbox, %v%
+    clipboard=%v% %errorlevel%
+    msgbox, %v% %errorlevel%
 }
 
 Print(string){
