@@ -384,7 +384,7 @@ return
 
 
 ^+F9::
-IniWrite, 1, C:\!\TEMP\InifilesAndOther\Autorun_ADMIN.ini, Section, ran_by_hotkey
+
 run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_ADMIN.ahk
 return
 ^+F10::
@@ -1772,13 +1772,13 @@ CleanYTMusicFolder(path, deleteparts)
     FileCreateDir, %metafolder%
     source = %path%
     dest = %metafolderTEMP%
-    mode = move
+    mode = /cmd=move
     include = "*.json;*.url;*.description;*.webp;*.jpg;*.png"
     wait_for_fastcopy_to_finish()
     runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /include=%include% /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%",,min
     source = %metafolderTEMP%
     dest = %metafolder%
-    mode = move
+    mode = /cmd=move
     wait_for_fastcopy_to_finish()
     runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /include=%include% /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%",,min
     FileRemoveDir, %metafolderTEMP%, 1
