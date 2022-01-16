@@ -243,3 +243,23 @@ HookGUICheckboxes(check, from, too)
     }
 }
 
+Print(string){
+	ListVars
+	WinWait ahk_id %A_ScriptHwnd%
+	ControlSetText Edit1, %string%
+	WinWaitClose
+}
+PrintDebug(string:=""){
+	Static
+	string := string ? string . "`r`n" . lastStr : "", lastStr := string
+	If !WinActive("ahk_class AutoHotkey"){
+		ListVars
+		WinWait ahk_id %A_ScriptHwnd%
+		WinGetTitle, title, ahk_id %A_ScriptHwnd%
+	}Else If !string{
+		PostMessage, 0x112, 0xF060,,, %title% ; 0x112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE
+		Return
+	}
+	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
+}
+
