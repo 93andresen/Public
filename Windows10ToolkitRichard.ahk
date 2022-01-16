@@ -51,9 +51,6 @@ if debloat = 1
     logg("Debloat Windows (Including OneDrive) - was Picked")
 if apps = 1
     logg("Install Applications (Lets you choose Applications) - was Picked")
-
-runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1 | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,min
-ExitApp
 /*
 MAYBE_AND_OTHER:
 
