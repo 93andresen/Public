@@ -8,8 +8,6 @@ SetTitleMatchMode, 2
 
 
 logfile=%1%
-logfile=C:\!\testdelete.txt
-
 x=1
 loop
 {
