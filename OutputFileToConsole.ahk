@@ -11,16 +11,16 @@ logfile=%1%
 x=1
 loop
 {
-    clipboard=%v% %errorlevel%
-    msgbox, %v% %errorlevel%
+    msgbox, fffffffff
     FileReadLine, v, %logfile%, %x%
     if Errorlevel=0
     {
-        Stdout(v)	;output to new console
+        if v=""
+            Stdout("hjkhjk")
+        else
+            Stdout(v)	;output to new console
         x+=1
     }
-    else if v=""
-        Stdout("hjkhjk")
     else
     {
         sleep, 100
