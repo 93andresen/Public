@@ -283,7 +283,7 @@ PrintDebug(string:=""){
 
 logg(x)
 {
-    FileAppend, %x%`n, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    FileAppend, `n%x%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 }
 RunPowershellLog(command)
 {
