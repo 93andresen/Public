@@ -42,10 +42,16 @@ Gui, Submit  ; Save each control's contents to its associated variable.
 
 if update = 1
     inirw("w", "update", "1")
+else
+    inirw("w", "update", "0")
 if debloat = 1
     inirw("w", "debloat", "1")
+else
+    inirw("w", "debloat", "0")
 if apps = 1
     inirw("w", "apps", "1")
+else
+    inirw("w", "apps", "0")
 
 ExitApp
 
