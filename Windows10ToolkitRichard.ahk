@@ -106,7 +106,7 @@ FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
 runwait, powershell.exe cup abc-update
 
 runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-runwait, powershell.exe cup boxstarter
+
 runwait, powershell.exe import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar
 
 runwait, powershell.exe %script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1;choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force;,,max
@@ -279,3 +279,9 @@ logg(x)
 }
 
 
+RunLog(command)
+{
+    runwait, powershell.exe %command% | Tee-Object -file powershelllogtemp.txt
+    FileRead, powershelllogtemp, powershelllogtemp.txt
+    FileAppend, %powershelllogtemp%, powershelllogtemp.txt
+}
