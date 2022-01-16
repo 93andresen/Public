@@ -30,9 +30,9 @@ fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRich
 run, C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 
-inirw("r", "update")
-inirw("r", "debloat")
-inirw("r", "apps")
+update := inirw("r", "update")
+debloat := inirw("r", "debloat")
+apps := inirw("r", "apps")
 
 if update = 1
     logg("Update Windows - was Picked")
@@ -41,7 +41,6 @@ if debloat = 1
 if apps = 1
     logg("Install Applications (Lets you choose Applications) - was Picked")
 
-msgbox, %update% %debloat% %apps% 
 /*
 MAYBE_AND_OTHER:
 
