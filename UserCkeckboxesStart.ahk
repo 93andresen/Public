@@ -25,7 +25,7 @@ loop 3
 {
     loop
     {
-        GuiControlGet,v, Button%count%, %A_ScriptName% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+        GuiControlGet, v,, Button%count%, %A_ScriptName% ; Retrieves 1 if it is checked, 0 if it is unchecked.
         if v != 1
             ControlClick, Button%count%, %A_ScriptName%
         else if v = 1
