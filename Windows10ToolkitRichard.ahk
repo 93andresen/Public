@@ -28,7 +28,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 inirw()
-;goto, TTEMP
+
 
 
 /*
@@ -111,12 +111,10 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and
 SetCapsLockState, Off
 SetNumLockState, On
 
-TTEMP:
+
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
-
-
 
 ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
 Gui, Add, Tab2,, Pick Applications to Install 1/2
