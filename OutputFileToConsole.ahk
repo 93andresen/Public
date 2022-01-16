@@ -18,6 +18,8 @@ loop
         Stdout(v)	;output to new console
         x+=1
     }
+    else if v=
+    Stdout("`n")
     else
     {
         sleep, 100
