@@ -98,8 +98,12 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 
 FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+
+
+
 FileCreateDir, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs
 FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+logg(""===================%TimeLong%_NEW_LOG_HERE=====================`n")
 FileAppend, ===================%TimeLong%_NEW_LOG_HERE=====================`n, C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt
 runwait, powershell.exe cup abc-update;ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\ABC-Update_Logs\%TimeLong%_ABC_Update_Log.txt;cup boxstarter;import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar;%script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1;choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force;,,max
 ;run, powershell.exe %script_bypass%;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1,,min
@@ -262,4 +266,10 @@ PrintDebug(string:=""){
 	}
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
+
+logg(x)
+{
+    FileAppend, %x%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+}
+
 
