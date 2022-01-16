@@ -6,7 +6,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 if A_ComputerName = G3-3
 {
-    Tooltip, RunAsAdmin.ahk`n`nA_ComputerName = G3-2`nExiting App...
+    Tooltip, RunAsAdmin.ahk`n`nA_ComputerName = G3-3`nExiting App...
     sleep, 5000
     ExitApp
 }
