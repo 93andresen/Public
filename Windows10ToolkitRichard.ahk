@@ -34,9 +34,9 @@ inirw("r", "update")
 inirw("r", "debloat")
 inirw("r", "apps")
 
-logg("Update Windows was Picked")
-logg("Debloat Windows (Including OneDrive) was Picked")
-logg("Install Applications (Lets you choose Applications) was Picked")
+logg("Update Windows - was Picked")
+logg("Debloat Windows (Including OneDrive) - was Picked")
+logg("Install Applications (Lets you choose Applications) - was Picked")
 
 /*
 MAYBE_AND_OTHER:
