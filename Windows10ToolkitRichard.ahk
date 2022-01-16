@@ -307,14 +307,14 @@ RunPowershellLog(command)
     runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file powershelllogtemp.txt,,min
     FileRead, powershelllogtemp, powershelllogtemp.txt
     logg(powershelllogtemp)
-    filedelete, powershelllogtemp.txt
+    ;filedelete, powershelllogtemp.txt
 }
 RunPowershellWinConfigLog()
 {
     runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file powershelllogtemp.txt,,min
     FileRead, powershelllogtemp, powershelllogtemp.txt
     logg(powershelllogtemp)
-    filedelete, powershelllogtemp.txt
+    ;filedelete, powershelllogtemp.txt
 }
 
 inirw(rw, key, value:="")
