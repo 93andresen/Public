@@ -120,12 +120,10 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 if update = 1
 {
     FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
-    Tooltip, AAAAAAAAAAA
     RunPowershellLog("cup abc-update")
+    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,min
     Tooltip, BBBBBBBBBBBBBBBB
     sleep, 10000
-    ExitApp
-    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,min
     RunPowershellLog("cup Boxstarter")
     RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate")
     filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
