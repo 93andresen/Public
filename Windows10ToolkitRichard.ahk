@@ -52,6 +52,8 @@ if debloat = 1
 if apps = 1
     logg("Install Applications (Lets you choose Applications) - was Picked")
 
+RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
+ExitApp
 /*
 MAYBE_AND_OTHER:
 
