@@ -24,9 +24,9 @@ loop
     }
     else
     {
-        sleep, 100
+        sleep, 10
     }
-    sleep, 100
+    sleep, 10
 }
 
 
