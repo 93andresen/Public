@@ -119,3 +119,4 @@ doublecmd
 beyondcompare
 0install
 Wiztree
+Eraser

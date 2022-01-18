@@ -1444,6 +1444,154 @@ return
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+get_size(file_or_folder)
+{
+    AttributeString := FileExist(file_or_folder)
+    if AttributeString = D
+    {
+        SetBatchLines, -1  ; Make the operation run at maximum speed.
+        FolderSize := 0
+        Loop, %file_or_folder%\*.*, , 1
+            FolderSize += A_LoopFileSize
+        return FolderSize
+    }
+    if AttributeString != D
+    {
+        FileGetSize, Filesize, %file_or_folder%
+        return Filesize
+    }
+}
+DesktopIcons( Show:=-1 )    ; Usage: DesktopIcons(True) to show, DesktopIcons(False) to hide, DesktopIcons() to toggle the current state.
+{
+    Local hProgman := WinExist("ahk_class WorkerW", "FolderView") ? WinExist()
+                   :  WinExist("ahk_class Progman", "FolderView")
+
+    Local hShellDefView := DllCall("user32.dll\GetWindow", "ptr",hProgman,      "int",5, "ptr")
+    Local hSysListView  := DllCall("user32.dll\GetWindow", "ptr",hShellDefView, "int",5, "ptr")
+
+    If ( DllCall("user32.dll\IsWindowVisible", "ptr",hSysListView) != Show )
+         DllCall("user32.dll\SendMessage", "ptr",hShellDefView, "ptr",0x111, "ptr",0x7402, "ptr",0)
+}
+Print(string){
+	ListVars
+	WinWait ahk_id %A_ScriptHwnd%
+	ControlSetText Edit1, %string%
+	WinWaitClose
+}
+PrintDebug(string:=""){
+	Static
+	string := string ? string . "`r`n" . lastStr : "", lastStr := string
+	If !WinActive("ahk_class AutoHotkey"){
+		ListVars
+		WinWait ahk_id %A_ScriptHwnd%
+		WinGetTitle, title, ahk_id %A_ScriptHwnd%
+	}Else If !string{
+		PostMessage, 0x112, 0xF060,,, %title% ; 0x112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE
+		Return
+	}
+	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
+}
+inirw(rw, key, value:="")
+{
+    if rw=w
+        IniWrite, %value%, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+    else if rw=r
+        IniRead, value, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+    Else
+        msgbox, ERROR, rw was not r or w`nrw=%rw%
+    return %value%
+}
+CheckIfEmptyFolder(path)
+{
+    Loop, %path%\*.*,1,1
+    {
+        If A_Index
+        {
+            return 1
+        }
+    }
+    return 0
+}
 ConvertRegToBat(regfile)
 {
     SplitPath, regfile, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -1657,7 +1805,7 @@ PlayYoutubePlaylist(link)
     sleep, 1000
     mouse_click_func("473", "399")      ;   press top video (latest)
     WaitForPixelColor("1505", "317", "0x000000", "10000")
-    sleep, 1000
+    sleep, 5000
     mouse_click_func("685", "469")  ;   fullscreen
     mouse_click_func("685", "469")  ;   fullscreen
 }
@@ -1798,7 +1946,7 @@ fastcopy_wait_func(source, dest, mode) ;   File or Folder, will create destinati
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
         }
     }
 }
@@ -1809,7 +1957,7 @@ fastcopy_func(source, dest, mode) ;   File or Folder, will create destination fo
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            run, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            run, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
             sleep, 500
         }
     }
@@ -1828,7 +1976,7 @@ LogTimeEscape(x)
 	FormatTime,TimeLongms,, yyyy-MM-dd_HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLongms% %x% Triggered by pressing Escape - Implement this --> HOW_MANY Seconds Have Passed Since %x%, C:\!\Logs\LogTime.txt
 }
-WriteNewFucntionAHK()
+WriteNewAutohotkeyFunctionAHK()
 {
     CoordMode, Mouse, Screen
     Process,Exist,Code.exe
@@ -1848,7 +1996,7 @@ WriteNewFucntionAHK()
                 mouse_click_func("31", "83")
                 mousemove, 276, 251, 0
                 sleep, 150
-                send, {WheelUp 400}
+                send, {WheelUp 5000}
                 mouse_rightclick_func(243, 133)
                 sleep, 200
                 mouse_click_func(281, 158)
@@ -1900,9 +2048,9 @@ RepeatSound(sound, seconds, tooltip)
         SoundPlay, %sound%
     }
 }
-FileCreateJunctionLink(1, 2)
+FileCreateJunctionLink(x, y)
 {
-    run, cmd.exe /c mklink /j %1% %2%
+    run, cmd.exe /c mklink /j %x% %y%
 }
 ;C:\!\Code\GitHub\93andresen C:\!\Code\GitHub\93andresen_Scripts
 
@@ -2077,7 +2225,7 @@ end_process(exe_filelist_path)
     Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
-        ;Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
         Process, Exist, %A_LoopReadLine%
         If (ErrorLevel != 0)
         {
@@ -2088,7 +2236,7 @@ end_process(exe_filelist_path)
     Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
-        ;Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
         Process, Exist, %A_LoopReadLine%
         If (ErrorLevel != 0)
         {
@@ -2097,7 +2245,36 @@ end_process(exe_filelist_path)
         Progress-=1
     }
 }
-
+end_process_wait(exe_filelist_path)
+{
+    Loop, Read, %exe_filelist_path%
+    {
+        Progress := A_Index
+        Progress *= 2
+    }
+    Tooltip, Asking applications Gracefully to end WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            runwait, cmd.exe /c Taskkill /IM "%A_LoopReadLine%",,hide
+        }
+        Progress-=1
+    }
+    Tooltip, Killing Tasks Forcefully WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            runwait, cmd.exe /c Taskkill /IM "%A_LoopReadLine%" /F,,hide
+        }
+        Progress-=1
+    }
+}
 AHKPanic(Kill=0, Pause=0, Suspend=0, SelfToo=0) {
 DetectHiddenWindows, On
 WinGet, IDList ,List, ahk_class AutoHotkey
@@ -2142,25 +2319,196 @@ run_file_if_it_exists(path, cmd)
         run, %path% %cmd%
     }
 }
-runwait_file_if_it_exists(path)
+runwait_file_if_it_exists(path, cmd)
 {
     if FileExist(path)
     {
-        runwait, %path%
+        runwait, %path% %cmd%
     }
 }
 
 ;Convert These to functions
 ;C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\GetFileListOfClipboardFolder.ahk
 
+LockWorkStation()
+{
+    DllCall("LockWorkStation")
+}
 
+TurnMonitorsOff()
+{
+    ; from http://autohotkey.com/board/topic/105261-turn-monitor-off-even-when-using-the-computer/?p=642266
+    SendMessage,0x112,0xF170,2,,Program Manager
+}
 
+ActivateOrOpen(window, program)
+{
+	; check if window exists
+	if WinExist(window)
+	{
+		WinActivate  ; Uses the last found window.
+	}
+	else
+	{   ; else start requested program
+		 Run cmd /c "start ^"^" ^"%program%^"",, Hide ;use cmd in hidden mode to launch requested program
+		 WinWait, %window%,,5		; wait up to 5 seconds for window to exist
+		 IfWinNotActive, %window%, , WinActivate, %window%
+		 {
+			  WinActivate  ; Uses the last found window.
+		 }
+	}
+	return
+}
+ActivateOrOpenChrome(tab, url)
+{
+    Transform, url, Deref, "%url%" ;expand variables inside url
+    Transform, tab, Deref, "%tab%" ;expand variables inside tab
+    chrome := "- Google Chrome"
+    found := "false"
+    tabSearch := tab
+    curWinNum := 0
 
+    SetTitleMatchMode, 2
+    if WinExist(Chrome)
+	{
+		WinGet, numOfChrome, Count, %chrome% ; Get the number of chrome windows
+		WinActivateBottom, %chrome% ; Activate the least recent window
+		WinWaitActive %chrome% ; Wait until the window is active
 
+		ControlFocus, Chrome_RenderWidgetHostHWND1 ; Set the focus to tab control ???
 
+		; Loop until all windows are tried, or until we find it
+		while (curWinNum < numOfChrome and found = "false") {
+			WinGetTitle, firstTabTitle, A ; The initial tab title
+			title := firstTabTitle
+			Loop
+			{
+				if(InStr(title, tabSearch)>0){
+					found := "true"
+					break
+				}
+				Send {Ctrl down}{Tab}{Ctrl up}
+				Sleep, 50
+				WinGetTitle, title, A  ;get active window title
+				if(title = firstTabTitle){
+					break
+				}
+			}
+			WinActivateBottom, %chrome%
+			curWinNum := curWinNum + 1
+		}
+	}
 
+    ; If we did not find it, start it
+    if(found = "false"){
+        Run chrome.exe "%url%"
+    }
+	return
+}
+; from https://stackoverflow.com/a/28448693
+SendUnicodeChar(charCode)
+{
+    ; if in unicode mode, use Send, {u+####}, else, use the encode method.
+    if A_IsUnicode = 1
+    {
+        Send, {u+%charCode%}
+    }
+    else
+    {
+        VarSetCapacity(ki, 28 * 2, 0)
+        EncodeInteger(&ki + 0, 1)
+        EncodeInteger(&ki + 6, charCode)
+        EncodeInteger(&ki + 8, 4)
+        EncodeInteger(&ki +28, 1)
+        EncodeInteger(&ki +34, charCode)
+        EncodeInteger(&ki +36, 4|2)
 
+        DllCall("SendInput", "UInt", 2, "UInt", &ki, "Int", 28)
+    }
+}
+EncodeInteger(ref, val)
+{
+	DllCall("ntdll\RtlFillMemoryUlong", "Uint", ref, "Uint", 4, "Uint", val)
+}
+Stdout(output:="", sciteCheck := true){	;output to console	-	sciteCheck reduces Stdout/Stdin performance,so where performance is necessary disable it accordingly
+	Global ___console___
+	If (sciteCheck && ProcessExist("SciTE.exe") && GetScriptParentProcess() = "SciTE.exe"){	;if script parent is scite,output to scite console & return
+		FileAppend, %output%`n, *
+		Return
+	}																												;CONOUT$ is a special file windows uses to expose attached console output
+	( output ? ( !___console___? (DllCall("AttachConsole", "int", -1) || DllCall("AllocConsole")) & (___console___:= true) : "" ) & FileAppend(output . "`n","CONOUT$") : DllCall("FreeConsole") & (___console___:= false) & StdExit() )
+}
 
+Stdin(output:="", sciteCheck := true){	;output to console & wait for input & return input
+	Global ___console___
+	If (sciteCheck && ProcessExist("SciTE.exe") && GetScriptParentProcess() = "SciTE.exe"){	;if script parent is scite,output to scite console & return
+		FileAppend, %output%`n, *
+		Return
+	}
+	( output ? ( !___console___? (DllCall("AttachConsole", "int", -1) || DllCall("AllocConsole")) & (___console___:= true) : "" ) & FileAppend(output . "`n","CONOUT$") & (Stdin := FileReadLine("CONIN$",1)) : DllCall("FreeConsole") & (___console___:= false) & StdExit() )
+	Return Stdin
+}
 
+StdExit(){
+	If GetScriptParentProcess() = "cmd.exe"		;couldn't get this: 'DllCall("GenerateConsoleCtrlEvent", CTRL_C_EVENT, 0)' to work so...
+		ControlSend, , {Enter}, % "ahk_pid " . GetParentProcess(GetCurrentProcess())
+}
+
+FileAppend(str, file){
+	FileAppend, %str%, %file%
+}
+
+FileReadLine(file,lineNum){
+	FileReadLine, retVal, %file%, %lineNum%
+	return retVal
+}
+
+ProcessExist(procName){
+	Process, Exist, % procName
+	Return ErrorLevel
+}
+
+GetScriptParentProcess(){
+	return GetProcessName(GetParentProcess(GetCurrentProcess()))
+}
+
+GetParentProcess(PID)
+{
+	static function := DllCall("GetProcAddress", "ptr", DllCall("GetModuleHandle", "str", "kernel32.dll", "ptr"), "astr", "Process32Next" (A_IsUnicode ? "W" : ""), "ptr")
+	if !(h := DllCall("CreateToolhelp32Snapshot", "uint", 2, "uint", 0))
+		return
+	VarSetCapacity(pEntry, sz := (A_PtrSize = 8 ? 48 : 36)+(A_IsUnicode ? 520 : 260))
+	Numput(sz, pEntry, 0, "uint")
+	DllCall("Process32First" (A_IsUnicode ? "W" : ""), "ptr", h, "ptr", &pEntry)
+	loop
+	{
+		if (pid = NumGet(pEntry, 8, "uint") || !DllCall(function, "ptr", h, "ptr", &pEntry))
+			break
+	}
+	DllCall("CloseHandle", "ptr", h)
+	return Numget(pEntry, 16+2*A_PtrSize, "uint")
+}
+
+GetProcessName(PID)
+{
+	static function := DllCall("GetProcAddress", "ptr", DllCall("GetModuleHandle", "str", "kernel32.dll", "ptr"), "astr", "Process32Next" (A_IsUnicode ? "W" : ""), "ptr")
+	if !(h := DllCall("CreateToolhelp32Snapshot", "uint", 2, "uint", 0))
+		return
+	VarSetCapacity(pEntry, sz := (A_PtrSize = 8 ? 48 : 36)+260*(A_IsUnicode ? 2 : 1))
+	Numput(sz, pEntry, 0, "uint")
+	DllCall("Process32First" (A_IsUnicode ? "W" : ""), "ptr", h, "ptr", &pEntry)
+	loop
+	{
+		if (pid = NumGet(pEntry, 8, "uint") || !DllCall(function, "ptr", h, "ptr", &pEntry))
+			break
+	}
+	DllCall("CloseHandle", "ptr", h)
+	return StrGet(&pEntry+28+2*A_PtrSize, A_IsUnicode ? "utf-16" : "utf-8")
+}
+
+GetCurrentProcess()
+{
+	return DllCall("GetCurrentProcessId")
+}
 
 

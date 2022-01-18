@@ -29,6 +29,96 @@ loop
     sleep, 100
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+get_size(file_or_folder)
+{
+    AttributeString := FileExist(file_or_folder)
+    if AttributeString = D
+    {
+        SetBatchLines, -1  ; Make the operation run at maximum speed.
+        FolderSize := 0
+        Loop, %file_or_folder%\*.*, , 1
+            FolderSize += A_LoopFileSize
+        return FolderSize
+    }
+    if AttributeString != D
+    {
+        FileGetSize, Filesize, %file_or_folder%
+        return Filesize
+    }
+}
+DesktopIcons( Show:=-1 )    ; Usage: DesktopIcons(True) to show, DesktopIcons(False) to hide, DesktopIcons() to toggle the current state.
+{
+    Local hProgman := WinExist("ahk_class WorkerW", "FolderView") ? WinExist()
+                   :  WinExist("ahk_class Progman", "FolderView")
+
+    Local hShellDefView := DllCall("user32.dll\GetWindow", "ptr",hProgman,      "int",5, "ptr")
+    Local hSysListView  := DllCall("user32.dll\GetWindow", "ptr",hShellDefView, "int",5, "ptr")
+
+    If ( DllCall("user32.dll\IsWindowVisible", "ptr",hSysListView) != Show )
+         DllCall("user32.dll\SendMessage", "ptr",hShellDefView, "ptr",0x111, "ptr",0x7402, "ptr",0)
+}
 Print(string){
 	ListVars
 	WinWait ahk_id %A_ScriptHwnd%
@@ -423,7 +513,7 @@ fastcopy_wait_func(source, dest, mode) ;   File or Folder, will create destinati
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            runwait, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
         }
     }
 }
@@ -434,7 +524,7 @@ fastcopy_func(source, dest, mode) ;   File or Folder, will create destination fo
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            run, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound /cmd=%mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            run, "c:\ProgramData\chocolatey\lib\fastcopy.portable\FastCopy392_x64\FastCopy.exe" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
             sleep, 500
         }
     }
@@ -702,7 +792,7 @@ end_process(exe_filelist_path)
     Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
-        ;Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
         Process, Exist, %A_LoopReadLine%
         If (ErrorLevel != 0)
         {
@@ -713,7 +803,7 @@ end_process(exe_filelist_path)
     Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
-        ;Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
         Process, Exist, %A_LoopReadLine%
         If (ErrorLevel != 0)
         {
@@ -722,7 +812,36 @@ end_process(exe_filelist_path)
         Progress-=1
     }
 }
-
+end_process_wait(exe_filelist_path)
+{
+    Loop, Read, %exe_filelist_path%
+    {
+        Progress := A_Index
+        Progress *= 2
+    }
+    Tooltip, Asking applications Gracefully to end WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            runwait, cmd.exe /c Taskkill /IM "%A_LoopReadLine%",,hide
+        }
+        Progress-=1
+    }
+    Tooltip, Killing Tasks Forcefully WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            runwait, cmd.exe /c Taskkill /IM "%A_LoopReadLine%" /F,,hide
+        }
+        Progress-=1
+    }
+}
 AHKPanic(Kill=0, Pause=0, Suspend=0, SelfToo=0) {
 DetectHiddenWindows, On
 WinGet, IDList ,List, ahk_class AutoHotkey
@@ -767,11 +886,11 @@ run_file_if_it_exists(path, cmd)
         run, %path% %cmd%
     }
 }
-runwait_file_if_it_exists(path)
+runwait_file_if_it_exists(path, cmd)
 {
     if FileExist(path)
     {
-        runwait, %path%
+        runwait, %path% %cmd%
     }
 }
 
