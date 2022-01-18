@@ -27,7 +27,7 @@ FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-run, C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 loop 20
 {
     WinActivate, C:\Program Files\AutoHotkey\AutoHotkey.exe
@@ -118,7 +118,7 @@ https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 if update = 1
 {
-    FileCreateShortcut, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
     RunPowershellLog("cup abc-update")
     runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,min
     RunPowershellLog("cup Boxstarter")
@@ -241,8 +241,6 @@ if apps = 1
         }
         count+=1
     }
-
-    ;run, C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2.ahk
     run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
     ExitApp
 }
