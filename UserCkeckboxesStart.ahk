@@ -10,6 +10,7 @@ SetTitleMatchMode, 2
 Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows (Including OneDrive)
 Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
+Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
 
 ;Gui, Add, Radio, vMyRadio, Sample radio1
 ;Gui, Add, Radio,, Sample radio2
@@ -52,6 +53,10 @@ if apps = 1
     inirw("w", "apps", "1")
 else
     inirw("w", "apps", "0")
+if netflix = 1
+    inirw("w", "netflix", "1")
+else
+    inirw("w", "netflix", "0")
 
 ExitApp
 

@@ -70,5 +70,6 @@ Vlc
 Freedownloadmanager
 Spicetify-cli
 Terminal-icons.powershell
-adobereader
-googlechrome
+Adobereader
+Googlechrome
+Tortoisesvn

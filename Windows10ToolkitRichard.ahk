@@ -44,17 +44,20 @@ WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 update := inirw("r", "update")
 debloat := inirw("r", "debloat")
 apps := inirw("r", "apps")
+netflix := inirw("r", "netflix")
 
 if update = 1
     logg("Update Windows - was Picked")
 if debloat = 1
-    logg("Debloat Windows (Including OneDrive) - was Picked")
+    logg("Debloat and Optimize Windows (Including OneDrive) - was Picked")
 if apps = 1
     logg("Install Applications (Lets you choose Applications) - was Picked")
+if netflix = 1
+    logg("Netflix 2.0 - was Picked")
 /*
 MAYBE_AND_OTHER:
 
-
+C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Netflix_2.0.ahk
 simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
 
@@ -129,12 +132,12 @@ if debloat = 1
 {
     RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
     ;RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
-}
-RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
+RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
 RunPowershellWinConfigLog()
+}
 
-runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat
-runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat
+runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat,,max
+runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 SetCapsLockState, Off
 SetNumLockState, On
@@ -241,13 +244,8 @@ if apps = 1
         }
         count+=1
     }
-    run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
-    ExitApp
 }
-logg("FINISHED")
-ExitApp
-
-
+run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
 Esc::
 ExitApp
