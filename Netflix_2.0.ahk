@@ -7,7 +7,13 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
 
-FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+shortcut=C:\Users\%A_UserName%\Desktop\Netflix_2.0.ink
+shortcut2=%A_Desktop%\Netflix_2.0.ink
+if not FileExist(shortcut)
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk, C:\Users\%A_UserName%\Desktop\Netflix_2.0.ink
+if not FileExist(shortcut2)
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk, %A_Desktop%\Netflix_2.0.ink
+
 
 IniRead, count, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, count
 count += 1
