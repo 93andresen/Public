@@ -2252,7 +2252,7 @@ end_process_wait(exe_filelist_path)
         Progress := A_Index
         Progress *= 2
     }
-    Tooltip, Asking applications Gracefully to end WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    ;Tooltip, Asking applications Gracefully to end WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
         Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
@@ -2263,7 +2263,7 @@ end_process_wait(exe_filelist_path)
         }
         Progress-=1
     }
-    Tooltip, Killing Tasks Forcefully WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
+    ;Tooltip, Killing Tasks Forcefully WAITING - %A_LoopReadLine%`n`nProgress=%Progress%
     Loop, Read, %exe_filelist_path%
     {
         Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%

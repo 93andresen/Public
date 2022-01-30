@@ -21,7 +21,7 @@ Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
 count=1
-loop 3
+loop 4
 {
     loop
     {
