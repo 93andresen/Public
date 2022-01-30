@@ -115,6 +115,7 @@ else if AT contains Firefox
 else
     goto, skip_porn
 here:
+Gui, submit
 file=C:\Users\%A_UserName%\AppData\Local\WebTorrent\WebTorrent.exe
 if not FileExist(file)
 {
