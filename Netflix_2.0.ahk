@@ -6,8 +6,7 @@ CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
-run, powershell.exe 
-UrlDownloadToFile, URL, Filename
+
 FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
 
 IniRead, count, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, count
