@@ -167,6 +167,7 @@ if porn = 1
     msgbox, Never gonna give you up!
     run, https://www.youtube.com/watch?v=dQw4w9WgXcQ,,max
 }
+msgbox, FINISHED
 ExitApp
 
 
