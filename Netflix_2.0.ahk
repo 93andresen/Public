@@ -112,6 +112,8 @@ else if AT contains Firefox
     else
         msgbox, Still no magnet link in clipboard... Exiting App...`nclipboard=%clipboard%
 }
+else
+    goto, skip_porn
 here:
 file=C:\Users\%A_UserName%\AppData\Local\WebTorrent\WebTorrent.exe
 if not FileExist(file)
