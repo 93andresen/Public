@@ -4,8 +4,8 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, Force
 
 apps := inirw("r", "apps")
-if apps = 1
-{
+;if apps = 1
+;{
     ; If the script is not elevated, relaunch as administrator and kill current instance:
 
     full_command_line := DllCall("GetCommandLine", "str")
@@ -186,7 +186,7 @@ if apps = 1
     AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
     AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
     AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
-}
+;}
 
 netflix := inirw("r", "netflix")
 if netflix = 1
