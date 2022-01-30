@@ -244,6 +244,7 @@ if apps = 1
         }
         count+=1
     }
+return
 }
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
