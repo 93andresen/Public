@@ -58,7 +58,7 @@ if count > 5
     if rnd = 9
     {
         skiptoporn:
-        run, https://thepiratebay0.org/s/?page=0&orderby=99&q=Porn,,max
+        run, https://thepiratebay0.org/top/500,,max
         porn=1
         IniWrite, 1, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, porn
         goto, endporn
@@ -66,6 +66,7 @@ if count > 5
 }
 skip_porn:
 run, https://thepiratebay0.org/s/?page=0&orderby=99&q=%search%,,max
+waitforlink:
 loop
 {
     if clipboard contains magnet:?
@@ -87,10 +88,13 @@ if clipboard contains magnet:?
     magnet=%clipboard%
 }
 else if AT contains Chrome
-    msgbox, You are using Chrome, Right-click the magnet and click "copy link adress", then press OK`nclipboard=%clipboard%
+    {
+        msgbox, You are using Chrome, Right-click the magnet and click "copy link adress"
+        goto, waitforlink
+    }
 else if AT contains Firefox
 {
-    loop 5
+    loop 3
     {
         mouse_rightclick_func(mx, my)
         sleep, 100
@@ -104,13 +108,12 @@ else if AT contains Firefox
         }
         sleep, 200
     }
-    msgbox, Couldnr Fetch magnet link, Right-click the magnet and click "copy link adress", then press OK
     if clipboard contains magnet:?
     {
         magnet=%clipboard%
     }
     else
-        msgbox, Still no magnet link in clipboard... Exiting App...`nclipboard=%clipboard%
+        goto, waitforlink
 }
 else
     goto, skip_porn
