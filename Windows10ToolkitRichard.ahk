@@ -142,9 +142,8 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and
 SetCapsLockState, Off
 SetNumLockState, On
 
-if apps = 1
-{
-
+;if apps = 1
+;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
@@ -244,12 +243,26 @@ if apps = 1
         }
         count+=1
     }
-return
-}
+;}
+
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
 Esc::
 ExitApp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
