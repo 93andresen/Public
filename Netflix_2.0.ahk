@@ -145,15 +145,6 @@ if not FileExist(file)
 Tooltip, 
 run, cmd.exe /k %file% "%magnet%",,hide
 
-
-Esc::
-endporn:
-if porn = 1
-{
-    msgbox, There's no Escaping Destiny. . .
-    msgbox, Never gonna give you up!
-    run, https://www.youtube.com/watch?v=dQw4w9WgXcQ,,max
-}
 loop 300
 {
     WinActivate, WebTorrent
@@ -167,7 +158,57 @@ loop 300
     }
     sleep, 100
 }
+
+Esc::
+endporn:
+if porn = 1
+{
+    msgbox, There's no Escaping Destiny. . .
+    msgbox, Never gonna give you up!
+    run, https://www.youtube.com/watch?v=dQw4w9WgXcQ,,max
+}
 ExitApp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
