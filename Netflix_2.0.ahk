@@ -1068,7 +1068,7 @@ AHKPanicExcept(Kill=0, Pause=0, Suspend=0, SelfToo=0, path=0)
     WinGetTitle, ATitle, ahk_id %ID%
     Tooltip, Killing Autohotkey Scripts - %ATitle%`n`nProgress=%Progress%
     Progress-=1
-    IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Computer.ahk
+    IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
     {
         IfNotInString, ATitle, %path%
         {
