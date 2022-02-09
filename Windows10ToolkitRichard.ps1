@@ -6,9 +6,7 @@ if (Test-Path "C:\temp_Windows10ToolkitRichard"){
 }
 mkdir C:\temp_Windows10ToolkitRichard
 Set-Location C:\temp_Windows10ToolkitRichard
-Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard"
-Enable-ComputerRestore -Drive "C:\"
-Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
+
 
 $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
@@ -28,6 +26,17 @@ else{
 }
 choco feature enable -n=allowGlobalConfirmation
 choco feature enable -n allowEmptyChecksums
+
+#RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
+'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+
+#RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
+'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
+& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+
 if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
     'Winget Already Installed'
 }
@@ -60,17 +69,6 @@ else{
 }
 
 
-#RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
-
-'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
-'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
-
-
-#RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
-'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
 
 function Delete-FolderAndContents {
     # http://stackoverflow.com/a/9012108

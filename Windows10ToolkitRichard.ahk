@@ -23,10 +23,14 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
     ExitApp
 }
 
+
+
+
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+runwait, powershell.exe Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard";Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
 run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 loop 20
 {
