@@ -24,8 +24,10 @@ if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
 }  
 else{
     'Installing Chocolatey'
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 }
+choco feature enable -n=allowGlobalConfirmation
+choco feature enable -n allowEmptyChecksums
 if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
     'Winget Already Installed'
 }
@@ -37,8 +39,6 @@ else{
     Wait-Process -Id $nid
     Write-Host Winget Installed
 }
-choco feature enable -n=allowGlobalConfirmation
-choco feature enable -n allowEmptyChecksums
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'Autohotkey Already Installed'
 }  

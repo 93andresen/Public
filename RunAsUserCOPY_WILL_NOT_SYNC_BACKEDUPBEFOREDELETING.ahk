@@ -1,33 +1,212 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-#SingleInstance, force
-CoordMode, Pixel, Screen
-CoordMode, Mouse, Screen
-SetTitleMatchMode, 2
+#SingleInstance,force
 
-
-logfile=%1%
-x=1
-loop
+if A_ComputerName = G3-3
 {
-    FileReadLine, v, %logfile%, %x%
-    if Errorlevel=0
-    {
-        if v=
-        {
-            Stdout("`n")
-        }
-        else
-            Stdout(v)	;output to new console
-        x+=1
-    }
-    else
-    {
-        sleep, 10
-    }
-    sleep, 10
+    Tooltip, RunAsUser.ahk`n`nA_ComputerName = G3-3`nExiting App...
+    sleep, 5000
+    ExitApp
 }
+
+CoordMode, Screen
+Tooltip, ÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆÆ
+sleep, 100
+Tooltip, 
+return
+
+^+F8::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Autorun_RESTRICTED.ahk
+return
+
+return
+!t::
+Reload
+sleep, 300
+msgbox, FAILED TO RELOAD    
+return
+
+
+MouseGetPos, MX, MY
+clipboard=%MX%, %MY%
+return
+send, !{tab}
+sleep, 200
+sendinput, %MX%, %MY%
+return
+
+; Google Search clipbpard
+^+c::
+{
+ Run, http://www.google.com/search?q=%clipboard%
+}
+
+return
+;Chocolatey Search
+^+!c::
+{
+	Run, https://chocolatey.org/packages?q=%clipboard%
+}
+
+return
+^+r::
+Tooltip, .
+run, %clipboard%
+Tooltip, 
+return
+
+
+^Space::
+runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RESTRICTEDKeyboardLayout.ahk
+return
+
+<^>!,::
+send, {;}{Down}{Left}
+return
+
+
+::aaaa::ADMIN_
+
+
+;^D::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\DownloadSpotifyPlaylistOnMousePosition.ahk
+Return
+
+#!x::	;Open Folder ! Explorer
+run, explorer.exe
+return
+
+#!c::	;Open Folder ! Explorer
+run, C:\!
+return
+#!v::	;Open Folder ! Explorer
+run, D:\!
+return
+#!b::	;Open Folder ! Explorer
+run, E:\!
+return
+#!d::	;Open Folder ! Explorer
+RunActivate("Downloads", "explorer.exe", "c:\!\Downloads", "0", maximize)
+;winmaximize
+sleep, 300
+MouseClickDrag_func("left", "501", "21", "947", "9", "2")
+
+return
+#!f::	;Open Folder ! Explorer
+run, K:\c_dynamic
+return
+#!g::	;Open Folder ! Explorer
+run, L:\d_dynamic
+return
+#!h::	;Open Folder ! Explorer
+run, M:\e_dynamic
+return
+#!n::	;Open Folder ! Explorer
+run, R:\My Drive
+return
+#!j::	;Open Folder ! Explorer
+run, S:\My Drive
+return
+#!a::	;Open Folder ! Explorer
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey
+return
+#!t::
+path_c = c:\!\Torrents
+path_d = d:\!\Torrents
+path_e = e:\!\Torrents
+if FileExist(path_c)
+	run, %path_c%
+if FileExist(path_d)
+	run, %path_d%
+if FileExist(path_e)
+	run, %path_e%
+return
+
+Launch_App1::
+msgbox, Launch_App1 button pressed!
+return
+
+F12::
+run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\switch_task_dynalist.ahk
+return
+
+;!<::
+;send, #1
+;return
+;!z::
+;send, #2
+;return
+;!x::
+;send, #3	
+;return
+;!c::
+;send, #4
+;return
+;!v::
+;send, #5
+;return
+;!b::
+;send, #6
+;return
+;!n::
+;send, #7
+;return
+;!m:
+;send, #8
+;return
+;!,::
+;send, #9
+;return
+;!.::
+;send, #0
+;return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -347,6 +526,22 @@ RunActivate(title, exe_path, commands, multiple, maximize)
 ;    }
 ;return
 }
+WaitForPixelColor(x, y, color, ms)  ;CHANGE THIS WITH PixelSearch
+{
+    ms /= 100
+    loop %ms%
+    { 
+        CoordMode, Pixel, Screen
+        PixelGetColor, real_color, x, y, RGB
+        if real_color = %color%
+            break
+        else
+        {
+            sleep, 100
+            ;Tooltip, color = %color%`nreal_color = %real_color%
+        }
+    }
+}
 PlayYoutubePlaylist(link)
 {
     SetTitleMatchMode, 2
@@ -635,11 +830,11 @@ mouse_click_func(x, y)
     my2 := my+5
     BlockInput, MouseMove
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x2%, %y2%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     MouseClick, left, %x%, %y%, 1, 0
     mousemove, %mx%, %my%, 0
     BlockInput, MouseMoveOff
@@ -652,11 +847,11 @@ mouse_rightclick_func(x, y)
     my2 := my+5
     BlockInput, MouseMove
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x2%, %y2%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     MouseClick, right, %x%, %y%, 1, 0
     mousemove, %mx%, %my%, 0
     BlockInput, MouseMoveOff

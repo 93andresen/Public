@@ -60,7 +60,16 @@ MAYBE_AND_OTHER:
 C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Netflix_2.0.ahk
 simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
-
+NEW MAYBE AND OTHER:
+cup aaclr winaero-tweaker aerozoom ontopreplica chocobutler imagemagick iconworkshop iconviewer thumbico desktopicontoggle icofx nirext folder-marker terminal-icons.powershell becyicongrabber any2ico zvirtualdesktop defaultprogramseditor iconsext.install iconsext iconizer driverfusion faviconizer desktopicons-winconfig keepass-plugin-favicon ansicon nvidia-profile-inspector taskbarx cygwin soundswitch virtualmidisynth chocobutler taskbar-winconfig desk-drive hotswap hddguardian snips tcpipmanager.portable tcpipmanager chocolateypowershell shadowsocks ireboot 4k-tokkit nvidia-profile-inspector todotxt.net godmode clamsentinel sendmessage mbruler roost-desktop-notifier-for-nest cygwin imagemagick.app bginfo amp-winoff.install amp-winoff nyrna windows-repair-toolbox scp balabolka leanify data-lifeguard-diagnostic virtualmidisynth swyh libre-hardware-monitor system-monitor acronis-drive-monitor dual-monitor-tools monitorswitcher monitorinfoview directorymonitor fpsmonitor veeam-one-monitor-client monitordetails networkmonitor pingmonitorfree traffic-monitor remote-desktop-ip-monitor-and-blocker openhardwaremonitor wifichannelmonitor wifichannelmonitor performance-monitor gbm nzxt trafficwatcher ultramon wirelessnetview processactivityview regfromapp diskmon diskcountersview bluetoothview procmon userassistview deviceioview bluetoothlogview serialportmonitor serialportmonitor serialportmonitor serialportmonitor serialportmonitor serialportmonitor dbgview procrastitracker direvents cports hdguard aida64-extreme.portable iris aida64-engineer rawcap aida64-extreme sysmon sonarr radarr jackett sonarr lidarr lidarr smartmontools modernflyouts nirlauncher netstat-agent backupper-server multipass psievm disk2vhd packer vagrant vboxheadlesstray Dellcommandupdate Dellcommandupdate-uwp Intel-dsa Lastfmscrobbler Notepadplusplus Altsnap Sizer Launchy Plex Plexmediaserver Plex-home-theater Winamp Duplicati Mpc-be Workspacer Webtorrent-desktop Libreoffice-fresh Vcredist140 Rufus Bitwarden-cli Tidytabs Sandboxie.install Linkshellextension Internet-download-manager Pingplotter Rammap Regexcoach Accesschk Windows-kill Vmmap Npackd.install Drivermax Adwcleaner Cmdutils Ecm Iconworkshop Iconviewer Thumbico Desktopicontoggle Icofx Nirext Folder-marker Terminal-icons.powershell Becyicongrabber Any2ico Zvirtualdesktop Defaultprogramseditor Iconsext Iconizer Faviconizer Desktopicons-winconfig Keepass-plugin-favicon Ansicon Nvidia-profile-inspector Taskbarx Soundswitch Swyh Libre-hardware-monitor System-monitor Acronis-drive-monitor Dual-monitor-tools Monitorswitcher Monitorinfoview Directorymonitor Fpsmonitor Veeam-one-monitor-client Monitordetails Networkmonitor Pingmonitorfree Traffic-monitor Remote-desktop-ip-monitor-and-blocker Openhardwaremonitor Wifichannelmonitor Performance-monitor Gbm Nzxt Trafficwatcher Ultramon Wirelessnetview Processactivityview Regfromapp Diskmon Diskcountersview Bluetoothview Procmon Userassistview Deviceioview Bluetoothlogview Serialportmonitor Dbgview Procrastitracker Direvents DireventsCports Hdguard Aida64-extreme.portable Iris Aida64-engineer Rawcap Aida64-extreme Sysmon Sonarr Radarr Jackett Lidarr Smartmontools Modernflyouts Nirlauncher Netstat-agent Backupper-server Multipass Psievm Disk2vhd Packer Vagrant Vboxheadlesstray Driverfusion Windowsrepair Windows-admin-center Vortex Ultimate-settings-panel Winauth Windirstat Tidystart.powershell VirtualCloneDrive Urbackup-client Sysexp SwissFileKnife Strokesplus.portable Specialfoldersview Songr Silverlight Shotcut Shman ShellTools Shellbagsview Setup-Assistant Regexpixie Putty Powerautomatedesktop Netscan Lastactivityview Laps Imagemanager Googleearthpro Androidstudio Alldup Duplicatecleaner Deletefiles Minibin Recyclenow Rbcmd Recycle Neovim Smartftp Adb Playnite Opendns-updater Desktop-notifications-for-android-chrome Reprofiler Taskschedulerview Mailer Siv Partitionmasterfree Partitionwizard Perfmonitor2 Fluent-terminal Wsl2 Ln Junction-link-magic Ntfslinksview Defprof Supercopier Ultracopier Act-cli Git-lfs GoogleChrome.Canary Webstorm Gimp Win-vind Wsl-kalilinux Ganttproject Defraggler Vagrant Vagrant-manager Googlephotos Mp3tag Sharemouse Directoryopus Filezilla Winscp Doublecmd Beyondcompare 0install Wiztree Eraser Aaclr Winaero-tweaker Aerozoom Ontopreplica Chocobutler Imagemagick Bginfo Amp-winoff.install Amp-winoff Nyrna Windows-repair-toolbox Scp Balabolka Leanify Data-lifeguard-diagnostic Virtualmidisynth Taskbar-winconfig Desk-drive Hotswap Hddguardian Snips Tcpipmanager.portable Tcpipmanager Chocolateypowershell Shadowsocks Ireboot 4k-tokkit Todotxt.net Godmode Clamsentinel Sendmessage Mbruler Roost-desktop-notifier-for-nest Cygwi veracrypt Rainmeter Powertoys Plasso Regcool.portable 7zip Vscode Setdefaultbrowser Firefox Edgedeflector Autohotkey Chocolatey-misc-helpers.extension Fastcopy Python Winrar Peazip Classic-shell Sysinternals Cloneapp Epicgameslauncher Google-drive-file-stream Treesizefree Spacesniffer Shutup10 Revo-uninstaller Gh Git Github Mousewithoutborders F.lux Authy-desktop Everything Musicbee Th-ch-youtube-music Equalizerapo Steam Crystaldiskinfo Irfanview Irfanviewplugins Qalculate Throttlestop Microsoft-windows-terminal PowerShell Greenshot Speedyfox Geforce-experience Msiafterburner Directx Glaryutilities-free Virtualbox Copyq Discord Eartrumpet Yt-dlp Choco-package-list-backup Battle.net Ds4windows Obs Malwarebytes Thunderbird Qbittorrent Ffmpeg Dropit Jre8 Openjdk Signal Telegram Voicemeeter-banana Vlc Freedownloadmanager Spicetify-cli Terminal-icons.powershell Adobereader Googlechrome Tortoisesvn
+choco install tagspaces launchbox playnite goggalaxy gamedownloader game-collector gamesavemanage
+choco install notion pomodoneapp tomighty tomatoad
+livesplit
+choco install toggl
+choco install latencymon
+apo-ok
+choco install timeit
+windowsfirewallcontrol dns-benchmark
 
 LIB_BAD:
 choco install ntfssecurity-psmodule performance-monitor pal tidystart.powershell
@@ -132,12 +141,17 @@ if debloat = 1
 {
     RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
     ;RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
-RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
-RunPowershellWinConfigLog()
+    RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
+    RunPowershellWinConfigLog()
 }
 
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat,,max
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
+
+
+SetDNS(cloudflare)
+
+
 
 SetCapsLockState, Off
 SetNumLockState, On
@@ -336,3 +350,121 @@ inirw(rw, key, value:="")
         msgbox, ERROR, rw was not r or w`nrw=%rw%
     return %value%
 }
+
+SetDNS(provider)
+{
+    if FileExist("c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe")
+        exe_path = c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe
+    else if FileExist("C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe")
+        exe_path = C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe
+    else
+    {
+        status := CheckInstall("C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe", "QuickSetDNS")
+        if status = installed
+            exe_path = C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe
+        else
+        {
+            status := CheckInstall("c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe", "nirlauncher")
+            if status = installed
+                exe_path = c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe
+        }
+    }
+    if status = installed
+    {
+        if provider = cloudflare
+        {
+            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1"                                    ;Set Cloudflare dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001"         ;Set Cloudflare dns servers
+        }
+        if provider = automatic
+        {
+            runwait, cmd.exe /c %exe_path% /SetDNS ""	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 ""	                                                ;Set Automatic dns servers
+        }
+    }
+    runwait, cmd.exe /c ipconfig /flushdns
+}
+CheckInstall(path, choconame)
+{
+    if FileExist(path)
+    {
+        status = installed
+        logtofile("status = %status%", "CheckInstall.txt")
+    }
+    else
+    {
+        status = missing
+        if not FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
+        {    
+            runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+            if FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
+            {
+                choco = 1
+                runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation
+                runwait, powershell.exe choco feature enable -n=allowEmptyChecksums
+                logtofile("Sucsessfully Installed chocolatey", "CheckInstall.txt")
+                logtofile("choco feature enable -n=allowGlobalConfirmation", "CheckInstall.txt")
+                logtofile("choco feature enable -n=allowEmptyChecksums", "CheckInstall.txt")
+            }
+            else
+            {
+                choco = 0
+                logtofile("ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing", "CheckInstall.txt")
+                Tooltip, ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing
+                sleep, 5000
+                Tooltip, 
+            }
+        }
+        logtofile("choco install %choconame%", "CheckInstall.txt")
+        runwait, powershell.exe choco install %choconame%
+        if FileExist(path)
+        {
+            logtofile("Sucsessfully Installed %choconame%", "CheckInstall.txt")
+            Tooltip, 
+            status = installed
+        }
+        if not FileExist(path)
+        {
+            logtofile("choco install %choconame% %--ignore-checksums%", "CheckInstall.txt")
+            runwait, powershell.exe choco install %choconame% --ignore-checksums
+            if FileExist(path)
+            {
+                logtofile("Sucsessfully Installed %choconame% --ignore-checksums", "CheckInstall.txt")
+                Tooltip, 
+                status = installed
+            }
+        }
+        if not FileExist(path)
+        {
+            logtofile("choco install %choconame% %--ignore-checksums% %--force%", "CheckInstall.txt")
+            runwait, powershell.exe choco install %choconame% --ignore-checksums --force
+            if FileExist(path)
+            {
+                logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "CheckInstall.txt")
+                Tooltip, 
+                status = installed
+            }
+        }
+        if not FileExist(path)
+        {
+            logtofile("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "CheckInstall.txt")
+            runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies
+            if FileExist(path)
+            {
+                logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "CheckInstall.txt")
+                Tooltip, 
+                status = installed
+            }
+        }
+        else
+        {
+            logtofile("ERROR - tried to install %choconame% but %path% is still missing", "CheckInstall.txt")
+            Tooltip, ERROR - tried to install %choconame% but %path% is still missing
+            sleep, 5000
+            Tooltip, 
+        }
+    }
+    return %status%
+}
+
+

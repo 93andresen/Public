@@ -7,34 +7,179 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
 
-logfile=%1%
-x=1
-loop
+shortcut=C:\Users\%A_UserName%\Desktop\Netflix_2.0.ink
+shortcut2=%A_Desktop%\Netflix_2.0.ink
+if not FileExist(shortcut)
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk, C:\Users\%A_UserName%\Desktop\Netflix_2.0.ink
+if not FileExist(shortcut2)
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk, %A_Desktop%\Netflix_2.0.ink
+
+
+IniRead, count, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, count
+count += 1
+IniWrite, %count%, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, count
+
+if clipboard contains magnet:?
 {
-    FileReadLine, v, %logfile%, %x%
-    if Errorlevel=0
-    {
-        if v=
-        {
-            Stdout("`n")
-        }
-        else
-            Stdout(v)	;output to new console
-        x+=1
-    }
-    else
-    {
-        sleep, 10
-    }
-    sleep, 10
+    magnet=%clipboard%
+    goto, here
 }
 
+Gui, Add, Edit, vsearch x23 y52 w340 h50 ,
+Gui, Add, Button, x83 y112 w220 h70 , Arr Arr I'm a pirate!
+Gui, Add, Text, x83 y12 w220 h30 +Center, Search Series and Movies!
+; Generated using SmartGUI Creator 4.0
+Gui, Show, x393 y164 h194 w391, Netflix 2.0
+Return
 
+GuiClose:
+run, https://www.youtube.com/watch?v=dQw4w9WgXcQ,,max
+ExitApp
 
+ButtonArrArrI'mapirate!:
+~Enter::
+WinGetActiveTitle, AT
+if AT != Netflix 2.0
+    return
+Gui, submit
+Random, rnd, 0, 9
+IniRead, porn, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, porn
+IniWrite, 0, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, porn
+if porn = 1
+{
+    goto, skip_porn
+}
+if count > 5
+{
+    if count = 5
+    {
+        rnd = 9
+    }
+    if rnd = 9
+    {
+        skiptoporn:
+        run, https://thepiratebay0.org/top/500,,max
+        porn=1
+        IniWrite, 1, C:\Users\93and\AppData\Local\Temp\counter.ini, Section, porn
+        goto, endporn
+    }
+}
+skip_porn:
+run, https://thepiratebay0.org/s/?page=0&orderby=99&q=%search%,,max
+waitforlink:
+loop
+{
+    if clipboard contains magnet:?
+    {
+        magnet=%clipboard%
+        Tooltip, 
+        goto, here
+    }
+    else
+        sleep, 10
+    Tooltip, Waiting for magnet link in clipboard
+}
 
+Mbutton::
+MouseGetPos, mx, my
+WinGetActiveTitle, AT
+if clipboard contains magnet:?
+{
+    magnet=%clipboard%
+}
+else if AT contains Chrome
+    {
+        msgbox, You are using Chrome, Right-click the magnet and click "copy link adress"
+        goto, waitforlink
+    }
+else if AT contains Firefox
+{
+    loop 3
+    {
+        mouse_rightclick_func(mx, my)
+        sleep, 100
+        send, l
+        sleep, 100
+        if clipboard contains magnet:?
+        {
+            var=1
+            magnet=%clipboard%
+            goto, here
+        }
+        sleep, 200
+    }
+    if clipboard contains magnet:?
+    {
+        magnet=%clipboard%
+    }
+    else
+        goto, waitforlink
+}
+else
+    goto, skip_porn
+here:
+Gui, submit
+file=C:\Users\%A_UserName%\AppData\Local\WebTorrent\WebTorrent.exe
+if not FileExist(file)
+{
+    full_command_line := DllCall("GetCommandLine", "str")
+    if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+    {
+        try ; leads to having the script re-launching itself as administrator
+        {
+            if A_IsCompiled
+                Run *RunAs "%A_ScriptFullPath%" /restart
+            else
+                Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
+        }
+        ExitApp
+    }
+    Tooltip, Webtorrent is not Installed - Installing now
+    if not FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
+        runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')),,max
+    runwait, powershell.exe cup webtorrent-desktop,,max
+    countdown = 300
+    loop %countdown%
+    {
+        if not FileExist(file)
+            Tooltip, Waiting for file to appear:`n`nC:\Users\%A_UserName%\AppData\Local\WebTorrent\WebTorrent.exe`n`nTimeout - %countdown%/300
+        countdown -= 1
+        sleep, 100
+    }
+    if not FileExist(file)
+    {
+        Tooltip, 
+        msgbox, ERROR, can't seem to install webtorrent, try again or install it manually first... Exiting App...
+        ExitApp
+    }
+}
+Tooltip, 
+run, cmd.exe /k %file% "%magnet%",,hide
 
+loop 300
+{
+    WinActivate, WebTorrent
+    winmaximize, WebTorrent
+    WinGetActiveTitle, AT
+    if AT = WebTorrent
+    {
+        WinActivate, WebTorrent
+        winmaximize, WebTorrent
+        break
+    }
+    sleep, 100
+}
 
-
+Esc::
+endporn:
+if porn = 1
+{
+    msgbox, There's no Escaping Destiny. . .
+    msgbox, Never gonna give you up!
+    run, https://www.youtube.com/watch?v=dQw4w9WgXcQ,,max
+}
+msgbox, FINISHED
+ExitApp
 
 
 
@@ -293,14 +438,26 @@ RunActivate(title, exe_path, commands, multiple, maximize)
 {
     SplitPath, exe_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if multiple = 1
-        run, %exe_path% %commands%
+    {
+        if exe_path contains http
+            run, %exe_path% %commands%
+        else
+            PID := run_file_if_it_exists(exe_path, commands)
+
+    }
     else if ProcExist(OutFileName)
         if exe_path contains .exe
             WinActivate, ahk_exe %OutFileName%
         else
             WinActivate, %title%
     else
-        run, %exe_path% %commands%
+    {
+        if exe_path contains http
+            run, %exe_path% %commands%
+        else
+            PID := run_file_if_it_exists(exe_path, commands)
+
+    }
     count=100
     loop
     {
@@ -316,7 +473,7 @@ RunActivate(title, exe_path, commands, multiple, maximize)
             Tooltip, RunActivate Function Timed out after 10 seconds...
             sleep, 3000
             Tooltip, 
-            return
+            return %PID%
         }
         count-=1
         sleep, 100
@@ -328,6 +485,7 @@ RunActivate(title, exe_path, commands, multiple, maximize)
         WinMaximize, %title%
         WinMaximize, %OutDir%
     }
+    return %PID%
 
 ; Windows-Shift-S: launches new Chrome instance or activates existing one (and opens new tab)
 ;#+s::
@@ -347,18 +505,81 @@ RunActivate(title, exe_path, commands, multiple, maximize)
 ;    }
 ;return
 }
+WaitForPixelColor(x, y, color, ms)  ;CHANGE THIS WITH PixelSearch
+{
+    ms /= 100
+    loop %ms%
+    {
+        CoordMode, Pixel, Screen
+        PixelGetColor, real_color, x, y, RGB
+        if real_color = %color%
+            return %color%
+        else
+        {
+            sleep, 100
+            ;Tooltip, color = %color%`nreal_color = %real_color%
+        }
+    }
+    return %real_color%
+}
 PlayYoutubePlaylist(link)
 {
     SetTitleMatchMode, 2
     CoordMode mouse, screen
     RunActivate("Watch later", link, "", "0", "1")
-    WaitForPixelColor("437", "857", "0x000000", "10000")
-    sleep, 1000
-    mouse_click_func("473", "399")      ;   press top video (latest)
-    WaitForPixelColor("1505", "317", "0x000000", "10000")
-    sleep, 5000
-    mouse_click_func("685", "469")  ;   fullscreen
-    mouse_click_func("685", "469")  ;   fullscreen
+    back:
+    loop 350
+    {
+        WaitForPixelColor("437", "857", "0x000000", "100")
+        ;WaitForPixelColor("1505", "317", "0x000000", "10000")
+        ;WaitForPixelColor("1505", "317", "0x000000", "10000")
+        WinActivate, ahk_exe Firefox.exe
+        WinMaximize, ahk_exe Firefox.exe
+        WinGetActiveTitle, AT
+        sleep, 100
+        if AT contains YouTube
+        {
+            if AT contains Watch later
+            {
+                send, ^0
+                PixelGetColor, newcolor, 437, 857, RGB    ; Play Pause Button should be white either way
+                if newcolor=0x000000
+                    mouse_click_func("473", "399")      ;   press top video (latest)
+                sleep, 1000
+            }
+            else break
+        }
+    }
+    loop 300
+    {
+        loop_counter+=1
+        Var := Mod(loop_counter, 10)
+        if Var = 0
+        {
+            WinActivate, ahk_exe Firefox.exe
+            WinMaximize, ahk_exe Firefox.exe
+        }
+        MouseMove, 216, 830, 0
+        Tooltip, [%sucsess%/10] [%this_color%]-[%last_color%]
+        Random, xm, 107, 1260
+        Random, ym, 208, 794
+        MouseMove, %xm%, %ym%, 0
+        last_color = %this_color%
+        PixelGetColor, this_color, %xm%, %ym%, RGB
+        if this_color=%last_color%
+            sucsess=0
+        else
+            sucsess+=1
+        if sucsess>10
+            goto, skip_playcheck
+    }
+    PixelGetColor, pause_middle, 218, 828, RGB    ; In the middle of pause button
+    if pause_middle != 0xFFFFFF
+        mouse_click_func("218", "828")
+    skip_playcheck:
+    mouse_click_func("1223", "832") ;   fullscreen
+    ;mouse_click_func("685", "469")  ;   fullscreen
+    ;mouse_click_func("685", "469")  ;   fullscreen
 }
 ClickPhoto(photo)
 {
@@ -547,7 +768,7 @@ WriteNewAutohotkeyFunctionAHK()
                 mouse_click_func("31", "83")
                 mousemove, 276, 251, 0
                 sleep, 150
-                send, {WheelUp 5000}
+                send, {WheelUp 2000}
                 mouse_rightclick_func(243, 133)
                 sleep, 200
                 mouse_click_func(281, 158)
@@ -566,9 +787,10 @@ sleep_tooltip(seconds, tooltip)
     loop %seconds%
     {
         seconds -= 1
-        sleep, 1000
         Tooltip, %seconds%`n%tooltip%
+        sleep, 1000
     }
+    Tooltip, 
 }
 ConnectedToInternet(flag=0x40) 
 { 
@@ -635,11 +857,11 @@ mouse_click_func(x, y)
     my2 := my+5
     BlockInput, MouseMove
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x2%, %y2%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     MouseClick, left, %x%, %y%, 1, 0
     mousemove, %mx%, %my%, 0
     BlockInput, MouseMoveOff
@@ -652,11 +874,11 @@ mouse_rightclick_func(x, y)
     my2 := my+5
     BlockInput, MouseMove
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x2%, %y2%, 0
-    sleep, 3
+    sleep, 10
     mousemove, %x%, %y%, 0
-    sleep, 3
+    sleep, 10
     MouseClick, right, %x%, %y%, 1, 0
     mousemove, %mx%, %my%, 0
     BlockInput, MouseMoveOff
@@ -826,7 +1048,49 @@ end_process_wait(exe_filelist_path)
         Progress-=1
     }
 }
-AHKPanic(Kill=0, Pause=0, Suspend=0, SelfToo=0) {
+AHKPanicExcept(Kill=0, Pause=0, Suspend=0, SelfToo=0, path=0) 
+{
+  DetectHiddenWindows, On
+  WinGet, IDList ,List, ahk_class AutoHotkey
+
+  Loop, %IDList%
+  {
+      Progress := A_Index
+      ;Progress *= 2
+  }
+  Loop %IDList%
+  {
+    ID:=IDList%A_Index%
+    WinGetTitle, ATitle, ahk_id %ID%
+    Tooltip, Killing Autohotkey Scripts - %ATitle%`n`nProgress=%Progress%
+    Progress-=1
+    IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
+    {
+        IfNotInString, ATitle, %path%
+        {
+            IfNotInString, ATitle, %A_ScriptFullPath%
+            {
+                If Suspend
+                PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
+                If Pause
+                PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
+                If Kill
+                WinClose, ahk_id %ID% ;kill
+            }
+        }
+    }
+  }
+  If SelfToo
+  {
+  If Suspend
+    Suspend, Toggle  ; Suspend. 
+  If Pause
+    Pause, Toggle, 1  ; Pause.
+  If Kill
+    ExitApp
+  }
+}
+AHKPanicOLD(Kill=0, Pause=0, Suspend=0, SelfToo=0) {
 DetectHiddenWindows, On
 WinGet, IDList ,List, ahk_class AutoHotkey
 Loop %IDList%
@@ -853,7 +1117,6 @@ If SelfToo
     ExitApp
   }
 }
-
 run_run_process(process, path, cmd)
 {
     Process, Exist, %process%
@@ -867,14 +1130,16 @@ run_file_if_it_exists(path, cmd)
 {
     if FileExist(path)
     {
-        run, %path% %cmd%
+        run, %path% %cmd%,,,PID
+        return %PID%
     }
 }
 runwait_file_if_it_exists(path, cmd)
 {
     if FileExist(path)
     {
-        runwait, %path% %cmd%
+        runwait, %path% %cmd%,,,PID
+        return %PID%
     }
 }
 
