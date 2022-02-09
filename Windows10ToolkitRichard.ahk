@@ -467,4 +467,8 @@ CheckInstall(path, choconame)
     return %status%
 }
 
-
+logtofile(x, filename)
+{
+	FormatTime,TimeLongms,, yyyy-MM-dd_HH-mm-ss.%A_msec%
+	FileAppend, `n%TimeLongms% %x%, %filename%
+}
