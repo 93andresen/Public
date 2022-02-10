@@ -168,7 +168,7 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_no
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 
-SetDNS("cloudflare")
+SetDNS("cloudflare", "ipv4")
 
 
 
@@ -370,7 +370,7 @@ inirwTOOLKIT(rw, key, value:="")
     return %value%
 }
 
-SetDNS(provider)
+SetDNS(provider, ipv4:="", ipv6:="")
 {
     if FileExist("c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe")
     {
@@ -398,13 +398,17 @@ SetDNS(provider)
     {
         if provider = cloudflare
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                       ;Set Cloudflare dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max            ;Set Cloudflare dns servers
+            if ipv4=ipv4
+                runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                       ;Set Cloudflare dns servers
+            if ipv6=ipv6
+                runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max            ;Set Cloudflare dns servers
         }
         if provider = automatic
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS "",,max	                                                    ;Set Automatic dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 "",,max	                                                    ;Set Automatic dns servers
+            if ipv4=ipv4
+                runwait, cmd.exe /c %exe_path% /SetDNS "",,max	                                                    ;Set Automatic dns servers
+            if ipv6=ipv6
+                runwait, cmd.exe /c %exe_path% /SetDNS6 "",,max	                                                    ;Set Automatic dns servers
         }
     }
     runwait, cmd.exe /c ipconfig /flushdns,,max
