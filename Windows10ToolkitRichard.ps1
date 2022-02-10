@@ -3,9 +3,11 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 Set-Location C:\temp_Windows10ToolkitRichard
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
+    'C:\temp_Windows10ToolkitRichard Allready Exists - Overwriting it'
+}
+else{
     mkdir C:\temp_Windows10ToolkitRichard
 }
-
 $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
