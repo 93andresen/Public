@@ -3,7 +3,8 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
-
+SetDNS("cloudflare")
+ExitApp
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
 
@@ -169,7 +170,7 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_no
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 
-SetDNS(cloudflare)
+SetDNS("cloudflare")
 
 
 
@@ -374,9 +375,15 @@ inirwTOOLKIT(rw, key, value:="")
 SetDNS(provider)
 {
     if FileExist("c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe")
+    {
+        status = installed
         exe_path = c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe
+    }
     else if FileExist("C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe")
+    {
+        status = installed
         exe_path = C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe
+    }
     else
     {
         status := CheckInstall("C:\ProgramData\chocolatey\lib\quicksetdns\tools\QuickSetDNS.exe", "QuickSetDNS")
@@ -393,13 +400,13 @@ SetDNS(provider)
     {
         if provider = cloudflare
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                    ;Set Cloudflare dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max         ;Set Cloudflare dns servers
+            runwait, cmd.exe /k %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                    ;Set Cloudflare dns servers
+            runwait, cmd.exe /k %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max         ;Set Cloudflare dns servers
         }
         if provider = automatic
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS "",,max	                                                ;Set Automatic dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 "",,max	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /k %exe_path% /SetDNS "",,max	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /k %exe_path% /SetDNS6 "",,max	                                                ;Set Automatic dns servers
         }
     }
     runwait, cmd.exe /c ipconfig /flushdns,,max
@@ -475,13 +482,13 @@ CheckInstall(path, choconame)
                 Tooltip, 
                 status = installed
             }
-        }
-        else
-        {
-            logtofile("ERROR - tried to install %choconame% but %path% is still missing", "CheckInstall.txt")
-            Tooltip, ERROR - tried to install %choconame% but %path% is still missing
-            sleep, 5000
-            Tooltip, 
+            else
+            {
+                logtofile("ERROR - tried to install %choconame% but %path% is still missing", "CheckInstall.txt")
+                Tooltip, ERROR - tried to install %choconame% but %path% is still missing
+                sleep, 5000
+                Tooltip, 
+            }
         }
     }
     return %status%
