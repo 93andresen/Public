@@ -1,9 +1,10 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
-mkdir C:\temp_Windows10ToolkitRichard
 Set-Location C:\temp_Windows10ToolkitRichard
-
+if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
+    mkdir C:\temp_Windows10ToolkitRichard
+}
 
 $source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
 $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
