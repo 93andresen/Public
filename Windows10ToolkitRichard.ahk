@@ -23,14 +23,23 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
     ExitApp
 }
 
-
+var = %1%
+if var = shortcutstart
+{
+    run, powershell.exe iwr git.io/J13Mt -UseBasicParsing|iex
+    ExitApp
+}
 
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
-filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-runwait, powershell.exe Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard";Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
+updating := inirwTOOLKIT("r", "updating")
+if updating = 1
+{
+    filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    runwait, powershell.exe Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard";Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
+}
 run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 loop 20
 {
@@ -42,22 +51,27 @@ loop 20
 }
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
-runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
+if updating = 1
+    runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
-update := inirw("r", "update")
-debloat := inirw("r", "debloat")
-apps := inirw("r", "apps")
-netflix := inirw("r", "netflix")
+update := inirwTOOLKIT("r", "update")
+debloat := inirwTOOLKIT("r", "debloat")
+apps := inirwTOOLKIT("r", "apps")
+netflix := inirwTOOLKIT("r", "netflix")
 
-if update = 1
-    logg("Update Windows - was Picked")
-if debloat = 1
-    logg("Debloat and Optimize Windows (Including OneDrive) - was Picked")
-if apps = 1
-    logg("Install Applications (Lets you choose Applications) - was Picked")
-if netflix = 1
-    logg("Netflix 2.0 - was Picked")
+if updating != 1
+{
+    if update = 1
+        logg("Update Windows - was Picked")
+    if debloat = 1
+        logg("Debloat and Optimize Windows (Including OneDrive) - was Picked")
+    if apps = 1
+        logg("Install Applications (Lets you choose Applications) - was Picked")
+    if netflix = 1
+        logg("Netflix 2.0 - was Picked")
+}
+
 /*
 MAYBE_AND_OTHER:
 
@@ -119,27 +133,29 @@ C:\Users\pass9\OneDrive\Documents\WindowsPowerShell\
 https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 
-;loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed. Then run:
-;{
-;     run, powershell.exe cup powershell powershell-core dotnet4.6.1 powershell;Set-ExecutionPolicy RemoteSigned -scope CurrentUser;Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-;     sleep, 5000
-;     send, a
-;     send, {enter}
-;     sleep, 3000
-;     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop install git
-;     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop update
-;}
+loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed. Then run:
+{
+     run, powershell.exe cup powershell powershell-core dotnet4.6.1 powershell;Set-ExecutionPolicy RemoteSigned -scope CurrentUser;Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+     sleep, 5000
+     send, a
+     send, {enter}
+     sleep, 3000
+     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop install git
+     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop update
+}
 
 */
 
 if update = 1
 {
-    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+    FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk, C:\temp_Windows10ToolkitRichard\Public-main, shortcutstart
+    inirwTOOLKIT("w", "updating", "1")
     RunPowershellLog("cup abc-update")
-    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,min
+    runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,max
     RunPowershellLog("cup Boxstarter")
     RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate")
     filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
+    inirwTOOLKIT("w", "updating", "0")
 }
 if debloat = 1
 {
@@ -344,7 +360,7 @@ RunPowershellWinConfigLog()
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
 }
 
-inirw(rw, key, value:="")
+inirwTOOLKIT(rw, key, value:="")
 {
     if rw=w
         IniWrite, %value%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%

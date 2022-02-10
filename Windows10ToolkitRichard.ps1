@@ -13,9 +13,9 @@ $destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
 Invoke-WebRequest -Uri $source -OutFile $destination
 'Downloading 93andresen Public Folder as zip'
 Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard
-Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
+#Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
 
-# INSTALLING CHOCOLATEY AND WINGET
+# INSTALLING CHOCOLATEY
 
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
@@ -27,15 +27,20 @@ else{
 choco feature enable -n=allowGlobalConfirmation
 choco feature enable -n allowEmptyChecksums
 
-#RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
-'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
+    #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
+    'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+    
+    #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
+    'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+    'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+}
 
-#RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
-'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
-'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
-& "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
+
+# INSTALLING WINGET
 
 if (Test-Path ~\AppData\Local\Microsoft\WindowsApps\winget.exe){
     'Winget Already Installed'
@@ -50,7 +55,7 @@ else{
 }
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'Autohotkey Already Installed'
-}  
+}
 else{
     choco install Autohotkey -y
     if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
@@ -66,6 +71,15 @@ else{
             'Could not install Autohotkey with Winget OR Chocolatey!!!'
         }
     }
+    #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
+    'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+    
+    #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
+    'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk
+    'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk - THIS ALSO RUNS AS ADMIN'
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\RunAsUserCOPY_WILL_NOT_SYNC.ahk
 }
 
 

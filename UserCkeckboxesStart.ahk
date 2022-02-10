@@ -42,26 +42,26 @@ Gui, Submit  ; Save each control's contents to its associated variable.
 
 
 if update = 1
-    inirw("w", "update", "1")
+    inirwTOOLKIT("w", "update", "1")
 else
-    inirw("w", "update", "0")
+    inirwTOOLKIT("w", "update", "0")
 if debloat = 1
-    inirw("w", "debloat", "1")
+    inirwTOOLKIT("w", "debloat", "1")
 else
-    inirw("w", "debloat", "0")
+    inirwTOOLKIT("w", "debloat", "0")
 if apps = 1
-    inirw("w", "apps", "1")
+    inirwTOOLKIT("w", "apps", "1")
 else
-    inirw("w", "apps", "0")
+    inirwTOOLKIT("w", "apps", "0")
 if netflix = 1
-    inirw("w", "netflix", "1")
+    inirwTOOLKIT("w", "netflix", "1")
 else
-    inirw("w", "netflix", "0")
+    inirwTOOLKIT("w", "netflix", "0")
 
 ExitApp
 
 
-inirw(rw, key, value:="")
+inirwTOOLKIT(rw, key, value:="")
 {
     if rw=w
         IniWrite, %value%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%

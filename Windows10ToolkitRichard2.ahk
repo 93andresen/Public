@@ -3,7 +3,7 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, Force
 
-apps := inirw("r", "apps")
+apps := inirwTOOLKIT("r", "apps")
 ;if apps = 1
 ;{
     ; If the script is not elevated, relaunch as administrator and kill current instance:
@@ -188,7 +188,7 @@ apps := inirw("r", "apps")
     AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 ;}
 
-netflix := inirw("r", "netflix")
+netflix := inirwTOOLKIT("r", "netflix")
 if netflix = 1
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
 
@@ -258,7 +258,7 @@ runwait, cmd.exe /c bcdedit /set hypervisorlaunchtype off,,min
 
 */
 
-inirw(rw, key, value:="")
+inirwTOOLKIT(rw, key, value:="")
 {
     if rw=w
         IniWrite, %value%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%
