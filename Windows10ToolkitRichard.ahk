@@ -34,7 +34,7 @@ if var = shortcutstart
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 updating := inirwTOOLKIT("r", "updating")
-if updating = 1
+if updating != 1
 {
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
@@ -51,7 +51,7 @@ loop 20
 }
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
-if updating = 1
+if updating != 1
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
@@ -347,14 +347,14 @@ logg(x)
 }
 RunPowershellLog(command)
 {
-    runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,min
+    runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
     FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
     logg(powershelllogtemp)
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
 }
 RunPowershellWinConfigLog()
 {
-    runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,min
+    runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
     FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
     logg(powershelllogtemp)
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
@@ -393,16 +393,16 @@ SetDNS(provider)
     {
         if provider = cloudflare
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1"                                    ;Set Cloudflare dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001"         ;Set Cloudflare dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                    ;Set Cloudflare dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max         ;Set Cloudflare dns servers
         }
         if provider = automatic
         {
-            runwait, cmd.exe /c %exe_path% /SetDNS ""	                                                ;Set Automatic dns servers
-            runwait, cmd.exe /c %exe_path% /SetDNS6 ""	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS "",,max	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 "",,max	                                                ;Set Automatic dns servers
         }
     }
-    runwait, cmd.exe /c ipconfig /flushdns
+    runwait, cmd.exe /c ipconfig /flushdns,,max
 }
 CheckInstall(path, choconame)
 {
@@ -416,12 +416,12 @@ CheckInstall(path, choconame)
         status = missing
         if not FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
         {    
-            runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+            runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')),,max
             if FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
             {
                 choco = 1
-                runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation
-                runwait, powershell.exe choco feature enable -n=allowEmptyChecksums
+                runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation,,max
+                runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,,max
                 logtofile("Sucsessfully Installed chocolatey", "CheckInstall.txt")
                 logtofile("choco feature enable -n=allowGlobalConfirmation", "CheckInstall.txt")
                 logtofile("choco feature enable -n=allowEmptyChecksums", "CheckInstall.txt")
@@ -436,7 +436,7 @@ CheckInstall(path, choconame)
             }
         }
         logtofile("choco install %choconame%", "CheckInstall.txt")
-        runwait, powershell.exe choco install %choconame%
+        runwait, powershell.exe choco install %choconame%,,max
         if FileExist(path)
         {
             logtofile("Sucsessfully Installed %choconame%", "CheckInstall.txt")
@@ -446,7 +446,7 @@ CheckInstall(path, choconame)
         if not FileExist(path)
         {
             logtofile("choco install %choconame% %--ignore-checksums%", "CheckInstall.txt")
-            runwait, powershell.exe choco install %choconame% --ignore-checksums
+            runwait, powershell.exe choco install %choconame% --ignore-checksums,,max
             if FileExist(path)
             {
                 logtofile("Sucsessfully Installed %choconame% --ignore-checksums", "CheckInstall.txt")
@@ -457,7 +457,7 @@ CheckInstall(path, choconame)
         if not FileExist(path)
         {
             logtofile("choco install %choconame% %--ignore-checksums% %--force%", "CheckInstall.txt")
-            runwait, powershell.exe choco install %choconame% --ignore-checksums --force
+            runwait, powershell.exe choco install %choconame% --ignore-checksums --force,,max
             if FileExist(path)
             {
                 logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "CheckInstall.txt")
@@ -468,7 +468,7 @@ CheckInstall(path, choconame)
         if not FileExist(path)
         {
             logtofile("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "CheckInstall.txt")
-            runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies
+            runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies,,max
             if FileExist(path)
             {
                 logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "CheckInstall.txt")
