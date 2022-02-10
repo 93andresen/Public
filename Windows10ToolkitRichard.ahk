@@ -168,6 +168,7 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_no
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 
+SetDNS("automatic")
 SetDNS("cloudflare", "ipv4")
 
 
@@ -370,7 +371,7 @@ inirwTOOLKIT(rw, key, value:="")
     return %value%
 }
 
-SetDNS(provider, ipv4:="", ipv6:="")
+SetDNS(provider, ipv4, ipv6)
 {
     if FileExist("c:\tools\nirlauncher\NirSoft\QuickSetDNS.exe")
     {
