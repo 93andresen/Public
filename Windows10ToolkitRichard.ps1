@@ -1,9 +1,6 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
-if (Test-Path "C:\temp_Windows10ToolkitRichard"){
-    Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard" -Force -Recurse
-}
 mkdir C:\temp_Windows10ToolkitRichard
 Set-Location C:\temp_Windows10ToolkitRichard
 
