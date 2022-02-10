@@ -400,13 +400,13 @@ SetDNS(provider)
     {
         if provider = cloudflare
         {
-            runwait, cmd.exe /k %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                    ;Set Cloudflare dns servers
-            runwait, cmd.exe /k %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max         ;Set Cloudflare dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS "1.1.1.1,1.0.0.1",,max                                    ;Set Cloudflare dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 "2606:4700:4700::1111,2606:4700:4700::1001",,max         ;Set Cloudflare dns servers
         }
         if provider = automatic
         {
-            runwait, cmd.exe /k %exe_path% /SetDNS "",,max	                                                ;Set Automatic dns servers
-            runwait, cmd.exe /k %exe_path% /SetDNS6 "",,max	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS "",,max	                                                ;Set Automatic dns servers
+            runwait, cmd.exe /c %exe_path% /SetDNS6 "",,max	                                                ;Set Automatic dns servers
         }
     }
     runwait, cmd.exe /c ipconfig /flushdns,,max
