@@ -168,7 +168,7 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_no
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 
-SetDNS("automatic", "ipv4", "ipv6")
+;SetDNS("automatic", "ipv4", "ipv6")
 SetDNS("cloudflare", "ipv4", "0")
 
 
