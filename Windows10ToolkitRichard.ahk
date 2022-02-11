@@ -410,7 +410,7 @@ CheckInstall(path, choconame)
     if FileExist(path)
     {
         status = installed
-        ("status = %status%", "CheckInstall.txt")
+        log("status = installed", "CheckInstall.txt")
     }
     else
     {
