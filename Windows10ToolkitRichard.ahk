@@ -62,13 +62,13 @@ netflix := inirwTOOLKIT("r", "netflix")
 if updating != 1
 {
     if update = 1
-        logg("Update Windows - was Picked")
+        log"Update Windows - was Picked")
     if debloat = 1
-        logg("Debloat and Optimize Windows (Including OneDrive) - was Picked")
+        log"Debloat and Optimize Windows (Including OneDrive) - was Picked")
     if apps = 1
-        logg("Install Applications (Lets you choose Applications) - was Picked")
+        log"Install Applications (Lets you choose Applications) - was Picked")
     if netflix = 1
-        logg("Netflix 2.0 - was Picked")
+        log"Netflix 2.0 - was Picked")
 }
 
 /*
@@ -159,7 +159,6 @@ if update = 1
 if debloat = 1
 {
     RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-
     ;RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     RunPowershellWinConfigLog()
@@ -356,7 +355,7 @@ RunPowershellWinConfigLog()
 {
     runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
     FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
-    logg(powershelllogtemp)
+    logpowershelllogtemp)
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
 }
 
