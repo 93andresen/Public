@@ -149,18 +149,19 @@ if update = 1
 {
     FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk, C:\temp_Windows10ToolkitRichard\Public-main, shortcutstart
     inirwTOOLKIT("w", "updating", "1")
-    RunPowershellLog("cup abc-update")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup abc-update", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,max
-    RunPowershellLog("cup Boxstarter")
-    RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup Boxstarter", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;import-module Boxstarter.WinConfig;Install-WindowsUpdate", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
     inirwTOOLKIT("w", "updating", "0")
 }
 if debloat = 1
 {
-    RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1")
-    ;RunPowershellLog("C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1")
-    RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ChrisTitusForkRichard.ps1", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+
+    ;RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;C:\temp_Windows10ToolkitRichard\Public-main\Windows10DebloaterSycnexForkRichard.ps1", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     RunPowershellWinConfigLog()
 }
 
@@ -341,16 +342,15 @@ PrintDebug(string:=""){
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
 
-logg(x)
+
+RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_path:="TimeLong_temp_path", minmaxhide:="max")
 {
-    FileAppend, `n%x%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-}
-RunPowershellLog(command)
-{
-    runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command% | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
-    FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
-    logg(powershelllogtemp)
-    ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
+    FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    if temp_path = TimeLong_temp_path
+        temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
+    runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
+    FileRead, ps_tmp, %temp_path%
+    FileAppend, `n%ps_tmp%, %path%
 }
 RunPowershellWinConfigLog()
 {

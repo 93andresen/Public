@@ -627,60 +627,6 @@ wait_for_fastcopy_to_finish()
         }
     }
 }
-DownloadYoutubeMusic(metafiles, openfolder, deleteparts, format, path, link)
-{
-    FileCreateDir, %path%
-    SetWorkingDir, %path%
-    if FileExist(path)
-        sleep, 1
-    else
-    {
-        log = %path% Doesent Exist
-        LogTime(log)
-    }
-    if A_WorkingDir = %path%
-        sleep, 1
-    else
-    {
-        log2 = ERROR! Working Directory is %A_WorkingDir%... Exiting App...
-        LogTime(log2)
-        msgbox, ERROR! Working Directory is %A_WorkingDir%... Exiting App...
-        ExitApp
-    }
-    SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-    Tooltip, %OutFileName%Launching yt-dlp`nmetafiles=%metafiles%`nopenfolder=%openfolder%`ndeleteparts=%deleteparts%`nformat=%format%`npath=%path%
-    if openfolder=1
-    {
-        runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\DownloadYoutubeNoWait.ahk %metafiles% %openfolder% %deleteparts% %format% %path% %link%
-    }
-    else
-    {
-        run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\DownloadYoutubeNoWait.ahk %metafiles% %openfolder% %deleteparts% %format% %path% %link%
-    }
-    rename:
-    loop
-    {
-        IfWinExist, C:\ProgramData\chocolatey\bin\yt-dlp.exe
-            break
-        sleep, 200
-    }
-    loop
-    {
-        WinSetTitle, C:\ProgramData\chocolatey\bin\yt-dlp.exe,, %OutFileName% %format% yt-dlp
-        IfWinExist, C:\ProgramData\chocolatey\bin\yt-dlp.exe
-        {
-            sleep, 500
-        }
-        else
-            break
-    }
-    IfWinExist, C:\ProgramData\chocolatey\bin\yt-dlp.exe
-        goto, rename
-    ;WinMaximize, %OutFileName% yt-dlp
-    ;WinMinimize, %OutFileName% yt-dlp
-    ; --paths [TYPES:]PATH
-    ; --output %(title)s.%(ext)s
-}
 CleanYTMusicFolder(path, deleteparts)
 {
     SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
