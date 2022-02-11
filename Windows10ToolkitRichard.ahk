@@ -446,11 +446,11 @@ CheckInstall(path, choconame)
         }
         if not FileExist(path)
         {
-            log("Installing %choconame% ignoring checksums", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+            log("Installing %choconame% - ignoring checksums", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums,,max
             if FileExist(path)
             {
-                log("Sucsessfully Installed %choconame% --ignore-checksums", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+                log("Sucsessfully Installed %choconame% ignored checksums", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
                 Tooltip, 
                 status = installed
             }
@@ -468,7 +468,7 @@ CheckInstall(path, choconame)
         }
         if not FileExist(path)
         {
-            log("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+            log("Installing %choconame% - ignoring checksums --ignore-checksums --force --force-dependencies", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies,,max
             if FileExist(path)
             {
