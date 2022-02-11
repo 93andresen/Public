@@ -496,8 +496,8 @@ CheckInstall(path, choconame)
     return %status%
 }
 
-log(x, filename)
+log(x, filename:="C:\!\Logs\LogToFile.txt")
 {
-	FormatTime,TimeLongms,, yyyy-MM-dd_HH-mm-ss.%A_msec%
-	FileAppend, `n%TimeLongms% %x%, %filename%
+	FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
+	FileAppend, `n%TimeLong% %x%, %filename%
 }
