@@ -440,7 +440,7 @@ CheckInstall(path, choconame)
         runwait, powershell.exe choco install %choconame%,,max
         if FileExist(path)
         {
-            log("Sucsessfully Installed %choconame%", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+            log("Sucsessfully Installed %choconame%", "C:l\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
             Tooltip, 
             status = installed
         }
