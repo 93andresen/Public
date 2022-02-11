@@ -342,7 +342,7 @@ PrintDebug(string:=""){
 }
 
 
-RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_path:="TimeLong_temp_path", minmaxhide:="max")
+RunPowershellLogcommand, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_path:="TimeLong_temp_path", minmaxhide:="max")
 {
     FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
     if temp_path = TimeLong_temp_path
