@@ -62,13 +62,13 @@ netflix := inirwTOOLKIT("r", "netflix")
 if updating != 1
 {
     if update = 1
-        log("Update Windows - was Picked", "fffffffffffffffffffffffffffffffffff")
+        log("Update Windows - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if debloat = 1
-        log("Debloat and Optimize Windows (Including OneDrive) - was Picked", "fffffffffffffffffffffffffffffffffff")
+        log("Debloat and Optimize Windows (Including OneDrive) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if apps = 1
-        log("Install Applications (Lets you choose Applications) - was Picked", "fffffffffffffffffffffffffffffffffff")
+        log("Install Applications (Lets you choose Applications) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if netflix = 1
-        log("Netflix 2.0 - was Picked", "fffffffffffffffffffffffffffffffffff")
+        log("Netflix 2.0 - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
 }
 
 /*
@@ -355,7 +355,7 @@ RunPowershellWinConfigLog()
 {
     runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
     FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
-    log(powershelllogtemp, "fffffffffffffffffffffffffffffffffff")
+    log(powershelllogtemp, "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
 }
 
@@ -418,7 +418,7 @@ CheckInstall(path, choconame)
     if FileExist(path)
     {
         status = installed
-        log("status = %status%", "CheckInstall.txt")
+        ("status = %status%", "CheckInstall.txt")
     }
     else
     {
