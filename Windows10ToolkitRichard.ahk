@@ -62,13 +62,13 @@ netflix := inirwTOOLKIT("r", "netflix")
 if updating != 1
 {
     if update = 1
-        logg("Update Windows - was Picked")
+        File
     if debloat = 1
-        logg("Debloat and Optimize Windows (Including OneDrive) - was Picked")
+        File
     if apps = 1
-        logg("Install Applications (Lets you choose Applications) - was Picked")
+        File
     if netflix = 1
-        logg("Netflix 2.0 - was Picked")
+        File
 }
 
 /*
@@ -355,7 +355,7 @@ RunPowershellWinConfigLog()
 {
     runwait, powershell.exe choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force | Tee-Object -file C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt,,max
     FileRead, powershelllogtemp, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
-    logg(powershelllogtemp)
+    File
     ;filedelete, C:\temp_Windows10ToolkitRichard\powershelllogtemp.txt
 }
 
