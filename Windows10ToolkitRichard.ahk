@@ -446,7 +446,7 @@ CheckInstall(path, choconame)
         }
         if not FileExist(path)
         {
-            log("choco install %choconame% %--ignore-checksums%", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+            log("Installing %choconame% ignoring checksums", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums,,max
             if FileExist(path)
             {
