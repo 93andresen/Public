@@ -418,7 +418,7 @@ CheckInstall(path, choconame)
     if FileExist(path)
     {
         status = installed
-        logtofile("status = %status%", "CheckInstall.txt")
+        log("status = %status%", "CheckInstall.txt")
     }
     else
     {
@@ -431,62 +431,62 @@ CheckInstall(path, choconame)
                 choco = 1
                 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation,,max
                 runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,,max
-                logtofile("Sucsessfully Installed chocolatey", "CheckInstall.txt")
-                logtofile("choco feature enable -n=allowGlobalConfirmation", "CheckInstall.txt")
-                logtofile("choco feature enable -n=allowEmptyChecksums", "CheckInstall.txt")
+                log("Sucsessfully Installed chocolatey", "CheckInstall.txt")
+                log("choco feature enable -n=allowGlobalConfirmation", "CheckInstall.txt")
+                log("choco feature enable -n=allowEmptyChecksums", "CheckInstall.txt")
             }
             else
             {
                 choco = 0
-                logtofile("ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing", "CheckInstall.txt")
+                log("ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing", "CheckInstall.txt")
                 Tooltip, ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing
                 sleep, 5000
                 Tooltip, 
             }
         }
-        logtofile("choco install %choconame%", "CheckInstall.txt")
+        log("choco install %choconame%", "CheckInstall.txt")
         runwait, powershell.exe choco install %choconame%,,max
         if FileExist(path)
         {
-            logtofile("Sucsessfully Installed %choconame%", "CheckInstall.txt")
+            log("Sucsessfully Installed %choconame%", "CheckInstall.txt")
             Tooltip, 
             status = installed
         }
         if not FileExist(path)
         {
-            logtofile("choco install %choconame% %--ignore-checksums%", "CheckInstall.txt")
+            log("choco install %choconame% %--ignore-checksums%", "CheckInstall.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums,,max
             if FileExist(path)
             {
-                logtofile("Sucsessfully Installed %choconame% --ignore-checksums", "CheckInstall.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums", "CheckInstall.txt")
                 Tooltip, 
                 status = installed
             }
         }
         if not FileExist(path)
         {
-            logtofile("choco install %choconame% %--ignore-checksums% %--force%", "CheckInstall.txt")
+            log("choco install %choconame% %--ignore-checksums% %--force%", "CheckInstall.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums --force,,max
             if FileExist(path)
             {
-                logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "CheckInstall.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "CheckInstall.txt")
                 Tooltip, 
                 status = installed
             }
         }
         if not FileExist(path)
         {
-            logtofile("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "CheckInstall.txt")
+            log("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "CheckInstall.txt")
             runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies,,max
             if FileExist(path)
             {
-                logtofile("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "CheckInstall.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "CheckInstall.txt")
                 Tooltip, 
                 status = installed
             }
             else
             {
-                logtofile("ERROR - tried to install %choconame% but %path% is still missing", "CheckInstall.txt")
+                log("ERROR - tried to install %choconame% but %path% is still missing", "CheckInstall.txt")
                 Tooltip, ERROR - tried to install %choconame% but %path% is still missing
                 sleep, 5000
                 Tooltip, 
@@ -496,7 +496,7 @@ CheckInstall(path, choconame)
     return %status%
 }
 
-logtofile(x, filename)
+log(x, filename)
 {
 	FormatTime,TimeLongms,, yyyy-MM-dd_HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLongms% %x%, %filename%
