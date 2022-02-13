@@ -7,6 +7,7 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
 
+Gui, Add, Text, dfgfdg, Update Windows
 Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows (Including OneDrive)
 Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
