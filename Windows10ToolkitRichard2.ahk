@@ -9,7 +9,7 @@ apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 reboot := inirwTOOLKIT("r", "reboot")
 ;if apps = 1
-;{
+{
     ; If the script is not elevated, relaunch as administrator and kill current instance:
 
     full_command_line := DllCall("GetCommandLine", "str")
@@ -190,7 +190,7 @@ reboot := inirwTOOLKIT("r", "reboot")
     AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
     AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
     AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
-;}
+}
 
 
 if netflix = 1
