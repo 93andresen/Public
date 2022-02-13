@@ -8,23 +8,31 @@ debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 reboot := inirwTOOLKIT("r", "reboot")
+
+; If the script is not elevated, relaunch as administrator and kill current instance:
+
+full_command_line := DllCall("GetCommandLine", "str")
+
+if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+{
+    try ; leads to having the script re-launching itself as administrator
+    {
+        if A_IsCompiled
+            Run *RunAs "%A_ScriptFullPath%" /restart
+        else
+            Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
+    }
+    ExitApp
+}
+
 if apps = 1
 {
-    ; If the script is not elevated, relaunch as administrator and kill current instance:
 
-    full_command_line := DllCall("GetCommandLine", "str")
-
-    if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
-    {
-        try ; leads to having the script re-launching itself as administrator
-        {
-            if A_IsCompiled
-                Run *RunAs "%A_ScriptFullPath%" /restart
-            else
-                Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
-        }
-        ExitApp
-    }
+    update := inirwTOOLKIT("r", "update")
+    debloat := inirwTOOLKIT("r", "debloat")
+    apps := inirwTOOLKIT("r", "apps")
+    netflix := inirwTOOLKIT("r", "netflix")
+    reboot := inirwTOOLKIT("r", "reboot")
 
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
@@ -190,7 +198,7 @@ if apps = 1
     AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
     AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
     AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
-}
+;}
 
 
 if netflix = 1
