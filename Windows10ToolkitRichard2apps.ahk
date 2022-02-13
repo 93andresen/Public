@@ -182,3 +182,61 @@ AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
 AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 
 ExitApp
+
+
+
+
+
+
+
+inirwTOOLKIT(rw, key, value:="")
+{
+    if rw=w
+        IniWrite, %value%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%
+    else if rw=r
+        IniRead, value, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini, Section, %key%
+    Else
+        msgbox, ERROR, rw was not r or w`nrw=%rw%
+    return %value%
+}
+
+
+HookGUICheckboxes(check, from, too)
+{
+    too += 1
+    count=%from%
+    loop
+    {
+        loop
+        {
+            GuiControlGet, Button%count% ; Retrieves 1 if it is checked, 0 if it is unchecked.
+            if Button%count%!=%check%
+                ControlClick, Button%count%
+            else if Button%count%=%check%
+                break
+        }
+        count+=1
+        if count = %too%
+            break
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
