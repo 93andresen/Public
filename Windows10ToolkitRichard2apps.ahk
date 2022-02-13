@@ -217,7 +217,11 @@ HookGUICheckboxes(check, from, too)
     }
 }
 
-
+AppendFileToLog(readfile)
+{
+    FileRead, readfilevar, %readfile%
+    FileAppend, `n%readfilevar%, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+}
 
 
 
