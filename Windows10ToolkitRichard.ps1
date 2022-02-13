@@ -1,7 +1,7 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
-Set-Location C:\temp_Windows10ToolkitRichard
+Set-Location C:\temp_Windows10ToolkitRichard -ErrorAction SilentlyContinue
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     'C:\temp_Windows10ToolkitRichard Allready Exists - Overwriting it'
 }
