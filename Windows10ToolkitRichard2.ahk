@@ -4,6 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 #SingleInstance, Force
 
 apps := inirwTOOLKIT("r", "apps")
+netflix := inirwTOOLKIT("r", "netflix")
 ;if apps = 1
 ;{
     ; If the script is not elevated, relaunch as administrator and kill current instance:
@@ -188,7 +189,7 @@ apps := inirwTOOLKIT("r", "apps")
     AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 ;}
 
-netflix := inirwTOOLKIT("r", "netflix")
+
 if netflix = 1
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
 
