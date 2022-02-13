@@ -11,6 +11,7 @@ Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows (Including OneDrive)
 Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
 Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
+Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished
 
 ;Gui, Add, Radio, vMyRadio, Sample radio1
 ;Gui, Add, Radio,, Sample radio2
@@ -21,7 +22,7 @@ Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
 count=1
-loop 4
+loop 5
 {
     loop
     {
@@ -57,6 +58,12 @@ if netflix = 1
     inirwTOOLKIT("w", "netflix", "1")
 else
     inirwTOOLKIT("w", "netflix", "0")
+if reboot = 1
+    inirwTOOLKIT("w", "reboot", "1")
+else
+    inirwTOOLKIT("w", "reboot", "0")
+
+
 
 ExitApp
 
