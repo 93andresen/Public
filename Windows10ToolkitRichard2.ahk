@@ -8,7 +8,7 @@ debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 reboot := inirwTOOLKIT("r", "reboot")
-;if apps = 1
+if apps = 1
 {
     ; If the script is not elevated, relaunch as administrator and kill current instance:
 
