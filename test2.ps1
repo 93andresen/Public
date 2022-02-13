@@ -1,6 +1,6 @@
 
 
-'$Error'
+Write-Output øØ$Error
 
 
 
