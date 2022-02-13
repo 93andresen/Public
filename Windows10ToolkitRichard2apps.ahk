@@ -185,9 +185,6 @@ ExitApp
 
 
 
-
-C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard2apps.ahk
-
 inirwTOOLKIT(rw, key, value:="")
 {
     if rw=w
