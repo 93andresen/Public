@@ -440,7 +440,7 @@ RunActivate(title, exe_path, commands, multiple, maximize)
     if multiple = 1
     {
         if exe_path contains http
-            run, %exe_path% %commands%
+            PID := run, %exe_path% %commands%,,,PID
         else
             PID := run_file_if_it_exists(exe_path, commands)
 

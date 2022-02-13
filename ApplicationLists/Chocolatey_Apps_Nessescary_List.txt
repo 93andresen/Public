@@ -74,3 +74,5 @@ Adobereader
 Googlechrome
 Tortoisesvn
 Virustotaluploader
+Lockhunter
+Toolwiz-time-freeze
