@@ -1,6 +1,6 @@
 
 
-
+'$Error'
 
 
 
@@ -111,6 +111,7 @@ Function aaa
 
     If ($Error)
     {
+        '$Error'
         aaa
     }
 }
