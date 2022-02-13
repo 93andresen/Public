@@ -181,3 +181,4 @@ AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
 AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
 AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
 
+ExitApp
