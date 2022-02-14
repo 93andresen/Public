@@ -34,8 +34,8 @@ if apps = 1
 if netflix = 1
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
 
-clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+;clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+;msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 if reboot = 1
 {
