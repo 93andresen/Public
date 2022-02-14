@@ -178,8 +178,8 @@ SetDNS("cloudflare", "ipv4", "0")
 SetCapsLockState, Off
 SetNumLockState, On
 
-;if apps = 1
-;{
+if apps = 1
+{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
@@ -221,6 +221,7 @@ SetNumLockState, On
     WinWaitActive, Windows10ToolkitRichard.ahk
     WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
     check_ran=0
+    return
     GoHereWhenClicked1:
     GuiControlGet, check,, Button1
     if (check = 1 and check_ran != 1)
@@ -279,7 +280,7 @@ SetNumLockState, On
         }
         count+=1
     }
-;}
+}
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
