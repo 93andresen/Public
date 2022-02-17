@@ -19,8 +19,6 @@ Gui, Add, Text,,
 Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
 Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably Best For Most People)
 Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcam
-
-
 Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access (For The Paranoid)
 Gui, Add, Radio, vooshutup4, Undo All Changes (Revert To Factory Settings)
 Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
