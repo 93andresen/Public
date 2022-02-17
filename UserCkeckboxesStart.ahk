@@ -7,7 +7,7 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
 
-Gui, Add, Text,, if you want to revert settings, use the system restore point named "Before_Running_Windows10ToolkitRichard"
+Gui, Add, Text,, If you want to revert settings, use the system restore point named "Before_Running_Windows10ToolkitRichard"
 Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows Including OneDrive
 Gui, Add, Radio, vMyRadio1, Sample radio1
