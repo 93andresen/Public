@@ -18,8 +18,8 @@ Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes requ
 Gui, Add, Text,, 
 Gui, Add, Text,, Tweak Settings (Privacy and Performance)
 Gui, Add, Radio, vooshutup1, Will Keep These Settings As is
-Gui, Add, Radio, vooshutup2, Basic Protection (Probably best for most people)
-Gui, Add, Radio, vooshutup3, 
+Gui, Add, Radio, vooshutup2,  (Probably best for most people)
+Gui, Add, Radio, vooshutup3, Basic 
 Gui, Add, Radio, vooshutup4, 
 
 
