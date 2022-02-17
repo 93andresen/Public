@@ -171,7 +171,7 @@ if ooshutup = 1
 if ooshutup = 2
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard_DisableMicrophoneAndWebcam.cfg")
 if ooshutup = 3
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard_DisableMicrophoneAndWebcam_AND_ALL_OTHER_APP_ACCESS.cfg")
 
 
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat,,max
