@@ -167,14 +167,15 @@ if debloat = 1
 }
 
 
-if Tweak = 1
+if ooshutup = 1
+ooshutup("ooshutup10Richard.cfg")
 {
     dir=%A_WorkingDir%
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main
 Import-Module BitsTransfer
 Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
-./OOSU10.exe ooshutup10Richard.cfg /quiet
+./OOSU10.exe %setting% /quiet
     SetWorkingDir, %dir%
 }
 
