@@ -103,4 +103,6 @@ PrintDebug(string:=""){
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
 
+Esc::
+ExitApp
 
