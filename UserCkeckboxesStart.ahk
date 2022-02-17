@@ -19,10 +19,12 @@ Gui, Add, Text,,
 Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
 Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably Best For Most People)
 Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcam
-EssesinalTweaksDisableMicrophoneAndWebcam
-Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access
-Gui, Add, Radio, vooshutup4, Don't Do Anything - Will Keep These Settings As is
-Gui, Add, Radio, vooshutup5, Revert to Factory Settings (Like it was before any tweaks was applied)
+ooshutup2_EssesinalTweaksDisableMicrophoneAndWebcam
+ooshutup3_EssesinalTweaksDisableAppAccessForTheParanoid
+ooshutup4_EssesinalTweaksDisableAppAccessForTheParanoid
+Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access (For The Paranoid)
+Gui, Add, Radio, vooshutup4, Revert to Factory Settings (Like it was before any tweaks was applied)
+Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
 
 
 ;Gui, Add, Edit, vMyEdit r5  ; r5 means 5 rows tall.
