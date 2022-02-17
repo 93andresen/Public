@@ -326,24 +326,13 @@ ExitApp
 
 
 
-
-
 ooshutup(cfg)
 {
     dir=%A_WorkingDir%
     SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     FileCreateDir, %OutDir%
     SetWorkingDir, %OutDir%
-    RunPowershellLog("Import-Module BitsTransfer;Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination %OutDir%OOSU10.exe;./OOSU10.exe %cfg% /quiet", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-    SetWorkingDir, %dir%
-}
-ooshutupcopy(cfg)
-{
-    dir=%A_WorkingDir%
-    SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-    FileCreateDir, %OutDir%
-    SetWorkingDir, %OutDir%
-    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Import-Module BitsTransfer;Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination %OutDir%OOSU10.exe;./OOSU10.exe %cfg% /quiet", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;LLLLIIIINNNKKKKKK", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     SetWorkingDir, %dir%
 }
 
