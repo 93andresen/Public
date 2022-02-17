@@ -181,17 +181,15 @@ if debloat = 1
     RunPowershellLog(command, path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
 }
 
-if ooshutup = 1
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard.cfg")
-if ooshutup = 2
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard_DisableMicrophoneAndWebcam.cfg")
-if ooshutup = 3
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard_DisableMicrophoneAndWebcam_AND_ALL_OTHER_APP_ACCESS.cfg")
 
-C:\!\Code\GitHub\93andresen_Scripts\Public\ooshutup\ooshutup3_EssesinalTweaksDisableAppAccessForTheParanoid.cfg
-C:\!\Code\GitHub\93andresen_Scripts\Public\ooshutup\ooshutup4_UndoAllChangesRevertToFactorySettings.cfg
-C:\!\Code\GitHub\93andresen_Scripts\Public\ooshutup\ooshutup1_EssesinalTweaksProbablyBestForMostPeople.cfg
-C:\!\Code\GitHub\93andresen_Scripts\Public\ooshutup\ooshutup2_EssesinalTweaksDisableMicrophoneAndWebcam.cfg
+if ooshutup = 1
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup1_EssesinalTweaksProbablyBestForMostPeople.cfg")
+if ooshutup = 2
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup2_EssesinalTweaksDisableMicrophoneAndWebcam.cfg")
+if ooshutup = 3
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup3_EssesinalTweaksDisableAppAccessForTheParanoid.cfg")
+if ooshutup = 4
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup4_UndoAllChangesRevertToFactorySettings.cfg")
 
 
 
