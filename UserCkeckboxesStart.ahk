@@ -40,7 +40,10 @@ loop 5
         else if v = 1
             break
     }
-    count+=1
+    if count=3
+        count+=2
+    else
+        count+=1
 }
 return
 

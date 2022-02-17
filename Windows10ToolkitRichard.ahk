@@ -59,6 +59,7 @@ debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 reboot := inirwTOOLKIT("r", "reboot")
+reboot := inirwTOOLKIT("r", "reboot")
 
 if updating != 1
 {
