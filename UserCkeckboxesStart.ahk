@@ -23,10 +23,6 @@ Gui, Add, Radio, vooshutup3, Sample radio3
 Gui, Add, Radio, vooshutup4, Sample radio4
 
 
-
-;Gui, Add, Radio, vMyRadio, Sample radio1
-;Gui, Add, Radio,, Sample radio2
-
 ;Gui, Add, Edit, vMyEdit r5  ; r5 means 5 rows tall.
 ;Gui +AlwaysOnTop +Disabled -SysMenu +Owner
 Gui +AlwaysOnTop +Owner
@@ -52,27 +48,21 @@ GuiClose:
 GuiEscape:
 Gui, Submit  ; Save each control's contents to its associated variable.
 
+if ooshutup1 = 1
+    ooshutup = 1
+else if ooshutup2 = 1
+    ooshutup = 2
+else if ooshutup3 = 1
+    ooshutup = 3
+else if ooshutup4 = 1
+    ooshutup = 4
 
-if update = 1
-    inirwTOOLKIT("w", "update", "1")
-else
-    inirwTOOLKIT("w", "update", "0")
-if debloat = 1
-    inirwTOOLKIT("w", "debloat", "1")
-else
-    inirwTOOLKIT("w", "debloat", "0")
-if apps = 1
-    inirwTOOLKIT("w", "apps", "1")
-else
-    inirwTOOLKIT("w", "apps", "0")
-if netflix = 1
-    inirwTOOLKIT("w", "netflix", "1")
-else
-    inirwTOOLKIT("w", "netflix", "0")
-if reboot = 1
-    inirwTOOLKIT("w", "reboot", "1")
-else
-    inirwTOOLKIT("w", "reboot", "0")
+inirwTOOLKIT("w", "update", update)
+inirwTOOLKIT("w", "debloat", debloat)
+inirwTOOLKIT("w", "apps", apps)
+inirwTOOLKIT("w", "netflix", netflix)
+inirwTOOLKIT("w", "reboot", reboot)
+inirwTOOLKIT("w", "ooshutup", ooshutup)
 
 
 
