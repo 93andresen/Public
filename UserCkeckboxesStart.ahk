@@ -18,7 +18,8 @@ Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes requ
 Gui, Add, Text,, 
 Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
 Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably Best For Most People)
-Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcamera
+Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcam
+EssesinalTweaksDisableMicrophoneAndWebcam
 Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access
 Gui, Add, Radio, vooshutup4, Don't Do Anything - Will Keep These Settings As is
 Gui, Add, Radio, vooshutup5, Revert to Factory Settings (Like it was before any tweaks was applied)
