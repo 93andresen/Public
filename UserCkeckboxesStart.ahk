@@ -19,9 +19,8 @@ Gui, Add, Text,,
 Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
 Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably Best For Most People)
 Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcam
-ooshutup2_EssesinalTweaksDisableMicrophoneAndWebcam
-ooshutup3_EssesinalTweaksDisableAppAccessForTheParanoid
-ooshutup4_EssesinalTweaksDisableAppAccessForTheParanoid
+
+
 Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access (For The Paranoid)
 Gui, Add, Radio, vooshutup4, Revert to Factory Settings (Like it was before any tweaks was applied)
 Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
@@ -52,7 +51,9 @@ GuiClose:
 GuiEscape:
 Gui, Submit  ; Save each control's contents to its associated variable.
 
-if ooshutup1 = 1
+if ooshutup0 = 1
+    ooshutup = 0
+else if ooshutup1 = 1
     ooshutup = 1
 else if ooshutup2 = 1
     ooshutup = 2
@@ -60,8 +61,6 @@ else if ooshutup3 = 1
     ooshutup = 3
 else if ooshutup4 = 1
     ooshutup = 4
-    else if ooshutup5 = 1
-    ooshutup = 5
 
 inirwTOOLKIT("w", "update", update)
 inirwTOOLKIT("w", "debloat", debloat)
