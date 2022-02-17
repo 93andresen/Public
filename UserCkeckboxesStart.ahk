@@ -10,6 +10,8 @@ SetTitleMatchMode, 2
 Gui, Add, Text,, If you want to revert settings, use the system restore point named "Before_Running_Windows10ToolkitRichard"
 Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows Including OneDrive
+Gui, Add, Text,, 
+Gui, Add, Text,, Tweak Settings (Privacy and Performance)
 Gui, Add, Radio, vMyRadio1, Sample radio1
 Gui, Add, Radio, vMyRadio2, Sample radio2
 Gui, Add, Radio, vMyRadio3, Sample radio3
