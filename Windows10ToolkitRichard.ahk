@@ -166,7 +166,6 @@ if debloat = 1
     RunPowershellLog(command, path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
 }
 
-
 if ooshutup = 1
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
 
