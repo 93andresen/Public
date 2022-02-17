@@ -170,7 +170,7 @@ if debloat = 1
 if Tweak = 1
 {
     dir=%A_WorkingDir%
-    FileCreateDir, C:\temp_Windows10ToolkitRichard
+    FileCreateDir, C:\temp_Windows10ToolkitRichard\
     SetWorkingDir, C:\temp_Windows10ToolkitRichard
     Write-Host "Running O&O Shutup with ooshutup10Richard.cfg Settings"
     Import-Module BitsTransfer
