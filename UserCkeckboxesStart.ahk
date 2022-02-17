@@ -12,6 +12,8 @@ Gui, Add, Checkbox, vupdate, Update Windows
 Gui, Add, Checkbox, vdebloat, Debloat Windows Including OneDrive
 Gui, Add, Radio, vMyRadio1, Sample radio1
 Gui, Add, Radio, vMyRadio2, Sample radio2
+Gui, Add, Radio, vMyRadio3, Sample radio3
+Gui, Add, Radio, vMyRadio4, Sample radio4
 Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
 Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
 Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes require reboot to take effect. Will Reboot fast, meaning you will not have time to save documents etc.)
