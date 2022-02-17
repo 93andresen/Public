@@ -367,6 +367,12 @@ RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_
     FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
     if temp_path = TimeLong_temp_path
         temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
+    SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    if not FileExist(OutDir)
+        FileCreateDir, %OutDir%
+    SplitPath, temp_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    if not FileExist(OutDir)
+        FileCreateDir, %OutDir%
     runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
     FileRead, ps_tmp, %temp_path%
     FileAppend, `n%ps_tmp%, %path%
