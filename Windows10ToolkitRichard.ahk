@@ -167,9 +167,9 @@ if debloat = 1
 }
 
 if ooshutup = 1
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard.cfg")
 if ooshutup = 2
-    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
+    ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup10Richard_DisableMicrophoneAndWebcam.cfg")
 if ooshutup = 3
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
 
