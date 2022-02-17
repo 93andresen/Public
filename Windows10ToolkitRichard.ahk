@@ -170,18 +170,6 @@ if debloat = 1
 if ooshutup = 1
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup10Richard.cfg")
 
-ooshutup(cfg)
-{
-    dir=%A_WorkingDir%
-    SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-    FileCreateDir, %OutDir%
-    SetWorkingDir, %OutDir%
-    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Import-Module BitsTransfer;Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination %OutDir%OOSU10.exe;./OOSU10.exe %cfg% /quiet", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-    SetWorkingDir, %dir%
-}
-
-
-
 
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_notification_area_icon_Enable.bat,,max
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
@@ -318,7 +306,15 @@ ExitApp
 
 
 
-
+ooshutup(cfg)
+{
+    dir=%A_WorkingDir%
+    SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    FileCreateDir, %OutDir%
+    SetWorkingDir, %OutDir%
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Import-Module BitsTransfer;Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination %OutDir%OOSU10.exe;./OOSU10.exe %cfg% /quiet", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    SetWorkingDir, %dir%
+}
 
 
 HookGUICheckboxes(check, from, too)
