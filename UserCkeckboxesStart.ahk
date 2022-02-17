@@ -17,10 +17,10 @@ Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
 Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes require reboot to take effect. Will Reboot fast, meaning you will not have time to save documents etc.)
 Gui, Add, Text,, 
 Gui, Add, Text,, Tweak Settings (Privacy and Performance)
-Gui, Add, Radio, vMyRadio1, Sample radio1
-Gui, Add, Radio, vMyRadio2, Sample radio2
-Gui, Add, Radio, vMyRadio3, Sample radio3
-Gui, Add, Radio, vMyRadio4, Sample radio4
+Gui, Add, Radio, vooshutup1, Sample radio1
+Gui, Add, Radio, vooshutup2, Sample radio2
+Gui, Add, Radio, vooshutup3, Sample radio3
+Gui, Add, Radio, vooshutup4, Sample radio4
 
 
 
