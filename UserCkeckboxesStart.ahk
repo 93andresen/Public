@@ -22,7 +22,7 @@ Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcam
 
 
 Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access (For The Paranoid)
-Gui, Add, Radio, vooshutup4, Undo All  to Factory Settings (Like it was before any tweaks was applied)
+Gui, Add, Radio, vooshutup4, Undo All Changes (Revert To Factory Settings)
 Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
 
 
