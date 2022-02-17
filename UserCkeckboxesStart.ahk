@@ -16,11 +16,12 @@ Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
 Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
 Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes require reboot to take effect. Will Reboot fast, meaning you will not have time to save documents etc.)
 Gui, Add, Text,, 
-Gui, Add, Text,, Tweak Settings (Privacy and Performance)
-Gui, Add, Radio, vooshutup1, Will Keep These Settings As is
-Gui, Add, Radio, vooshutup2,  (Probably best for most people)
-Gui, Add, Radio, vooshutup3, Basic 
-Gui, Add, Radio, vooshutup4, 
+Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
+Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably best for most people)
+Gui, Add, Radio, vooshutup2, Essesinal Tweaks + Disable Microphone And Webcamera
+Gui, Add, Radio, vooshutup3, Essesinal Tweaks + Disable App Access
+Gui, Add, Radio, vooshutup4, Don't Do Anything - Will Keep These Settings As is
+Gui, Add, Radio, vooshutup5, Revert to Factory Settings (Like it was before any tweaks was applied)
 
 
 ;Gui, Add, Edit, vMyEdit r5  ; r5 means 5 rows tall.
@@ -56,6 +57,8 @@ else if ooshutup3 = 1
     ooshutup = 3
 else if ooshutup4 = 1
     ooshutup = 4
+    else if ooshutup5 = 1
+    ooshutup = 5
 
 inirwTOOLKIT("w", "update", update)
 inirwTOOLKIT("w", "debloat", debloat)
