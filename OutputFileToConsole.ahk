@@ -6,7 +6,6 @@ CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
-
 logfile=%1%
 x=1
 loop

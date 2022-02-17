@@ -178,8 +178,8 @@ SetDNS("cloudflare", "ipv4", "0")
 SetCapsLockState, Off
 SetNumLockState, On
 
-if apps = 1
-{
+;if apps = 1
+;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
@@ -280,7 +280,7 @@ if apps = 1
         }
         count+=1
     }
-}
+;}
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
