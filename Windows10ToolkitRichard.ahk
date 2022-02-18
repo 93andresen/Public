@@ -207,8 +207,9 @@ SetCapsLockState, Off
 SetNumLockState, On
 
 
-run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
-ExitApp
+run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk   ;REMOVE THIS WHEN FIXED
+ExitApp                                                                         ;REMOVE THIS WHEN FIXED
+
 ;if apps = 1
 ;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
