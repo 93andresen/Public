@@ -25,27 +25,6 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 
 var = %1%
 msgbox, %var%
-if var = shortcutstart
-{
-    run, powershell.exe iwr git.io/J13Mt -UseBasicParsing|iex
-    ExitApp
-}
-
-
-
-$source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
-$destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
-Invoke-WebRequest -Uri $source -OutFile $destination
-'Downloading 93andresen Public Folder as zip'
-Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard
-#Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
-
-
-FileCreateDir, C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1
-SetWorkingDir, C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1
-run, cmd.exe /c vivetool addconfig 35908098 2
-run, cmd.exe /c vivetool addconfig 36898195 2
-run, cmd.exe /c vivetool addconfig 37204171 2
 
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
@@ -180,6 +159,29 @@ loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) a
 }
 
 */
+
+
+if var = shortcutstart
+{
+    run, powershell.exe iwr git.io/J13Mt -UseBasicParsing|iex
+    ExitApp
+}
+
+
+if darktsk = 1
+{
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 35908098 2
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 36898195 2
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 37204171 2
+}
+Else
+{
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 35908098 2
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 36898195 2
+    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 37204171 2
+}
+
+
 
 if update = 1
 {
