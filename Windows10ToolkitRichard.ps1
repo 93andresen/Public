@@ -1,5 +1,5 @@
 
-Start-Transcript -Append C:\PS\Logs\PSScriptLog.txt
+Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
