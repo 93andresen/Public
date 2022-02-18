@@ -24,7 +24,6 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 
 
 var = %1%
-msgbox, var=%var%
 if var = shortcutstart
 {
     run, powershell.exe iwr git.io/J13Mt -UseBasicParsing|iex
