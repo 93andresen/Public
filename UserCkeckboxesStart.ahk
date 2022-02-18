@@ -15,6 +15,7 @@ Gui, Add, Checkbox, vdebloat, Debloat Windows Including OneDrive
 Gui, Add, Checkbox, vapps, Install Applications (Lets you choose Applications)
 Gui, Add, Checkbox, vnetflix, Netflix 2.0 (Stream Torrents)
 Gui, Add, Checkbox, vreboot, Automaticly Reboot when finished (Many changes require reboot to take effect. Will Reboot fast, meaning you will not have time to save documents etc.)
+Gui, Add, Checkbox, vdarktsk, Task Manager Dark Mode
 Gui, Add, Text,, 
 Gui, Add, Text,, Tweak Settings (Privacy, Security and Performance)
 Gui, Add, Radio, vooshutup1, Essesinal Tweaks (Probably Best For Most People)
@@ -30,7 +31,7 @@ Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Show
 count=1
-loop 5
+loop 6
 {
     loop
     {
