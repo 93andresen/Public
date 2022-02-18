@@ -207,7 +207,7 @@ SetCapsLockState, Off
 SetNumLockState, On
 
 
-
+run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 ;if apps = 1
 ;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
@@ -281,7 +281,7 @@ SetNumLockState, On
 
     GuiClose:
     GuiEscape:
-    run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+    msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
     WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output
     ExitApp
     ButtonContinueToPage2/2:
