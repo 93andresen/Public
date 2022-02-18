@@ -31,6 +31,16 @@ if var = shortcutstart
     ExitApp
 }
 
+
+
+$source = 'https://github.com/93andresen/Public/archive/refs/heads/main.zip'
+$destination = 'C:\temp_Windows10ToolkitRichard\Public-main.zip'
+Invoke-WebRequest -Uri $source -OutFile $destination
+'Downloading 93andresen Public Folder as zip'
+Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Windows10ToolkitRichard
+#Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
+
+
 FileCreateDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
 SetWorkingDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
 run, cmd.exe /c vivetool addconfig 35908098 2
