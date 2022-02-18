@@ -46,9 +46,13 @@ SetWorkingDir, C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1
 run, cmd.exe /c vivetool addconfig 35908098 2
 run, cmd.exe /c vivetool addconfig 36898195 2
 run, cmd.exe /c vivetool addconfig 37204171 2
+
+
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
+
 updating := inirwTOOLKIT("r", "updating")
+
 if updating != 1
 {
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
