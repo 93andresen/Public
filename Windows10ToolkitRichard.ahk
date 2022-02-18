@@ -41,8 +41,8 @@ Expand-Archive -Force C:\temp_Windows10ToolkitRichard\Public-main.zip C:\temp_Wi
 #Remove-Item -LiteralPath "C:\temp_Windows10ToolkitRichard\Public-main.zip" -Force
 
 
-FileCreateDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
-SetWorkingDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
+FileCreateDir, C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1
+SetWorkingDir, C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1
 run, cmd.exe /c vivetool addconfig 35908098 2
 run, cmd.exe /c vivetool addconfig 36898195 2
 run, cmd.exe /c vivetool addconfig 37204171 2
