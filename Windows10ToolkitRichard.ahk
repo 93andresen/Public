@@ -206,6 +206,8 @@ SetDNS("cloudflare", "ipv4", "0")
 SetCapsLockState, Off
 SetNumLockState, On
 
+
+
 ;if apps = 1
 ;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
@@ -279,7 +281,7 @@ SetNumLockState, On
 
     GuiClose:
     GuiEscape:
-    msgbox, Script Ended Because of GuiClose or GuiEscape... Exiting App....
+    run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
     WinSet, AlwaysOnTop, on, Windows Toolkit Richard Console Output
     ExitApp
     ButtonContinueToPage2/2:
