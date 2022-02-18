@@ -8,13 +8,13 @@ Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard
 $arg0 = $arg[0]
 $arg1 = $arg[1]
 $arg2 = $arg[2]
-$arg0 = $arg[3]
-$arg0 = $arg[4]
-$arg0 = $arg[5]
-$arg0 = $arg[6]
-$arg0 = $arg[7]
-$arg0 = $arg[8]
-$arg0 = $arg[9]
+$arg3 = $arg[3]
+$arg4 = $arg[4]
+$arg5 = $arg[5]
+$arg6 = $arg[6]
+$arg7 = $arg[7]
+$arg8 = $arg[8]
+$arg9 = $arg[9]
 
 
 
