@@ -31,6 +31,9 @@ if var = shortcutstart
     ExitApp
 }
 
+FileCreateDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
+SetWorkingDir, C:\FOLDER\PATH\ViVeTool-v0.2.1
+run, cmd.exe /c 
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
