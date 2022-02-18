@@ -24,7 +24,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 
 
 
-RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\Users\93and\Desktop\TEST\Windows10ToolkitRichardLOG.txt", temp_path:="C:\Users\93and\Desktop\TEST\PowershellTempLog.txt", minmaxhide:="max")
+RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\Users\93and\Desktop\TEST\Windows10ToolkitRichardLOG.txt", temp_path:="C:\Users\93and\Desktop\TEST\PowershellTempLog.txt", minmaxhide:="max")
 ExitApp
 
 
