@@ -93,7 +93,7 @@ else{
     }
     #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
     'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg1
     
     #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
     'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
