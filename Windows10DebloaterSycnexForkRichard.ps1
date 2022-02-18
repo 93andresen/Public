@@ -1,3 +1,6 @@
+
+Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+
 #This function finds any AppX/AppXProvisioned package and uninstalls it, except for Freshpaint, Windows Calculator, Windows Store, and Windows Photos.
 #Also, to note - This does NOT remove essential system services/software/etc such as .NET framework installations, Cortana, Edge, etc.
 
