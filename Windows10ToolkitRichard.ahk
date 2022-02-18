@@ -332,7 +332,7 @@ ooshutup(cfg)
     SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     FileCreateDir, %OutDir%
     SetWorkingDir, %OutDir%
-    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;https://raw.githubusercontent.com/93andresen/Public/main/ooshutup.ps1 %cfg%", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;iwr https://raw.githubusercontent.com/93andresen/Public/main/ooshutup.ps1 %cfg% -UseBasicParsing|iex", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
     SetWorkingDir, %dir%
 }
 
@@ -389,6 +389,7 @@ RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_
     SplitPath, temp_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if not FileExist(OutDir)
         FileCreateDir, %OutDir%
+    msgbox, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
     runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
     FileRead, ps_tmp, %temp_path%
     FileAppend, `n%ps_tmp%, %path%
