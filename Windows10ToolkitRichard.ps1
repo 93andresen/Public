@@ -1,13 +1,22 @@
 
 
-
-
-
-
-
-
-
 Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+
+
+
+
+$arg0 = $arg[0]
+$arg0 = $arg[1]
+$arg0 = $arg[2]
+$arg0 = $arg[3]
+$arg0 = $arg[4]
+$arg0 = $arg[5]
+$arg0 = $arg[6]
+$arg0 = $arg[7]
+$arg0 = $arg[8]
+$arg0 = $arg[9]
+
+
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
