@@ -390,7 +390,6 @@ RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_
     SplitPath, temp_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if not FileExist(OutDir)
         FileCreateDir, %OutDir%
-    msgbox, runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
     runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
     FileRead, ps_tmp, %temp_path%
     FileAppend, `n%ps_tmp%, %path%
