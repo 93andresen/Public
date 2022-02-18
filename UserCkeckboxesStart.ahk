@@ -28,7 +28,8 @@ Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
 ;Gui +AlwaysOnTop +Disabled -SysMenu +Owner
 Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
-Gui, Add, Button, default ym, Netflix
+Gui, Add, Text,, 
+Gui, Add, Button, default xm, Netflix
 Gui, Show
 count=1
 loop 6
