@@ -208,6 +208,7 @@ SetNumLockState, On
 
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
+ExitApp
 ;if apps = 1
 ;{
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
