@@ -40,7 +40,6 @@ Irfanviewplugins
 Qalculate
 Throttlestop
 Microsoft-windows-terminal
-PowerShell
 Greenshot
 Speedyfox
 Geforce-experience
