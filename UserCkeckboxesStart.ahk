@@ -48,7 +48,8 @@ loop 6
 }
 return
 ButtonNetflix:
-RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;")
+RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;cup all")
+msgbox, YYYYYYYYYY
 ExitApp
 
 ButtonOK:
