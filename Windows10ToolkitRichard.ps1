@@ -5,16 +5,16 @@ Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard
 
 
 
-$arg0 = $arg[0]
-$arg1 = $arg[1]
-$arg2 = $arg[2]
-$arg3 = $arg[3]
-$arg4 = $arg[4]
-$arg5 = $arg[5]
-$arg6 = $arg[6]
-$arg7 = $arg[7]
-$arg8 = $arg[8]
-$arg9 = $arg[9]
+$arg0 = $arg[0] -ErrorAction SilentlyContinue
+$arg1 = $arg[1] -ErrorAction SilentlyContinue
+$arg2 = $arg[2] -ErrorAction SilentlyContinue
+$arg3 = $arg[3] -ErrorAction SilentlyContinue
+$arg4 = $arg[4] -ErrorAction SilentlyContinue
+$arg5 = $arg[5] -ErrorAction SilentlyContinue
+$arg6 = $arg[6] -ErrorAction SilentlyContinue
+$arg7 = $arg[7] -ErrorAction SilentlyContinue
+$arg8 = $arg[8] -ErrorAction SilentlyContinue
+$arg9 = $arg[9] -ErrorAction SilentlyContinue
 
 
 
