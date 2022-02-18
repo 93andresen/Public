@@ -28,7 +28,7 @@ Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
 ;Gui +AlwaysOnTop +Disabled -SysMenu +Owner
 Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
-Gui, Add, Button, default xm, Netflix
+Gui, Add, Button, default ym, Netflix
 Gui, Show
 count=1
 loop 6
@@ -80,6 +80,21 @@ inirwTOOLKIT("w", "ooshutup", ooshutup)
 
 ExitApp
 
+RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", temp_path:="TimeLong_temp_path", minmaxhide:="max")
+{
+    FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    if temp_path = TimeLong_temp_path
+        temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
+    SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    if not FileExist(OutDir)
+        FileCreateDir, %OutDir%
+    SplitPath, temp_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    if not FileExist(OutDir)
+        FileCreateDir, %OutDir%
+    runwait, powershell.exe %command% | Tee-Object -file %temp_path%,,%minmaxhide%
+    FileRead, ps_tmp, %temp_path%
+    FileAppend, `n%ps_tmp%, %path%
+}
 
 inirwTOOLKIT(rw, key, value:="")
 {
