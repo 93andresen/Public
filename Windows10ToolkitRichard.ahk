@@ -24,7 +24,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 
 
 var = %1%
-msgbox, %var%
+;msgbox, %var%
 
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
