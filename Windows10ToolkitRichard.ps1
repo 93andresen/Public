@@ -3,12 +3,6 @@
 Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 
-
-
-# $arg0 = $arg[0] -ErrorAction SilentlyContinue
-
-
-
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
@@ -41,7 +35,7 @@ choco feature enable -n allowEmptyChecksums
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
     'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg1
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg[0]
     
     #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
     'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
@@ -84,7 +78,7 @@ else{
     }
     #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
     'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg1
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg[0]
     
     #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
     'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
