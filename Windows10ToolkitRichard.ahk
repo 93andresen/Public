@@ -238,7 +238,6 @@ if ooshutup = 3
 if ooshutup = 4
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup4_UndoAllChangesRevertToFactorySettings.cfg")
 
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/93andresen/Public/main/ooshutup.ps1 -OutFile $destination
 ooshutup(cfg)
 {
     dir=%A_WorkingDir%
