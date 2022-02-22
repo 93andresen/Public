@@ -245,7 +245,10 @@ ooshutup(cfg)
     SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     FileCreateDir, %OutDir%
     SetWorkingDir, %OutDir%
-    RunPowershellLog("Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;iwr https://raw.githubusercontent.com/93andresen/Public/main/ooshutup.ps1 %cfg% -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    log("UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+    UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe
+    log("cfg", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+    runwait, OOSU10.exe %cfg% /quiet
     SetWorkingDir, %dir%
 }
 
