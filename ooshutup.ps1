@@ -9,7 +9,7 @@ Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.
 $ooshutuppath = $arg[0]
 
 ./OOSU10.exe $ooshutuppath /quiet
-
+Write-Host './OOSU10.exe $ooshutuppath /quiet'
 
 
 
