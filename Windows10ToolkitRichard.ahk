@@ -62,7 +62,9 @@ darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
 
+ArgsArray := ["%1%", %2%, %3%, %4%, %5%, %6%, %7%, %8%, %9%]
 
+msgbox, % ArgsArray[1]
 
 
 
