@@ -63,6 +63,8 @@ arg9=%9%
 
 stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
 
+inirwTOOLKIT("w", "nogui", "0")
+
 CheckStringWriteIni("update")
 CheckStringWriteIni("debloat")
 CheckStringWriteIni("apps")
@@ -74,10 +76,13 @@ CheckStringWriteIni("ooshutup")
 CheckStringWriteIni(x)
 {
     IfInString, stringArray, %x%
+    {
         inirwTOOLKIT("w", x, x)
+        inirwTOOLKIT("w", "nogui", "1")
+    }
 }
 
-if (updating != "1") and (gui != "nogui")
+if (updating != "1") and (nogui = "0")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
