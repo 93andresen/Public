@@ -65,22 +65,22 @@ arg9=%9%
 
 inirwTOOLKIT("w", "nogui", "0")
 
-CheckStringWriteIni("update")
-CheckStringWriteIni("debloat")
-CheckStringWriteIni("apps")
-CheckStringWriteIni("netflix")
-CheckStringWriteIni("darktsk")
-CheckStringWriteIni("reboot")
-CheckStringWriteIni("ooshutup")
+CheckStringWriteIni("update", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("debloat", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("apps", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("netflix", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("darktsk", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("reboot", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni("ooshutup", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 
 
 
 
-msgbox, rly23333 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
-CheckStringWriteIni(x, x1=%arg1%, x2=%arg2%, x3=%arg3%, x4=%arg4%, x5=%arg5%, x6=%arg6%, x7=%arg7%, x8=%arg8%, x9=%arg9%)
+msgbox, rly2334444444444444444444444444444444444444444444444444444444433 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
+CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 {
-    stringArray := x1 . x2 . x3 . x4 . x5 . x6 . x7 . x8 . x9
-    msgbox, rly2 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
+    stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
+    msgbox, rly44444444442 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
     IfInString, stringArray, %x%
     {
         inirwTOOLKIT("w", x, "1")
