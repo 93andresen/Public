@@ -77,7 +77,7 @@ CheckStringWriteIni("ooshutup")
 
 
 
-CheckStringWriteIni(x, x1:=arg1, x2:=arg2, x3:=arg3, x4:=arg4, x5:=arg5, x6:=arg6, x7:=arg7, x8:=arg8, x9:=arg9)
+CheckStringWriteIni(x, x1:="%arg1%", x2:="%arg2%", x3:="%arg3%", x4:="%arg4%", x5:="%arg5%", x6:="%arg6%", x7:="%arg7%", x8:="%arg8%", x9:="%arg9%")
 {
     stringArray := x1 . x2 . x3 . x4 . x5 . x6 . x7 . x8 . x9
     IfInString, stringArray, %x%
