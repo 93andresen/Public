@@ -4,6 +4,9 @@ Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
+
+$gui=$args[0]
+
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 Set-Location C:\temp_Windows10ToolkitRichard -ErrorAction SilentlyContinue
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
