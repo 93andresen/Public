@@ -23,7 +23,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 
-var = %1%
+gui = %1%
 ;msgbox, %var%
 
 
@@ -49,7 +49,8 @@ loop 20
 }
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
-if updating != 1
+
+if ((updating != 1) and (gui != nogui))
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
