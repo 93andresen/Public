@@ -46,7 +46,7 @@ choco feature enable -n allowEmptyChecksums
 if (Test-Path "C:\Program Files\AutoHotkey\AutoHotkey.exe"){
     #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
     'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $gui
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg0 $arg1 $arg2 $arg3 $arg4 $arg5 $arg6 $arg7 $arg8 $arg9
     
     #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
     'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
@@ -89,7 +89,7 @@ else{
     }
     #RUNNING MY AHK_SCRIPT - Windows10ToolkitRichard
     'running c:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ahk'
-    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk
+    & "C:\Program Files\AutoHotkey\AutoHotkey.exe" C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk $arg0 $arg1 $arg2 $arg3 $arg4 $arg5 $arg6 $arg7 $arg8 $arg9
     
     #RUNNING MY AHK_SCRIPTS - RunAsUser and RunAsAdmin
     'running C:\temp_Windows10ToolkitRichard\Public-main\RunAsAdminCOPY_WILL_NOT_SYNC.ahk'
