@@ -6,6 +6,15 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
 
+
+ArgsArray := ["%1%", "%2%", "%3%", "%4%", "%5%", "%6%", "%7%", "%8%", "%9%"]
+
+if ArgsArray contains updatee
+    msgbox, % ArgsArray[1]
+
+
+ExitApp
+
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
 full_command_line := DllCall("GetCommandLine", "str")
@@ -62,9 +71,7 @@ darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
 
-ArgsArray := ["%1%", %2%, %3%, %4%, %5%, %6%, %7%, %8%, %9%]
 
-msgbox, % ArgsArray[1]
 
 
 
