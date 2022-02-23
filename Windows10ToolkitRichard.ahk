@@ -61,7 +61,7 @@ arg7=%7%
 arg8=%8%
 arg9=%9%
 
-stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
+
 
 inirwTOOLKIT("w", "nogui", "0")
 
@@ -73,8 +73,11 @@ CheckStringWriteIni("darktsk")
 CheckStringWriteIni("reboot")
 CheckStringWriteIni("ooshutup")
 
-CheckStringWriteIni(x, stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9)
+
+
+CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 {
+    stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
     IfInString, stringArray, %x%
     {
         inirwTOOLKIT("w", x, "1")
