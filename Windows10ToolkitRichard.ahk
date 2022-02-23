@@ -20,7 +20,7 @@ arg9=%9%
 
 ArgsArray := [arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9]
 
-;if ArgsArray contains updatee
+if ArgsArray contains updatee
     msgbox, % ArgsArray[1]
 
 
