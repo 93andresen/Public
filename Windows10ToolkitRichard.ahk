@@ -9,7 +9,7 @@ script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.Serv
 
 ArgsArray := ["%1%", "%2%", "%3%", "%4%", "%5%", "%6%", "%7%", "%8%", "%9%"]
 
-if ArgsArray contains updatee
+;if ArgsArray contains updatee
     msgbox, % ArgsArray[1]
 
 
