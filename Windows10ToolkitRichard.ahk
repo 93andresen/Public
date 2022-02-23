@@ -74,13 +74,10 @@ CheckStringWriteIni("reboot", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 CheckStringWriteIni("ooshutup", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 
 
-
-
-msgbox, rly2334444444444444444444444444444444444444444444444444444444433 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
 CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 {
     stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
-    msgbox, rly44444444442 %x1% %x2% %x3% %x4% %x5% %x6% %x7% %x8% %x9%
+    msgbox, cmon %arg1%, %arg2%, %arg3%, %arg4%, %arg5%, %arg6%, %arg7%, %arg8%, %arg9%
     IfInString, stringArray, %x%
     {
         inirwTOOLKIT("w", x, "1")
