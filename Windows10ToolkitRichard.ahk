@@ -88,8 +88,6 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 
 if (updating != "1") and (nogui = "0")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
-else
-    Tooltip, %arg1% %arg2% %arg3% %arg4% %arg5% %arg6% %arg7% %arg8% %arg9%
 
 
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
@@ -102,7 +100,8 @@ darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
 
-msgbox, %update% %debloat% %apps% %netflix% %darktsk% %reboot% %ooshutup%
+Tooltip, update = %update%`ndebloat = %debloat%`napps = %apps%`nnetflix = %netflix%`ndarktsk = %darktsk%`nreboot = %reboot%`nooshutup = %ooshutup%`n
+
 
 
 /*
