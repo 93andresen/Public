@@ -74,8 +74,7 @@ CheckStringWriteIni("reboot")
 CheckStringWriteIni("ooshutup")
 
 
-
-CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+CheckStringWriteIni(x, arg1:=%1%, arg2:=%2%, arg3:=%3%, arg4:=%4%, arg5:=%5%, arg6:=%6%, arg7:=%7%, arg8:=%8%, arg9:=%9%)
 {
     stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
     IfInString, stringArray, %x%
