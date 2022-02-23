@@ -664,7 +664,7 @@ fastcopy_wait_func(source, dest, mode) ;   File or Folder, will create destinati
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            runwait, "fastcopy" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            runwait, fastcopy /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
         }
     }
 }
@@ -675,7 +675,7 @@ fastcopy_func(source, dest, mode) ;   File or Folder, will create destination fo
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            run, "fastcopy" /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
+            run, fastcopy /postproc=nosound %mode% /open_window /force_close /force_start(=N) "%source%" /to="%dest%"
             sleep, 500
         }
     }
