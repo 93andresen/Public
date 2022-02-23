@@ -5,9 +5,17 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
+arg1=%1%
+arg1=%2%
+arg1=%3%
+arg1=%4%
+arg1=%5%
+arg1=%6%
+arg1=%7%
+arg1=%8%
+arg1=%9%
 
-
-ArgsArray := ["%1%", "%2%", "%3%", "%4%", "%5%", "%6%", "%7%", "%8%", "%9%"]
+ArgsArray := [arg1]
 
 ;if ArgsArray contains updatee
     msgbox, % ArgsArray[1]
