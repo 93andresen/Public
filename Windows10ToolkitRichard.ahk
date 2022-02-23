@@ -111,16 +111,6 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
         inirwTOOLKIT("w", x, "0")
 }
 
-    if ooshutup = 1
-        log("Essesinal Tweaks (Probably Best For Most People) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 2
-        log("Essesinal Tweaks + Disable Microphone And Webcam - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 3
-        log("Essesinal Tweaks + Disable App Access (For The Paranoid) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 4
-        log("Undo All Changes (Revert To Factory Settings) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 0
-        log("Don't Do Anythin
 
 
 if (updating != "1") and (nogui = "0")
