@@ -58,9 +58,9 @@ update := inirwTOOLKIT("r", "update")
 debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
+darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
-darktsk := inirwTOOLKIT("r", "darktsk")
 
 
 /*
