@@ -5,7 +5,16 @@ Start-Transcript -Append C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 
 
-$gui=$args[0]
+$arg0=$args[0]
+$arg1=$args[0]
+$arg2=$args[0]
+$arg3=$args[0]
+$arg4=$args[0]
+$arg5=$args[0]
+$arg6=$args[0]
+$arg7=$args[0]
+$arg8=$args[0]
+$arg9=$args[0]
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 Set-Location C:\temp_Windows10ToolkitRichard -ErrorAction SilentlyContinue
