@@ -17,9 +17,9 @@ arg9=%9%
 
 
 
-updatee=updatee
 
-stringArray := arg1 . updatee . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
+
+stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
 IfInString, updatee, stringArray
     msgbox, % stringArray
 
