@@ -79,27 +79,27 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
     IfInString, stringArray, ooshutup0
     {
-        inirwTOOLKIT("w", ooshutup, "1")
+        inirwTOOLKIT("w", "ooshutup", "0")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, ooshutup1
     {
-        inirwTOOLKIT("w", ooshutup, "1")
+        inirwTOOLKIT("w", "ooshutup", "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, ooshutup2
     {
-        inirwTOOLKIT("w", ooshutup, "1")
+        inirwTOOLKIT("w", "ooshutup", "2")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, ooshutup3
     {
-        inirwTOOLKIT("w", ooshutup, "1")
+        inirwTOOLKIT("w", "ooshutup", "3")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, ooshutup4
     {
-        inirwTOOLKIT("w", ooshutup, "1")
+        inirwTOOLKIT("w", "ooshutup", "4")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, %x%
