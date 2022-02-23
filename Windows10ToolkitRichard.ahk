@@ -98,7 +98,7 @@ darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
 
-
+msgbox, %update% %debloat% %apps% %netflix% %darktsk% %reboot% %ooshutup%
 
 
 /*
