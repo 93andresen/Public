@@ -77,9 +77,11 @@ CheckStringWriteIni(x)
 {
     IfInString, stringArray, %x%
     {
-        inirwTOOLKIT("w", x, x)
+        inirwTOOLKIT("w", x, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
+    else
+        inirwTOOLKIT("w", x, "0")
 }
 
 if (updating != "1") and (nogui = "0")
