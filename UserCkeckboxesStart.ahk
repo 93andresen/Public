@@ -7,6 +7,14 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
 
+inirwTOOLKIT("w", "update", "0")
+inirwTOOLKIT("w", "debloat", "0")
+inirwTOOLKIT("w", "apps", "0")
+inirwTOOLKIT("w", "netflix", "0")
+inirwTOOLKIT("w", "darktsk", "0")
+inirwTOOLKIT("w", "reboot", "0")
+inirwTOOLKIT("w", "ooshutup", "0")
+
 
 Gui, Add, Text,, If you want to revert settings, use the system restore point named "Before_Running_Windows10ToolkitRichard"
 Gui, Add, Text,, 
