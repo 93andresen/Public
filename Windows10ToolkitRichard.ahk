@@ -51,6 +51,32 @@ loop 20
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
+arg1=%1%
+arg2=%2%
+arg3=%3%
+arg4=%4%
+arg5=%5%
+arg6=%6%
+arg7=%7%
+arg8=%8%
+arg9=%9%
+
+stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
+
+CheckStringWriteIni("update")
+CheckStringWriteIni("debloat")
+CheckStringWriteIni("apps")
+CheckStringWriteIni("netflix")
+CheckStringWriteIni("darktsk")
+CheckStringWriteIni("reboot")
+CheckStringWriteIni("ooshutup")
+
+CheckStringWriteIni(x)
+{
+    IfInString, stringArray, %x%
+        inirwTOOLKIT("w", x, x)
+}
+
 if (updating != "1") and (gui != "nogui")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
