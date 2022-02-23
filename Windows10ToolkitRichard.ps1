@@ -6,15 +6,15 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 
 $arg0=$args[0]
-$arg1=$args[0]
-$arg2=$args[0]
-$arg3=$args[0]
-$arg4=$args[0]
-$arg5=$args[0]
-$arg6=$args[0]
-$arg7=$args[0]
-$arg8=$args[0]
-$arg9=$args[0]
+$arg1=$args[1]
+$arg2=$args[2]
+$arg3=$args[3]
+$arg4=$args[4]
+$arg5=$args[5]
+$arg6=$args[6]
+$arg7=$args[7]
+$arg8=$args[8]
+$arg9=$args[9]
 
 'Downloaded files will be saved in C:\temp_Windows10ToolkitRichard'
 Set-Location C:\temp_Windows10ToolkitRichard -ErrorAction SilentlyContinue
