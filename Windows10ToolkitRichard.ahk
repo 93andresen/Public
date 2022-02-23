@@ -73,7 +73,7 @@ CheckStringWriteIni("darktsk")
 CheckStringWriteIni("reboot")
 CheckStringWriteIni("ooshutup")
 
-CheckStringWriteIni(x)
+CheckStringWriteIni(x, stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9)
 {
     IfInString, stringArray, %x%
     {
