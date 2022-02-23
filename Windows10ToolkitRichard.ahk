@@ -63,6 +63,19 @@ reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
 
 
+
+
+
+inirwTOOLKIT("w", "update", update)
+inirwTOOLKIT("w", "debloat", debloat)
+inirwTOOLKIT("w", "apps", apps)
+inirwTOOLKIT("w", "netflix", netflix)
+inirwTOOLKIT("w", "darktsk", darktsk)
+inirwTOOLKIT("w", "reboot", reboot)
+inirwTOOLKIT("w", "ooshutup", ooshutup)
+
+
+
 /*
 MAYBE_AND_OTHER:
 
