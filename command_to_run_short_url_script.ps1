@@ -13,8 +13,7 @@ iwr git.io/J13Mt -UseBasicParsing|iex
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;mkdir C:\!\Code\GitHub\93andresen_Scripts\Public -ErrorAction SilentlyContinue;Invoke-WebRequest -Uri https://git.io/J13Mt -OutFile C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 -ErrorAction SilentlyContinue;C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 update debloat darktsk reboot ooshutup1
 
-update debloat darktsk reboot ooshutup1
-update debloat apps netflix darktsk reboot ooshutup
+update debloat apps netflix darktsk reboot ooshutup01234
 
 ooshutup1, Essesinal Tweaks (Probably Best For Most People)
 ooshutup2, Essesinal Tweaks + Disable Microphone And Webcam

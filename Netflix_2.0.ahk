@@ -742,7 +742,7 @@ ConnectedToInternet(flag=0x40)
 { 
     Return DllCall("Wininet.dll\InternetGetConnectedState", "Str", flag,"Int",0) 
 }
-kill_task(exe, force)
+kill_task(exe, force:="1")
 {
     if force=0
     {
