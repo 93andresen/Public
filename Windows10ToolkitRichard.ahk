@@ -72,10 +72,10 @@ CheckStringWriteIni("netflix", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, a
 CheckStringWriteIni("darktsk", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 CheckStringWriteIni("reboot", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 CheckStringWriteIni("ooshutup", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("4a6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   4a6a ipv4=auto          ipv6=auto
-CheckStringWriteIni("4c6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   4c6c ipv4=cloudflare    ipv6=cloudflare
-CheckStringWriteIni("4a6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   4a6c ipv4=auto          ipv6=cloudflare
-CheckStringWriteIni("4c6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   4c6a ipv4=cloudflare    ipv6=auto
+CheckStringWriteIni("dns4a6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4a6a ipv4=auto          ipv6=auto
+CheckStringWriteIni("dns4c6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+CheckStringWriteIni("dns4a6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+CheckStringWriteIni("dns4c6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
 
 
 
@@ -330,21 +330,21 @@ runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Bluetooth_no
 runwait, C:\temp_Windows10ToolkitRichard\Public-main\Reg\RegConvert\Set_Drag_and_Drop_to_Move_by_default.bat,,max
 
 
-if 4a6a = 4a6a
+if dns4a6a = dns4a6a
     SetDNS("automatic", "ipv4", "ipv6")
-if 4c6c = 4c6c
+if dns4c6c = dns4c6c
     SetDNS("cloudflare", "ipv4", "ipv6")
-if 4a6c = 4a6c
+if dns4a6c = dns4a6c
     SetDNS("automatic", "ipv4", "0")
     SetDNS("cloudflare", "0", "ipv6")
-if 4c6a = 4c6a
+if dns4c6a = dns4c6a
     SetDNS("cloudflare", "ipv4", "0")
     SetDNS("automatic", "0", "ipv6")
 
-;4a6a ipv4=auto          ipv6=auto
-;4c6c ipv4=cloudflare    ipv6=cloudflare
-;4a6c ipv4=auto          ipv6=cloudflare
-;4c6a ipv4=cloudflare    ipv6=auto
+;dns4a6a ipv4=auto          ipv6=auto
+;dns4c6c ipv4=cloudflare    ipv6=cloudflare
+;dns4a6c ipv4=auto          ipv6=cloudflare
+;dns4c6a ipv4=cloudflare    ipv6=auto
 
 
 
