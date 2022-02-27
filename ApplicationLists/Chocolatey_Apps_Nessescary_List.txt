@@ -10,7 +10,7 @@ Firefox
 Edgedeflector
 Autohotkey
 Chocolatey-misc-helpers.extension
-Fastcopy
+Fastcopy.portable
 Python
 Winrar
 Peazip
@@ -34,7 +34,7 @@ Musicbee
 Th-ch-youtube-music
 Equalizerapo
 Steam
-Crystaldiskinfo
+Crystaldiskinfo.portable
 Irfanview
 Irfanviewplugins
 Qalculate
