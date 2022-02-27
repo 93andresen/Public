@@ -117,7 +117,7 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 }
 
 
-if (updating != "1") and (nogui != "1")
+if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 
 
