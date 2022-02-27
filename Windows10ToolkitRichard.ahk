@@ -257,20 +257,10 @@ if updating != 1
 
 if darktsk = 1
 {
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 35908098 2
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 36898195 2
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 37204171 2
+    runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\ViVeTool-v0.2.1\ViVeTool.exe addconfig 35908098 2
+    runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\ViVeTool-v0.2.1\ViVeTool.exe addconfig 36898195 2
+    runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\ViVeTool-v0.2.1\ViVeTool.exe addconfig 37204171 2
 }
-Else
-{
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 35908098 2
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 36898195 2
-    runwait, cmd.exe /c cd C:\!\Code\GitHub\93andresen_Scripts\Public\ViVeTool-v0.2.1;vivetool addconfig 37204171 2
-}
-
-
-
-
 
 if var = shortcutstart
 {
