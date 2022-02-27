@@ -133,6 +133,12 @@ PrintDebug(string:=""){
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
 
-Esc::
-ExitApp
+~Esc::
+if esc!=1
+{
+    esc=1
+    msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
+}
+else if esc=1
+    ExitApp
 

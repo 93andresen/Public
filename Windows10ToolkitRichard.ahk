@@ -452,8 +452,14 @@ ExitApp                                                                         
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 
-Esc::
-ExitApp
+~Esc::
+if esc!=1
+{
+    esc=1
+    msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
+}
+else if esc=1
+    ExitApp
 
 
 

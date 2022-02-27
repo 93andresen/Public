@@ -6,6 +6,10 @@ CoordMode, Pixel, Screen
 CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 
+
+Process, Priority, , A
+SetBatchLines, -1
+
 logfile=%1%
 x=1
 loop
@@ -21,13 +25,23 @@ loop
             Stdout(v)	;output to new console
         x+=1
     }
-    else
-    {
-        sleep, 1
-    }
-    sleep, 1
+    ;else
+    ;{
+    ;    sleep, 1
+    ;}
+    ;sleep, 1
 }
 
+
+
+~Esc::
+if esc!=1
+{
+    esc=1
+    msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
+}
+else if esc=1
+    ExitApp
 
 
 
