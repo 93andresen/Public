@@ -117,7 +117,7 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 }
 
 
-if (updating != "1") and (nogui = "0")
+if (updating != "1") and (nogui != "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 
 
@@ -348,7 +348,7 @@ if dns4c6a = dns4c6a
 
 ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide="max")
 
-run, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee -a C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee -a C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 
 SetCapsLockState, Off
