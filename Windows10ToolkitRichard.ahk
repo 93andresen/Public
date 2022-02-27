@@ -346,7 +346,7 @@ if dns4c6a = dns4c6a
 ;dns4a6c ipv4=auto          ipv6=cloudflare
 ;dns4c6a ipv4=cloudflare    ipv6=auto
 
-
+runwait, NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat
 
 SetCapsLockState, Off
 SetNumLockState, On
