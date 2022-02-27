@@ -285,20 +285,20 @@ if update = 1
 {
     FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk, C:\temp_Windows10ToolkitRichard\Public-main, shortcutstart
     inirwTOOLKIT("w", "updating", "1")
-    RunPowershellLog("cup abc-update", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("cup abc-update", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,max
-    RunPowershellLog("cup Boxstarter", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-    RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("cup Boxstarter", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
+    RunPowershellLog("import-module Boxstarter.WinConfig;Install-WindowsUpdate", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     filedelete, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk
     inirwTOOLKIT("w", "updating", "0")
 }
 if debloat = 1
 {
-    RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-    ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10DebloaterSycnexForkRichard.ps1", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
-    RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
+    ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10DebloaterSycnexForkRichard.ps1", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
+    RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     command = choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force
-    RunPowershellLog(command, path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+    RunPowershellLog(command, path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
 }
 
 
@@ -346,7 +346,7 @@ if dns4c6a = dns4c6a
 ;dns4a6c ipv4=auto          ipv6=cloudflare
 ;dns4c6a ipv4=cloudflare    ipv6=auto
 
-RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
 
 SetCapsLockState, Off
 SetNumLockState, On
