@@ -346,8 +346,7 @@ if dns4c6a = dns4c6a
 ;dns4a6c ipv4=auto          ipv6=cloudflare
 ;dns4c6a ipv4=cloudflare    ipv6=auto
 
-runwait, NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee SomeFile.txt
-RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
+RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", temp_path:="C:\temp_Windows10ToolkitRichard\PowershellTempLog.txt", minmaxhide:="max")
 
 SetCapsLockState, Off
 SetNumLockState, On
