@@ -348,7 +348,7 @@ if dns4c6a = dns4c6a
 
 ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide="max")
 
-run, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee -a 
+run, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee -a C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
 
 SetCapsLockState, Off
