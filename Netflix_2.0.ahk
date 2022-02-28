@@ -241,7 +241,7 @@ get_size(file_or_folder)
     AttributeString := FileExist(file_or_folder)
     if AttributeString = D
     {
-        SetBatchLines, -1  ; Make the operation run at maximum speed.
+        SetBatchLines, 20ms  ; Make the operation run at maximum speed.
         FolderSize := 0
         Loop, %file_or_folder%\*.*, , 1
             FolderSize += A_LoopFileSize

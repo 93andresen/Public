@@ -1526,7 +1526,7 @@ get_size(file_or_folder)
     AttributeString := FileExist(file_or_folder)
     if AttributeString = D
     {
-        SetBatchLines, -1  ; Make the operation run at maximum speed.
+        SetBatchLines, 20ms  ; Make the operation run at maximum speed.
         FolderSize := 0
         Loop, %file_or_folder%\*.*, , 1
             FolderSize += A_LoopFileSize
@@ -1876,6 +1876,7 @@ DownloadYoutubeMusic(metafiles, openfolder, deleteparts, format, path, link)
     Tooltip, %OutFileName%Launching yt-dlp`nmetafiles=%metafiles%`nopenfolder=%openfolder%`ndeleteparts=%deleteparts%`nformat=%format%`npath=%path%
     if openfolder=1
     {
+        Tooltip, 
         runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\DownloadYoutubeNoWait.ahk %metafiles% %openfolder% %deleteparts% %format% %path% %link%
     }
     else

@@ -8,7 +8,7 @@ SetTitleMatchMode, 2
 
 
 Process, Priority, , A
-SetBatchLines, -1
+SetBatchLines, 10ms
 
 logfile=%1%
 x=1
@@ -25,11 +25,6 @@ loop
             Stdout(v)	;output to new console
         x+=1
     }
-    ;else
-    ;{
-    ;    sleep, 1
-    ;}
-    ;sleep, 1
 }
 
 

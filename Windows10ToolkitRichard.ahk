@@ -512,8 +512,6 @@ PrintDebug(string:=""){
 	}
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
-
-
 RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max")
 {
     ;FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
@@ -525,8 +523,8 @@ RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minma
     ;SplitPath, temp_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     ;if not FileExist(OutDir)
     ;    FileCreateDir, %OutDir%
-    bypass_command = Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;%command%
-    runwait, powershell.exe %command% | Tee-Object -a -file %path%,,%minmaxhide%
+    bypass_command = Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+    runwait, powershell.exe %bypass_command%%command% | Tee-Object -a -file %path%,,%minmaxhide%
     ;FileRead, ps_tmp, %temp_path%
     ;FileAppend, `n%ps_tmp%, %path%
 }
