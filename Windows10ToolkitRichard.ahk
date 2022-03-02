@@ -135,6 +135,7 @@ netflix := inirwTOOLKIT("r", "netflix")
 darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup := inirwTOOLKIT("r", "ooshutup")
+personal := inirwTOOLKIT("r", "personal")
 
 Tooltip, update = %update%`ndebloat = %debloat%`napps = %apps%`nnetflix = %netflix%`ndarktsk = %darktsk%`nreboot = %reboot%`nooshutup = %ooshutup%`n
 
