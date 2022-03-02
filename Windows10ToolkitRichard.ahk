@@ -76,6 +76,8 @@ CheckStringWriteIni("dns4a6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, a
 CheckStringWriteIni("dns4c6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
 CheckStringWriteIni("dns4a6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4a6c ipv4=auto          ipv6=cloudflare
 CheckStringWriteIni("dns4c6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+CheckStringWriteIni("personal", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+
 
 
 
@@ -105,6 +107,11 @@ CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
     IfInString, stringArray, ooshutup4
     {
         inirwTOOLKIT("w", "ooshutup", "4")
+        inirwTOOLKIT("w", "nogui", "1")
+    }
+    IfInString, stringArray, personal
+    {
+        inirwTOOLKIT("w", "personal", "4")
         inirwTOOLKIT("w", "nogui", "1")
     }
     IfInString, stringArray, %x%
@@ -342,6 +349,11 @@ runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_Sam
 SetCapsLockState, Off
 SetNumLockState, On
 
+if personal = 1
+{
+    msgbox, YES IT WORKS!!!!!!!!
+    run, powershell.exe choco pin add --name="'authy-desktop'"
+}
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk   ;REMOVE THIS WHEN FIXED
 ExitApp                                                                         ;REMOVE THIS WHEN FIXED
