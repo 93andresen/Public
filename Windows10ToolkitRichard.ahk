@@ -128,9 +128,10 @@ CheckStringWriteIni(x)
     }
     else
         inirwTOOLKIT("w", x, "0")
+    msgbox, x=%x%
     return x
 }
-
+msgbox, ooshutup=%ooshutup%
 
 if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
