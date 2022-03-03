@@ -5,7 +5,12 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
-
+for n, param in A_Args  ; For each parameter:
+{
+    Tooltip, Parameter number %n% is %param%.
+    sleep, 200
+}
+ExitApp
 
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
@@ -353,7 +358,6 @@ SetNumLockState, On
 if personal = 1
 {
     Tooltip, YES IT WORKS!!!!!!!!
-    Tooltip, 
     run, powershell.exe choco pin add --name="'authy-desktop'"
 }
 
