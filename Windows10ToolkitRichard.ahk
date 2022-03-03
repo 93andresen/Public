@@ -52,35 +52,45 @@ loop 20
 WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
-arg1=%1%
-arg2=%2%
-arg3=%3%
-arg4=%4%
-arg5=%5%
-arg6=%6%
-arg7=%7%
-arg8=%8%
-arg9=%9%
+
+update=update
+debloat=debloat
+apps=apps
+netflix=netflix
+darktsk=darktsk
+reboot=reboot
+ooshutup0=ooshutup0
+ooshutup1=ooshutup1
+ooshutup2=ooshutup2
+ooshutup3=ooshutup3
+ooshutup4=ooshutup4
+dns4a6a=dns4a6a
+dns4c6c=dns4c6c
+dns4a6c=dns4a6c
+dns4c6a=dns4c6a
+personal=personal
+
+
 
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
-    CheckStringWriteIni(param, "update")
-    CheckStringWriteIni(param, "debloat")
-    CheckStringWriteIni(param, "apps")
-    CheckStringWriteIni(param, "netflix")
-    CheckStringWriteIni(param, "darktsk")
-    CheckStringWriteIni(param, "reboot")
-    CheckStringWriteIni(param, "ooshutup0")
-    CheckStringWriteIni(param, "ooshutup1")
-    CheckStringWriteIni(param, "ooshutup2")
-    CheckStringWriteIni(param, "ooshutup3")
-    CheckStringWriteIni(param, "ooshutup4")
-    CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
-    CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
-    CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
-    CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-    CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    CheckStringWriteIni(param, update)
+    CheckStringWriteIni(param, debloat)
+    CheckStringWriteIni(param, apps)
+    CheckStringWriteIni(param, netflix)
+    CheckStringWriteIni(param, darktsk)
+    CheckStringWriteIni(param, reboot)
+    CheckStringWriteIni(param, ooshutup0)
+    CheckStringWriteIni(param, ooshutup1)
+    CheckStringWriteIni(param, ooshutup2)
+    CheckStringWriteIni(param, ooshutup3)
+    CheckStringWriteIni(param, ooshutup4)
+    CheckStringWriteIni(param, dns4a6a)       ;   dns4a6a ipv4=auto          ipv6=auto
+    CheckStringWriteIni(param, dns4c6c)       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+    CheckStringWriteIni(param, dns4a6c)       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+    CheckStringWriteIni(param, dns4c6a)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    CheckStringWriteIni(param, personal)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
 }
 CheckStringWriteIni(param, x)
 {
