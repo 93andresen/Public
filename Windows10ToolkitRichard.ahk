@@ -73,7 +73,11 @@ for n, param in A_Args  ; For each parameter:
     CheckStringWriteIni("netflix")
     CheckStringWriteIni("darktsk")
     CheckStringWriteIni("reboot")
-    CheckStringWriteIni("ooshutup")
+    CheckStringWriteIni("ooshutup0")
+    CheckStringWriteIni("ooshutup1")
+    CheckStringWriteIni("ooshutup2")
+    CheckStringWriteIni("ooshutup3")
+    CheckStringWriteIni("ooshutup4")
     CheckStringWriteIni("dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
     CheckStringWriteIni("dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
     CheckStringWriteIni("dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
