@@ -36,6 +36,7 @@ updating := inirwTOOLKIT("r", "updating")
 if updating != 1
 {
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+    filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     runwait, powershell.exe Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard";Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
 }
@@ -61,24 +62,47 @@ arg7=%7%
 arg8=%8%
 arg9=%9%
 
-
-
-
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
+    CheckStringWriteIni(param, "update")
+    CheckStringWriteIni(param, "debloat")
+    CheckStringWriteIni(param, "apps")
+    CheckStringWriteIni(param, "netflix")
+    CheckStringWriteIni(param, "darktsk")
+    CheckStringWriteIni(param, "reboot")
+    CheckStringWriteIni(param, "ooshutup0")
+    CheckStringWriteIni(param, "ooshutup1")
+    CheckStringWriteIni(param, "ooshutup2")
+    CheckStringWriteIni(param, "ooshutup3")
+    CheckStringWriteIni(param, "ooshutup4")
+    CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
+    CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+    CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+    CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+}
+CheckStringWriteIni(param, x)
+{
+    xchecked=%x%checked
+    checked := inirwTOOLKIT("r", xchecked)
+    if checked=1
+        return
     if param contains %x%
     {
         x=1
         inirwTOOLKIT("w", x, "1")
+        inirwTOOLKIT("w", xchecked, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
     else
+    {
+        x=0
         inirwTOOLKIT("w", x, "0")
+    }
     return x
 }
-
-msgbox, ooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%
+msgbox, ooshutup=%ooshutup%
 
 if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
