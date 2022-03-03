@@ -77,17 +77,25 @@ for n, param in A_Args  ; For each parameter:
 }
 CheckStringWriteIni(param, needle)
 {
+    needlechecked=%needle%checked
+    if inirwTOOLKIT("r", needlechecked)
+    {
+        temp := inirwTOOLKIT("r", needle)
+        return temp
+    }
     Tooltip, param=%param%`nneedle=%needle%
     sleep, 200
     if param contains %needle%
     {
         inirwTOOLKIT("w", needle, "1")
+        inirwTOOLKIT("w", needlechecked, "1")
         inirwTOOLKIT("w", "nogui", "1")
         return 1
     }
     else
     {
         inirwTOOLKIT("w", needle, "0")
+        inirwTOOLKIT("w", needlechecked, "1")
         return 0
     }
 }
