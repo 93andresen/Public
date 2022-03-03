@@ -352,7 +352,8 @@ SetNumLockState, On
 
 if personal = 1
 {
-    msgbox, YES IT WORKS!!!!!!!!
+    Tooltip, YES IT WORKS!!!!!!!!
+    Tooltip, 
     run, powershell.exe choco pin add --name="'authy-desktop'"
 }
 
