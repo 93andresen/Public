@@ -67,70 +67,18 @@ arg9=%9%
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
-    CheckStringWriteIni("update")
-    CheckStringWriteIni("debloat")
-    CheckStringWriteIni("apps")
-    CheckStringWriteIni("netflix")
-    CheckStringWriteIni("darktsk")
-    CheckStringWriteIni("reboot")
-    CheckStringWriteIni("ooshutup0")
-    CheckStringWriteIni("ooshutup1")
-    CheckStringWriteIni("ooshutup2")
-    CheckStringWriteIni("ooshutup3")
-    CheckStringWriteIni("ooshutup4")
-    CheckStringWriteIni("dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
-    CheckStringWriteIni("dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
-    CheckStringWriteIni("dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
-    CheckStringWriteIni("dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-    CheckStringWriteIni("personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-}
-
-
-
-
-CheckStringWriteIni(x)
-{
     if param contains %x%
     {
         x=1
         inirwTOOLKIT("w", x, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
-    if param contains ooshutup0
-    {
-        x=0
-        inirwTOOLKIT("w", "ooshutup", "0")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    if param contains ooshutup1
-    {
-        x=1
-        inirwTOOLKIT("w", "ooshutup", "1")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    if param contains ooshutup2
-    {
-        x=2
-        inirwTOOLKIT("w", "ooshutup", "2")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    if param contains ooshutup3
-    {
-        x=3
-        inirwTOOLKIT("w", "ooshutup", "3")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    if param contains ooshutup4
-    {
-        x=4
-        inirwTOOLKIT("w", "ooshutup", "4")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
     else
         inirwTOOLKIT("w", x, "0")
     return x
 }
-msgbox, ooshutup=%ooshutup%
+
+msgbox, ooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%
 
 if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
@@ -142,7 +90,11 @@ apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
-ooshutup := inirwTOOLKIT("r", "ooshutup")
+ooshutup0 := inirwTOOLKIT("r", "ooshutup")
+ooshutup1 := inirwTOOLKIT("r", "ooshutup")
+ooshutup2 := inirwTOOLKIT("r", "ooshutup")
+ooshutup3 := inirwTOOLKIT("r", "ooshutup")
+ooshutup4 := inirwTOOLKIT("r", "ooshutup")
 personal := inirwTOOLKIT("r", "personal")
 
 Tooltip, update = %update%`ndebloat = %debloat%`napps = %apps%`nnetflix = %netflix%`ndarktsk = %darktsk%`nreboot = %reboot%`nooshutup = %ooshutup%`n
@@ -257,15 +209,15 @@ if updating != 1
         log("Netflix 2.0 - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if reboot = 1
         log("Reboot - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 1
+    if ooshutup1 = 1
         log("Essesinal Tweaks (Probably Best For Most People) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 2
+    if ooshutup2 = 1
         log("Essesinal Tweaks + Disable Microphone And Webcam - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 3
+    if ooshutup3 = 1
         log("Essesinal Tweaks + Disable App Access (For The Paranoid) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 4
+    if ooshutup4 = 1
         log("Undo All Changes (Revert To Factory Settings) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if ooshutup = 0
+    if ooshutup0 = 1
         log("Don't Do Anything - Will Keep These Settings As is - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
 }
 
