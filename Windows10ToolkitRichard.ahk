@@ -53,23 +53,6 @@ WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
 
-update=update
-debloat=debloat
-apps=apps
-netflix=netflix
-darktsk=darktsk
-reboot=reboot
-ooshutup0=ooshutup0
-ooshutup1=ooshutup1
-ooshutup2=ooshutup2
-ooshutup3=ooshutup3
-ooshutup4=ooshutup4
-dns4a6a=dns4a6a
-dns4c6c=dns4c6c
-dns4a6c=dns4a6c
-dns4c6a=dns4c6a
-personal=personal
-
 
 
 inirwTOOLKIT("w", "nogui", "0")
@@ -94,21 +77,22 @@ for n, param in A_Args  ; For each parameter:
 }
 CheckStringWriteIni(param, needle)
 {
+    Tooltip, param=%param%`nneedle=%needle%
+    sleep, 200
     if param contains %needle%
     {
-        x=1
         inirwTOOLKIT("w", needle, "1")
         inirwTOOLKIT("w", "nogui", "1")
+        return 1
     }
     else
     {
-        x=0
         inirwTOOLKIT("w", needle, "0")
+        return 0
     }
-    return x
 }
 Tooltip, update=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
-sleep, 10000
+sleep, 2000
 
 if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
