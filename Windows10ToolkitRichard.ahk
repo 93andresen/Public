@@ -87,7 +87,11 @@ CheckStringWriteIni(param, x)
     xchecked=%x%checked
     checked := inirwTOOLKIT("r", xchecked)
     if checked=1
-        return
+    {
+        Tooltip, x=%x%
+        sleep, 200
+        return x
+    }
     if param contains %x%
     {
         x=1
