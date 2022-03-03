@@ -75,44 +75,35 @@ personal=personal
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
-    CheckStringWriteIni(param, "update")
-    CheckStringWriteIni(param, "debloat")
-    CheckStringWriteIni(param, "apps")
-    CheckStringWriteIni(param, "netflix")
-    CheckStringWriteIni(param, "darktsk")
-    CheckStringWriteIni(param, "reboot")
-    CheckStringWriteIni(param, "ooshutup0")
-    CheckStringWriteIni(param, "ooshutup1")
-    CheckStringWriteIni(param, "ooshutup2")
-    CheckStringWriteIni(param, "ooshutup3")
-    CheckStringWriteIni(param, "ooshutup4")
-    CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
-    CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
-    CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
-    CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-    CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    update := CheckStringWriteIni(param, "update")
+    debloat := CheckStringWriteIni(param, "debloat")
+    apps := CheckStringWriteIni(param, "apps")
+    netflix := CheckStringWriteIni(param, "netflix")
+    darktsk := CheckStringWriteIni(param, "darktsk")
+    reboot := CheckStringWriteIni(param, "reboot")
+    ooshutup0 := CheckStringWriteIni(param, "ooshutup0")
+    ooshutup1 := CheckStringWriteIni(param, "ooshutup1")
+    ooshutup2 := CheckStringWriteIni(param, "ooshutup2")
+    ooshutup3 := CheckStringWriteIni(param, "ooshutup3")
+    ooshutup4 := CheckStringWriteIni(param, "ooshutup4")
+    dns4a6a := CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
+    dns4c6c := CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+    dns4a6c := CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+    dns4c6a := CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    personal := CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
 }
-CheckStringWriteIni(param, x)
+CheckStringWriteIni(param, needle)
 {
-    xchecked=%x%checked
-    checked := inirwTOOLKIT("r", xchecked)
-    if checked=1
-    {
-        Tooltip, x=%x%
-        sleep, 200
-        return x
-    }
-    if param contains %x%
+    if param contains %needle%
     {
         x=1
-        inirwTOOLKIT("w", x, "1")
-        inirwTOOLKIT("w", xchecked, "1")
+        inirwTOOLKIT("w", needle, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
     else
     {
         x=0
-        inirwTOOLKIT("w", x, "0")
+        inirwTOOLKIT("w", needle, "0")
     }
     return x
 }
