@@ -5,12 +5,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
-for n, param in A_Args  ; For each parameter:
-{
-    MsgBox Parameter number %n% is %param%.
 
-}
-ExitApp
 
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
@@ -68,64 +63,68 @@ arg9=%9%
 
 
 
+
 inirwTOOLKIT("w", "nogui", "0")
-
-CheckStringWriteIni("update", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("debloat", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("apps", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("netflix", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("darktsk", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("reboot", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("ooshutup", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
-CheckStringWriteIni("dns4a6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4a6a ipv4=auto          ipv6=auto
-CheckStringWriteIni("dns4c6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
-CheckStringWriteIni("dns4a6c", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4a6c ipv4=auto          ipv6=cloudflare
-CheckStringWriteIni("dns4c6a", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-CheckStringWriteIni("personal", arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-
-
-
-
-CheckStringWriteIni(x, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+for n, param in A_Args  ; For each parameter:
 {
-    stringArray := arg1 . arg2 . arg3 . arg4 . arg5 . arg6 . arg7 . arg8 . arg9
-    IfInString, stringArray, ooshutup0
+    CheckStringWriteIni("update")
+    CheckStringWriteIni("debloat")
+    CheckStringWriteIni("apps")
+    CheckStringWriteIni("netflix")
+    CheckStringWriteIni("darktsk")
+    CheckStringWriteIni("reboot")
+    CheckStringWriteIni("ooshutup")
+    CheckStringWriteIni("dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
+    CheckStringWriteIni("dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+    CheckStringWriteIni("dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+    CheckStringWriteIni("dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    CheckStringWriteIni("personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+}
+
+
+
+
+CheckStringWriteIni(x)
+{
+    if param contains %x%
     {
+        x=1
+        inirwTOOLKIT("w", x, "1")
+        inirwTOOLKIT("w", "nogui", "1")
+    }
+    if param contains ooshutup0
+    {
+        x=0
         inirwTOOLKIT("w", "ooshutup", "0")
         inirwTOOLKIT("w", "nogui", "1")
     }
-    IfInString, stringArray, ooshutup1
+    if param contains ooshutup1
     {
+        x=1
         inirwTOOLKIT("w", "ooshutup", "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
-    IfInString, stringArray, ooshutup2
+    if param contains ooshutup2
     {
+        x=2
         inirwTOOLKIT("w", "ooshutup", "2")
         inirwTOOLKIT("w", "nogui", "1")
     }
-    IfInString, stringArray, ooshutup3
+    if param contains ooshutup3
     {
+        x=3
         inirwTOOLKIT("w", "ooshutup", "3")
         inirwTOOLKIT("w", "nogui", "1")
     }
-    IfInString, stringArray, ooshutup4
+    if param contains ooshutup4
     {
+        x=4
         inirwTOOLKIT("w", "ooshutup", "4")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    IfInString, stringArray, personal
-    {
-        inirwTOOLKIT("w", "personal", "4")
-        inirwTOOLKIT("w", "nogui", "1")
-    }
-    IfInString, stringArray, %x%
-    {
-        inirwTOOLKIT("w", x, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
     else
         inirwTOOLKIT("w", x, "0")
+    return x
 }
 
 
