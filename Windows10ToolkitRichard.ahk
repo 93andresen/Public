@@ -128,7 +128,6 @@ CheckStringWriteIni(x)
     }
     else
         inirwTOOLKIT("w", x, "0")
-    msgbox, x=%x%
     return x
 }
 msgbox, ooshutup=%ooshutup%
