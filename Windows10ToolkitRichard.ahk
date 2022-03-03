@@ -7,8 +7,8 @@ script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.Serv
 
 for n, param in A_Args  ; For each parameter:
 {
-    Tooltip, Parameter number %n% is %param%.
-    sleep, 200
+    MsgBox Parameter number %n% is %param%.
+
 }
 ExitApp
 
