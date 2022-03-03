@@ -81,6 +81,7 @@ CheckStringWriteIni(param, needle)
     if inirwTOOLKIT("r", needlechecked)
     {
         temp := inirwTOOLKIT("r", needle)
+        Tooltip, %needle%`n%temp%
         return temp
     }
     Tooltip, param=%param%`nneedle=%needle%
