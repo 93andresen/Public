@@ -24,7 +24,7 @@ loop 100
 }
 WinWaitActive, Administrator: Windows PowerShell, , 3
 if errorlevel=0
-    WinSetTitle, Administrator: Windows PowerShell, , Windows10ToolkitRichard.ps1 update debloat darktsk reboot ooshutup3 dns4c6a
+    WinSetTitle, Administrator: Windows PowerShell, , Windows10ToolkitRichard.ps1 update debloat darktsk reboot ooshutup3 dns4c6a personal
 else
 {
     Tooltip, Could not set title waited 3 seconds
