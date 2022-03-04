@@ -107,6 +107,7 @@ for n, param in A_Args  ; For each parameter:
     CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
     CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
 
+    nogui := inirwTOOLKIT("r", "nogui")
     update := inirwTOOLKIT("r", "update")
     debloat := inirwTOOLKIT("r", "debloat")
     apps := inirwTOOLKIT("r", "apps")
