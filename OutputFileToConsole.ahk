@@ -14,7 +14,10 @@ logfile=%1%
 x=1
 loop
 {
-    FileReadLine, v, %logfile%, %x%
+	SplitPath, logfile, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+	d=%OutDir%%OutNameNoExt%_ConsoleCopy.%OutExtension%
+	FileCopy, logfile, d, 1
+	FileReadLine, v, %d%, %x%
     if Errorlevel=0
     {
         if v=

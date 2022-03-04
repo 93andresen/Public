@@ -39,18 +39,50 @@ if updating != 1
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     runwait, powershell.exe Write-Host "Creating Ststem Restore Point and naming it: Before_Running_Windows10ToolkitRichard";Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
+    update = 0
+    inirwTOOLKIT("w", "update", "0")
+    debloat = 0
+    inirwTOOLKIT("w", "debloat", "0")
+    apps = 0
+    inirwTOOLKIT("w", "apps", "0")
+    netflix = 0
+    inirwTOOLKIT("w", "netflix", "0")
+    darktsk = 0
+    inirwTOOLKIT("w", "darktsk", "0")
+    reboot = 0
+    inirwTOOLKIT("w", "reboot", "0")
+    ooshutup0 = 0
+    inirwTOOLKIT("w", "ooshutup0", "0")
+    ooshutup1 = 0
+    inirwTOOLKIT("w", "ooshutup1", "0")
+    ooshutup2 = 0
+    inirwTOOLKIT("w", "ooshutup2", "0")
+    ooshutup3 = 0
+    inirwTOOLKIT("w", "ooshutup3", "0")
+    ooshutup4 = 0
+    inirwTOOLKIT("w", "ooshutup4", "0")
+    dns4a6a = 0
+    inirwTOOLKIT("w", "dns4a6a", "0")
+    dns4c6c = 0
+    inirwTOOLKIT("w", "dns4c6c", "0")
+    dns4a6c = 0
+    inirwTOOLKIT("w", "dns4a6c", "0")
+    dns4c6a = 0
+    inirwTOOLKIT("w", "dns4c6a", "0")
+    personal = 0
+    inirwTOOLKIT("w", "personal", "0")
 }
-run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-loop 20
-{
-    WinActivate, C:\Program Files\AutoHotkey\AutoHotkey.exe
-    WinGetActiveTitle, AT
-    if AT = C:\Program Files\AutoHotkey\AutoHotkey.exe
-        break
-    sleep, 100
-}
-WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
-WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
+;run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
+;loop 20
+;{
+;    WinActivate, C:\Program Files\AutoHotkey\AutoHotkey.exe
+;    WinGetActiveTitle, AT
+;    if AT = C:\Program Files\AutoHotkey\AutoHotkey.exe
+;        break
+;    sleep, 100
+;}
+;WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
+;WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
 
 
@@ -77,32 +109,13 @@ for n, param in A_Args  ; For each parameter:
 }
 CheckStringWriteIni(param, needle)
 {
-    needlechecked=%needle%checked
-    if inirwTOOLKIT("r", needlechecked)
-    {
-        temp := inirwTOOLKIT("r", needle)
-        Tooltip, %needle%`n%temp%
-        sleep, 200
-        return temp
-    }
-    Tooltip, param=%param%`nneedle=%needle%
-    sleep, 200
     if param contains %needle%
     {
         inirwTOOLKIT("w", needle, "1")
-        inirwTOOLKIT("w", needlechecked, "1")
         inirwTOOLKIT("w", "nogui", "1")
         return 1
     }
-    else
-    {
-        inirwTOOLKIT("w", needle, "0")
-        inirwTOOLKIT("w", needlechecked, "1")
-        return 0
-    }
 }
-Tooltip, update=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
-sleep, 2000
 
 if (updating != "1") and (nogui = "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
@@ -114,16 +127,18 @@ apps := inirwTOOLKIT("r", "apps")
 netflix := inirwTOOLKIT("r", "netflix")
 darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
-ooshutup0 := inirwTOOLKIT("r", "ooshutup")
-ooshutup1 := inirwTOOLKIT("r", "ooshutup")
-ooshutup2 := inirwTOOLKIT("r", "ooshutup")
-ooshutup3 := inirwTOOLKIT("r", "ooshutup")
-ooshutup4 := inirwTOOLKIT("r", "ooshutup")
+ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
+ooshutup1 := inirwTOOLKIT("r", "ooshutup1")
+ooshutup2 := inirwTOOLKIT("r", "ooshutup2")
+ooshutup3 := inirwTOOLKIT("r", "ooshutup3")
+ooshutup4 := inirwTOOLKIT("r", "ooshutup4")
+dns4a6a := inirwTOOLKIT("r", "dns4a6a")
+dns4c6c := inirwTOOLKIT("r", "dns4c6c")
+dns4a6c := inirwTOOLKIT("r", "dns4a6c")
+dns4c6a := inirwTOOLKIT("r", "dns4c6a")
 personal := inirwTOOLKIT("r", "personal")
 
-Tooltip, update = %update%`ndebloat = %debloat%`napps = %apps%`nnetflix = %netflix%`ndarktsk = %darktsk%`nreboot = %reboot%`nooshutup = %ooshutup%`n
-
-
+Tooltip, update=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
 /*
 MAYBE_AND_OTHER:
