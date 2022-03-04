@@ -85,8 +85,8 @@ if updating != 1
 ;WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
 
-
-
+Tooltip, fgfgfgfg
+sleep, 10000
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
