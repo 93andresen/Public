@@ -90,23 +90,22 @@ if updating != 1
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
-    update := CheckStringWriteIni(param, "update")
-    debloat := CheckStringWriteIni(param, "debloat")
-    apps := CheckStringWriteIni(param, "apps")
-    netflix := CheckStringWriteIni(param, "netflix")
-    darktsk := CheckStringWriteIni(param, "darktsk")
-    reboot := CheckStringWriteIni(param, "reboot")
-    ooshutup0 := CheckStringWriteIni(param, "ooshutup0")
-    ooshutup1 := CheckStringWriteIni(param, "ooshutup1")
-    ooshutup2 := CheckStringWriteIni(param, "ooshutup2")
-    ooshutup3 := CheckStringWriteIni(param, "ooshutup3")
-    ooshutup4 := CheckStringWriteIni(param, "ooshutup4")
-    dns4a6a := CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
-    dns4c6c := CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
-    dns4a6c := CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
-    dns4c6a := CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-    personal := CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
-
+    update:= CheckStringWriteIni(param, "update")
+    debloat:= CheckStringWriteIni(param, "debloat")
+    apps:= CheckStringWriteIni(param, "apps")
+    netflix:= CheckStringWriteIni(param, "netflix")
+    darktsk:= CheckStringWriteIni(param, "darktsk")
+    reboot:= CheckStringWriteIni(param, "reboot")
+    ooshutup0:= CheckStringWriteIni(param, "ooshutup0")
+    ooshutup1:= CheckStringWriteIni(param, "ooshutup1")
+    ooshutup2:= CheckStringWriteIni(param, "ooshutup2")
+    ooshutup3:= CheckStringWriteIni(param, "ooshutup3")
+    ooshutup4:= CheckStringWriteIni(param, "ooshutup4")
+    dns4a6a:= CheckStringWriteIni(param, "dns4a6a")       ;   dns4a6a ipv4=auto          ipv6=auto
+    dns4c6c:= CheckStringWriteIni(param, "dns4c6c")       ;   dns4c6c ipv4=cloudflare    ipv6=cloudflare
+    dns4a6c:= CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
+    dns4c6a:= CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    personal:= CheckStringWriteIni(param, "personal")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
 }
 CheckStringWriteIni(param, needle)
 {
@@ -120,12 +119,28 @@ CheckStringWriteIni(param, needle)
 }
 
 nogui := inirwTOOLKIT("r", "nogui")
-Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 if (updating != "1") and (nogui != "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
-WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
+;WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
+Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
+update := inirwTOOLKIT("r", "update")
+debloat := inirwTOOLKIT("r", "debloat")
+apps := inirwTOOLKIT("r", "apps")
+netflix := inirwTOOLKIT("r", "netflix")
+darktsk := inirwTOOLKIT("r", "darktsk")
+reboot := inirwTOOLKIT("r", "reboot")
+ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
+ooshutup1 := inirwTOOLKIT("r", "ooshutup1")
+ooshutup2 := inirwTOOLKIT("r", "ooshutup2")
+ooshutup3 := inirwTOOLKIT("r", "ooshutup3")
+ooshutup4 := inirwTOOLKIT("r", "ooshutup4")
+dns4a6a := inirwTOOLKIT("r", "dns4a6a")
+dns4c6c := inirwTOOLKIT("r", "dns4c6c")
+dns4a6c := inirwTOOLKIT("r", "dns4a6c")
+dns4c6a := inirwTOOLKIT("r", "dns4c6a")
+personal := inirwTOOLKIT("r", "personal")
 
 
 /*
