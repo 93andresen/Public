@@ -24,14 +24,13 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 
 
-gui = %1%
-;msgbox, %var%
-
-
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
 updating := inirwTOOLKIT("r", "updating")
+
+Tooltip, fgfgfgfg
+sleep, 10000
 
 if updating != 1
 {
@@ -84,9 +83,6 @@ if updating != 1
 ;WinMaximize, C:\Program Files\AutoHotkey\AutoHotkey.exe
 ;WinSetTitle, C:\Program Files\AutoHotkey\AutoHotkey.exe, , Windows Toolkit Richard Console Output
 
-
-Tooltip, fgfgfgfg
-sleep, 10000
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
