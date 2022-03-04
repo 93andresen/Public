@@ -13,7 +13,11 @@ inirwTOOLKIT("w", "apps", "0")
 inirwTOOLKIT("w", "netflix", "0")
 inirwTOOLKIT("w", "darktsk", "0")
 inirwTOOLKIT("w", "reboot", "0")
-inirwTOOLKIT("w", "ooshutup", "0")
+inirwTOOLKIT("w", "ooshutup0", "0")
+inirwTOOLKIT("w", "ooshutup1", "0")
+inirwTOOLKIT("w", "ooshutup2", "0")
+inirwTOOLKIT("w", "ooshutup3", "0")
+inirwTOOLKIT("w", "ooshutup4", "0")
 
 
 Gui, Add, Text,, If you want to revert settings, use the system restore point named "Before_Running_Windows10ToolkitRichard"
@@ -63,16 +67,6 @@ GuiClose:
 GuiEscape:
 Gui, Submit  ; Save each control's contents to its associated variable.
 
-if ooshutup0 = 1
-    ooshutup = 0
-else if ooshutup1 = 1
-    ooshutup = 1
-else if ooshutup2 = 1
-    ooshutup = 2
-else if ooshutup3 = 1
-    ooshutup = 3
-else if ooshutup4 = 1
-    ooshutup = 4
 
 inirwTOOLKIT("w", "update", update)
 inirwTOOLKIT("w", "debloat", debloat)
@@ -80,8 +74,11 @@ inirwTOOLKIT("w", "apps", apps)
 inirwTOOLKIT("w", "netflix", netflix)
 inirwTOOLKIT("w", "darktsk", darktsk)
 inirwTOOLKIT("w", "reboot", reboot)
-inirwTOOLKIT("w", "ooshutup", ooshutup)
-
+inirwTOOLKIT("w", "ooshutup0", ooshutup0)
+inirwTOOLKIT("w", "ooshutup1", ooshutup1)
+inirwTOOLKIT("w", "ooshutup2", ooshutup2)
+inirwTOOLKIT("w", "ooshutup3", ooshutup3)
+inirwTOOLKIT("w", "ooshutup4", ooshutup4)
 
 ExitApp
 
