@@ -29,9 +29,6 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
 updating := inirwTOOLKIT("r", "updating")
 
-Tooltip, fgfgfgfg
-sleep, 10000
-
 if updating != 1
 {
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
@@ -86,8 +83,6 @@ if updating != 1
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
-    Tooltip, 1update=%update%
-    sleep, 200
     CheckStringWriteIni(param, "update")
     CheckStringWriteIni(param, "debloat")
     CheckStringWriteIni(param, "apps")
@@ -104,48 +99,56 @@ for n, param in A_Args  ; For each parameter:
     CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
     CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
     CheckStringWriteIni(param, "personal")      ;   dns4c6a ipv4=cloudflare    ipv6=auto
-    Tooltip, update=%update%
-    sleep, 200
-    ReadINIS()
-    Tooltip, update=%update%
-    sleep, 200
 }
 CheckStringWriteIni(param, needle)
 {
     if param contains %needle%
     {
-        Tooltip, 2update=%update%
-        sleep, 200
         inirwTOOLKIT("w", needle, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
 }
 
+nogui := inirwTOOLKIT("r", "nogui")
+update := inirwTOOLKIT("r", "update")
+debloat := inirwTOOLKIT("r", "debloat")
+apps := inirwTOOLKIT("r", "apps")
+netflix := inirwTOOLKIT("r", "netflix")
+darktsk := inirwTOOLKIT("r", "darktsk")
+reboot := inirwTOOLKIT("r", "reboot")
+ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
+ooshutup1 := inirwTOOLKIT("r", "ooshutup1")
+ooshutup2 := inirwTOOLKIT("r", "ooshutup2")
+ooshutup3 := inirwTOOLKIT("r", "ooshutup3")
+ooshutup4 := inirwTOOLKIT("r", "ooshutup4")
+dns4a6a := inirwTOOLKIT("r", "dns4a6a")
+dns4c6c := inirwTOOLKIT("r", "dns4c6c")
+dns4a6c := inirwTOOLKIT("r", "dns4a6c")
+dns4c6a := inirwTOOLKIT("r", "dns4c6a")
+personal := inirwTOOLKIT("r", "personal")
 
 if (updating != "1") and (nogui != "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 ;WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
-ReadINIS()
-{
-    nogui := inirwTOOLKIT("r", "nogui")
-    update := inirwTOOLKIT("r", "update")
-    debloat := inirwTOOLKIT("r", "debloat")
-    apps := inirwTOOLKIT("r", "apps")
-    netflix := inirwTOOLKIT("r", "netflix")
-    darktsk := inirwTOOLKIT("r", "darktsk")
-    reboot := inirwTOOLKIT("r", "reboot")
-    ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
-    ooshutup1 := inirwTOOLKIT("r", "ooshutup1")
-    ooshutup2 := inirwTOOLKIT("r", "ooshutup2")
-    ooshutup3 := inirwTOOLKIT("r", "ooshutup3")
-    ooshutup4 := inirwTOOLKIT("r", "ooshutup4")
-    dns4a6a := inirwTOOLKIT("r", "dns4a6a")
-    dns4c6c := inirwTOOLKIT("r", "dns4c6c")
-    dns4a6c := inirwTOOLKIT("r", "dns4a6c")
-    dns4c6a := inirwTOOLKIT("r", "dns4c6a")
-    personal := inirwTOOLKIT("r", "personal")
-}
+nogui := inirwTOOLKIT("r", "nogui")
+update := inirwTOOLKIT("r", "update")
+debloat := inirwTOOLKIT("r", "debloat")
+apps := inirwTOOLKIT("r", "apps")
+netflix := inirwTOOLKIT("r", "netflix")
+darktsk := inirwTOOLKIT("r", "darktsk")
+reboot := inirwTOOLKIT("r", "reboot")
+ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
+ooshutup1 := inirwTOOLKIT("r", "ooshutup1")
+ooshutup2 := inirwTOOLKIT("r", "ooshutup2")
+ooshutup3 := inirwTOOLKIT("r", "ooshutup3")
+ooshutup4 := inirwTOOLKIT("r", "ooshutup4")
+dns4a6a := inirwTOOLKIT("r", "dns4a6a")
+dns4c6c := inirwTOOLKIT("r", "dns4c6c")
+dns4a6c := inirwTOOLKIT("r", "dns4a6c")
+dns4c6a := inirwTOOLKIT("r", "dns4c6a")
+personal := inirwTOOLKIT("r", "personal")
+
 Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
 /*
