@@ -90,6 +90,8 @@ if updating != 1
 inirwTOOLKIT("w", "nogui", "0")
 for n, param in A_Args  ; For each parameter:
 {
+    Tooltip, 1update=%update%
+    sleep, 200
     CheckStringWriteIni(param, "update")
     CheckStringWriteIni(param, "debloat")
     CheckStringWriteIni(param, "apps")
@@ -106,25 +108,31 @@ for n, param in A_Args  ; For each parameter:
     CheckStringWriteIni(param, "dns4a6c")       ;   dns4a6c ipv4=auto          ipv6=cloudflare
     CheckStringWriteIni(param, "dns4c6a")       ;   dns4c6a ipv4=cloudflare    ipv6=auto
     CheckStringWriteIni(param, "personal")      ;   dns4c6a ipv4=cloudflare    ipv6=auto
+    Tooltip, update=%update%
+    sleep, 200
     ReadINIS()
+    Tooltip, update=%update%
+    sleep, 200
 }
 CheckStringWriteIni(param, needle)
 {
     if param contains %needle%
     {
-        update=%update%
+        Tooltip, 2update=%update%
+        sleep, 200
         inirwTOOLKIT("w", needle, "1")
         inirwTOOLKIT("w", "nogui", "1")
     }
 }
 
-nogui := inirwTOOLKIT("r", "nogui")
+
 if (updating != "1") and (nogui != "1")
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\UserCkeckboxesStart.ahk
 ;WinSet, AlwaysOnTop, , Windows Toolkit Richard Console Output
 
 ReadINIS()
 {
+    nogui := inirwTOOLKIT("r", "nogui")
     update := inirwTOOLKIT("r", "update")
     debloat := inirwTOOLKIT("r", "debloat")
     apps := inirwTOOLKIT("r", "apps")
