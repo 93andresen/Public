@@ -111,6 +111,7 @@ CheckStringWriteIni(param, needle)
 {
     if param contains %needle%
     {
+        update=%update%
         inirwTOOLKIT("w", needle, "1")
         inirwTOOLKIT("w", "nogui", "1")
         return 1
