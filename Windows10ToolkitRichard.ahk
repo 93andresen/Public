@@ -41,8 +41,6 @@ if updating != 1
     inirwTOOLKIT("w", "debloat", "0")
     apps = 0
     inirwTOOLKIT("w", "apps", "0")
-    netflix = 0
-    inirwTOOLKIT("w", "netflix", "0")
     darktsk = 0
     inirwTOOLKIT("w", "darktsk", "0")
     reboot = 0
@@ -86,7 +84,6 @@ for n, param in A_Args  ; For each parameter:
     CheckStringWriteIni(param, "update")
     CheckStringWriteIni(param, "debloat")
     CheckStringWriteIni(param, "apps")
-    CheckStringWriteIni(param, "netflix")
     CheckStringWriteIni(param, "darktsk")
     CheckStringWriteIni(param, "reboot")
     CheckStringWriteIni(param, "ooshutup0")
@@ -113,7 +110,6 @@ nogui := inirwTOOLKIT("r", "nogui")
 update := inirwTOOLKIT("r", "update")
 debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
-netflix := inirwTOOLKIT("r", "netflix")
 darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
@@ -135,7 +131,6 @@ nogui := inirwTOOLKIT("r", "nogui")
 update := inirwTOOLKIT("r", "update")
 debloat := inirwTOOLKIT("r", "debloat")
 apps := inirwTOOLKIT("r", "apps")
-netflix := inirwTOOLKIT("r", "netflix")
 darktsk := inirwTOOLKIT("r", "darktsk")
 reboot := inirwTOOLKIT("r", "reboot")
 ooshutup0 := inirwTOOLKIT("r", "ooshutup0")
@@ -149,12 +144,11 @@ dns4a6c := inirwTOOLKIT("r", "dns4a6c")
 dns4c6a := inirwTOOLKIT("r", "dns4c6a")
 personal := inirwTOOLKIT("r", "personal")
 
-Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`nnetflix=%netflix%`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
+Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`n`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
 /*
 MAYBE_AND_OTHER:
 
-C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Netflix_2.0.ahk
 simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
 NEW MAYBE AND OTHER:
@@ -255,8 +249,8 @@ if updating != 1
         log("Debloat and Optimize Windows (Including OneDrive) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if apps = 1
         log("Install Applications (Lets you choose Applications) - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    if netflix = 1
-        log("Netflix 2.0 - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
+;    if netflix = 1
+;        log("Netflix 2.0 - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if reboot = 1
         log("Reboot - was Picked", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     if ooshutup1 = 1

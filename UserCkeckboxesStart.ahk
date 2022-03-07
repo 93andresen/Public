@@ -41,7 +41,7 @@ Gui, Add, Radio, vooshutup0, Don't Do Anything - Will Keep These Settings As is
 Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Add, Text,, 
-Gui, Add, Button, default xm, Netflix
+Gui, Add, Button, default xm, Netflix 2.0
 Gui, Show
 count=1
 loop 6
@@ -61,7 +61,9 @@ ButtonNetflix:
 ;RunPowershellLoghjkhjkhjkhjk
 ;msgbox, YYYYYYYYYY
 ExitApp
-
+ButtonNetflix2.0:
+run, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
+ExitApp
 ButtonOK:
 GuiClose:
 GuiEscape:

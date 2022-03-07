@@ -25,16 +25,10 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
     ExitApp
 }
 
-goto, here  ;REMOVE THIS WHEN FIXED
-
 if apps = 1
 {
     runwait, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2apps.ahk
 }
-here:
-
-if netflix = 1
-    runwait, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
 
 ;clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 ;msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt

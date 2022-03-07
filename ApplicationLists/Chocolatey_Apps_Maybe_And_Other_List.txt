@@ -228,3 +228,4 @@ Sendmessage
 Mbruler
 Roost-desktop-notifier-for-nest
 Cygwin
+gamedownloader.portable
