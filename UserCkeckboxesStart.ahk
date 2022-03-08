@@ -69,7 +69,7 @@ return
 ;ExitApp
 ;ButtonNetflix2.0:
 ButtonIDon'tCareJustdon'tWastemytimeIaintgotallday:
-run, C:\!\Code\GitHub\93andresen_Scripts\Public\NeedForSpeed.ahk
+run, C:\temp_Windows10ToolkitRichard\Public-main\NeedForSpeed.ahk
 ExitApp
 ButtonOK:
 GuiClose:
