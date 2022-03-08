@@ -33,10 +33,7 @@ if apps = 1
 ;clipboard=C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 ;msgbox, FINISHED`n`nclipboard = the LOG file`nC:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
 
-if reboot = 1
-{
-    run, powershell.exe shutdown /r /f /t 1
-}
+
 
 
 
@@ -48,10 +45,11 @@ ExitApp
 if esc!=1
 {
     esc=1
+    log("Escape Pressed Once")
     msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
 }
 else if esc=1
-    ExitApp
+    ExitAppLog("esc")
 
 
 AppendFileToLog(readfile)

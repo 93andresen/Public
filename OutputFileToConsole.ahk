@@ -36,10 +36,11 @@ loop
 if esc!=1
 {
     esc=1
+    log("Escape Pressed Once")
     msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
 }
 else if esc=1
-    ExitApp
+    ExitAppLog("esc")
 
 
 

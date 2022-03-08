@@ -286,11 +286,21 @@ PrintDebug(string:=""){
 inirw(rw, key, value:="")
 {
     if rw=w
+    {
+        LogThis=Writing ini-file - value=%value% key=%key% File=C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini
+        log(LogThis, filename=C:\!\Logs\LogToFile.txt, tooltip=0, console=0)
         IniWrite, %value%, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+    }
     else if rw=r
+    {
+        LogThis=Reading ini-file - value=%value% key=%key% File=C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini
         IniRead, value, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, %key%
+    }
     Else
+    {
+        log("ERROR")
         msgbox, ERROR, rw was not r or w`nrw=%rw%
+    }
     return %value%
 }
 CheckIfEmptyFolder(path)

@@ -3,12 +3,11 @@ Rainmeter
 Powertoys
 Plasso
 Regcool.portable
-7zip.portable
-vscode.portable
+Vscode.portable
 Setdefaultbrowser
 Firefox
 Edgedeflector
-autohotkey.portable
+Autohotkey.portable
 Chocolatey-misc-helpers.extension
 Fastcopy.portable
 Python
@@ -26,7 +25,7 @@ Revo-uninstaller
 Gh
 Git.portable
 Mousewithoutborders
-f.lux.portable
+F.lux.portable
 Authy-desktop
 Everything
 Musicbee
@@ -53,12 +52,12 @@ Yt-dlp
 Choco-package-list-backup
 Battle.net
 Ds4windows
-obs-studio.portable
+Obs-studio.portable
 Malwarebytes
 Thunderbird
 Qbittorrent
 Ffmpeg
-dropit.portable
+Dropit.portable
 Jre8
 Openjdk
 Signal
@@ -74,4 +73,4 @@ Tortoisesvn
 Virustotaluploader
 Lockhunter
 Toolwiz-time-freeze
-workspacer.portable
+Workspacer.portable

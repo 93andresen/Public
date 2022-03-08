@@ -9,6 +9,7 @@ DetectHiddenWindows, On
 DetectHiddenText, On
 #Include, AutohotkeyFucktions.ahk
 ;CompileRun(A_ScriptFullPath)
+log("Started Running")
 
 old_title=%1%
 new_title=%2%

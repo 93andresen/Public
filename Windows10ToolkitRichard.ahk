@@ -349,7 +349,8 @@ if dns4c6a = dns4c6a
 ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat -UseBasicParsing|iex", path="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide="max")
 
 ;runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat | tee -a C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,max
-runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat,,max
+if fast!=1
+    runwait, cmd.exe /c C:\temp_Windows10ToolkitRichard\Public-main\NetworkFlush_SameCommandsAsNordVPNDiagnosticsApp.bat,,max
 
 SetCapsLockState, Off
 SetNumLockState, On
@@ -360,8 +361,12 @@ if personal = 1
     run, powershell.exe choco pin add --name="'authy-desktop'"
 }
 
-run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk   ;REMOVE THIS WHEN FIXED
-ExitApp                                                                         ;REMOVE THIS WHEN FIXED
+run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk  
+if reboot = 1
+{
+    run, powershell.exe shutdown /r /f /t 1
+}
+ExitApp
 
 ;if apps = 1
 ;{
@@ -473,10 +478,11 @@ run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 if esc!=1
 {
     esc=1
+    log("Escape Pressed Once")
     msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
 }
 else if esc=1
-    ExitApp
+    ExitAppLog("esc")
 
 
 
