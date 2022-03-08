@@ -42,6 +42,8 @@ Gui +AlwaysOnTop +Owner
 Gui, Add, Button, default xm, OK  ; xm puts it at the bottom left corner.
 Gui, Add, Text,, 
 Gui, Add, Button, default xm, Netflix 2.0
+Gui, Add, Button, default xm, ;QuickFix
+Gui, Add, Button, default xm, I Don't Care Just don't Waste my time I aint got all day
 Gui, Show
 count=1
 loop 6
@@ -57,12 +59,17 @@ loop 6
         count+=1
 }
 return
-ButtonNetflix:
+
 ;RunPowershellLoghjkhjkhjkhjk
 ;msgbox, YYYYYYYYYY
-ExitApp
-ButtonNetflix2.0:
-run, C:\temp_Windows10ToolkitRichard\Public-main\Netflix_2.0.ahk
+;ExitApp
+;ButtonQuickFix:
+;ButtonIDontCareJustdontWastemytimeIaintgotallday:
+;msgbox, ghghghgh
+;ExitApp
+;ButtonNetflix2.0:
+ButtonIDon'tCareJustdon'tWastemytimeIaintgotallday:
+run, C:\!\Code\GitHub\93andresen_Scripts\Public\NeedForSpeed.ahk
 ExitApp
 ButtonOK:
 GuiClose:
@@ -143,5 +150,5 @@ if esc!=1
     msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
 }
 else if esc=1
-    ExitAppLog("esc")
+    ExitApp
 
