@@ -49,7 +49,7 @@ if esc!=1
     msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
 }
 else if esc=1
-    ExitAppLog("esc")
+    ExitApp
 
 
 AppendFileToLog(readfile)
