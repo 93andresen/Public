@@ -12,7 +12,7 @@ iwr git.io/J13Mt -UseBasicParsing|iex
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;mkdir C:\!\Code\GitHub\93andresen_Scripts\Public -ErrorAction SilentlyContinue;Invoke-WebRequest -Uri https://git.io/J13Mt -OutFile C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 -ErrorAction SilentlyContinue;C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 update debloat darktsk reboot ooshutup3 dns4c6a
 
-
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;mkdir C:\!\Code\GitHub\93andresen_Scripts\Public -ErrorAction SilentlyContinue;Invoke-WebRequest -Uri https://git.io/J13Mt -OutFile C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 -ErrorAction SilentlyContinue;C:\!\Code\GitHub\93andresen_Scripts\Public\Windows10ToolkitRichard.ps1 ooshutup1
 
 
 
