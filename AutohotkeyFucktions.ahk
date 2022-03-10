@@ -1,167 +1,3 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-;#Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-#SingleInstance, off
-CoordMode, Pixel, Screen
-CoordMode, Mouse, Screen
-SetTitleMatchMode, 2
-DetectHiddenWindows, On
-DetectHiddenText, On
-SetBatchLines, 10ms
-#Include, AutohotkeyFucktions.ahk
-;CompileRun(A_ScriptFullPath)
-log("Started Running")
-
-
-
-
-if dns4a6a = dns4a6a
-    SetDNS("automatic", "ipv4", "ipv6")
-if dns4c6c = dns4c6c
-    SetDNS("cloudflare", "ipv4", "ipv6")
-if dns4a6c = dns4a6c
-    SetDNS("automatic", "ipv4", "0")
-    SetDNS("cloudflare", "0", "ipv6")
-if dns4c6a = dns4c6a
-    SetDNS("cloudflare", "ipv4", "0")
-    SetDNS("automatic", "0", "ipv6")
-NFS := inirw("r", NFS)
-NFS +=1
-inirw("w", "NFS", NFS)
-ExitAppLog()
-
-
-~Esc::
-if esc!=1
-{
-    esc=1
-    log("Escape Pressed Once")
-    msgbox, %A_ScriptName% is Paused`n`n%A_ScriptFullPath%`n`n`nPress Esc twice to Exit App
-}
-else if esc=1
-    ExitAppLog("esc")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ExitAppLog(x:="")
 {
     logthis=%x% - Finished Running
@@ -188,7 +24,8 @@ PercentDiff(ScriptA, ScriptB, loops:="1")
         RunPath(ScriptB, "1")
         thisloopB2=%ScriptB% ScriptB loop %currentloop% of %loops% ENDED
         ScriptBms := log(thisloopB2, "C:\!\Logs\StopwatchLog.txt", "0", "0")
-
+        msgbox, ScriptAms=%ScriptAms%
+        msgbox, ScriptBms=%ScriptBms%
         ScriptBms-=140
         ScriptAms-=140
         percentA := (((ScriptBms/ScriptAms)-1)*100)
@@ -349,10 +186,10 @@ AHKPanicYT()
 }
 iniToggle(var, tooltip:="")
 {
-    bol := inirw("r", var)
-    if bol = 0
+    bolean := inirw("r", var)
+    if bolean = 0
         inirw("w", var, "1")
-    else if bol = 1
+    else if bolean = 1
         inirw("w", var, "0")
     
     if tooltip!=
@@ -1920,15 +1757,42 @@ runwait_file_if_it_exists(path, cmd:="")
         return %PID%
     }
 }
-RunPath(path, wait:="0", args:="")
+RunPath(path, wait:="0", args:="", WorkingDir:="ScriptPath")
 {
     if FileExist(path)
     {
-        if wait = 1
-            runwait, %path% %args%,,,PID
+        SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+            if OutExtension=ahk
+                loop, read, %path%
+                    if A_LoopReadLine contains AutohotkeyFucktions.ahk
+                        if not FileExist("AutohotkeyFucktions.ahk")
+                            if FileExist("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk")
+                                FileExist("C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Run_Folder_For_Shared_Functions")
+                                FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk, C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Lib\AutohotkeyFucktions.ahk, 1
+                                if A_IsAdmin
+                                    FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk, C:\Program Files\AutoHotkey\Lib\AutohotkeyFucktions.ahk, 1
+        if WorkingDir=ScriptPath
+        {
+            if wait = 1
+                runwait, %path% %args%, %A_WorkingDir%,,PID
+            else
+                run, %path% %args%, %A_WorkingDir%,,PID
+        }
+        else if WorkingDir=0
+        {
+            if wait = 1
+                runwait, %path% %args%,,,PID
+            else
+                run, %path% %args%,,,PID
+        }
         else
-            run, %path% %args%,,,PID
-        return %PID%
+        {
+            if wait = 1
+                runwait, %path% %args%, %WorkingDir%,,PID
+            else
+                run, %path% %args%, %WorkingDir%,,PID
+            return %PID%
+        }
     }
     else
         return 0
@@ -2094,7 +1958,6 @@ GetParentProcess(PID)
 	DllCall("CloseHandle", "ptr", h)
 	return Numget(pEntry, 16+2*A_PtrSize, "uint")
 }
-
 GetProcessName(PID)
 {
 	static function := DllCall("GetProcAddress", "ptr", DllCall("GetModuleHandle", "str", "kernel32.dll", "ptr"), "astr", "Process32Next" (A_IsUnicode ? "W" : ""), "ptr")
@@ -2116,10 +1979,6 @@ GetCurrentProcess()
 {
 	return DllCall("GetCurrentProcessId")
 }
-
-
-
-
 
 
 
