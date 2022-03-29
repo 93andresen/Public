@@ -31,6 +31,7 @@ updating := inirwTOOLKIT("r", "updating")
 
 if updating != 1
 {
+    runwait, powershell.exe Enable-ComputerRestore -Drive "C:\";Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS"
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt

@@ -2,3 +2,4 @@ Appest.TickTick
 Shabinder.SpotiFlyer
 Kite.kite
 Dynalist.Dynalist
+isnetwork.ISNAutoItStudio
