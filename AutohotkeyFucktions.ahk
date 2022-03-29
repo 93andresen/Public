@@ -1,3 +1,120 @@
+Process_Suspend_All()
+{
+    Process_Suspend("Chrome.exe")
+    Process_Suspend("Firefox.exe")
+    Process_Suspend("Spotify.exe")
+;    Process_Suspend("Code.exe")
+    Process_Suspend("YouTube Music.exe")
+    Process_Suspend("Mailspring.exe")
+    Process_Suspend("Thunderird.exe")
+    Process_Suspend("MacroRecorder.exe")
+    Process_Suspend("Qbittorrent.exe")
+    Process_Suspend("Webtorrent.exe")
+    Process_Suspend("Fastcopy.exe")
+    Process_Suspend("googledriveFS.exe")
+}
+Process_Resume_All()
+{
+    Process_Resume("Chrome.exe")
+    Process_Resume("Firefox.exe")
+    Process_Resume("Spotify.exe")
+    Process_Resume("Code.exe")
+    Process_Resume("YouTube Music.exe")
+    Process_Resume("Mailspring.exe")
+    Process_Resume("Thunderird.exe")
+    Process_Resume("MacroRecorder.exe")
+    Process_Resume("Qbittorrent.exe")
+    Process_Resume("Webtorrent.exe")
+    Process_Resume("Fastcopy.exe")
+    Process_Resume("googledriveFS.exe")
+}
+FirefoxCleanRAMProcessControl()
+{
+    Process_Resume("Firefox.exe")
+    FirefoxCleanRAM()
+    Process_Suspend("Firefox.exe")
+}
+ChromeCleanRAMProcessControl()
+{
+    Process_Resume("Chrome.exe")
+    ChromeCleanRAM()
+    Process_Suspend("Chrome.exe")
+}
+ChromeCleanRAM()
+{
+    if ProcExist("Chrome.exe")
+    {
+        WinGetActiveTitle, AT22
+        if AT22 not contains Chrome
+            WinActivate, ahk_exe Chrome.exe
+        WinMaximize, ahk_exe Chrome.exe
+        WinGetActiveTitle, AT73
+        if AT73 not contains blank
+            run, cmd.exe /c start chrome https://blank.org/
+        WinWaitActive, blank, , 5, Firefox
+        send, !+n
+        sleep, 200
+        send, !+n
+    }
+}
+
+FirefoxCleanRAM()
+{
+    if ProcExist("Firefox.exe")
+    {
+        WinGetActiveTitle, AT22
+        if AT22 not contains Firefox
+            WinActivate, ahk_exe firefox.exe
+        WinMaximize, ahk_exe firefox.exe
+        WinGetActiveTitle, AT73
+        if AT73 not contains blank
+            run, firefox.exe -new-tab about:blank -foreground,,max
+        WinWaitActive, ahk_exe Firefox.exe
+        Tooltip, Discarding Tabs
+        send, +!m
+        loop 2
+        {
+            if AT22 not contains about:memory
+                run, firefox.exe -new-tab about:memory -foreground,,max
+            if WaitForPixelColor("622", "558", "0x23222B", "5000")
+            {
+                mouse_click_func("774", "171")
+                if WaitForPixelColor("722", "250", "0x2B2A33", "5000")
+                {
+                    WinGetActiveTitle, AT6
+                    if AT6 contains about:memory
+                    {
+                        Tooltip, Discarding Tabs
+                        send, +!m
+                        sleep, 200
+                        send, ^w
+                        break
+                    }
+                }
+            }
+        }
+        sleep, 200
+        send, +!m
+    }
+    else
+        msgbox, WHAT
+}
+MouseIsOver(WinTitle) 
+{
+    MouseGetPos,,, Win
+    return WinExist(WinTitle . " ahk_id " . Win)
+}
+RAMUsage(tooltip:="0")
+{
+    static MEMORYSTATUSEX, init := VarSetCapacity(MEMORYSTATUSEX, 64, 0) && NumPut(64, MEMORYSTATUSEX, "UInt")
+    if !(DllCall("Kernel32.dll\GlobalMemoryStatusEx", "Ptr", &MEMORYSTATUSEX))
+        return DllCall("kernel32.dll\GetLastError")
+    currentram := NumGet(MEMORYSTATUSEX, 4, "UInt")
+    if tooltip != 0
+        Tooltip, %currentram%`% RAM is in USE
+    log(currentram)
+    return currentram
+}
 ExitAppLog(x:="")
 {
     logthis=%x% - Finished Running
@@ -398,8 +515,8 @@ MouseHooverCheckColor(x, y)
 {
     CoordMode, Mouse, Screen
     MouseGetPos, mx, my
-    mx2 := mx+5
-    my2 := my+5
+    x2 := x+5
+    y2 := y+5
     BlockInput, MouseMove
     mousemove, %x%, %y%, 0
     sleep, 3
@@ -407,7 +524,7 @@ MouseHooverCheckColor(x, y)
     sleep, 3
     mousemove, %x%, %y%, 0
     sleep, 3
-    PixelGetColor, color, %X%, %Y%, RGB
+    PixelGetColor, color, %x%, %x%, RGB
     mousemove, %mx%, %my%, 0
     BlockInput, MouseMoveOff
     return %color%
@@ -724,18 +841,26 @@ PrintDebug(string:=""){
 	}
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
-inirw(rw, key, value:="", file:="C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini")
+inirw(rw, key, value:="", file:="C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini", log:="1")
 {
+    SplitPath, file, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    FileCreateDir, %OutDir%
     if rw=w
     {
-        log_this=Writing ini-file - value=%value% key=%key% File=%file%
-        log(log_this)
+        if log=1
+        {
+            log_this=Writing ini-file - value=%value% key=%key% File=%file%
+            log(log_this)
+        }
         IniWrite, %value%, %file%, Section, %key%
     }
     else if rw=r
     {
-        log_this=Reading ini-file - value=%value% key=%key% File=%file%
-        log(log_this)
+        if log=1
+        {
+            log_this=Reading ini-file - value=%value% key=%key% File=%file%
+            log(log_this)
+        }
         IniRead, value, %file%, Section, %key%
     }
     Else
@@ -886,7 +1011,7 @@ RunCompiledAHK(exe)
     sleep, 500
     Tooltip, 
 }
-RunActivate(title, exe_path, commands, multiple, minmaxclose, timeout:="20")
+RunActivate(title, exe_path, commands:="", multiple:="0", minmaxclose:="max", timeout:="20")
 {
     SplitPath, exe_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if multiple = 1
@@ -928,7 +1053,7 @@ RunActivate(title, exe_path, commands, multiple, minmaxclose, timeout:="20")
         timeout10-=1
         sleep, 100
     }
-    if minmaxclose=1
+    if (minmaxclose = max) or (minmaxclose = 1)
     {
         WinMaximize, ahk_exe %OutFileName%
         WinMaximize, %AT%
@@ -988,37 +1113,41 @@ RunActivate(title, exe_path, commands, multiple, minmaxclose, timeout:="20")
     return
 */
 }
-WaitForPixelColor(x, y, color, ms, ByRef timeout="")  ;CHANGE THIS WITH PixelSearch
+WaitForPixelColor(x, y, ByRef color, ms, ByRef hit_type="", ByRef real_color:="", ByRef mouse_color:="")  ;CHANGE THIS WITH PixelSearch
 {
-    ms /= 100
-    timeout=1
+    rounds_unrounded := ms/100/2.6885
+    rounds := Round(rounds_unrounded, 0)
+    if rounds=0
+        rounds=1
+    hit_type=0
     if ms=0
         ms=1
-    loop %ms%
+    loop %rounds%
     { 
         CoordMode, Pixel, Screen
         PixelGetColor, real_color, x, y, RGB
-        color=%real_color%
         if real_color contains %color%
         {
-            timeout=0
-            color=%real_color%
-            break
+            hit_type=normalhit
+            mouse_color=no_mouse_hit
+            return 1
         }
-        real_color2 := MouseHooverCheckColor("1533", "664")
-        if real_color2 contains %color%
+        mouse_color := MouseHooverCheckColor(x, y)
+        if mouse_color contains %color%
         {
-            timeout=0
-            color=%real_color2%
-            break
+            hit_type=mousehit
+            real_color=no_real_color_hit
+            return 1
         }
         else
         {
-            sleep, 100
+            Tooltip, %color% Waiting for this color`n%real_color% Real color`n%real_color% Real color when mouse hoover`n%rounds% Timeout (%ms% ms)
+            sleep, 50
             ;Tooltip, color = %color%`nreal_color = %real_color%
         }
+        rounds-=1
     }
-    return %color%
+    return 0
 }
 PlayYoutubePlaylist(link)
 {
@@ -1090,7 +1219,7 @@ WinActivateWaitActive(AT, seconds)
     count := seconds*100
     loop
     {
-        Tooltip, Waiting for %AT%`nTimeout in %count%
+        ;Tooltip, Waiting for %AT%`nTimeout in %count%
         WinGetActiveTitle, ACTIVE
         if ACTIVE Contains %AT%
         {
@@ -1300,8 +1429,8 @@ log(LogThis:="", filename:="C:\!\Logs\LogToFile.txt", tooltip:="0", console:="0"
     }
     consolefilename=C:\!\Logs\LogToFileConsole.txt
     FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
-	FileAppend, `n%TimeLong% %LogThis% %ElapsedTime_ms%ms                                           ElapsedTime=%file_append% %A_ScriptFullPath%, %filename%
-	FileAppend, `n%TimeLong% %LogThis% %ElapsedTime_ms%ms %A_ScriptFullPath%, %consolefilename%
+	FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms                                           ElapsedTime=%file_append% %A_ScriptFullPath%`n, %filename%
+	FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms %A_ScriptFullPath%`n, %consolefilename%
     if console!=0
     {
         
@@ -1323,12 +1452,12 @@ log(LogThis:="", filename:="C:\!\Logs\LogToFile.txt", tooltip:="0", console:="0"
 LogTime(x)
 {
     FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
-	FileAppend, `n%TimeLong% %x%, C:\!\Logs\LogTime.txt
+	FileAppend, %TimeLong% %x%`n, C:\!\Logs\LogTime.txt
 }
 LogTimeEscape(x)
 {
 	FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
-	FileAppend, `n%TimeLong% %x% Triggered by pressing Escape - Implement this --> HOW_MANY Seconds Have Passed Since %x%, C:\!\Logs\LogTime.txt
+	FileAppend, %TimeLong% %x% Triggered by pressing Escape - Implement this --> HOW_MANY Seconds Have Passed Since %x%`n, C:\!\Logs\LogTime.txt
 }
 WriteNewAutohotkeyFunctionAHK()
 {
@@ -1404,14 +1533,30 @@ RepeatSound(sound, seconds, tooltip)
         WinClose, ahk_exe C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Drikkelek101.ahk
     }
 }
-FileCreateJunctionLink(link, target)
+FileCreateJunctionLink(link, target, type:="junction", cmd:="mklink")
 {
-    ;run, cmd.exe /c mklink /j %x% %y%
-    status := CheckInstall("C:\ProgramData\chocolatey\lib\sysinternals\tools\junction.exe", "sysinternals")
-    if status = installed
-    {
-        runwait, cmd /k C:\ProgramData\chocolatey\lib\sysinternals\tools\junction.exe "%link%" "%target%" -nobanner -accepteula
-    }
+    ;if cmd=mklink;   See https://www.2brightsparks.com/resources/articles/ntfs-hard-links-junctions-and-symbolic-links.html
+    ;{
+    file_or_folder := FileExist(target)
+    if file_or_folder = D;  Folder
+        if type=junction
+            run, cmd.exe /k mklink /j "%link%" "%target%"
+        else if type=symlink
+            run, cmd.exe /k mklink /d "%link%" "%target%"
+    else if file_or_folder != D; File
+        if type=hard
+            run, cmd.exe /k mklink /h "%link%" "%target%"
+        if type=symlink
+            run, cmd.exe /k mklink "%link%" "%target%"
+    ;}
+    ;else
+    ;{
+    ;    status := CheckInstall("C:\ProgramData\chocolatey\lib\sysinternals\tools\junction.exe", "sysinternals")
+    ;    if status = installed
+    ;    {
+    ;        run, cmd /k C:\ProgramData\chocolatey\lib\sysinternals\tools\junction.exe "%link%" "%target%" -nobanner -accepteula
+    ;    }
+    ;}
 }
 
 ;C:\!\Code\GitHub\93andresen C:\!\Code\GitHub\93andresen_Scripts
@@ -1743,10 +1888,20 @@ run_run_process(process, path, cmd)
 
 run_file_if_it_exists(path, cmd:="")
 {
-    if FileExist(path)
+    timeout=100
+    loop %timeout%
     {
-        run, %path% %cmd%,,,PID
-        return %PID%
+        if FileExist(path)
+        {
+            run, %path% %cmd%,,,PID
+            return %PID%
+        }
+        Else
+        {
+            Tooltip, %path% Doesen't Exist timeout=%timeout%
+            timeout-=1
+            sleep, 100
+        }
     }
 }
 runwait_file_if_it_exists(path, cmd:="")
@@ -1757,45 +1912,152 @@ runwait_file_if_it_exists(path, cmd:="")
         return %PID%
     }
 }
+RunPathOLD(path, wait:="0", args:="")
+{
+    if FileExist(path)
+    {
+        if wait = 1
+            runwait, %path% %args%,,,PID
+        else
+            run, %path% %args%,,,PID
+        return %PID%
+    }
+    else
+        return 0
+}
 RunPath(path, wait:="0", args:="", WorkingDir:="ScriptPath")
 {
     if FileExist(path)
     {
         SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
-            if OutExtension=ahk
-                loop, read, %path%
-                    if A_LoopReadLine contains AutohotkeyFucktions.ahk
-                        if not FileExist("AutohotkeyFucktions.ahk")
-                            if FileExist("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk")
-                                FileExist("C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Run_Folder_For_Shared_Functions")
-                                FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk, C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Lib\AutohotkeyFucktions.ahk, 1
-                                if A_IsAdmin
-                                    FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk, C:\Program Files\AutoHotkey\Lib\AutohotkeyFucktions.ahk, 1
+        if OutExtension=ahk
+        {
+            loop, read, %path%
+            {
+                if A_LoopReadLine contains AutohotkeyFucktions.ahk
+                {
+                    if not FileExist("AutohotkeyFucktions.ahk")
+                    {
+                        if FileExist("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk")
+                        {
+                            if OutDrive=C:
+                                FileCreateJunctionLink(link, target, type:="hard")
+                            else
+                            lib=C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk
+                            FileCreateDir C:\Program Files\AutoHotkey\Lib
+                            FileCreateDir C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Lib
+                            templibadmin=C:\Program Files\AutoHotkey\Lib\AutohotkeyFucktions.ahk
+                            templibrestricted=C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Lib\AutohotkeyFucktions.ahk
+                            if A_IsAdmin = 1
+                            {
+                                FileCopy, %lib%, %templibadmin%, 1
+                                if FileExist(templibadmin)
+                                {
+                                    templibfolder=C:\Program Files\AutoHotkey\Lib
+                                    templib=%templibadmin%
+                                }
+                            }
+                            else
+                            {
+                                FileCopy, %lib%, %templibrestricted%, 1
+                                if FileExist(templibrestricted)
+                                {
+                                    templibfolder=C:\Users\%A_UserName%\AppData\Local\Temp\_Autohotkey_Lib
+                                    templib=%templibrestricted%
+                                }
+                            }
+                            temp_script_path=%templibfolder%\%OutFileName%
+                            FileCopy, %path%, %temp_script_path%, 1
+                            Tooltip, COPIED AHK_FUNCTION_LIBRARY TO TEMP LOCATION %A_ScriptFullPath%
+                        }
+                        else
+                        {
+                            UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/AutohotkeyFucktions.ahk, %templib%\AutohotkeyFucktions.ahk
+                            LogThis=Had to Download Functions to %templib%
+                            Tooltip, DOWNLOADED AHK_FUNCTION_LIBRARY %A_ScriptFullPath%
+                            log(LogThis)
+                        }
+                        LogThis=had to run %path% in %temp_script_path% Because of missing lib
+                        log(LogThis)
+                    }
+                }
+            }
+        }
+        LogThis=wait=%wait% - command=%command% - WorkingDir=%WorkingDir%
+        log(LogThis)
         if WorkingDir=ScriptPath
         {
             if wait = 1
-                runwait, %path% %args%, %A_WorkingDir%,,PID
+            {
+                command=%path% %args%
+                Working_Directory=%A_WorkingDir%
+                tryrunwait(command, Working_Directory)
+            }
             else
-                run, %path% %args%, %A_WorkingDir%,,PID
+            {
+                command=%path% %args%
+                Working_Directory=%A_WorkingDir%
+                tryrun(command, Working_Directory)
+            }
         }
         else if WorkingDir=0
         {
+            command=%path% %args%
             if wait = 1
-                runwait, %path% %args%,,,PID
+            {
+                tryrunwait(command)
+            }
             else
-                run, %path% %args%,,,PID
+            {
+                tryrun(command)
+            }
         }
         else
         {
+            command=%path% %args%
             if wait = 1
-                runwait, %path% %args%, %WorkingDir%,,PID
+                tryrunwait(command)
             else
-                run, %path% %args%, %WorkingDir%,,PID
+            {
+                tryrun(command)
+            }
             return %PID%
         }
     }
     else
         return 0
+}
+tryrun(code, WorkingDir:="")
+{
+    try
+    {
+        run, %code%
+        LogTry=%ErrorLevel% - %code%
+        log(LogTry, , "1", "0")
+        return PID
+    }
+    catch
+    {
+        LogError=%ErrorLevel% - %code%
+        log(LogError, , "1", "0")
+        return 0
+    }
+}
+tryrunwait(code, WorkingDir:="")
+{
+    try
+    {
+        runwait, %code%
+        LogTry=%ErrorLevel% - %code%
+        log(LogTry, , "1", "0")
+        return PID
+    }
+    catch
+    {
+        LogError=%ErrorLevel% - %code%
+        log(LogError, , "1", "0")
+        return 0
+    }
 }
 ;Convert These to functions
 ;C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\GetFileListOfClipboardFolder.ahk
