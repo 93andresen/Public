@@ -18,8 +18,8 @@ if errorlevel=0
     WinSetTitle, %old_title%, , %new_title%
 else
 {
-    Tooltip, Could not set title waited 3 seconds
-    ;log("Could not set title waited 3 seconds")
+    Tooltip, Could not set title waited 60 seconds
+    ;log("Could not set title waited 60 seconds")
     sleep, 3000
 }
 ExitApp

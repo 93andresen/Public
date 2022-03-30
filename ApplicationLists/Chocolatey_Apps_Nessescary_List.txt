@@ -73,7 +73,7 @@ Tortoisesvn
 Virustotaluploader
 Lockhunter
 Toolwiz-Time-Freeze
-Workspacer.Portable
+workspacer.install
 Dellcommandupdate
 Ghostscript
 Cheat

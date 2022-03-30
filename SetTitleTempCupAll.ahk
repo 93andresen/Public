@@ -29,8 +29,8 @@ if errorlevel=0
     WinSetTitle, Administrator: Windows PowerShell, , Updating All Applications And Latest Youtube Playlist ___title_for_closing___
 else
 {
-    Tooltip, Could not set title waited 3 seconds
-    log("Could not set title waited 3 seconds")
+    Tooltip, Could not set title waited 10 seconds
+    log("Could not set title waited 10 seconds")
     sleep, 3000
 }
 ExitApp

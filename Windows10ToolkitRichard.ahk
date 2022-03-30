@@ -358,10 +358,17 @@ SetNumLockState, On
 
 if personal = 1
 {
-    sleep, 1
+    FileCreateDir, C:\!\Logs\DellCommandUpdate
+    FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    runwait, cmd.exe /k "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /scan -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, cmd.exe /k "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -userConsent=disable -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    Tooltip, INSTALLING DELL COMMAND UPDATES
+    runwait, cmd.exe /k "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, cmd.exe /k "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    Tooltip, 
 }
 
-run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk  
+;runwait, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 if reboot = 1
 {
     run, powershell.exe shutdown /r /f /t 1
