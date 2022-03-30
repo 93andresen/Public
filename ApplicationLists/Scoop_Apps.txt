@@ -7,3 +7,4 @@ Mailsend-Go
 Msedgeredirect
 Nirlauncher
 Vcredist2015
+Fileoptimizer

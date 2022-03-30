@@ -676,7 +676,7 @@ CheckInstall(path, choconame, toolkit:="0")
     if FileExist(path)
     {
         status = installed
-        log("status = installed", "C:\!\Logs\LogToFile.txt")
+        log("status = installed", "C:\!\Logs\LogToFile.log")
     }
     else
     {
@@ -689,62 +689,62 @@ CheckInstall(path, choconame, toolkit:="0")
                 choco = 1
                 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation,,max
                 runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,,max
-                log("Sucsessfully Installed chocolatey", "C:\!\Logs\LogToFile.txt")
-                log("choco feature enable -n=allowGlobalConfirmation", "C:\!\Logs\LogToFile.txt")
-                log("choco feature enable -n=allowEmptyChecksums", "C:\!\Logs\LogToFile.txt")
+                log("Sucsessfully Installed chocolatey", "C:\!\Logs\LogToFile.log")
+                log("choco feature enable -n=allowGlobalConfirmation", "C:\!\Logs\LogToFile.log")
+                log("choco feature enable -n=allowEmptyChecksums", "C:\!\Logs\LogToFile.log")
             }
             else
             {
                 choco = 0
-                log("ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing", "C:\!\Logs\LogToFile.txt")
+                log("ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing", "C:\!\Logs\LogToFile.log")
                 Tooltip, ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing
                 sleep, 5000
                 Tooltip, 
             }
         }
-        log("choco install %choconame%", "C:\!\Logs\LogToFile.txt")
+        log("choco install %choconame%", "C:\!\Logs\LogToFile.log")
         runwait, powershell.exe choco install %choconame%,,max
         if FileExist(path)
         {
-            log("Sucsessfully Installed %choconame%", "C:\!\Logs\LogToFile.txt")
+            log("Sucsessfully Installed %choconame%", "C:\!\Logs\LogToFile.log")
             Tooltip, 
             status = installed
         }
         if not FileExist(path)
         {
-            log("choco install %choconame% %--ignore-checksums%", "C:\!\Logs\LogToFile.txt")
+            log("choco install %choconame% %--ignore-checksums%", "C:\!\Logs\LogToFile.log")
             runwait, powershell.exe choco install %choconame% --ignore-checksums,,max
             if FileExist(path)
             {
-                log("Sucsessfully Installed %choconame% --ignore-checksums", "C:\!\Logs\LogToFile.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
                 status = installed
             }
         }
         if not FileExist(path)
         {
-            log("choco install %choconame% %--ignore-checksums% %--force%", "C:\!\Logs\LogToFile.txt")
+            log("choco install %choconame% %--ignore-checksums% %--force%", "C:\!\Logs\LogToFile.log")
             runwait, powershell.exe choco install %choconame% --ignore-checksums --force,,max
             if FileExist(path)
             {
-                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "C:\!\Logs\LogToFile.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
                 status = installed
             }
         }
         if not FileExist(path)
         {
-            log("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "C:\!\Logs\LogToFile.txt")
+            log("choco install %choconame% %--ignore-checksums% %--force% %--force-dependencies%", "C:\!\Logs\LogToFile.log")
             runwait, powershell.exe choco install %choconame% --ignore-checksums --force --force-dependencies,,max
             if FileExist(path)
             {
-                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "C:\!\Logs\LogToFile.txt")
+                log("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
                 status = installed
             }
             else
             {
-                log("ERROR - tried to install %choconame% but %path% is still missing", "C:\!\Logs\LogToFile.txt")
+                log("ERROR - tried to install %choconame% but %path% is still missing", "C:\!\Logs\LogToFile.log")
                 Tooltip, ERROR - tried to install %choconame% but %path% is still missing
                 sleep, 5000
                 Tooltip, 
@@ -1450,12 +1450,12 @@ ElapsedTime(Label:="Stopwatch", byref ElapsedTime_ms:="", byref file_append:="")
     ;Tooltip, %ElapsedTime_hours% Hours`n%ElapsedTime_mins% Minutes`n%ElapsedTime_secs%Seconds`n%ElapsedTime_ms% ms`n`nElapsedTime=%ElapsedTime%
     ;return ElapsedTime
 }
-log(LogThis:="", filename:="C:\!\Logs\LogToFile.txt", tooltip:="0", console:="0")
+log(LogThis:="", filename:="C:\!\Logs\LogToFile.log", tooltip:="0", console:="0")
 {
     ElapsedTime(LogThis, ElapsedTime_ms, file_append)
     if tooltip!=0
         Tooltip, %LogThis%`n%filename%
-    if filename != C:\!\Logs\LogToFile.txt
+    if filename != C:\!\Logs\LogToFile.log
     {
         splitpath, filename
         if filename not contains :

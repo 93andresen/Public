@@ -91,7 +91,7 @@ Serialportmonitor
 Dbgview
 Procrastitracker
 Direvents
-DireventsCports
+Cports
 Hdguard
 Aida64-extreme.portable
 Iris

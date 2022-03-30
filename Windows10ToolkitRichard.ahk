@@ -358,7 +358,7 @@ SetNumLockState, On
 
 if personal = 1
 {
-    Tooltip, YES IT WORKS!!!!!!!!
+    sleep, 1
 }
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk  
@@ -687,7 +687,7 @@ CheckInstall(path, choconame)
     return %status%
 }
 
-log(x, filename:="C:\!\Logs\LogToFile.txt")
+log(x, filename:="C:\!\Logs\LogToFile.log")
 {
 	FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLong% %x%, %filename%
