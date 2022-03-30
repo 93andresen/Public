@@ -359,7 +359,6 @@ SetNumLockState, On
 if personal = 1
 {
     Tooltip, YES IT WORKS!!!!!!!!
-    run, powershell.exe choco pin add --name="'authy-desktop'"
 }
 
 run, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk  

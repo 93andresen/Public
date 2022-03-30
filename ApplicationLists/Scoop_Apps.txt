@@ -1,3 +1,9 @@
 7zip
+Coreutils
+Dopamine
 Fastcopy
+Lsd
+Mailsend-Go
 Msedgeredirect
+Nirlauncher
+Vcredist2015

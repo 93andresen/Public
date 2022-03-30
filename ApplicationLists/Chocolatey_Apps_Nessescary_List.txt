@@ -76,3 +76,6 @@ Toolwiz-time-freeze
 Workspacer.portable
 dellcommandupdate
 Ghostscript
+Cheat
+Gimp
+Gimp-data-extras
