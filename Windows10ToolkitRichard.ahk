@@ -298,7 +298,7 @@ if debloat = 1
     RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10ChrisTitusForkRichard.ps1 -UseBasicParsing|iex", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     ;RunPowershellLog("iwr https://raw.githubusercontent.com/93andresen/Public/main/Windows10DebloaterSycnexForkRichard.ps1", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     RunPowershellLog("import-module Boxstarter.WinConfig;Disable-GameBarTips;Disable-BingSearch;Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
-    command = choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force
+    command = choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force;choco install explorer-expand-to-current-folder --ignore-checksums --force -y;choco install explorer-show-all-folders --ignore-checksums --force -y
     RunPowershellLog(command, path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
 }
 
@@ -358,6 +358,7 @@ SetNumLockState, On
 
 if personal = 1
 {
+    runwait, choco install dellcommandupdate -y
     FileCreateDir, C:\!\Logs\DellCommandUpdate
     FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /scan -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max

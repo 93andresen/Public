@@ -80,3 +80,7 @@ Cheat
 Gimp
 Gimp-Data-Extras
 Shadowexplorer.Portable
+explorer-expand-to-current-folder
+explorer-show-all-folders
+powerautomatedesktop
+Au

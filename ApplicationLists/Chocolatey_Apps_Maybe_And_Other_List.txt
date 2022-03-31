@@ -137,7 +137,6 @@ Shellbagsview
 Setup-Assistant
 Regexpixie
 Putty
-Powerautomatedesktop
 Netscan
 Lastactivityview
 Laps
@@ -229,3 +228,4 @@ Mbruler
 Roost-desktop-notifier-for-nest
 Cygwin
 gamedownloader.portable
+honeybee.devops.packaging
