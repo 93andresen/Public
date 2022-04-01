@@ -1,3 +1,250 @@
+act(title:="", timeout:="once", minmax:="0")
+{
+    if timeout = once
+        count=1
+    else
+        count := timeout/100
+    loop
+    {
+        ;Tooltip, Waiting for %AT%`nTimeout in %count%
+        WinGetActiveTitle, REAL_AT
+        if REAL_AT Contains %title%
+        {
+            ;Tooltip,
+            if minmax=min
+                WinMinimize, %title%
+            if minmax=max
+                WinMaximize, %title%
+            return 1
+        }
+        WinActivate, %title%
+        sleep, 100
+        count -= 1
+        if count < 1
+        {
+            ;Tooltip, 
+            return 0
+        }
+    }
+}
+LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount:="")
+{
+    loop
+    {
+        if LookForRebekka(px, py)!=0
+        {
+            MouseGetPos, mx, my
+            MouseMove, 1642, 825, 0
+            send, {WheelDown}
+            sleep, 400
+            zoomcount+=1
+            MouseMove, %mx%, %my%, 0
+        }
+        else
+        {
+            px2:=px+2
+            py2:=py+24
+            MouseGetPos, mx, my
+            MouseMove, %px2%, %py2%, 0
+            send, {WheelUp}
+            MouseMove, %mx%, %my%, 0
+            zoomcount-=1
+            if zoomcount < 1
+                break
+            sleep, 100
+        }
+        ;Tooltip, zoomcount=%zoomcount%
+    }
+}
+LookForRebekka(Byref px:="", Byref py:="")
+{
+    WinActivate, Google Maps
+    PixelSearch, px, py, 117, 113, 1814, 984, 0xF293CF, 3, Fast RGB
+    return errorlevel
+}
+OpenGoogleMaps(arg)
+{
+    run, https://www.google.com/maps/@58.1518014,7.9696047,15z
+    if not act("Google Maps", "20000", "max")
+    {
+        msgbox, ERROR GOOGLE MAPS NEVER ACTIVATES - EXITING APP
+        ExitAppLog()
+    }
+    ;MouseGetPos, mx, my
+    ;MouseMove, 886, 509, 0
+    ;sleep, 100
+    ;send, {WheelDown}
+    ;sleep, 1000
+    ;send, {WheelDown}
+    ;sleep, 1000
+    ;send, {WheelDown}
+    if arg=fullscreen
+    {
+        if WaitForPixelColor("1723", "27", color:="0x0D0E0E", "ms", hit, real_color, mouse_color)
+            send, {F11}
+    }
+    loop 20
+    {
+        if WaitForPixelColor("765", "184", color:="0x142D1B", "ms", hit, real_color, mouse_color)
+            break
+        if WaitForPixelColor("765", "184", color:="0x2B4C7F", "ms", hit, real_color, mouse_color)
+            break
+        act("Google Maps",,"max")
+    }
+    foundher=0
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "900", "500", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    sleep, 10
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "900", "500", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    sleep, 10
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "900", "500", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    sleep, 10
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "1100", "664", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    sleep, 10
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "1100", "664", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    sleep, 10
+    if foundher=0
+    {
+        Tooltip, 
+        MouseClickDrag_func("left", "900", "664", "1100", "664", "3")
+        if LookForRebekka(px, py)=0
+        {
+            foundher=1
+        }
+    }
+    LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount:=20)
+}
+Process_Suspend_Gaming()
+{
+    Tooltip, Gaming Processes Suspended========================================================================
+    WinMinimize, VILLAGE
+    WinMinimize, RivaTunerStatisticsServer
+    WinMinimize, MSI Afterburner
+    WinMinimize, ahk_exe MSIAfterburner.exe
+    WinMinimize, ahk_exe re8.exe
+    WinMinimize, ahk_exe re3.exe
+    WinMinimize, ahk_exe RTSS.exe
+    sleep, 250
+    Process_Suspend("re8.exe")
+    Process_Suspend("re3.exe")
+    Process_Suspend("MSIAfterburner.exe")
+    Process_Suspend("RTSS.exe")
+sleep, 2500
+Tooltip, 
+}
+Process_Resume_Gaming()
+{
+    Tooltip, Processes Resumed
+    Process_Resume("re8.exe")
+    Process_Resume("re3.exe")
+    Process_Resume("MSIAfterburner.exe")
+    Process_Resume("RTSS.exe")
+    sleep, 2500
+    Tooltip, 
+}
+SpotifyOnline()
+{
+    run, C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
+    loop 10
+    {
+        mouse_click_func("154", "1056")
+        sleep, 1000
+        if WaitForPixelColor("472", "963", color:="0x181818", "ms", hit, real_color, mouse_color)
+            break
+        Tooltip, %count%
+        count-=1
+        sleep, 1000
+    }
+    if WaitForPixelColor("1448", "29", color:="0x2E77D0", "ms", hit, real_color, mouse_color)
+    {
+        mouse_click_func("47", "32")
+        sleep, 100
+        mouse_click_func("125", "78")
+        sleep, 100
+        mouse_click_func("375", "183")
+    }
+}
+SpotifyOffline()
+{
+    run, C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
+    loop 10
+    {
+        mouse_click_func("154", "1056")
+        sleep, 1000
+        if WaitForPixelColor("472", "963", color:="0x181818", "ms", hit, real_color, mouse_color)
+            break
+        Tooltip, %count%
+        count-=1
+        sleep, 1000
+    }
+    if not WaitForPixelColor("1448", "29", color:="0x2E77D0", "ms", hit, real_color, mouse_color)
+    {
+        mouse_click_func("47", "32")
+        sleep, 100
+        mouse_click_func("125", "78")
+        sleep, 100
+        mouse_click_func("375", "183")
+    }
+}
+SearchApp(app)
+{
+    SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Scoop\scoopsearch.ps1", clipboard)
+    SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Winget\wingetsearch.ps1", clipboard)
+    SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Chocolatey\chocosearch.ps1", clipboard)
+}
+SearchAppFunc(script_path, app)
+{
+    Tooltip, %script_path%
+    tempdir=A_WorkingDir
+    SplitPath, script_path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    SetWorkingDir, %OutDir%
+    SplitPath, OutDir, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    arg=-NoExit Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; %OutFileName% Search %app%
+    ;RunPath("powershell.exe", "0", arg, OutDir)
+    run, powershell.exe %arg%,,max
+    SetWorkingDir, %tempdir%
+    WinWaitActive, Administrator: Windows PowerShell, , 10
+    WinSetTitle, Administrator: Windows PowerShell, , %OutFileName% Search %clipboard%
+}
 Process_Suspend_All()
 {
     Process_Suspend("Chrome.exe")
@@ -319,7 +566,6 @@ iniToggle(var, tooltip:="")
 ConnectToWifi(hotspot:="")
 ;Windows 11
 {
-
     loop
     {
         If not ConnectedToInternet()
@@ -347,9 +593,10 @@ ConnectToWifi(hotspot:="")
         else
             break
     }
-    return
+    ;return
     loop
     {
+        ;msgbox, BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
         count+=1
         Tooltip, rounds=%rounds%`ncount=%count%`nwhite=%white%`nblack=%black%`nhooked=%hooked%`ntimeout=%timeout%
         If not ConnectedToInternet()
@@ -384,6 +631,7 @@ ConnectToWifi(hotspot:="")
     }
     loop 20
     {
+        ;msgbox, AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         OpenWifiPanel()
         ;checkforwhitenetworkicon := MouseHooverCheckColor("1501", "607")
         ;if checkforwhitenetworkicon contains 0xFFF
@@ -420,6 +668,7 @@ ConnectToWifi(hotspot:="")
     ;runwait, cmd.exe /c netsh wlan connect ssid=Altibox975339 name="All User Profile" interface="Wi-Fi"
     if hotspot=hotspot
     {    
+        ;msgbox, fjfgjfgjfgjfgjfgjfgj
         loop
         {
             hotspotcount+=1
@@ -430,28 +679,52 @@ ConnectToWifi(hotspot:="")
             PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
             PixelGetColor, colordown, "1622", "276", RGB    ;   Should be black when on 0x000000
             ;mousemove, %x%, %y%
-            if color = 0xCECECE
-                mouse_click_func(x, y)
-            else if color = 0x272727
-                mouse_click_func(x, y)
-            else if color = 0x000000
-                hotspotcolor=on
-            else if colordown = 0xCECECE
-                mouse_click_func(x, y)
-            else if colordown = 0x272727
-                mouse_click_func(x, y)
-            else if colordown = 0x000000
-                hotspotcolor=on
-            if hotspotcolor=on
+            if WaitForPixelColor("1597", "182", color:="0xD1D1D1", "ms", hit, real_color, mouse_color)
             {
-                WinClose, Settings
-                return hotspot
+                hotspotcolor=0
+                mouse_click_func("1594", "183")
+                msgbox, WHITE
             }
-            if hotspotcount=2
+            else if WaitForPixelColor("1595", "273", color:="0xE94BBA", "ms", hit, real_color, mouse_color)
+            {
+                hotspotcolor=1
                 WinClose, Settings
+                msgbox, PINK1
+                return hotspotcolor
+            }
+            else if WaitForPixelColor("1596", "180", color:="0xE94BBA", "ms", hit, real_color, mouse_color)
+            {
+                hotspotcolor=1
+                WinClose, Settings
+                msgbox, PINK2
+                return hotspotcolor
+            }
+            ;if color = 0xCECECE
+            ;    mouse_click_func(x, y)
+            ;else if color = 0x272727
+            ;    mouse_click_func(x, y)
+            ;else if color = 0x000000
+            ;    hotspotcolor=on
+            ;else if colordown = 0xCECECE
+            ;    mouse_click_func(x, y)
+            ;else if colordown = 0x272727
+            ;    mouse_click_func(x, y)
+            ;else if colordown = 0x000000
+            ;    hotspotcolor=1
+            ;if hotspotcolor=1
+            ;{
+            ;    WinClose, Settings
+            ;    return hotspot
+            ;}
+            if hotspotcount=2
+            {
+                msgbox, hotspotcount=%hotspotcount%
+                WinClose, Settings
+            }
             if hotspotcount=4
             {
                 WinClose, Settings
+                msgbox, hotspotcount=%hotspotcount%
                 break
             }
         }
@@ -535,7 +808,38 @@ RunPersistentAHKScripts()
     run_file_if_it_exists("RunAsAdmin.ahk", "")
     run_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\NO_SOUND_LOOP.ahk", "")
 }
-KillApps(apps:=0, rocketleague:=0, light:=0, ahkpanic:=0, ahk_except:=0, run_ahk_persistant:=1)
+KILL_APPS_FUNCTION(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0", run_ahk_persistant:="1")
+{
+    log=KILL_APPS_FUNCTION_STARTED apps=%apps% rocketleague=%rocketleague% light=%light% ahkpanic=%ahkpanic% ahk_except=%ahk_except% run_ahk_persistant=%run_ahk_persistant%
+    log(log)
+    ;RunActivate("Untitled - Notepad", "C:\Program Files\WindowsApps\microsoft.windowsnotepad_10.2103.6.0_x64__8wekyb3d8bbwe\Notepad\Notepad.exe", "", "1", "0")
+    ;send, DONT SHUTDOWN!!!
+    ;run, shutdown.exe /s /t 0
+    DesktopIcons(False)
+    DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\Gh4LZnk.png", UInt, 1)
+    WinMinimizeAll
+    shutdown_pid := RunActivate("ShutdownGUI", "C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk", "", "0", "0")
+    IniWrite, GLOBAL_MODE, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, LIGHT
+
+    KillApps(apps, rocketleague, light, ahkpanic, ahk_except, run_ahk_persistant)
+
+    Tooltip, 
+    SoundPlay, C:\!\NotificationSounds\All\beep_beep-185df4a1-357e-4b7d-9a44-60afeb5223a7_Lower.mp3
+    WinMinimizeAll
+    DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\558424.jpg", UInt, 1)
+    DesktopIcons(True)
+    WinClose, ahk_pid %shutdown_pid%
+    ;mouse_click_func("45", "157")
+    ;mouse_click_func("45", "157")
+    ;loop 4
+    ;{
+    ;    Tooltip, Finished Killing Tasks...
+    ;    sleep, 150
+    ;    Tooltip, 
+    ;    sleep, 50
+    ;}
+}
+KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0", run_ahk_persistant:="1")
 {
     FileDelete, KILL_ALL_APPS_GENERATED.txt
     if apps!=0
@@ -560,7 +864,6 @@ KillApps(apps:=0, rocketleague:=0, light:=0, ahkpanic:=0, ahk_except:=0, run_ahk
         if run_ahk_persistant=1
             RunPersistentAHKScripts()
     }
-    
     end_process("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt")
     if ahkpanic!=0
     {
@@ -577,6 +880,96 @@ KillApps(apps:=0, rocketleague:=0, light:=0, ahkpanic:=0, ahk_except:=0, run_ahk
     ; WinKill , WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText                   ; This command first makes a brief attempt to close the window normally. If that fails, it will attempt to force the window closed by terminating its process. If a matching window is active, that window will be closed in preference to any other matching window. In general, if more than one window matches, the topmost (most recently used) will be closed. This command operates only upon a single window except when WinTitle is ahk_group GroupName, in which case all windows in the group are affected. Window titles and text are case sensitive. Hidden windows are not detected unless DetectHiddenWindows has been turned on.
     ; Process, Close , PIDOrName                                                              ; If a matching process is successfully terminated, ErrorLevel is set to its former Process ID (PID). Otherwise (there was no matching process or there was a problem terminating it), it is set to 0. Since the process will be abruptly terminated -- possibly interrupting its work at a critical point or resulting in the loss of unsaved data in its windows (if it has any) -- this method should be used only if a process cannot be closed by using WinClose on one of its windows.
     ; Process, WaitClose, PIDOrName , Timeout                                                 ; Waits for all matching processes to close. Specify for Timeout the number of seconds (can contain a decimal point) to wait before timing out. If Timeout is omitted, the sub-command will wait indefinitely. If all matching processes are closed, ErrorLevel is set to 0. If the sub-command times out, ErrorLevel is set to the Process ID (PID) of the first matching process that still exists.
+}
+AHKPanicExcept(Kill=0, Pause=0, Suspend=0, SelfToo=0, path=0)
+{
+    DetectHiddenWindows, On
+    WinGet, IDList ,List, ahk_class AutoHotkey
+    if path=0
+        path=ahtsdfgsahtdfasghtdfashdtfsd
+    Loop, %IDList%
+    {
+        Progress := A_Index
+        ;Progress *= 2
+    }
+    Loop %IDList%
+    {
+        ID:=IDList%A_Index%
+        WinGetTitle, ATitle, ahk_id %ID%
+        Progress-=1
+        IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
+        {
+            IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk
+            {
+                IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
+                {
+                    IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk
+                    {
+                        IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Kill_AHK_Process.ahk
+                        {
+                            IfNotInString, ATitle, %path%
+                            {
+                                IfNotInString, ATitle, %A_ScriptFullPath%
+                                {
+                                    Tooltip, Killing Autohotkey Scripts - %ATitle%`n`nProgress=%Progress%
+                                    If Suspend
+                                    PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
+                                    If Pause
+                                    PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
+                                    If Kill
+                                    {
+                                        run, Kill_AHK_Process.ahk %ID%
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Tooltip, Kill Self
+    If SelfToo
+    {
+        If Suspend
+            Suspend, Toggle  ; Suspend. 
+        If Pause
+            Pause, Toggle, 1  ; Pause.
+        If Kill
+        {
+            Tooltip, 
+            ExitApp
+        }
+    }
+    Tooltip, 
+}
+AHKPanicOLD(Kill=0, Pause=0, Suspend=0, SelfToo=0)
+{
+    DetectHiddenWindows, On
+    WinGet, IDList ,List, ahk_class AutoHotkey
+    Loop %IDList%
+    {
+        ID:=IDList%A_Index%
+        WinGetTitle, ATitle, ahk_id %ID%
+        IfNotInString, ATitle, %A_ScriptFullPath%
+        {
+            If Suspend
+            PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
+            If Pause
+            PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
+            If Kill
+            WinClose, ahk_id %ID% ;kill
+        }
+    }
+    If SelfToo
+    {
+    If Suspend
+        Suspend, Toggle  ; Suspend. 
+    If Pause
+        Pause, Toggle, 1  ; Pause.
+    If Kill
+        ExitApp
+    }
 }
 SetDNS(provider, ipv4, ipv6)
 {
@@ -621,20 +1014,19 @@ SetDNS(provider, ipv4, ipv6)
     }
     runwait, cmd.exe /c ipconfig /flushdns,,max
 }
-CheckInstall(path, choconame, toolkit:="0")
+CheckInstall(path, choconame, prompt:="1")
 {
-    filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-    fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-    if toolkit != 0
-        run, C:\temp_Windows10ToolkitRichard\Public-main\OutputFileToConsole.ahk C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     if FileExist(path)
     {
-        status = installed
         log("status = installed", "C:\!\Logs\LogToFile.log")
+        return 1
     }
     else
     {
-        status = missing
+        status = missing 
+        MsgBox, 4,, Install %choconame%?`n`n%path% is missing`n`n%choconame% will automaticly be installed in 30 seconds`n, 30
+        IfMsgBox No
+            return 0
         if not FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
         {    
             runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')),,max
@@ -642,10 +1034,10 @@ CheckInstall(path, choconame, toolkit:="0")
             {
                 choco = 1
                 runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation,,max
-                runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,,max
-                log("Sucsessfully Installed chocolatey", "C:\!\Logs\LogToFile.log")
                 log("choco feature enable -n=allowGlobalConfirmation", "C:\!\Logs\LogToFile.log")
+                runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,,max
                 log("choco feature enable -n=allowEmptyChecksums", "C:\!\Logs\LogToFile.log")
+                log("Sucsessfully Installed chocolatey", "C:\!\Logs\LogToFile.log")
             }
             else
             {
@@ -654,6 +1046,7 @@ CheckInstall(path, choconame, toolkit:="0")
                 Tooltip, ERROR - tried to install Chocolatey but C:\ProgramData\chocolatey\bin\choco.exe is still missing
                 sleep, 5000
                 Tooltip, 
+                return 0
             }
         }
         log("choco install %choconame%", "C:\!\Logs\LogToFile.log")
@@ -662,7 +1055,7 @@ CheckInstall(path, choconame, toolkit:="0")
         {
             log("Sucsessfully Installed %choconame%", "C:\!\Logs\LogToFile.log")
             Tooltip, 
-            status = installed
+            return 1
         }
         if not FileExist(path)
         {
@@ -672,7 +1065,7 @@ CheckInstall(path, choconame, toolkit:="0")
             {
                 log("Sucsessfully Installed %choconame% --ignore-checksums", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
-                status = installed
+                return 1
             }
         }
         if not FileExist(path)
@@ -683,7 +1076,7 @@ CheckInstall(path, choconame, toolkit:="0")
             {
                 log("Sucsessfully Installed %choconame% --ignore-checksums --force --force", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
-                status = installed
+                return 1
             }
         }
         if not FileExist(path)
@@ -694,7 +1087,7 @@ CheckInstall(path, choconame, toolkit:="0")
             {
                 log("Sucsessfully Installed %choconame% --ignore-checksums --force --force-dependencies", "C:\!\Logs\LogToFile.log")
                 Tooltip, 
-                status = installed
+                return 1
             }
             else
             {
@@ -702,10 +1095,16 @@ CheckInstall(path, choconame, toolkit:="0")
                 Tooltip, ERROR - tried to install %choconame% but %path% is still missing
                 sleep, 5000
                 Tooltip, 
+                return 0
             }
         }
     }
-    return %status%
+    if status=installed
+        return 1
+    else if status=missing
+        return 0
+    else
+        return WHAT
 }
 WindowSnap(direction){
     SysGet, m, MonitorWorkArea
@@ -856,12 +1255,12 @@ inirw(rw, key, value:="", file:="C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini
     }
     else if rw=r
     {
+        IniRead, value, %file%, Section, %key%
         if log=1
         {
             log_this=Reading ini-file - value=%value% key=%key% File=%file%
             log(log_this)
         }
-        IniRead, value, %file%, Section, %key%
     }
     Else
     {
@@ -1113,15 +1512,19 @@ RunActivate(title, exe_path, commands:="", multiple:="0", minmaxclose:="max", ti
     return
 */
 }
-WaitForPixelColor(x, y, ByRef color, ms, ByRef hit_type="", ByRef real_color:="", ByRef mouse_color:="")  ;CHANGE THIS WITH PixelSearch
+WaitForPixelColor(x, y, ByRef color, ms:="ms", ByRef hit_type:="", ByRef real_color:="", ByRef mouse_color:="")  ;CHANGE THIS WITH PixelSearch
 {
-    rounds_unrounded := ms/100/2.6885
+    if ms=ms
+        ms=0
+    rounds_unrounded := ms/100/2.8
     rounds := Round(rounds_unrounded, 0)
     if rounds=0
         rounds=1
     hit_type=0
     if ms=0
         ms=1
+    LogThis=WaitForPixelColorFunction Started x=%x% y=%y% color=%color%, ms=%ms%, hit_type=%hit_type% real_color=%real_color% mouse_color=%mouse_color% rounds=%rounds%
+    log(LogThis)
     loop %rounds%
     { 
         CoordMode, Pixel, Screen
@@ -1130,6 +1533,8 @@ WaitForPixelColor(x, y, ByRef color, ms, ByRef hit_type="", ByRef real_color:=""
         {
             hit_type=normalhit
             mouse_color=no_mouse_hit
+            LogThis=WaitForPixelColorFunction END OF FUNCTION NORMALHIT x=%x% y=%y% color=%color%, ms=%ms%, hit_type=%hit_type% real_color=%real_color% mouse_color=%mouse_color% rounds=%rounds%
+            log(LogThis)
             return 1
         }
         mouse_color := MouseHooverCheckColor(x, y)
@@ -1137,16 +1542,22 @@ WaitForPixelColor(x, y, ByRef color, ms, ByRef hit_type="", ByRef real_color:=""
         {
             hit_type=mousehit
             real_color=no_real_color_hit
+            LogThis=WaitForPixelColorFunction END OF FUNCTION MOUSEHIT x=%x% y=%y% color=%color%, ms=%ms%, hit_type=%hit_type% real_color=%real_color% mouse_color=%mouse_color% rounds=%rounds%
+            log(LogThis)
             return 1
         }
         else
         {
+            ms-=287
             Tooltip, %color% Waiting for this color`n%real_color% Real color`n%real_color% Real color when mouse hoover`n%rounds% Timeout (%ms% ms)
-            sleep, 50
             ;Tooltip, color = %color%`nreal_color = %real_color%
+            rounds-=1
+            LogThis=WaitForPixelColorFunction IN THE MIDDLE OF LOOP x=%x% y=%y% color=%color%, ms=%ms%, hit_type=%hit_type% real_color=%real_color% mouse_color=%mouse_color% rounds=%rounds%
+            log(LogThis)
         }
-        rounds-=1
     }
+    LogThis=WaitForPixelColorFunction END OF FUNCTION NOHIT x=%x% y=%y% color=%color%, ms=%ms%, hit_type=%hit_type% real_color=%real_color% mouse_color=%mouse_color% rounds=%rounds%
+    log(LogThis)
     return 0
 }
 PlayYoutubePlaylist(link)
@@ -1177,19 +1588,23 @@ PlayYoutubePlaylist(link)
             else break
         }
     }
-    loop 300
+    timeout_counter=50
+    COUNT=2
+    loop %timeout_counter%
     {
         loop_counter+=1
-        Var := Mod(loop_counter, 10)
+        Var := Mod(loop_counter, COUNT)
         if Var = 0
         {
             WinActivate, ahk_exe Firefox.exe
             WinMaximize, ahk_exe Firefox.exe
         }
         MouseMove, 216, 830, 0
-        Tooltip, [%sucsess%/10] [%this_color%]-[%last_color%]
-        Random, xm, 107, 1260
-        Random, ym, 208, 794
+        Tooltip, [%sucsess%/%COUNT%] [%this_color%]-[%last_color%]`nTimeout=%timeout_counter%
+        ;Random, xm, 107, 1260
+        Random, xm, 291, 310
+        ;Random, xm, 107, 1260
+        Random, ym, 1096, 672
         MouseMove, %xm%, %ym%, 0
         last_color = %this_color%
         PixelGetColor, this_color, %xm%, %ym%, RGB
@@ -1197,44 +1612,22 @@ PlayYoutubePlaylist(link)
             sucsess=0
         else
             sucsess+=1
-        if sucsess>10
+        if sucsess>%COUNT%
             goto, skip_playcheck
+        timeout_counter-=1
     }
     PixelGetColor, pause_middle, 218, 828, RGB    ; In the middle of pause button
     if pause_middle != 0xFFFFFF
         mouse_click_func("218", "828")
     skip_playcheck:
-    mouse_click_func("1223", "832") ;   fullscreen
-    ;mouse_click_func("685", "469")  ;   fullscreen
-    ;mouse_click_func("685", "469")  ;   fullscreen
+    mouse_click_func("728", "579")
+    mouse_click_func("728", "579")
 }
 ClickPhoto(photo)
 {
     CoordMode, Mouse, Screen
     ImageSearch, OutX, OutY, 9, 9, 1928, 1088, %photo%
     mouse_click_func(OutX, OutY)
-}
-WinActivateWaitActive(AT, seconds)
-{
-    count := seconds*100
-    loop
-    {
-        ;Tooltip, Waiting for %AT%`nTimeout in %count%
-        WinGetActiveTitle, ACTIVE
-        if ACTIVE Contains %AT%
-        {
-            Tooltip, 
-            break
-        }
-        WinActivate, %AT%
-        sleep, 10
-        count -= 1
-        if count < 1
-        {
-            Tooltip, 
-            break
-        }
-    }
 }
 wait_for_fastcopy_to_finish()
 {
@@ -1533,14 +1926,17 @@ RepeatSound(sound, seconds, tooltip)
         WinClose, ahk_exe C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Drikkelek101.ahk
     }
 }
-FileCreateJunctionLink(link, target, type:="junction", cmd:="mklink")
+FileCreateJunctionLink(link, target, type:="symlink", cmd:="mklink")
 {
     ;if cmd=mklink;   See https://www.2brightsparks.com/resources/articles/ntfs-hard-links-junctions-and-symbolic-links.html
     ;{
     file_or_folder := FileExist(target)
     if file_or_folder = D;  Folder
         if type=junction
+        {
+            ;clipboard=cmd.exe /k mklink /j "%link%" "%target%"
             run, cmd.exe /k mklink /j "%link%" "%target%"
+        }
         else if type=symlink
             run, cmd.exe /k mklink /d "%link%" "%target%"
     else if file_or_folder != D; File
@@ -1548,6 +1944,8 @@ FileCreateJunctionLink(link, target, type:="junction", cmd:="mklink")
             run, cmd.exe /k mklink /h "%link%" "%target%"
         if type=symlink
             run, cmd.exe /k mklink "%link%" "%target%"
+    else
+        msgbox, ERROR - type=%type%`nfile_or_folder=%file_or_folder%
     ;}
     ;else
     ;{
@@ -1784,97 +2182,6 @@ end_process_wait(exe_filelist_path)
             runwait, cmd.exe /c Taskkill /IM "%A_LoopReadLine%" /F,,hide
         }
         Progress-=1
-    }
-}
-AHKPanicExcept(Kill=0, Pause=0, Suspend=0, SelfToo=0, path=0)
-{
-    DetectHiddenWindows, On
-    WinGet, IDList ,List, ahk_class AutoHotkey
-    if path=0
-        path=ahtsdfgsahtdfasghtdfashdtfsd
-
-    Loop, %IDList%
-    {
-        Progress := A_Index
-        ;Progress *= 2
-    }
-    Loop %IDList%
-    {
-        ID:=IDList%A_Index%
-        WinGetTitle, ATitle, ahk_id %ID%
-        Progress-=1
-        IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
-        {
-            IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk
-            {
-                IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk
-                {
-                    IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk
-                    {
-                        IfNotInString, ATitle, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Kill_AHK_Process.ahk
-                        {
-                            IfNotInString, ATitle, %path%
-                            {
-                                IfNotInString, ATitle, %A_ScriptFullPath%
-                                {
-                                    Tooltip, Killing Autohotkey Scripts - %ATitle%`n`nProgress=%Progress%
-                                    If Suspend
-                                    PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
-                                    If Pause
-                                    PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
-                                    If Kill
-                                    {
-                                        run, Kill_AHK_Process.ahk %ID%
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    Tooltip, Kill Self
-    If SelfToo
-    {
-        If Suspend
-            Suspend, Toggle  ; Suspend. 
-        If Pause
-            Pause, Toggle, 1  ; Pause.
-        If Kill
-        {
-            Tooltip, 
-            ExitApp
-        }
-    }
-    Tooltip, 
-}
-AHKPanicOLD(Kill=0, Pause=0, Suspend=0, SelfToo=0)
-{
-    DetectHiddenWindows, On
-    WinGet, IDList ,List, ahk_class AutoHotkey
-    Loop %IDList%
-    {
-        ID:=IDList%A_Index%
-        WinGetTitle, ATitle, ahk_id %ID%
-        IfNotInString, ATitle, %A_ScriptFullPath%
-        {
-            If Suspend
-            PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
-            If Pause
-            PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
-            If Kill
-            WinClose, ahk_id %ID% ;kill
-        }
-    }
-    If SelfToo
-    {
-    If Suspend
-        Suspend, Toggle  ; Suspend. 
-    If Pause
-        Pause, Toggle, 1  ; Pause.
-    If Kill
-        ExitApp
     }
 }
 run_run_process(process, path, cmd)

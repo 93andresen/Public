@@ -1248,7 +1248,7 @@ ClickPhoto(photo)
     ImageSearch, OutX, OutY, 9, 9, 1928, 1088, %photo%
     mouse_click_func(OutX, OutY)
 }
-WinActivateWaitActive(AT, seconds)
+act(AT, seconds)
 {
     count := seconds*100
     loop
