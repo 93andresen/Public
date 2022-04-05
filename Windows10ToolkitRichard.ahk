@@ -712,3 +712,12 @@ Reboot()
     Tooltip, Rebooting...
     run, cmd.exe /c shutdown /r /f /t 1,,hide
 }
+ExitAppLog(x:="")
+{
+    logthis=%x% - Finished Running
+    if x=esc
+        log("Finished Running - Exited via Escape Button")
+    else
+        log(logthis)
+    ExitApp
+}
