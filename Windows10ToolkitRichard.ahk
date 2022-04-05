@@ -707,17 +707,7 @@ Reboot()
     ;}
     WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk ahk_exe AutoHotkey.exe
     Tooltip, Rebooting...
-    inirw("w", "Reboot", "2", file:="C:\!\TEMP\InifilesAndOther\Shutdown.ini", log:="0")
     BeforeShutdown()
     Tooltip, Rebooting...
     run, cmd.exe /c shutdown /r /f /t 1,,hide
-}
-ExitAppLog(x:="")
-{
-    logthis=%x% - Finished Running
-    if x=esc
-        log("Finished Running - Exited via Escape Button")
-    else
-        log(logthis)
-    ExitApp
 }
