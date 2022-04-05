@@ -2454,6 +2454,15 @@ tryrun(code, WorkingDir:="")
     }
     catch
     {
+        try
+        {
+            run, %code%
+        }
+        catch
+        {
+            LogError=%ErrorLevel% try inside try
+            log(LogError, "C:\!\Logs\Try.txt", "1", "0")
+        }
         LogError=%ErrorLevel% - %code%
         log(LogError, , "1", "0")
         return 0
