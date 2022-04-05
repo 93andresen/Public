@@ -360,9 +360,9 @@ if personal = 1
 ;runwait, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 if reboot = 1
 {
-    Reboot()
+    run, cmd.exe /c shutdown /r /f /t 1
 }
-ExitAppLog()
+ExitApp
 
 ;if apps = 1
 ;{
@@ -690,24 +690,3 @@ log(x, filename:="C:\!\Logs\LogToFile.log")
 }
 
 
-Reboot()
-{
-    Process, Priority, , A
-    ;if FileExist("C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3")
-    ;{
-    ;    try
-    ;    {
-    ;        SoundPlay, C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3
-    ;    }
-    ;    catch
-    ;    {
-    ;        LogError=%ErrorLevel% - SoundPlay, C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3
-    ;        log(LogError, "C:\!\Logs\Try.txt", "1", "0")
-    ;    }
-    ;}
-    WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk ahk_exe AutoHotkey.exe
-    Tooltip, Rebooting...
-    BeforeShutdown()
-    Tooltip, Rebooting...
-    run, cmd.exe /c shutdown /r /f /t 1,,hide
-}
