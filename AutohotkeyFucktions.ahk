@@ -1,3 +1,53 @@
+
+Reboot()
+{
+    Process, Priority, , A
+    ;if FileExist("C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3")
+    ;{
+    ;    try
+    ;    {
+    ;        SoundPlay, C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3
+    ;    }
+    ;    catch
+    ;    {
+    ;        LogError=%ErrorLevel% - SoundPlay, C:\!\NotificationSounds\UsedInScripts\Windows_Xp_Shutdown-7268065d-67ae-34c4-882a-b9551af9f9e1.mp3
+    ;        log(LogError, "C:\!\Logs\Try.txt", "1", "0")
+    ;    }
+    ;}
+    WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk ahk_exe AutoHotkey.exe
+    Tooltip, Rebooting...
+    inirw("w", "Reboot", "2", file:="C:\!\TEMP\InifilesAndOther\Shutdown.ini", log:="0")
+    BeforeShutdown()
+    Tooltip, Rebooting...
+    run, cmd.exe /c shutdown /r /f /t 1,,hide
+}
+ResumeSpotify()
+{
+    exe_path=C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
+    RunPath(exe_path, "0", "")
+    loop
+    {
+        WinGetActiveTitle, AT
+        if AT = Spotify Premium
+        {
+            WinMaximize, Spotify Premium
+            WinActivate, Spotify Premium
+            WaitForPixelColor("379", "102", color:="0x000000", "5000", hit, real_color, mouse_color)
+            if WaitForPixelColor("961", "945", color:="0xFFFFFF", "5000", hit, real_color, mouse_color)
+                {
+                    mouse_click_func("961", "962")
+                    break
+                }
+            sleep, 100
+            WinMinimize, Spotify Premium
+        }
+        else
+        {
+            mouse_click_func("181", "1057")
+            sleep_tooltip("3", "SpotifyQuickFixTempAutoResume")
+        }
+    }
+}
 act(title:="", timeout:="once", minmax:="0")
 {
     if timeout = once
@@ -27,8 +77,51 @@ act(title:="", timeout:="once", minmax:="0")
         }
     }
 }
+NotifyWhenRebekka(arg)
+{
+    foundher=0
+    loop
+    {
+        loop 60
+        {
+            if arg=moving
+            {
+                if foundher=0
+                {
+                    if OpenGoogleMaps("1", "20")
+                        foundher=1
+                    else
+                        return 0
+                }
+                if LookForRebekka(Byref px:="", Byref py:="")!=0
+                {
+                    send, ^w
+                    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
+                    WinMinimizeAll
+                    return 1
+                }
+                sleep, 1000
+            }
+            if arg=close
+            {
+                if LookForRebekka(Byref px:="", Byref py:="")=0
+                {
+                    send, ^w
+                    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
+                    WinMinimizeAll
+                    return 1
+                }
+                sleep, 1000
+            }
+        }
+    }
+    send, {F5}
+    sleep, 1500
+    winwaitactive, Google Maps, 1
+}
 LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount:="")
 {
+    notfound:=zoomcount+20
     loop
     {
         if LookForRebekka(px, py)!=0
@@ -45,14 +138,17 @@ LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount:="")
             px2:=px+2
             py2:=py+24
             MouseGetPos, mx, my
+            MouseClickDrag_func("left", px2, py2, "917", "541", "2")
             MouseMove, %px2%, %py2%, 0
             send, {WheelUp}
             MouseMove, %mx%, %my%, 0
             zoomcount-=1
             if zoomcount < 1
-                break
+                return 1
             sleep, 100
         }
+        if zoomcount>%notfound%
+            return 0
         ;Tooltip, zoomcount=%zoomcount%
     }
 }
@@ -62,7 +158,7 @@ LookForRebekka(Byref px:="", Byref py:="")
     PixelSearch, px, py, 117, 113, 1814, 984, 0xF293CF, 3, Fast RGB
     return errorlevel
 }
-OpenGoogleMaps(arg)
+OpenGoogleMaps(fullscreen, zoomcount:="20")
 {
     run, https://www.google.com/maps/@58.1518014,7.9696047,15z
     if not act("Google Maps", "20000", "max")
@@ -78,7 +174,7 @@ OpenGoogleMaps(arg)
     ;send, {WheelDown}
     ;sleep, 1000
     ;send, {WheelDown}
-    if arg=fullscreen
+    if fullscreen=1
     {
         if WaitForPixelColor("1723", "27", color:="0x0D0E0E", "ms", hit, real_color, mouse_color)
             send, {F11}
@@ -151,7 +247,10 @@ OpenGoogleMaps(arg)
             foundher=1
         }
     }
-    LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount:=20)
+    if LookForRebekkaZoom(Byref px:="", Byref py:="", zoomcount)
+        return 1
+    else
+        return 0
 }
 Process_Suspend_Gaming()
 {
@@ -231,6 +330,11 @@ SearchApp(app)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Scoop\scoopsearch.ps1", clipboard)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Winget\wingetsearch.ps1", clipboard)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Chocolatey\chocosearch.ps1", clipboard)
+    run, "C:\Program Files\Zero Install\ZeroInstall.exe"
+    winwaitactive, Zero Install
+    sleep, 500
+    send, ^v
+    log("ZERO Started Running")
 }
 SearchAppFunc(script_path, app)
 {
@@ -1191,7 +1295,9 @@ BeforeShutdown()
     {
         dismounting := inirw("r", "dismounting")
         if dismounting = 0
+        {
             break
+        }
     }
 }
 get_size(file_or_folder)
@@ -1963,6 +2069,7 @@ FileCreateJunctionLink(link, target, type:="symlink", cmd:="mklink")
 ;You can use either mklink /j or junction in Windows 10 to create junctions. You can use mklink /d in Windows 10 to create directory symbolic links. Notes: junction can also list junctions and determine if a file is a junction unlike mklink .
 ;How can I create a symbolic link on Windows 10? - Super User
 
+
 MouseClickDrag_func(button, x1, y1, x2, y2, speed)
 {
     CoordMode, Mouse, Screen
@@ -1976,6 +2083,8 @@ MouseClickDrag_func(button, x1, y1, x2, y2, speed)
     sleep, 10
     mousemove, %x1%, %y1%, 0
     sleep, 10
+    log=MouseClickDrag, %button%, %x1%, %y1%, %x2%, %y2%, %speed%
+    log(log, "C:\!\Logs\log.log", tooltip=0, console=0)
     MouseClickDrag, %button%, %x1%, %y1%, %x2%, %y2%, %speed%
     mousemove, %mx%, %my%, 0
     sleep, 10

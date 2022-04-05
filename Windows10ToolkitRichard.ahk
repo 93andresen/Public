@@ -9,19 +9,7 @@ script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.Serv
 
 ; If the script is not elevated, relaunch as administrator and kill current instance:
 
-full_command_line := DllCall("GetCommandLine", "str")
 
-if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
-{
-    try ; leads to having the script re-launching itself as administrator
-    {
-        if A_IsCompiled
-            Run *RunAs "%A_ScriptFullPath%" /restart
-        else
-            Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
-    }
-    ExitApp
-}
 
 
 FileCreateDir, C:\temp_Windows10ToolkitRichard
@@ -372,9 +360,9 @@ if personal = 1
 ;runwait, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard2.ahk
 if reboot = 1
 {
-    run, powershell.exe shutdown /r /f /t 1
+    Reboot()
 }
-ExitApp
+ExitAppLog()
 
 ;if apps = 1
 ;{
