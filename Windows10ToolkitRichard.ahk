@@ -354,6 +354,7 @@ if personal = 1
     Tooltip, INSTALLING DELL COMMAND UPDATES
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, 
     Tooltip, 
 }
 
