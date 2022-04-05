@@ -227,6 +227,7 @@ SpotifyOffline()
 }
 SearchApp(app)
 {
+    SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Pint\pintsearch.ps1", clipboard)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Scoop\scoopsearch.ps1", clipboard)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Winget\wingetsearch.ps1", clipboard)
     SearchAppFunc("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\SearchForApplications\Chocolatey\chocosearch.ps1", clipboard)
@@ -824,7 +825,7 @@ KILL_APPS_FUNCTION(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_
     KillApps(apps, rocketleague, light, ahkpanic, ahk_except, run_ahk_persistant)
 
     Tooltip, 
-    SoundPlay, C:\!\NotificationSounds\All\beep_beep-185df4a1-357e-4b7d-9a44-60afeb5223a7_Lower.mp3
+    SoundPlay, C:\!\NotificationSounds\UsedInScripts\beep_beep-185df4a1-357e-4b7d-9a44-60afeb5223a7_Lower.mp3
     WinMinimizeAll
     DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\558424.jpg", UInt, 1)
     DesktopIcons(True)

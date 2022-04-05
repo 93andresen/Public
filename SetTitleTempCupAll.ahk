@@ -33,6 +33,10 @@ else
     log("Could not set title waited 60 seconds")
     sleep, 3000
 }
+WinWaitActive, Updating All Applications And Latest Youtube Playlist ___title_for_closing___, , 1
+WinMinimize, Updating All Applications And Latest Youtube Playlist ___title_for_closing___
+
+
 ExitApp
 
 
