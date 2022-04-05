@@ -354,8 +354,11 @@ if personal = 1
     Tooltip, INSTALLING DELL COMMAND UPDATES
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
-    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk reboot
-    ExitApp
+    if fileExist("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk")
+    {
+        SetWorkingDir, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey
+        runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk reboot
+    }
     Tooltip, 
 }
 
