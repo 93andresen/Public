@@ -33,10 +33,22 @@ ResumeSpotify()
             WinActivate, Spotify Premium
             WaitForPixelColor("379", "102", color:="0x000000", "5000", hit, real_color, mouse_color)
             if WaitForPixelColor("961", "945", color:="0xFFFFFF", "5000", hit, real_color, mouse_color)
-                {
+            {
+                DOITAGAIN:
+                WinActivate, Spotify Premium
+                if WaitForPixelColor("961", "945", color:="0xFFFFFF", "5000", hit, real_color, mouse_color)
                     mouse_click_func("961", "962")
-                    break
+                count=5
+                loop %count%
+                {
+                    WinActivate, Spotify Premium
+                    if act("Spotify Premium", "2")
+                    {
+                        goto, DOITAGAIN
+                    }
                 }
+                break
+            }
             sleep, 100
             WinMinimize, Spotify Premium
         }
