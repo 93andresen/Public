@@ -209,7 +209,7 @@ count := runwait_tooltip(command, count)
 Tooltip, FINISHED
 sleep, 3000
 ExitAppLog()
-
+UrlDownloadToFile, URL, filecre
 
 runwait_tooltip(command, count)
 {
