@@ -44,6 +44,14 @@ command=powershell.exe choco feature enable -n=allowGlobalConfirmation
 count := runwait_tooltip(command, count)
 command=powershell.exe choco feature enable -n=allowEmptyChecksums
 count := runwait_tooltip(command, count)
+
+UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/chocolatey.config, chocolatey.config
+if FileExist("chocolatey.config")
+    FileCopy, chocolatey.config, C:\ProgramData\chocolatey\config\chocolatey.config, 1
+FileCreateDir, C:\zzz_Chocolatey_Cache_Location
+FileCreateDir, C:\zzz_Pip_Cache_Location
+
+
 command=powershell.exe choco uninstall chocolateygui --force --params="'/HidePackageDownloadCount=$false /PreventAutomatedOutdatedPackagesCheck=$false /PreventPreload=$false /ShowAggregatedSourceView=$false /UseDelayedSearch=$false /ExcludeInstalledPackages=$true /DefaultToTileViewForRemoteSource=$true /DefaultToTileViewForLocalSource=$true /ShowAdditionalPackageInformation=$true /ShowConsoleOutput=$false /UseKeyboardBindings=$true /UseLanguage=en /OutdatedPackagesCacheDurationInMinutes=10080'" -y
 count := runwait_tooltip(command, count)
 command=powershell.exe choco upgrade chocolateygui --force --params="'/HidePackageDownloadCount=$false /PreventAutomatedOutdatedPackagesCheck=$false /PreventPreload=$false /ShowAggregatedSourceView=$false /UseDelayedSearch=$false /ExcludeInstalledPackages=$true /DefaultToTileViewForRemoteSource=$true /DefaultToTileViewForLocalSource=$true /ShowAdditionalPackageInformation=$true /ShowConsoleOutput=$false /UseKeyboardBindings=$true /UseLanguage=en /OutdatedPackagesCacheDurationInMinutes=10080'" -y
@@ -209,8 +217,6 @@ count := runwait_tooltip(command, count)
 Tooltip, FINISHED
 sleep, 3000
 ExitAppLog()
-UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/chocolatey.config, chocolatey.config
-filecop
 
 runwait_tooltip(command, count)
 {
