@@ -273,12 +273,10 @@ Process_Suspend_Gaming()
     WinMinimize, ahk_exe re8.exe
     WinMinimize, ahk_exe re3.exe
     WinMinimize, ahk_exe RTSS.exe
-    sleep, 250
     Process_Suspend("re8.exe")
     Process_Suspend("re3.exe")
     Process_Suspend("MSIAfterburner.exe")
     Process_Suspend("RTSS.exe")
-sleep, 2500
 Tooltip, 
 }
 Process_Resume_Gaming()
@@ -288,7 +286,6 @@ Process_Resume_Gaming()
     Process_Resume("re3.exe")
     Process_Resume("MSIAfterburner.exe")
     Process_Resume("RTSS.exe")
-    sleep, 2500
     Tooltip, 
 }
 SpotifyOnline()
