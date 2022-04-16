@@ -209,7 +209,8 @@ count := runwait_tooltip(command, count)
 Tooltip, FINISHED
 sleep, 3000
 ExitAppLog()
-UrlDownloadToFile, 
+UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/chocolatey.config, chocolatey.config
+filecop
 
 runwait_tooltip(command, count)
 {
