@@ -32,7 +32,10 @@ if updating != 1
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-    runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Enable-ComputerRestore -Drive C:\;Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
+    if A_ComputerName not contains VIR
+    {
+        runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Enable-ComputerRestore -Drive C:\;Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
+    }
     update = 0
     inirwTOOLKIT("w", "update", "0")
     debloat = 0

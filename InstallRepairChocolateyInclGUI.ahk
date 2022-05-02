@@ -48,9 +48,15 @@ count := runwait_tooltip(command, count)
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/chocolatey.config, chocolatey.config
 if FileExist("chocolatey.config")
     FileCopy, chocolatey.config, C:\ProgramData\chocolatey\config\chocolatey.config, 1
-FileCreateDir, C:\zzz_Chocolatey_Cache_Location
-FileCreateDir, C:\zzz_Pip_Cache_Location
+FileCreateDir, C:\zzz_Chocolatey_Cache
 
+FileCreateDir, C:\zzz_Chocolatey_Cache
+command=powershell.exe choco config set cacheLocation C:\zzz_Chocolatey_Cache -y
+count := runwait_tooltip(command, count)
+
+FileCreateDir, C:\zzz_Pip_Cache
+command=powershell.exe pip config set global.cache-dir "C:\\zzz_Pip_Cache"
+count := runwait_tooltip(command, count)
 
 command=powershell.exe choco uninstall chocolateygui --force --params="'/HidePackageDownloadCount=$false /PreventAutomatedOutdatedPackagesCheck=$false /PreventPreload=$false /ShowAggregatedSourceView=$false /UseDelayedSearch=$false /ExcludeInstalledPackages=$true /DefaultToTileViewForRemoteSource=$true /DefaultToTileViewForLocalSource=$true /ShowAdditionalPackageInformation=$true /ShowConsoleOutput=$false /UseKeyboardBindings=$true /UseLanguage=en /OutdatedPackagesCacheDurationInMinutes=10080'" -y
 count := runwait_tooltip(command, count)
@@ -220,7 +226,7 @@ ExitAppLog()
 
 runwait_tooltip(command, count)
 {
-    Tooltip, running %command%`n%count% commands left`nshould stop at 86 - 80 - 79 and 78`nafter that its fast
+    Tooltip, running %command%`n%count% commands left`nlast 70 commands are fast
     runwait, %command%,,hide
     count-=1
     return count
