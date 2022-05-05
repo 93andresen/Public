@@ -1,3 +1,41 @@
+toggle(var)
+{
+    if inirw("r", var)=0
+    {
+        inirw("w", var, "1")
+        return 1
+    }
+    else
+    {
+        inirw("w", var, "0")
+        return 0
+    }
+}
+SaveIfVisualStudioCode()
+{
+    if AT("Visual")
+    {
+        if AT("●")
+        send, ^s
+        loop
+        {
+            WinGetActiveTitle, AT2
+            if AT2 not contains ●
+                return 1
+            sleep, 10
+        }
+    }
+    else
+        return 0
+}
+AT(title)
+{
+    WinGetActiveTitle, AT
+    if AT contains %title%
+        return 1
+    else
+        return 0
+}
 Reboot()
 {
     Process, Priority, , A
@@ -22,8 +60,11 @@ Reboot()
 }
 ResumeSpotify()
 {
-    exe_path=C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
-    RunPath(exe_path, "0", "")
+    if not ProcExist("Spotify.exe")
+    {
+        exe_path=C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
+        RunPath(exe_path, "0", "")
+    }
     loop
     {
         WinGetActiveTitle, AT
@@ -33,22 +74,10 @@ ResumeSpotify()
             WinActivate, Spotify Premium
             WaitForPixelColor("379", "102", color:="0x000000", "5000", hit, real_color, mouse_color)
             if WaitForPixelColor("961", "945", color:="0xFFFFFF", "5000", hit, real_color, mouse_color)
-            {
-                DOITAGAIN:
-                WinActivate, Spotify Premium
-                if WaitForPixelColor("961", "945", color:="0xFFFFFF", "5000", hit, real_color, mouse_color)
-                    mouse_click_func("961", "962")
-                count=5
-                loop %count%
                 {
-                    WinActivate, Spotify Premium
-                    if act("Spotify Premium", "2")
-                    {
-                        goto, DOITAGAIN
-                    }
+                    mouse_click_func("961", "962")
+                    break
                 }
-                break
-            }
             sleep, 100
             WinMinimize, Spotify Premium
         }
@@ -83,10 +112,10 @@ act(title:="", timeout:="once", minmax:="0")
         count -= 1
         if count < 1
         {
-            ;Tooltip, 
-            return 0
+            break
         }
     }
+    return 0
 }
 NotifyWhenRebekka(arg)
 {
@@ -113,7 +142,7 @@ NotifyWhenRebekka(arg)
                 }
                 sleep, 1000
             }
-            if arg=close
+            else if arg=close
             {
                 if LookForRebekka(Byref px:="", Byref py:="")=0
                 {
@@ -123,6 +152,16 @@ NotifyWhenRebekka(arg)
                     return 1
                 }
                 sleep, 1000
+            }
+            else if arg = find
+            {
+                if foundher=0
+                {
+                    if OpenGoogleMaps("1", "20")
+                        foundher=1
+                    else
+                        return 0
+                }
             }
         }
     }
@@ -265,28 +304,27 @@ OpenGoogleMaps(fullscreen, zoomcount:="20")
 }
 Process_Suspend_Gaming()
 {
-    Tooltip, Gaming Processes Suspended========================================================================
     WinMinimize, VILLAGE
     WinMinimize, RivaTunerStatisticsServer
     WinMinimize, MSI Afterburner
     WinMinimize, ahk_exe MSIAfterburner.exe
     WinMinimize, ahk_exe re8.exe
     WinMinimize, ahk_exe re3.exe
+    WinMinimize, ahk_exe HeavyRain.exe
     WinMinimize, ahk_exe RTSS.exe
+    sleep, 10
     Process_Suspend("re8.exe")
     Process_Suspend("re3.exe")
+    Process_Suspend("HeavyRain.exe")
     Process_Suspend("MSIAfterburner.exe")
     Process_Suspend("RTSS.exe")
-Tooltip, 
 }
 Process_Resume_Gaming()
 {
-    Tooltip, Processes Resumed
     Process_Resume("re8.exe")
     Process_Resume("re3.exe")
     Process_Resume("MSIAfterburner.exe")
     Process_Resume("RTSS.exe")
-    Tooltip, 
 }
 SpotifyOnline()
 {
@@ -417,7 +455,6 @@ ChromeCleanRAM()
         send, !+n
     }
 }
-
 FirefoxCleanRAM()
 {
     if ProcExist("Firefox.exe")
@@ -586,14 +623,14 @@ CloseUpdate()
             ;kill_task("yt-dlp.exe", "0")
             ;kill_task("powershell.exe", "0")
             runwait, cmd.exe /c Taskkill /IM "yt-dlp.exe"
-            runwait, cmd.exe /c Taskkill /IM "powershell.exe"
+            ;runwait, cmd.exe /c Taskkill /IM "powershell.exe"
         }
         loop 20
         {
             ;kill_task("yt-dlp.exe", "1")
             ;kill_task("powershell.exe", "1")
             runwait, cmd.exe /c Taskkill /IM "yt-dlp.exe" /F
-            runwait, cmd.exe /c Taskkill /IM "powershell.exe" /F
+            ;runwait, cmd.exe /c Taskkill /IM "powershell.exe" /F
         }
     }
     inirw("w", "closeupdate", "not_running")
@@ -679,37 +716,322 @@ iniToggle(var, tooltip:="")
 ConnectToWifi(hotspot:="")
 ;Windows 11
 {
-    loop
+    if inirw("r", "ConnectToWifi_running")!=0
+    {
+        loop 600
+        {
+            if inirw("r", "ConnectToWifi_running")=0
+                return
+            sleep, 100
+        }
+        inirw("w", "ConnectToWifi_running", "1")
+        MsgBox, , , ConnectToWifi failed , 5
+        log("ConnectToWifi failed")
+        return 0
+    }
+    inirw("w", "ConnectToWifi_running", "1")
+    if hotspot=hotspot
+        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+    loop 6
+    
     {
         If not ConnectedToInternet()
         {
-            WinMinimizeAll
-            OpenWifiPanel()
-            sleep, 300
-            mouse_click_func("1857", "545")
-            sleep, 1500
-            mouse_click_func("1786", "594")
-            sleep 200
-            mouse_click_func("1803", "731")
-            WinMinimizeAllUndo
-            i=10
-            loop %i%
+            if not OpenWifiPanel()
             {
-                Tooltip, %i% Waiting for wifi
-                If ConnectedToInternet()
+                OpenWifiPanel_VAR=0
+                WinMinimizeAll
+                sleep, 300
+            }
+            loop 1
+            {
+                if WaitForPixelColor("1838", "542", color:="0xCADFD4", "0", hit, real_color, mouse_color)
+                {
+                    mouse_click_func("1857", "545")
+                    found_button=1
                     break
-                i-=1
-                sleep, 1000
+                }
+                if WaitForPixelColor("1865", "545", color:="0x000000", "0", hit, real_color, mouse_color)
+                {
+                    found_button=1
+                    break
+                }
+            }
+            if found_button!=1
+                mouse_click_func("1857", "545")
+            loop 10
+            {
+                mouse_click_func("1786", "594")
+                if WaitForPixelColor("1531", "661", color:="0x15693f", "0", hit, real_color, mouse_color)
+                {
+                    mouse_click_func("1531", "661")
+                    found_hook_color=1
+                    break
+                }
+                if WaitForPixelColor("1531", "658", color:="0x00B25A", "0", hit, real_color, mouse_color)
+                {
+                    found_hook_color=1
+                    break
+                }
+                if WaitForPixelColor("1531", "661", color:="0x177446", "0", hit, real_color, mouse_color)
+                {
+                    found_hook_color=1
+                    break
+                }
+            }
+            if found_hook_color!=1
+                mouse_click_func("1531", "661")
+            if OpenWifiPanel_VAR=0
+                WinMinimizeAllUndo
+            i=10
+            if not WaitForPixelColor("1838", "542", color:="0xCADFD4", "0", hit, real_color, mouse_color)
+            {
+                if WaitForPixelColor("1865", "545", color:="0x000000", "0", hit, real_color, mouse_color)
+                {
+                    loop %i%
+                    {
+                        Tooltip, %i% Waiting for wifi
+                        If ConnectedToInternet()
+                        {
+                            break
+                        }
+                        i-=1
+                        sleep, 1000
+                    }
+                }
             }
             Tooltip, 
         }
         else
             break
     }
-    ;return
+    if hotspot=hotspot
+        hotspot()
+    inirw("w", "ConnectToWifi_running", "0")
+    if ConnectedToInternet()
+        return 1
+    if ConnectedToInternet()
+        return 0
+}
+Hotspot()
+{
     loop
     {
-        ;msgbox, BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+        If not ConnectedToInternet()
+        {
+            ConnectToWifi()
+        }
+        hotspotcount+=1
+        ;WinClose, Settings
+        if not act("Settings")
+            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "0", "max", "10")
+        x=1622
+        y=182
+        PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
+        PixelGetColor, colordown, "1622", "276", RGB    ;   Should be black when on 0x000000
+        ;mousemove, %x%, %y%
+        if WaitForPixelColor("1597", "182", color:="0xD1D1D1", "0", hit, real_color, mouse_color)
+        {
+            log("0xD1D1D1")
+            hotspotcolor=0
+            mouse_click_func("1594", "183")
+            ;msgbox,  MOUSEHOOVER
+            ;break
+        }
+        if WaitForPixelColor("1597", "182", color:="0xCECECE", "0", hit, real_color, mouse_color)
+        {
+            log("0xCECECE")
+            hotspotcolor=0
+            mouse_click_func("1594", "183")
+            WinClose, Settings
+            inirw("w", "hotspot_running", "0")
+            ;msgbox, WHITE NO MOUSEHOOVER
+            ;break
+        }
+        ;PINK_THEME:
+        ;else if WaitForPixelColor("1595", "273", color:="0xFF4FCB", "0", hit, real_color, mouse_color)
+        ;{
+        ;    hotspotcolor=1
+        ;    WinClose, Settings
+        ;    ;msgbox, PINK1
+        ;    break
+        ;    ;return hotspotcolor
+        ;}
+        ;else if WaitForPixelColor("1596", "180", color:="0xFF4FCB", "0", hit, real_color, mouse_color)
+        ;{
+        ;    hotspotcolor=1
+        ;    WinClose, Settings
+        ;    ;msgbox, PINK2
+        ;    break
+        ;    ;return hotspotcolor
+        ;}
+        ;GREEN_THEME: #007F40
+        else if WaitForPixelColor("1595", "273", color:="0x00B25A", "0", hit, real_color, mouse_color)
+        {
+            log("0x00B25A FIRST")
+            hotspotcolor=1
+            WinClose, Settings
+            ;msgbox, PINK1
+            break
+            ;return hotspotcolor
+        }
+        else if WaitForPixelColor("1596", "180", color:="0x00B25A", "0", hit, real_color, mouse_color)
+        {
+            log("0x00B25A SECOND")
+            hotspotcolor=1
+            WinClose, Settings
+            ;msgbox, PINK2
+            break
+            ;return hotspotcolor
+        }
+        ;if color = 0xCECECE
+        ;    mouse_click_func(x, y)
+        ;else if color = 0x272727
+        ;    mouse_click_func(x, y)
+        ;else if color = 0x000000
+        ;    hotspotcolor=on
+        ;else if colordown = 0xCECECE
+        ;    mouse_click_func(x, y)
+        ;else if colordown = 0x272727
+        ;    mouse_click_func(x, y)
+        ;else if colordown = 0x000000
+        ;    hotspotcolor=1
+        ;if hotspotcolor=1
+        ;{
+        ;    WinClose, Settings
+        ;    return hotspot
+        ;}
+        ;Tooltip, hotspotcount=%hotspotcount%
+        if hotspotcount=4
+        {
+            ;msgbox, hotspotcount=%hotspotcount%
+            WinClose, Settings
+            log=hotspotcount=%hotspotcount%
+            log(log)
+        }
+        if hotspotcount=8
+        {
+            ;msgbox, hotspotcount=%hotspotcount%
+            WinClose, Settings
+            log=Failure hotspotcount=%hotspotcount%
+            log(log)
+            break
+        }
+    }
+    log=hotspotcount=%hotspotcount%
+    log(log)
+    WinClose, Settings
+    inirw("w", "hotspot_running", "0")
+}
+Hotspot_old()
+{
+    loop
+    {
+        hotspotcount+=1
+        ;WinClose, Settings
+        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+        x=1622
+        y=182
+        PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
+        PixelGetColor, colordown, "1622", "276", RGB    ;   Should be black when on 0x000000
+        ;mousemove, %x%, %y%
+        if WaitForPixelColor("1597", "182", color:="0xD1D1D1", "0", hit, real_color, mouse_color)
+        {
+            hotspotcolor=0
+            mouse_click_func("1594", "183")
+            ;msgbox,  MOUSEHOOVER
+            break
+        }
+        if WaitForPixelColor("1597", "182", color:="0xCECECE", "0", hit, real_color, mouse_color)
+        {
+            hotspotcolor=0
+            mouse_click_func("1594", "183")
+            WinClose, Settings
+            inirw("w", "hotspot_running", "0")
+            ;msgbox, WHITE NO MOUSEHOOVER
+            break
+        }
+        ;PINK_THEME:
+        ;else if WaitForPixelColor("1595", "273", color:="0xFF4FCB", "0", hit, real_color, mouse_color)
+        ;{
+        ;    hotspotcolor=1
+        ;    WinClose, Settings
+        ;    ;msgbox, PINK1
+        ;    break
+        ;    ;return hotspotcolor
+        ;}
+        ;else if WaitForPixelColor("1596", "180", color:="0xFF4FCB", "0", hit, real_color, mouse_color)
+        ;{
+        ;    hotspotcolor=1
+        ;    WinClose, Settings
+        ;    ;msgbox, PINK2
+        ;    break
+        ;    ;return hotspotcolor
+        ;}
+        ;GREEN_THEME: #007F40
+        else if WaitForPixelColor("1595", "273", color:="0x00B25A", "0", hit, real_color, mouse_color)
+        {
+            hotspotcolor=1
+            WinClose, Settings
+            ;msgbox, PINK1
+            break
+            ;return hotspotcolor
+        }
+        else if WaitForPixelColor("1596", "180", color:="0x00B25A", "0", hit, real_color, mouse_color)
+        {
+            hotspotcolor=1
+            WinClose, Settings
+            ;msgbox, PINK2
+            break
+            ;return hotspotcolor
+        }
+        ;if color = 0xCECECE
+        ;    mouse_click_func(x, y)
+        ;else if color = 0x272727
+        ;    mouse_click_func(x, y)
+        ;else if color = 0x000000
+        ;    hotspotcolor=on
+        ;else if colordown = 0xCECECE
+        ;    mouse_click_func(x, y)
+        ;else if colordown = 0x272727
+        ;    mouse_click_func(x, y)
+        ;else if colordown = 0x000000
+        ;    hotspotcolor=1
+        ;if hotspotcolor=1
+        ;{
+        ;    WinClose, Settings
+        ;    return hotspot
+        ;}
+        ;Tooltip, hotspotcount=%hotspotcount%
+        if hotspotcount=5
+        {
+            ;msgbox, hotspotcount=%hotspotcount%
+            WinClose, Settings
+            log=hotspotcount=%hotspotcount%
+            log(log)
+        }
+        if hotspotcount=10
+        {
+            ;msgbox, hotspotcount=%hotspotcount%
+            WinClose, Settings
+            log=Failure hotspotcount=%hotspotcount%
+            log(log)
+            return 0
+        }
+    }
+    WinClose, Settings
+    inirw("w", "hotspot_running", "0")
+    return 1
+}
+
+
+/*
+
+
+
+    loop
+    {
+        msgbox, BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
         count+=1
         Tooltip, rounds=%rounds%`ncount=%count%`nwhite=%white%`nblack=%black%`nhooked=%hooked%`ntimeout=%timeout%
         If not ConnectedToInternet()
@@ -844,6 +1166,9 @@ ConnectToWifi(hotspot:="")
     }
     else, return wifi
 }
+
+
+
 /*
 
 Windows 10:
@@ -894,8 +1219,22 @@ OpenWifiPanel()
     send, {left}
     sleep, 50
     send, {enter}
-    WaitForPixelColor("1693", "987", "0xB", "5000", "1")    ;   Pink (Wifi Panel)
+    settings_panel_found=0
+    loop 5
+    {
+        if settings_panel_found=0
+        {
+            if WaitForPixelColor("1714", "996", color:="0x004C26", "0", hit, real_color, mouse_color)    ;GREEN_THEME: #007F40 (Settings Panel)
+            {
+                settings_panel_found=1
+                mouse_click_func("1571", "566")
+            }
+        }
+        if WaitForPixelColor("1714", "996", color:="0x006633", "0", hit, real_color, mouse_color)    ;GREEN_THEME: #007F40 (Wifi Panel)
+            return 1
+    }
     mouse_click_func("1571", "566")
+    return 0
 }
 MouseHooverCheckColor(x, y)
 {
@@ -1136,10 +1475,27 @@ CheckInstall(path, choconame, prompt:="1")
     }
     else
     {
+        msgbox, %path%
         status = missing 
-        MsgBox, 4,, Install %choconame%?`n`n%path% is missing`n`n%choconame% will automaticly be installed in 30 seconds`n, 30
-        IfMsgBox No
-            return 0
+        if prompt=1
+        {
+            MsgBox, 4,, Install %choconame%?`n`n%path% is missing`n`n%choconame% will automaticly be installed in 30 seconds`n, 30
+            IfMsgBox No
+                return 0
+        }
+        ; If the script is not elevated, relaunch as administrator and kill current instance:
+        full_command_line := DllCall("GetCommandLine", "str")
+        if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
+        {
+            try ; leads to having the script re-launching itself as administrator
+            {
+                if A_IsCompiled
+                    Run *RunAs "%A_ScriptFullPath%" /restart
+                else
+                    Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
+            }
+            ExitApp
+        }
         if not FileExist("C:\ProgramData\chocolatey\bin\choco.exe")
         {    
             runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1')),,max
@@ -1924,7 +2280,7 @@ ElapsedTime(Label:="Stopwatch", byref ElapsedTime_ms:="", byref file_append:="")
     ;Tooltip, %ElapsedTime_hours% Hours`n%ElapsedTime_mins% Minutes`n%ElapsedTime_secs%Seconds`n%ElapsedTime_ms% ms`n`nElapsedTime=%ElapsedTime%
     ;return ElapsedTime
 }
-log(LogThis:="", filename:="C:\!\Logs\LogToFile.log", tooltip:="0", console:="0")
+log(LogThis:="", filename:="C:\!\Logs\log.log", tooltip:="0", console:="0")
 {
     ElapsedTime(LogThis, ElapsedTime_ms, file_append)
     if tooltip!=0
@@ -1937,11 +2293,53 @@ log(LogThis:="", filename:="C:\!\Logs\LogToFile.log", tooltip:="0", console:="0"
     }
     consolefilename=C:\!\Logs\LogToFileConsole.txt
     FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
-	FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms                                           ElapsedTime=%file_append% %A_ScriptFullPath%`n, %filename%
-	FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms %A_ScriptFullPath%`n, %consolefilename%
+    counter=0
+    loop 100
+	{
+        FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms                                           ElapsedTime=%file_append% %A_ScriptFullPath%`n, %filename%
+        if errorlevel=0
+        {
+            if counter > 0
+                Tooltip, 
+            break
+        }
+        else
+        {
+            counter+=1
+            Tooltip, Logging Error`n`n%counter%
+            if counter=100
+            {
+                Tooltip, 
+                ;ListVars
+                MsgBox, , Logging Error, Logging Error %counter%`n`n%A_ScriptName%, 1
+            }
+            ;ListVars
+        }
+    }
     if console!=0
     {
-        
+        counter=0
+        loop 100
+        {
+            FileAppend, %TimeLong% %LogThis% %ElapsedTime_ms%ms %A_ScriptFullPath%`n, %consolefilename%
+            if errorlevel=0
+            {
+                if counter > 0
+                    Tooltip, 
+                break
+            }
+            else
+            {
+                counter+=1
+                Tooltip, Logging Error`n`n%counter%
+                if counter=100
+                {
+                    Tooltip, 
+                    ;ListVars
+                    MsgBox, , Logging Error, Logging Error %counter%`n`n%A_ScriptName%, 1
+                }
+            }
+        }
         IfWinNotExist, AutohotkeyLogConsole
         {
             RunPath("C:\!\Code\GitHub\93andresen_Scripts\Public\OutputFileToConsole.ahk", "0", consolefilename)
@@ -1953,7 +2351,7 @@ log(LogThis:="", filename:="C:\!\Logs\LogToFile.log", tooltip:="0", console:="0"
                 WinSet, AlwaysOnTop, , AutohotkeyLogConsole %filename%
         }
     }
-	if tooltip!=0
+    if tooltip!=0
         Tooltip, 
     return ElapsedTime_ms
 }
@@ -2003,13 +2401,18 @@ WriteNewAutohotkeyFunctionAHK()
 }
 sleep_tooltip(seconds, tooltip:="")
 {
+    original_seconds=%seconds%
     loop %seconds%
     {
         seconds -= 1
         Tooltip, %seconds%`n%tooltip%
+        log=original_seconds=%original_seconds% - %seconds% left - %tooltip%
+        log(log, "C:\!\Logs\log.log", tooltip=0, console=0)
         sleep, 1000
     }
     Tooltip, 
+    log=original_seconds=%original_seconds% - %seconds% - %tooltip% FINISHED
+    log(log, "C:\!\Logs\log.log", tooltip=0, console=0)
 }
 ConnectedToInternet(flag=0x40) 
 { 
@@ -2047,6 +2450,7 @@ FileCreateJunctionLink(link, target, type:="symlink", cmd:="mklink")
     ;{
     file_or_folder := FileExist(target)
     if file_or_folder = D;  Folder
+    {
         if type=junction
         {
             ;clipboard=cmd.exe /k mklink /j "%link%" "%target%"
@@ -2054,11 +2458,14 @@ FileCreateJunctionLink(link, target, type:="symlink", cmd:="mklink")
         }
         else if type=symlink
             run, cmd.exe /k mklink /d "%link%" "%target%"
+    }
     else if file_or_folder != D; File
+    {
         if type=hard
             run, cmd.exe /k mklink /h "%link%" "%target%"
         if type=symlink
             run, cmd.exe /k mklink "%link%" "%target%"
+    }
     else
         msgbox, ERROR - type=%type%`nfile_or_folder=%file_or_folder%
     ;}
@@ -2216,16 +2623,20 @@ rename_current_pattern_and_a_new_one(ATSPOT)
     sleep, 100
 
 }
-Process_Suspend(PID_or_Name){
+Process_Suspend(PID_or_Name)
+{
+    WinMinimizeAll
     PID := (InStr(PID_or_Name,".")) ? ProcExist(PID_or_Name) : PID_or_Name
     h:=DllCall("OpenProcess", "uInt", 0x1F0FFF, "Int", 0, "Int", pid)
     If !h   
         Return -1
     DllCall("ntdll.dll\NtSuspendProcess", "Int", h)
     DllCall("CloseHandle", "Int", h)
+    WinMinimizeAllUndo
 }
 
-Process_Resume(PID_or_Name){
+Process_Resume(PID_or_Name)
+{
     PID := (InStr(PID_or_Name,".")) ? ProcExist(PID_or_Name) : PID_or_Name
     h:=DllCall("OpenProcess", "uInt", 0x1F0FFF, "Int", 0, "Int", pid)
     If !h   
@@ -2350,8 +2761,10 @@ RunPathOLD(path, wait:="0", args:="")
     else
         return 0
 }
-RunPath(path, wait:="0", args:="", WorkingDir:="ScriptPath")
+RunPath(path, wait:="0", args:="", WorkingDir:="exe_path", minmaxhide:="")
 {
+    LogThis=RunPath Function Start - path=%path% wait=%wait% args=%args% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+    Log(LogThis)
     if FileExist(path)
     {
         SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -2408,87 +2821,151 @@ RunPath(path, wait:="0", args:="", WorkingDir:="ScriptPath")
                 }
             }
         }
-        LogThis=wait=%wait% - command=%command% - WorkingDir=%WorkingDir%
+        LogThis=RunPath Function BEFORE all the if statements for working dir and minmaxhide- path=%path% wait=%wait% args=%args% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogThis)
-        if WorkingDir=ScriptPath
+        if WorkingDir=exe_path
         {
-            if wait = 1
-            {
-                command=%path% %args%
-                Working_Directory=%A_WorkingDir%
-                tryrunwait(command, Working_Directory)
-            }
-            else
-            {
-                command=%path% %args%
-                Working_Directory=%A_WorkingDir%
-                tryrun(command, Working_Directory)
-            }
+            SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+            WorkingDir=%OutDir%
         }
-        else if WorkingDir=0
+        command=%path% %args%
+        LogThis=RunPath Function RIGHT BEFORE tryrun or tryrunwait the "command" and "WorkingDir" has just been set command=%command% WorkingDir=%WorkingDir% - path=%path% wait=%wait% args=%args% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+        log(LogThis)
+        if wait = 1
         {
-            command=%path% %args%
-            if wait = 1
-            {
-                tryrunwait(command)
-            }
-            else
-            {
-                tryrun(command)
-            }
+            tryrunwait(command, WorkingDir, minmaxhide)
         }
         else
         {
-            command=%path% %args%
-            if wait = 1
-                tryrunwait(command)
-            else
+            tryrun(command, WorkingDir, minmaxhide)
+        }
+        return PID
+    }
+    else
+    {
+        LogThis=RunPath Function END Because path doesent exist - path is what should be run- path=%path% wait=%wait% args=%args% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+        Log(LogThis)
+        return 0
+    }
+}
+tryrun(code, WorkingDir:="exe_path", minmaxhide:="")
+{
+    log=tryrun function start - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+    log(log)
+    if WorkingDir=exe_path
+    {
+        if FileExist(code)
+        {
+            if FileExist(code)=D
+                SetWorkingDir, %code%
+            if FileExist(code)!=D
             {
-                tryrun(command)
+                SplitPath, code, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+                if FileExist(OutDir)=D
+                    SetWorkingDir, %OutDir%
+                else
+                {
+                    log=tryrun function WorkingDirectory ERROR code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+                }
             }
-            return %PID%
         }
     }
     else
-        return 0
-}
-tryrun(code, WorkingDir:="")
-{
+    {
+        if FileExist(WorkingDir)
+        {
+            if FileExist(WorkingDir)=D
+                SetWorkingDir, %WorkingDir%
+            if FileExist(WorkingDir)!=D
+            {
+                SplitPath, WorkingDir, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+                if FileExist(OutDir)=D
+                    SetWorkingDir, %OutDir%
+                else
+                {
+                    log=tryrun function WorkingDirectory ERROR code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+                }
+            }
+        }
+    }
     try
     {
-        run, %code%
-        LogTry=%ErrorLevel% - %code%
+        if minmaxhide contains min
+            run, %code%,, min
+        else if minmaxhide contains max
+            run, %code%,, max
+        else if minmaxhide contains hide
+            run, %code%,, hide
+        else
+            run, %code%
+        LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
         return PID
     }
     catch
     {
-        try
-        {
-            run, %code%
-        }
-        catch
-        {
-            LogError=%ErrorLevel% try inside try
-            log(LogError, "C:\!\Logs\Try.txt", "1", "0")
-        }
-        LogError=%ErrorLevel% - %code%
+        LogError=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogError, , "1", "0")
         return 0
     }
 }
-tryrunwait(code, WorkingDir:="")
+tryrunwait(code, WorkingDir:="", minmaxhide:="")
 {
+    log=tryrunwait function start - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+    log(log)
+    if WorkingDir=exe_path
+    {
+        if FileExist(code)
+        {
+            if FileExist(code)=D
+                SetWorkingDir, %code%
+            if FileExist(code)!=D
+            {
+                SplitPath, code, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+                if FileExist(OutDir)=D
+                    SetWorkingDir, %OutDir%
+                else
+                {
+                    log=tryrunwait function WorkingDirectory ERROR code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+                }
+            }
+        }
+    }
+    else
+    {
+        if FileExist(WorkingDir)
+        {
+            if FileExist(WorkingDir)=D
+                SetWorkingDir, %WorkingDir%
+            if FileExist(WorkingDir)!=D
+            {
+                SplitPath, WorkingDir, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+                if FileExist(OutDir)=D
+                    SetWorkingDir, %OutDir%
+                else
+                {
+                    log=tryrunwait function WorkingDirectory ERROR code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
+                }
+            }
+        }
+    }
     try
     {
-        runwait, %code%
-        LogTry=%ErrorLevel% - %code%
+        if minmaxhide contains min
+            runwait, %code%,, min
+        else if minmaxhide contains max
+            runwait, %code%,, max
+        else if minmaxhide contains hide
+            runwait, %code%,, hide
+        else
+            runwait, %code%
+        LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
         return PID
     }
     catch
     {
-        LogError=%ErrorLevel% - %code%
+        LogError=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogError, , "1", "0")
         return 0
     }
