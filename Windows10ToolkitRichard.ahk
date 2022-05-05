@@ -32,7 +32,7 @@ if updating != 1
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
     filedelete, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichard.ini
     fileappend, Console Output, C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt
-    if A_ComputerName not contains VIR
+    if (A_ComputerName not contains VIR or A_ComputerName not contains G3)
     {
         runwait, powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Enable-ComputerRestore -Drive C:\;Checkpoint-Computer -Description "Before_Running_Windows10ToolkitRichard" -RestorePointType "MODIFY_SETTINGS",,max
     }

@@ -12,9 +12,20 @@ SetBatchLines, 10ms
 ;CompileRun(A_ScriptFullPath)
 log("Started Running")
 
+
+act("powershell", "60000", "min")
+if act("Administrator: Windows PowerShell", "60000", "min")
+    WinSetTitle, Administrator: Windows PowerShell, , Updating All Applications And Latest Youtube Playlist ___title_for_closing___
+ExitAppLog()
+
+
+
+
+
+
+
 old_title=%1%
 new_title=%2%
-
 
 loop 100
 {
@@ -37,11 +48,11 @@ WinWaitActive, Updating All Applications And Latest Youtube Playlist ___title_fo
 WinMinimize, Updating All Applications And Latest Youtube Playlist ___title_for_closing___
 
 
-ExitApp
+ExitAppLog()
 
 
 
 
 
 ~Esc::
-ExitApp
+ExitAppLog()
