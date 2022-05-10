@@ -1,3 +1,62 @@
+KeepProcessAliveChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
+{
+    SplitPath, exe_main, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    if ProcExist(OutFileName)
+    {
+        c=1
+        loop 10
+        {
+            exe_number := % exe%c%
+            msgbox, % exe_number
+            if not ProcExist(OutFileName)
+                RunPath(exe_number, "1", "", "")
+            c+=1
+        }
+    }
+    ;sleep, 1000
+}
+ToggleHiddenFolders()
+{
+    RegRead, HiddenFiles_Status, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden 
+    If HiddenFiles_Status = 2 
+    {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1 
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, ShowSuperHidden, 1
+        f_RefreshExplorer()
+    }
+    else
+    {
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 2
+        RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, ShowSuperHidden, 0
+        f_RefreshExplorer()
+    }
+}
+f_RefreshExplorer()
+{
+	WinGet, id, ID, ahk_class Progman
+	SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+	WinGet, id, List, ahk_class CabinetWClass
+	Loop, %id%
+	{
+		id := id%A_Index%
+		SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+	}
+	WinGet, id, List, ahk_class ExploreWClass
+	Loop, %id%
+	{
+		id := id%A_Index%
+		SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+	}
+	WinGet, id, List, ahk_class #32770
+	Loop, %id%
+	{
+		id := id%A_Index%
+		ControlGet, w_CtrID, Hwnd,, SHELLDLL_DefView1, ahk_id %id%
+		if w_CtrID !=
+		SendMessage, 0x111, 0x1A220,,, ahk_id %w_CtrID%
+	}
+	return
+}
 toggle(var)
 {
     if inirw("r", var)=0
@@ -58,13 +117,15 @@ Reboot()
     Tooltip, Rebooting...
     run, cmd.exe /c shutdown /r /f /t 1,,hide
 }
-ResumeSpotify()
+ResumeSpotify(arg:="")
 {
     if not ProcExist("Spotify.exe")
     {
         exe_path=C:\Users\%A_Username%\AppData\Roaming\Spotify\Spotify.exe
         RunPath(exe_path, "0", "")
     }
+    if arg contains startup
+        sleep, 15000
     loop
     {
         WinGetActiveTitle, AT
@@ -718,22 +779,20 @@ ConnectToWifi(hotspot:="")
 {
     if inirw("r", "ConnectToWifi_running")!=0
     {
-        loop 600
+        loop 100
         {
             if inirw("r", "ConnectToWifi_running")=0
                 return
             sleep, 100
         }
-        inirw("w", "ConnectToWifi_running", "1")
-        MsgBox, , , ConnectToWifi failed , 5
-        log("ConnectToWifi failed")
+        inirw("w", "ConnectToWifi_running", "0")
+        RunPath("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Restart_Connect_to_Wifi.ahk", "0", "", "")
         return 0
     }
     inirw("w", "ConnectToWifi_running", "1")
-    if hotspot=hotspot
-        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+    ;if hotspot=hotspot
+    ;    RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
     loop 6
-    
     {
         If not ConnectedToInternet()
         {
@@ -743,6 +802,8 @@ ConnectToWifi(hotspot:="")
                 WinMinimizeAll
                 sleep, 300
             }
+            If ConnectedToInternet()
+                break
             loop 1
             {
                 if WaitForPixelColor("1838", "542", color:="0xCADFD4", "0", hit, real_color, mouse_color)
@@ -757,9 +818,11 @@ ConnectToWifi(hotspot:="")
                     break
                 }
             }
+            If ConnectedToInternet()
+                break
             if found_button!=1
                 mouse_click_func("1857", "545")
-            loop 10
+            loop 3
             {
                 mouse_click_func("1786", "594")
                 if WaitForPixelColor("1531", "661", color:="0x15693f", "0", hit, real_color, mouse_color)
@@ -778,8 +841,15 @@ ConnectToWifi(hotspot:="")
                     found_hook_color=1
                     break
                 }
+                If ConnectedToInternet()
+                {
+                    connected=1
+                    break
+                }
             }
-            if found_hook_color!=1
+            If ConnectedToInternet()
+                break
+            if (found_hook_color!=1 and connected != 1)
                 mouse_click_func("1531", "661")
             if OpenWifiPanel_VAR=0
                 WinMinimizeAllUndo
@@ -790,7 +860,11 @@ ConnectToWifi(hotspot:="")
                 {
                     loop %i%
                     {
-                        Tooltip, %i% Waiting for wifi
+                        if WaitForPixelColor("1725", "714", color:="0x00B25A", "0", hit, real_color, mouse_color)
+                            mouse_click_func("1725", "714"s)
+                        if WaitForPixelColor("1725", "714", color:="0x02AC58", "0", hit, real_color, mouse_color)
+                            mouse_click_func("1725", "714"s)
+                        ;Tooltip, %i% Waiting for wifi
                         If ConnectedToInternet()
                         {
                             break
@@ -843,7 +917,6 @@ Hotspot()
             log("0xCECECE")
             hotspotcolor=0
             mouse_click_func("1594", "183")
-            WinClose, Settings
             inirw("w", "hotspot_running", "0")
             ;msgbox, WHITE NO MOUSEHOOVER
             ;break
@@ -1206,34 +1279,24 @@ Else
 */
 OpenWifiPanel()
 {
-    send, #b
-    sleep, 50
-    send, {left}
-    sleep, 50
-    send, {left}
-    sleep, 50
-    send, {left}
-    sleep, 50
-    send, {left}
-    sleep, 50
-    send, {left}
-    sleep, 50
-    send, {enter}
-    settings_panel_found=0
-    loop 5
+    loop 10
     {
-        if settings_panel_found=0
+        send, #b
+        ;sleep, 100
+        send, {left 6}
+        send, {enter}
+        sleep, 1000
+        if WaitForPixelColor("1590", "559", color:="0x00D66C", "1000", hit, real_color, mouse_color)
+            mouse_click_func("1590", "559")
+        if WaitForPixelColor("1714", "996", color:="0x004C26", "0", hit, real_color, mouse_color)    ;GREEN_THEME: #007F40 (Settings Panel)
         {
-            if WaitForPixelColor("1714", "996", color:="0x004C26", "0", hit, real_color, mouse_color)    ;GREEN_THEME: #007F40 (Settings Panel)
-            {
-                settings_panel_found=1
-                mouse_click_func("1571", "566")
-            }
+            mouse_click_func("1571", "566")
+            sleep, 50
         }
         if WaitForPixelColor("1714", "996", color:="0x006633", "0", hit, real_color, mouse_color)    ;GREEN_THEME: #007F40 (Wifi Panel)
             return 1
+
     }
-    mouse_click_func("1571", "566")
     return 0
 }
 MouseHooverCheckColor(x, y)
@@ -1267,19 +1330,19 @@ KILL_APPS_FUNCTION(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_
     ;RunActivate("Untitled - Notepad", "C:\Program Files\WindowsApps\microsoft.windowsnotepad_10.2103.6.0_x64__8wekyb3d8bbwe\Notepad\Notepad.exe", "", "1", "0")
     ;send, DONT SHUTDOWN!!!
     ;run, shutdown.exe /s /t 0
-    DesktopIcons(False)
-    DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\Gh4LZnk.png", UInt, 1)
-    WinMinimizeAll
+    ;DesktopIcons(False)
+    ;DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\Gh4LZnk.png", UInt, 1)
+    ;WinMinimizeAll
     shutdown_pid := RunActivate("ShutdownGUI", "C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer.ahk", "", "0", "0")
-    IniWrite, GLOBAL_MODE, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, LIGHT
+    ;IniWrite, GLOBAL_MODE, C:\!\TEMP\InifilesAndOther\GLOBAL_VARIABLES.ini, Section, LIGHT
 
     KillApps(apps, rocketleague, light, ahkpanic, ahk_except, run_ahk_persistant)
 
-    Tooltip, 
-    SoundPlay, C:\!\NotificationSounds\UsedInScripts\beep_beep-185df4a1-357e-4b7d-9a44-60afeb5223a7_Lower.mp3
-    WinMinimizeAll
-    DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\558424.jpg", UInt, 1)
-    DesktopIcons(True)
+    ;Tooltip, 
+    ;SoundPlay, C:\!\NotificationSounds\UsedInScripts\beep_beep-185df4a1-357e-4b7d-9a44-60afeb5223a7_Lower.mp3
+    ;WinMinimizeAll
+    ;DllCall("SystemParametersInfo", UInt, 0x14, UInt, 0, Str, "C:\!\Photos\Wallpapers\Windows_and_Music_Yin Yang Wallpapers\558424.jpg", UInt, 1)
+    ;DesktopIcons(True)
     WinClose, ahk_pid %shutdown_pid%
     ;mouse_click_func("45", "157")
     ;mouse_click_func("45", "157")
@@ -1890,7 +1953,6 @@ RunActivate(title, exe_path, commands:="", multiple:="0", minmaxclose:="max", ti
             run, %exe_path% %commands%
         else
             PID := run_file_if_it_exists(exe_path, commands)
-
     }
     else if ProcExist(OutFileName)
         if exe_path contains .exe
@@ -1903,11 +1965,11 @@ RunActivate(title, exe_path, commands:="", multiple:="0", minmaxclose:="max", ti
             run, %exe_path% %commands%
         else
             PID := run_file_if_it_exists(exe_path, commands)
-
     }
     timeout10 := timeout*10
     loop
     {
+        ;ListVars
         WinActivate, ahk_exe %OutFileName%
         WinActivate, %title%
         WinGetActiveTitle, AT
@@ -1939,6 +2001,7 @@ RunActivate(title, exe_path, commands:="", multiple:="0", minmaxclose:="max", ti
     }
     else if minmaxclose=close
     {
+        sleep, 1000
         WinClose, ahk_exe %OutFileName%
         WinClose, %AT%
         WinClose, %title%
@@ -2231,15 +2294,15 @@ fastcopy_func(source, dest, mode, arg:="") ;   Cloneapp_Manual needs this
         }
     }
 }
-fastcopy_func_NEW(source, dest, mode) ;   File or Folder, will create destination folders, Close even if error.
+fastcopy_func_NEW(source, dest, flags:="/cmd=diff") ;   File or Folder, will create destination folders
 {
     if FileExist(source)
     {
         SplitPath, dest, dest_OutFileName, dest_OutDir, dest_OutExtension, dest_OutNameNoExt, dest_OutDrive
         if FileExist(dest_OutDrive)
         {
-            run, "fastcopy" /verify /estimate /no_ui /postproc=nosound /cmd=%m% /force_start(=N) "%s%" /to="%d%"
-            sleep, 500
+            runwait, "fastcopy" /estimate /auto_close %flags% /force_start(=N) "%source%" /to="%dest%"
+            ;/no_ui /postproc=nosound /verify
         }
     }
 }
@@ -2414,9 +2477,28 @@ sleep_tooltip(seconds, tooltip:="")
     log=original_seconds=%original_seconds% - %seconds% - %tooltip% FINISHED
     log(log, "C:\!\Logs\log.log", tooltip=0, console=0)
 }
-ConnectedToInternet(flag=0x40) 
+ConnectedToInternet(fast:="1", flag:="0x40")
 { 
-    Return DllCall("Wininet.dll\InternetGetConnectedState", "Str", flag,"Int",0) 
+    if DllCall("Wininet.dll\InternetGetConnectedState", "Str", flag,"Int",0)=1
+    {
+        if fast!=1
+        {
+            FileCreateDir, C:\!\TEMP\InifilesAndOther
+            FileDelete, C:\!\TEMP\InifilesAndOther\ConnectedToInternet_ping_google.txt
+            runwait, cmd.exe /c ping google.com > C:\!\TEMP\InifilesAndOther\ConnectedToInternet_ping_google.txt,,hide
+            Loop, Read, C:\!\TEMP\InifilesAndOther\ConnectedToInternet_ping_google.txt
+            {
+                if A_LoopReadLine contains Ping request could not find host
+                    return 0
+                if A_LoopReadLine contains Reply from
+                    return 1
+            }
+        }
+        else
+            return 1
+    }
+    else
+        return 0
 }
 kill_task(exe, force:="1")
 {
@@ -2736,7 +2818,7 @@ run_file_if_it_exists(path, cmd:="")
         {
             Tooltip, %path% Doesen't Exist timeout=%timeout%
             timeout-=1
-            sleep, 100
+            sleep, 10
         }
     }
 }
@@ -2891,16 +2973,19 @@ tryrun(code, WorkingDir:="exe_path", minmaxhide:="")
     try
     {
         if minmaxhide contains min
-            run, %code%,, min
+            run, %code%,, min, PID
         else if minmaxhide contains max
-            run, %code%,, max
+            run, %code%,, max, PID
         else if minmaxhide contains hide
-            run, %code%,, hide
+            run, %code%,, hide, PID
         else
-            run, %code%
+            run, %code%,,, PID
         LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
-        return PID
+        if PID!=
+            return PID
+        else
+            return 1
     }
     catch
     {
@@ -2952,16 +3037,19 @@ tryrunwait(code, WorkingDir:="", minmaxhide:="")
     try
     {
         if minmaxhide contains min
-            runwait, %code%,, min
+            runwait, %code%,, min, PID
         else if minmaxhide contains max
-            runwait, %code%,, max
+            runwait, %code%,, max, PID
         else if minmaxhide contains hide
-            runwait, %code%,, hide
+            runwait, %code%,, hide, PID
         else
-            runwait, %code%
+            runwait, %code%,,, PID
         LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
-        return PID
+        if PID!=
+            return PID
+        else
+            return 1
     }
     catch
     {
