@@ -1,3 +1,47 @@
+WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minmaxhide:="")
+{
+    if FileExist(path)
+    {
+        if run=run
+        {
+            value := RunPath(path, "0", args, WorkingDir, minmaxhide)
+            return value
+        }
+        else if run=runwait
+        {
+            value := RunPath(path, "1", args, WorkingDir, minmaxhide)
+            return value
+        }
+        else
+            return 1
+    }
+    else if not FileExist(path)
+    {
+        Timeout := ms/=100
+        loop %Timeout%
+        {
+            Tooltip, Waiting for Path to Exist`n`npath=%path%`n`nTimeout=%Timeout%
+            if FileExist(path)
+            {
+                if run=run
+                {
+                    value := RunPath(path, "0", args, WorkingDir, minmaxhide)
+                    return value
+                }
+                else if run=runwait
+                {
+                    value := RunPath(path, "1", args, WorkingDir, minmaxhide)
+                    return value
+                }
+                else
+                    return 1
+            }
+            else
+                sleep, 100
+            Timeout-=1
+        }
+    }
+}
 KeepProcessAliveChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
 {
     SplitPath, exe_main, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -34,18 +78,18 @@ ToggleHiddenFolders()
 f_RefreshExplorer()
 {
 	WinGet, id, ID, ahk_class Progman
-	SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+	SendMessage, 0x111, 0x1A220, , , ahk_id %id%
 	WinGet, id, List, ahk_class CabinetWClass
 	Loop, %id%
 	{
 		id := id%A_Index%
-		SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+		SendMessage, 0x111, 0x1A220, , , ahk_id %id%
 	}
 	WinGet, id, List, ahk_class ExploreWClass
 	Loop, %id%
 	{
 		id := id%A_Index%
-		SendMessage, 0x111, 0x1A220,,, ahk_id %id%
+		SendMessage, 0x111, 0x1A220, , , ahk_id %id%
 	}
 	WinGet, id, List, ahk_class #32770
 	Loop, %id%
@@ -53,7 +97,7 @@ f_RefreshExplorer()
 		id := id%A_Index%
 		ControlGet, w_CtrID, Hwnd,, SHELLDLL_DefView1, ahk_id %id%
 		if w_CtrID !=
-		SendMessage, 0x111, 0x1A220,,, ahk_id %w_CtrID%
+		SendMessage, 0x111, 0x1A220, , , ahk_id %w_CtrID%
 	}
 	return
 }
@@ -559,7 +603,7 @@ FirefoxCleanRAM()
 }
 MouseIsOver(WinTitle) 
 {
-    MouseGetPos,,, Win
+    MouseGetPos, , , Win
     return WinExist(WinTitle . " ahk_id " . Win)
 }
 RAMUsage(tooltip:="0")
@@ -588,19 +632,18 @@ PercentDiff(ScriptA, ScriptB, loops:="1")
     loop %loops%
     {
         
-        thisloopA1=%ScriptA% ScriptA loop %currentloop% of %loops% START
+        thisloopA1=%ScriptA% ScriptA loop %currentloop% of %loops% AAA
         log(thisloopA1, "C:\!\Logs\StopwatchLog.txt", "0", "0")
         RunPath(ScriptA, "1")
-        thisloopA2=%ScriptA% ScriptA loop %currentloop% of %loops% ENDED
+        thisloopA2=%ScriptA% ScriptA loop %currentloop% of %loops% AAA
         ScriptAms := log(thisloopA2, "C:\!\Logs\StopwatchLog.txt", "0", "0")
-
-        thisloopB1=%ScriptB% ScriptB loop %currentloop% of %loops% START
+        
+        thisloopB1=%ScriptB% ScriptB loop %currentloop% of %loops% BBB
         log(thisloopB1, "C:\!\Logs\StopwatchLog.txt", "0", "0")
         RunPath(ScriptB, "1")
-        thisloopB2=%ScriptB% ScriptB loop %currentloop% of %loops% ENDED
+        thisloopB2=%ScriptB% ScriptB loop %currentloop% of %loops% BBB
         ScriptBms := log(thisloopB2, "C:\!\Logs\StopwatchLog.txt", "0", "0")
-        msgbox, ScriptAms=%ScriptAms%
-        msgbox, ScriptBms=%ScriptBms%
+        ;msgbox, ScriptAms=%ScriptAms%`nScriptBms=%ScriptBms%
         ScriptBms-=140
         ScriptAms-=140
         percentA := (((ScriptBms/ScriptAms)-1)*100)
@@ -609,13 +652,14 @@ PercentDiff(ScriptA, ScriptB, loops:="1")
         percentBrounded := Round(percentB, 0)
         if ScriptAms<=ScriptBms
         {
-            Tooltip, A is %percentArounded% `% Faster Then B`nA=%ScriptAms%`nB=%ScriptBms%
+            msgbox, %ScriptA% is `n%percentArounded% `% Faster Then `n%ScriptB%`n`nA=%ScriptAms%`nB=%ScriptBms%
             currentA:=A%currentloop%
             currentA+=%percentArounded%
         }
         else
         {
-            Tooltip, B is %percentBrounded% `% Faster Then A`nA=%ScriptAms%`nB=%ScriptBms%
+            msgbox, %ScriptB% is `n%percentBrounded% `% Faster Then `n%ScriptA%`n`nA=%ScriptAms%`nB=%ScriptBms%
+            msgbox, B is %percentBrounded% `% Faster Then A`nA=%ScriptAms%`nB=%ScriptBms%
             currentB:=B%currentloop%
             currentB+=%percentBrounded%
         }
@@ -1379,7 +1423,9 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
         if run_ahk_persistant=1
             RunPersistentAHKScripts()
     }
+
     end_process("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt")
+
     if ahkpanic!=0
     {
         AHKPanicExcept("1", "0", "0", "0", ahk_except)
@@ -1390,7 +1436,7 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
     ;run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\end_process.ahk C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt
 
     ; kill harder and harder:
-    ; PostMessage, 0x0112, 0xF060,,, WinTitle, WinText                                        ; 0x0112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE - This is like alt+F4 or pressing close button
+    ; PostMessage, 0x0112, 0xF060, , , WinTitle, WinText                                        ; 0x0112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE - This is like alt+F4 or pressing close button
     ; WinClose , WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText                  ; WinClose sends a WM_CLOSE message to the target window, which is a somewhat forceful method of closing it. An alternate method of closing is to send the following message. It might produce different behavior because it is similar in effect to pressing Alt+F4 or clicking the window's close button in its title bar:. If a window does not close via WinClose, you can force it to close with WinKill.
     ; WinKill , WinTitle, WinText, SecondsToWait, ExcludeTitle, ExcludeText                   ; This command first makes a brief attempt to close the window normally. If that fails, it will attempt to force the window closed by terminating its process. If a matching window is active, that window will be closed in preference to any other matching window. In general, if more than one window matches, the topmost (most recently used) will be closed. This command operates only upon a single window except when WinTitle is ahk_group GroupName, in which case all windows in the group are affected. Window titles and text are case sensitive. Hidden windows are not detected unless DetectHiddenWindows has been turned on.
     ; Process, Close , PIDOrName                                                              ; If a matching process is successfully terminated, ErrorLevel is set to its former Process ID (PID). Otherwise (there was no matching process or there was a problem terminating it), it is set to 0. Since the process will be abruptly terminated -- possibly interrupting its work at a critical point or resulting in the loss of unsaved data in its windows (if it has any) -- this method should be used only if a process cannot be closed by using WinClose on one of its windows.
@@ -1428,9 +1474,9 @@ AHKPanicExcept(Kill=0, Pause=0, Suspend=0, SelfToo=0, path=0)
                                 {
                                     Tooltip, Killing Autohotkey Scripts - %ATitle%`n`nProgress=%Progress%
                                     If Suspend
-                                    PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
+                                    PostMessage, 0x111, 65305, , , ahk_id %ID%  ; Suspend. 
                                     If Pause
-                                    PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
+                                    PostMessage, 0x111, 65306, , , ahk_id %ID%  ; Pause.
                                     If Kill
                                     {
                                         run, Kill_AHK_Process.ahk %ID%
@@ -1469,9 +1515,9 @@ AHKPanicOLD(Kill=0, Pause=0, Suspend=0, SelfToo=0)
         IfNotInString, ATitle, %A_ScriptFullPath%
         {
             If Suspend
-            PostMessage, 0x111, 65305,,, ahk_id %ID%  ; Suspend. 
+            PostMessage, 0x111, 65305, , , ahk_id %ID%  ; Suspend. 
             If Pause
-            PostMessage, 0x111, 65306,,, ahk_id %ID%  ; Pause.
+            PostMessage, 0x111, 65306, , , ahk_id %ID%  ; Pause.
             If Kill
             WinClose, ahk_id %ID% ;kill
         }
@@ -1769,7 +1815,7 @@ PrintDebug(string:=""){
 		WinWait ahk_id %A_ScriptHwnd%
 		WinGetTitle, title, ahk_id %A_ScriptHwnd%
 	}Else If !string{
-		PostMessage, 0x112, 0xF060,,, %title% ; 0x112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE
+		PostMessage, 0x112, 0xF060, , , %title% ; 0x112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE
 		Return
 	}
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
@@ -2731,7 +2777,109 @@ ProcExist(PID_or_Name=""){
     Process, Exist, % (PID_or_Name="") ? DllCall("GetCurrentProcessID") : PID_or_Name
     Return Errorlevel
 }
+end_process_via_ahk(exe_filelist_path, tooltip:="yes")
+{
+    Loop, Read, %exe_filelist_path%
+    {
+        Progress := A_Index
+        Progress *= 2
+    }
+    if tooltip=yes
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        if tooltip=yes
+            Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            ;run, cmd.exe /c Taskkill /IM "%A_LoopReadLine%",,hide
+            WinClose, ahk_exe %A_LoopReadLine%,,hide
+        }
+        Progress-=1
+    }
+    if tooltip=yes
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        if tooltip=yes
+            Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            current_process=%A_LoopReadLine%
+            skip=0
+            Loop, Read, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_APPS_DATACORRUPTION_EXE_LIST.txt
+            {
+                If A_LoopReadLine contains %current_process%
+                {
+                    skip=1
+                    if tooltip=yes
+                        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nSkipping %A_LoopReadLine% Because it it on the data corruption list`n`nProgress=%Progress%
+                    break
+                }
+            }
+            if skip=0
+            {
+                ;run, cmd.exe /c Taskkill /IM "%A_LoopReadLine%" /F,,hide
+                WinKill, ahk_exe %A_LoopReadLine%,,hide
+            }
+        }
+        Progress-=1
+    }
+}
 end_process(exe_filelist_path, tooltip:="yes")
+{
+    Loop, Read, %exe_filelist_path%
+    {
+        Progress := A_Index
+        Progress *= 2
+    }
+    if tooltip=yes
+        Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        if tooltip=yes
+            Tooltip, Asking applications Gracefully to end - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            run, cmd.exe /c Taskkill /IM "%A_LoopReadLine%",,hide
+            ;WinClose, ahk_exe %A_LoopReadLine%,,hide
+        }
+        Progress-=1
+    }
+    if tooltip=yes
+        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+    Loop, Read, %exe_filelist_path%
+    {
+        if tooltip=yes
+            Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nProgress=%Progress%
+        Process, Exist, %A_LoopReadLine%
+        If (ErrorLevel != 0)
+        {
+            current_process=%A_LoopReadLine%
+            skip=0
+            Loop, Read, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_APPS_DATACORRUPTION_EXE_LIST.txt
+            {
+                If A_LoopReadLine contains %current_process%
+                {
+                    skip=1
+                    if tooltip=yes
+                        Tooltip, Killing Tasks Forcefully - %A_LoopReadLine%`n`nSkipping %A_LoopReadLine% Because it it on the data corruption list`n`nProgress=%Progress%
+                    break
+                }
+            }
+            if skip=0
+            {
+                run, cmd.exe /c Taskkill /IM "%A_LoopReadLine%" /F,,hide
+                ;WinKill, ahk_exe %A_LoopReadLine%,,hide
+            }
+        }
+        Progress-=1
+    }
+}
+end_process_old_discard_for_datacorruption_possebileties(exe_filelist_path, tooltip:="yes")
 {
     Loop, Read, %exe_filelist_path%
     {
@@ -2811,7 +2959,7 @@ run_file_if_it_exists(path, cmd:="")
     {
         if FileExist(path)
         {
-            run, %path% %cmd%,,,PID
+            run, %path% %cmd%, , , PID
             return %PID%
         }
         Else
@@ -2826,7 +2974,7 @@ runwait_file_if_it_exists(path, cmd:="")
 {
     if FileExist(path)
     {
-        runwait, %path% %cmd%,,,PID
+        runwait, %path% %cmd%, , , PID
         return %PID%
     }
 }
@@ -2835,9 +2983,9 @@ RunPathOLD(path, wait:="0", args:="")
     if FileExist(path)
     {
         if wait = 1
-            runwait, %path% %args%,,,PID
+            runwait, %path% %args%, , , PID
         else
-            run, %path% %args%,,,PID
+            run, %path% %args%, , , PID
         return %PID%
     }
     else
@@ -2979,7 +3127,7 @@ tryrun(code, WorkingDir:="exe_path", minmaxhide:="")
         else if minmaxhide contains hide
             run, %code%,, hide, PID
         else
-            run, %code%,,, PID
+            run, %code%, , , PID
         LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
         if PID!=
@@ -3043,7 +3191,7 @@ tryrunwait(code, WorkingDir:="", minmaxhide:="")
         else if minmaxhide contains hide
             runwait, %code%,, hide, PID
         else
-            runwait, %code%,,, PID
+            runwait, %code%, , , PID
         LogTry=%ErrorLevel% - code=%code% WorkingDir=%WorkingDir% minmaxhide=%minmaxhide%
         log(LogTry, , "1", "0")
         if PID!=
