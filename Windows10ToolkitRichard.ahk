@@ -337,7 +337,7 @@ if personal = 1
     
     RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1 
     RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, ShowSuperHidden, 1
-    f_RefreshExplorer()
+    ;f_RefreshExplorer()    ;Uncomment this line after function fix
     runwait, choco install dellcommandupdate -y
     FileCreateDir, C:\!\Logs\DellCommandUpdate
     FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
