@@ -292,8 +292,9 @@ loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) a
 
 
 
-;temp cus windows update fuckes up wifi
+;temp cus windows updatie killed wifi
 update=0
+
 
 
 
