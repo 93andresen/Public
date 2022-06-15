@@ -366,7 +366,6 @@ if debloat = 1
     command = choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force;choco install explorer-expand-to-current-folder --ignore-checksums --force -y;choco install explorer-show-all-folders --ignore-checksums --force -y
     RunPowershellLog(command, path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
 }
-C:\Users\%A_UserName%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 if ooshutup = 1
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup1_EssesinalTweaksProbablyBestForMostPeople.cfg")
