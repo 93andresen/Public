@@ -148,13 +148,73 @@ personal := inirwTOOLKIT("r", "personal")
 Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`n`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
 /*
+Scoop_App_List:
+7tt               5.12.3               extras 2022-04-04 21:57:46
+7zip              21.07                main   2022-03-07 22:45:22
+adb               33.0.1               main   2022-04-16 14:21:04
+antimicro         2.23                 extras 2022-05-05 23:17:37
+aria2             1.36.0-1             main   2022-04-20 19:56:51
+caprine           2.55.4               extras 2022-04-28 03:30:07
+choeazycopy       2.0.0.1              extras 2022-04-04 23:44:19
+Coreutils         5.97.3               main   2022-03-30 05:00:05
+crystaldiskinfo   8.16.4               extras 2022-04-19 06:18:59
+crystaldiskmark   8.0.4a               extras 2022-04-19 06:19:23
+dark              3.11.2               main   2022-04-05 03:24:27
+dopamine          2.0.9                extras 2022-03-28 09:25:16
+empty-recycle-bin 1.0.0                main   2022-04-12 04:13:21
+Fastcopy          4.1.5                extras 2022-04-26 15:25:08
+fileoptimizer     15.70.2705           extras 2022-04-20 20:43:31
+greenshot         1.2.10.6             extras 2022-04-22 23:38:16
+gtools            4.2                  extras 2022-05-05 11:18:29
+handbrake         1.5.1                extras 2022-05-09 21:20:51
+handbrake-cli     1.5.1                main   2022-05-09 21:23:00
+innounp           0.50                 main   2022-04-05 03:24:27
+lazydocker        0.18.1               main   2022-05-11 20:05:35
+less              590                  main   2022-04-03 07:35:48
+lsd               0.21.0               main   2022-03-05 19:34:05
+Mailsend-Go       1.0.10               main   2022-03-30 05:00:07
+modern7z          1.8.10               main   2022-04-04 21:44:37
+msedgeredirect    0.6.5.0              extras 2022-05-09 21:18:51
+nirlauncher       1.23.60              extras 2022-05-12 09:52:57
+nodejs            18.1.0               main   2022-05-03 16:34:21
+obsidian          0.14.6               extras 2022-04-19 03:44:31
+patheditor        1.0                  extras 2022-05-05 11:18:28
+psutils           0.2020.02.27         main   2022-04-15 20:42:42
+recycle-bin       2.0.0                main   2022-04-12 04:13:22
+scoop-search      1.2.0                main   2022-05-11 02:08:25
+spotify           1.1.85.895.g2a71e1b8 extras 2022-05-15 00:02:27
+sysinternals      2022.May.11          extras 2022-05-12 02:32:44
+tailwindcss       3.0.24               main   2022-04-13 09:35:59
+vcredist2015      14.0.24215.1         extras 2022-03-05 19:35:04
+vlc               3.0.17.4             extras 2022-05-15 01:56:32
+wireshark         3.6.5                extras 2022-05-05 07:01:13
+plex-desktop
+plex-player
+plex-server
+
+android-line-transfer
+android-messages
+android-sdk
+android-sms-backup-and-restore
+android-studio eclipse-android
+android-clt
+RapidEE 9.2.937 [Approved]
+dbkoda
+Devbox-RapidEE
+rapidcrc
+rapidee
+scoop-completion
+scoop-shim
+scoop-validator
+
 MAYBE_AND_OTHER:
 
 simple-software-restriction-policy  ;   This makes it so i cant install stuff anymore, unless i unlock it og fix the settings...
 
 NEW MAYBE AND OTHER:
-cup aaclr winaero-tweaker aerozoom ontopreplica chocobutler imagemagick iconworkshop iconviewer thumbico desktopicontoggle icofx nirext folder-marker terminal-icons.powershell becyicongrabber any2ico zvirtualdesktop defaultprogramseditor iconsext.install iconsext iconizer driverfusion faviconizer desktopicons-winconfig keepass-plugin-favicon ansicon nvidia-profile-inspector taskbarx cygwin soundswitch virtualmidisynth chocobutler taskbar-winconfig desk-drive hotswap hddguardian snips tcpipmanager.portable tcpipmanager chocolateypowershell shadowsocks ireboot 4k-tokkit nvidia-profile-inspector todotxt.net godmode clamsentinel sendmessage mbruler roost-desktop-notifier-for-nest cygwin imagemagick.app bginfo amp-winoff.install amp-winoff nyrna windows-repair-toolbox scp balabolka leanify data-lifeguard-diagnostic virtualmidisynth swyh libre-hardware-monitor system-monitor acronis-drive-monitor dual-monitor-tools monitorswitcher monitorinfoview directorymonitor fpsmonitor veeam-one-monitor-client monitordetails networkmonitor pingmonitorfree traffic-monitor remote-desktop-ip-monitor-and-blocker openhardwaremonitor wifichannelmonitor wifichannelmonitor performance-monitor gbm nzxt trafficwatcher ultramon wirelessnetview processactivityview regfromapp diskmon diskcountersview bluetoothview procmon userassistview deviceioview bluetoothlogview serialportmonitor serialportmonitor serialportmonitor serialportmonitor serialportmonitor serialportmonitor dbgview procrastitracker direvents cports hdguard aida64-extreme.portable iris aida64-engineer rawcap aida64-extreme sysmon sonarr radarr jackett sonarr lidarr lidarr smartmontools modernflyouts nirlauncher netstat-agent backupper-server multipass psievm disk2vhd packer vagrant vboxheadlesstray Dellcommandupdate Dellcommandupdate-uwp Intel-dsa Lastfmscrobbler Notepadplusplus Altsnap Sizer Launchy Plex Plexmediaserver Plex-home-theater Winamp Duplicati Mpc-be Workspacer Webtorrent-desktop Libreoffice-fresh Vcredist140 Rufus Bitwarden-cli Tidytabs Sandboxie.install Linkshellextension Internet-download-manager Pingplotter Rammap Regexcoach Accesschk Windows-kill Vmmap Npackd.install Drivermax Adwcleaner Cmdutils Ecm Iconworkshop Iconviewer Thumbico Desktopicontoggle Icofx Nirext Folder-marker Terminal-icons.powershell Becyicongrabber Any2ico Zvirtualdesktop Defaultprogramseditor Iconsext Iconizer Faviconizer Desktopicons-winconfig Keepass-plugin-favicon Ansicon Nvidia-profile-inspector Taskbarx Soundswitch Swyh Libre-hardware-monitor System-monitor Acronis-drive-monitor Dual-monitor-tools Monitorswitcher Monitorinfoview Directorymonitor Fpsmonitor Veeam-one-monitor-client Monitordetails Networkmonitor Pingmonitorfree Traffic-monitor Remote-desktop-ip-monitor-and-blocker Openhardwaremonitor Wifichannelmonitor Performance-monitor Gbm Nzxt Trafficwatcher Ultramon Wirelessnetview Processactivityview Regfromapp Diskmon Diskcountersview Bluetoothview Procmon Userassistview Deviceioview Bluetoothlogview Serialportmonitor Dbgview Procrastitracker Direvents DireventsCports Hdguard Aida64-extreme.portable Iris Aida64-engineer Rawcap Aida64-extreme Sysmon Sonarr Radarr Jackett Lidarr Smartmontools Modernflyouts Nirlauncher Netstat-agent Backupper-server Multipass Psievm Disk2vhd Packer Vagrant Vboxheadlesstray Driverfusion Windowsrepair Windows-admin-center Vortex Ultimate-settings-panel Winauth Windirstat Tidystart.powershell VirtualCloneDrive Urbackup-client Sysexp SwissFileKnife Strokesplus.portable Specialfoldersview Songr Silverlight Shotcut Shman ShellTools Shellbagsview Setup-Assistant Regexpixie Putty Powerautomatedesktop Netscan Lastactivityview Laps Imagemanager Googleearthpro Androidstudio Alldup Duplicatecleaner Deletefiles Minibin Recyclenow Rbcmd Recycle Neovim Smartftp Adb Playnite Opendns-updater Desktop-notifications-for-android-chrome Reprofiler Taskschedulerview Mailer Siv Partitionmasterfree Partitionwizard Perfmonitor2 Fluent-terminal Wsl2 Ln Junction-link-magic Ntfslinksview Defprof Supercopier Ultracopier Act-cli Git-lfs GoogleChrome.Canary Webstorm Gimp Win-vind Wsl-kalilinux Ganttproject Defraggler Vagrant Vagrant-manager Googlephotos Mp3tag Sharemouse Directoryopus Filezilla Winscp Doublecmd Beyondcompare 0install Wiztree Eraser Aaclr Winaero-tweaker Aerozoom Ontopreplica Chocobutler Imagemagick Bginfo Amp-winoff.install Amp-winoff Nyrna Windows-repair-toolbox Scp Balabolka Leanify Data-lifeguard-diagnostic Virtualmidisynth Taskbar-winconfig Desk-drive Hotswap Hddguardian Snips Tcpipmanager.portable Tcpipmanager Chocolateypowershell Shadowsocks Ireboot 4k-tokkit Todotxt.net Godmode Clamsentinel Sendmessage Mbruler Roost-desktop-notifier-for-nest Cygwi veracrypt Rainmeter Powertoys Plasso Regcool.portable 7zip Vscode Setdefaultbrowser Firefox Edgedeflector Autohotkey Chocolatey-misc-helpers.extension Fastcopy Python Winrar Peazip Classic-shell Sysinternals Cloneapp Epicgameslauncher Google-drive-file-stream Treesizefree Spacesniffer Shutup10 Revo-uninstaller Gh Git Github Mousewithoutborders F.lux Authy-desktop Everything Musicbee Th-ch-youtube-music Equalizerapo Steam Crystaldiskinfo Irfanview Irfanviewplugins Qalculate Throttlestop Microsoft-windows-terminal PowerShell Greenshot Speedyfox Geforce-experience Msiafterburner Directx Glaryutilities-free Virtualbox Copyq Discord Eartrumpet Yt-dlp Choco-package-list-backup Battle.net Ds4windows Obs Malwarebytes Thunderbird Qbittorrent Ffmpeg Dropit Jre8 Openjdk Signal Telegram Voicemeeter-banana Vlc Freedownloadmanager Spicetify-cli Terminal-icons.powershell Adobereader Googlechrome Tortoisesvn
-choco install tagspaces launchbox playnite goggalaxy gamedownloader game-collector gamesavemanage
+RapidEE 9.2.937 [Approved]
+dbkoda 0.8.0 [Approved] Downloads cached for licensed users
+Devbox-RapidEEchoco install tagspaces launchbox playnite goggalaxy gamedownloader game-collector gamesavemanage
 choco install notion pomodoneapp tomighty tomatoad
 livesplit
 choco install toggl
@@ -232,9 +292,8 @@ loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) a
 
 
 
-
-
-
+;temp cus windows update fuckes up wifi
+update=0
 
 
 
@@ -287,6 +346,10 @@ if update = 1
 {
     FileCreateShortcut, C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ahk, C:\Users\%A_UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Windows10ToolkitRichard.lnk, C:\temp_Windows10ToolkitRichard\Public-main, shortcutstart
     inirwTOOLKIT("w", "updating", "1")
+
+;TEST THIS FIRST, WHAT DOES THIS DO????
+;runwait, powershell.exe exho y | powershell Install-Module -Name PSWindowsUpdate
+
     RunPowershellLog("cup abc-update", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
     runwait, powershell.exe ABC-Update.exe /A:Install /R:10 /T:Driver`,Software /Log_Append:C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt,,max
     RunPowershellLog("cup Boxstarter", path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
@@ -302,7 +365,7 @@ if debloat = 1
     command = choco install explorer-winconfig --params "'/SHOWEXTENSIONS:yes /SHOWFULLPATH:yes /SHOWHIDDEN:yes /SHOWCHECKBOXES:no /SHOWENCRYPTED:yes /SHOWPREVIEWPANE:yes /SHOWDETAILSPANE:no /SHOWDRIVESNOMEDIA:yes /USESHARINGWIZARD:yes'" --force;choco install explorer-expand-to-current-folder --ignore-checksums --force -y;choco install explorer-show-all-folders --ignore-checksums --force -y
     RunPowershellLog(command, path:="C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt", minmaxhide:="max")
 }
-
+C:\Users\%A_UserName%\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 
 if ooshutup = 1
     ooshutup("C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\ooshutup1_EssesinalTweaksProbablyBestForMostPeople.cfg")
@@ -321,6 +384,8 @@ ooshutup(cfg)
     SetWorkingDir, %OutDir%
     log("UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe
+    if not fileExist("OOSU10.exe")
+        run, powershell.exe choco install ooshutup10
     log("cfg", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     runwait, OOSU10.exe %cfg% /quiet
     SetWorkingDir, %dir%

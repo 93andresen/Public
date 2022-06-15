@@ -1,4 +1,4 @@
-WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minmaxhide:="")
+WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minmaxhide:="", tooltip:="0")
 {
     if FileExist(path)
     {
@@ -20,7 +20,8 @@ WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minm
         Timeout := ms/=100
         loop %Timeout%
         {
-            Tooltip, Waiting for Path to Exist`n`npath=%path%`n`nTimeout=%Timeout%
+            if tooltip != 0
+                Tooltip, Waiting for Path to Exist`n`npath=%path%`n`nTimeout=%Timeout%
             if FileExist(path)
             {
                 if run=run
@@ -42,7 +43,7 @@ WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minm
         }
     }
 }
-KeepProcessAliveChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
+KeepRunningChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
 {
     SplitPath, exe_main, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if ProcExist(OutFileName)
@@ -169,7 +170,9 @@ ResumeSpotify(arg:="")
         RunPath(exe_path, "0", "")
     }
     if arg contains startup
-        sleep, 15000
+        sleep, 60000
+    else
+        sleep, 30000
     loop
     {
         WinGetActiveTitle, AT
@@ -534,6 +537,7 @@ Process_Resume_All()
 FirefoxCleanRAMProcessControl()
 {
     Process_Resume("Firefox.exe")
+    ;FirefoxCleanRAM()
     FirefoxCleanRAM()
     Process_Suspend("Firefox.exe")
 }
@@ -568,12 +572,18 @@ FirefoxCleanRAM()
         if AT22 not contains Firefox
             WinActivate, ahk_exe firefox.exe
         WinMaximize, ahk_exe firefox.exe
+        WinWaitActive, ahk_exe Firefox.exe
         WinGetActiveTitle, AT73
         if AT73 not contains blank
-            run, firefox.exe -new-tab about:blank -foreground,,max
-        WinWaitActive, ahk_exe Firefox.exe
+        [
+            send, ^t
+            sleep, 300
+            send, ^v
+            send, {enter}
+            ;run, firefox.exe -new-tab about:blank -foreground,,max
+        ]
         Tooltip, Discarding Tabs
-        send, +!m
+        send, +!i
         loop 2
         {
             if AT22 not contains about:memory
@@ -587,7 +597,7 @@ FirefoxCleanRAM()
                     if AT6 contains about:memory
                     {
                         Tooltip, Discarding Tabs
-                        send, +!m
+                        send, +!i
                         sleep, 200
                         send, ^w
                         break
@@ -596,7 +606,7 @@ FirefoxCleanRAM()
             }
         }
         sleep, 200
-        send, +!m
+        send, +!i
     }
     else
         msgbox, WHAT
