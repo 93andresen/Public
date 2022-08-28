@@ -25,6 +25,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
+
 updating := inirwTOOLKIT("r", "updating")
 
 if updating != 1
