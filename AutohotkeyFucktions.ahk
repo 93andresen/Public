@@ -234,21 +234,21 @@ NotifyWhenRebekka(arg)
         {
             if arg=moving
             {
-                if foundher=0
-                {
-                    if OpenGoogleMaps("1", "20")
-                        foundher=1
-                    else
-                        return 0
-                }
-                if LookForRebekka(Byref px:="", Byref py:="")!=0
-                {
-                    send, ^w
-                    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
-                    WinMinimizeAll
-                    return 1
-                }
-                sleep, 1000
+                ;if foundher=0
+                ;{
+                ;    if OpenGoogleMaps("1", "20")
+                ;        foundher=1
+                ;    else
+                ;        return 0
+                ;}
+                ;if LookForRebekka(Byref px:="", Byref py:="")!=0
+                ;{
+                ;    send, ^w
+                ;    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
+                ;    WinMinimizeAll
+                ;    return 1
+                ;}
+                ;sleep, 1000
             }
             else if arg=close
             {
@@ -1435,7 +1435,6 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
     }
 
     end_process("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt")
-
     if ahkpanic!=0
     {
         AHKPanicExcept("1", "0", "0", "0", ahk_except)
@@ -1444,6 +1443,7 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
     }
     runwait_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\CloseYoutubeDownloads.ahk", "fast")
     ;run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\end_process.ahk C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt
+    FileDelete, KILL_ALL_APPS_GENERATED.txt
 
     ; kill harder and harder:
     ; PostMessage, 0x0112, 0xF060, , , WinTitle, WinText                                        ; 0x0112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE - This is like alt+F4 or pressing close button
@@ -1772,7 +1772,7 @@ BeforeShutdown()
 {
     run_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk", "dismount")
     KillApps("apps", "rocketleague", "light", "ahkpanic", "C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk", "0")
-    WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk ahk_exe AutoHotkey.exe
+    ;WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk ahk_exe AutoHotkey.exe
     ;runwait_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Start_NVidia_Recording.ahk", "shutdown")
     loop
     {
@@ -2577,8 +2577,8 @@ RepeatSound(sound, seconds, tooltip)
     Tooltip, 
     loop
     {
-        sleep, %ms%
         SoundPlay, %sound%
+        sleep, %ms%
         WinClose, ahk_exe C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Drikkelek101.ahk
     }
 }

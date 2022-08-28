@@ -267,16 +267,7 @@ C:\Users\pass9\OneDrive\Documents\WindowsPowerShell\
 https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 
-loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) and .NET Framework 4.5 (or later) are installed. Then run:
-{
-     run, powershell.exe cup powershell powershell-core dotnet4.6.1 powershell;Set-ExecutionPolicy RemoteSigned -scope CurrentUser;Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-     sleep, 5000
-     send, a
-     send, {enter}
-     sleep, 3000
-     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop install git
-     runwait, cmd.exe /c C:\Users\93and\scoop\shims\scoop update
-}
+C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Install_Scoop.ahk
 
 */
 
@@ -293,7 +284,7 @@ loop 3    ;SCOOP    Make sure PowerShell 5 (or later, include PowerShell Core) a
 
 
 ;temp cus windows updatie killed wifi
-update=0
+;update=0
 
 
 
