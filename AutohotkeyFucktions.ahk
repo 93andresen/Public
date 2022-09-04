@@ -136,7 +136,7 @@ AT(title)
 {
     WinGetActiveTitle, AT
     if AT contains %title%
-        return 1
+        return AT
     else
         return 0
 }
@@ -196,7 +196,7 @@ ResumeSpotify(arg:="")
         }
     }
 }
-act(title:="", timeout:="once", minmax:="0")
+act(title:="", timeout:="once", minmax:="0", id:="")
 {
     if timeout = once
         count=1
@@ -206,6 +206,16 @@ act(title:="", timeout:="once", minmax:="0")
     {
         ;Tooltip, Waiting for %AT%`nTimeout in %count%
         WinGetActiveTitle, REAL_AT
+        WinGet, REAL_ID, ID, A
+        if REAL_ID Contains %id%
+        {
+            ;Tooltip,
+            if minmax=min
+                WinMinimize, ahk_id %title%
+            if minmax=max
+                WinMaximize, ahk_id %title%
+            return 1
+        }
         if REAL_AT Contains %title%
         {
             ;Tooltip,
@@ -845,7 +855,7 @@ ConnectToWifi(hotspot:="")
     }
     inirw("w", "ConnectToWifi_running", "1")
     ;if hotspot=hotspot
-    ;    RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+    ;    RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
     loop 6
     {
         If not ConnectedToInternet()
@@ -952,7 +962,7 @@ Hotspot()
         hotspotcount+=1
         ;WinClose, Settings
         if not act("Settings")
-            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "0", "max", "10")
+            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "0", "max", "10")
         x=1622
         y=182
         PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
@@ -1056,7 +1066,7 @@ Hotspot_old()
     {
         hotspotcount+=1
         ;WinClose, Settings
-        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
         x=1622
         y=182
         PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
@@ -1235,7 +1245,7 @@ Hotspot_old()
         {
             hotspotcount+=1
             ;WinClose, Settings
-            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
+            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
             x=1622
             y=182
             PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
