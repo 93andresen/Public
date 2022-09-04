@@ -1,4 +1,4 @@
-WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minmaxhide:="", tooltip:="0")
+WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minmaxhide:="")
 {
     if FileExist(path)
     {
@@ -20,8 +20,7 @@ WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minm
         Timeout := ms/=100
         loop %Timeout%
         {
-            if tooltip != 0
-                Tooltip, Waiting for Path to Exist`n`npath=%path%`n`nTimeout=%Timeout%
+            Tooltip, Waiting for Path to Exist`n`npath=%path%`n`nTimeout=%Timeout%
             if FileExist(path)
             {
                 if run=run
@@ -43,7 +42,7 @@ WaitForPathToExist(path, ms:="10000", run:="run", args:="", WorkingDir:="", minm
         }
     }
 }
-KeepRunningChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
+KeepProcessAliveChain(exe_main, exe1:="", exe2:="", exe3:="", exe4:="", exe5:="", exe6:="", exe7:="", exe8:="", exe9:="", exe10:="")
 {
     SplitPath, exe_main, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if ProcExist(OutFileName)
@@ -136,7 +135,7 @@ AT(title)
 {
     WinGetActiveTitle, AT
     if AT contains %title%
-        return AT
+        return 1
     else
         return 0
 }
@@ -170,9 +169,7 @@ ResumeSpotify(arg:="")
         RunPath(exe_path, "0", "")
     }
     if arg contains startup
-        sleep, 60000
-    else
-        sleep, 30000
+        sleep, 15000
     loop
     {
         WinGetActiveTitle, AT
@@ -196,7 +193,7 @@ ResumeSpotify(arg:="")
         }
     }
 }
-act(title:="", timeout:="once", minmax:="0", id:="")
+act(title:="", timeout:="once", minmax:="0")
 {
     if timeout = once
         count=1
@@ -206,16 +203,6 @@ act(title:="", timeout:="once", minmax:="0", id:="")
     {
         ;Tooltip, Waiting for %AT%`nTimeout in %count%
         WinGetActiveTitle, REAL_AT
-        WinGet, REAL_ID, ID, A
-        if REAL_ID Contains %id%
-        {
-            ;Tooltip,
-            if minmax=min
-                WinMinimize, ahk_id %title%
-            if minmax=max
-                WinMaximize, ahk_id %title%
-            return 1
-        }
         if REAL_AT Contains %title%
         {
             ;Tooltip,
@@ -244,21 +231,21 @@ NotifyWhenRebekka(arg)
         {
             if arg=moving
             {
-                ;if foundher=0
-                ;{
-                ;    if OpenGoogleMaps("1", "20")
-                ;        foundher=1
-                ;    else
-                ;        return 0
-                ;}
-                ;if LookForRebekka(Byref px:="", Byref py:="")!=0
-                ;{
-                ;    send, ^w
-                ;    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
-                ;    WinMinimizeAll
-                ;    return 1
-                ;}
-                ;sleep, 1000
+                if foundher=0
+                {
+                    if OpenGoogleMaps("1", "20")
+                        foundher=1
+                    else
+                        return 0
+                }
+                if LookForRebekka(Byref px:="", Byref py:="")!=0
+                {
+                    send, ^w
+                    runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\find_my_device_google_android_ring.ahk 0
+                    WinMinimizeAll
+                    return 1
+                }
+                sleep, 1000
             }
             else if arg=close
             {
@@ -547,7 +534,6 @@ Process_Resume_All()
 FirefoxCleanRAMProcessControl()
 {
     Process_Resume("Firefox.exe")
-    ;FirefoxCleanRAM()
     FirefoxCleanRAM()
     Process_Suspend("Firefox.exe")
 }
@@ -582,18 +568,12 @@ FirefoxCleanRAM()
         if AT22 not contains Firefox
             WinActivate, ahk_exe firefox.exe
         WinMaximize, ahk_exe firefox.exe
-        WinWaitActive, ahk_exe Firefox.exe
         WinGetActiveTitle, AT73
         if AT73 not contains blank
-        [
-            send, ^t
-            sleep, 300
-            send, ^v
-            send, {enter}
-            ;run, firefox.exe -new-tab about:blank -foreground,,max
-        ]
+            run, firefox.exe -new-tab about:blank -foreground,,max
+        WinWaitActive, ahk_exe Firefox.exe
         Tooltip, Discarding Tabs
-        send, +!i
+        send, +!m
         loop 2
         {
             if AT22 not contains about:memory
@@ -607,7 +587,7 @@ FirefoxCleanRAM()
                     if AT6 contains about:memory
                     {
                         Tooltip, Discarding Tabs
-                        send, +!i
+                        send, +!m
                         sleep, 200
                         send, ^w
                         break
@@ -616,7 +596,7 @@ FirefoxCleanRAM()
             }
         }
         sleep, 200
-        send, +!i
+        send, +!m
     }
     else
         msgbox, WHAT
@@ -855,7 +835,7 @@ ConnectToWifi(hotspot:="")
     }
     inirw("w", "ConnectToWifi_running", "1")
     ;if hotspot=hotspot
-    ;    RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
+    ;    RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
     loop 6
     {
         If not ConnectedToInternet()
@@ -962,7 +942,7 @@ Hotspot()
         hotspotcount+=1
         ;WinClose, Settings
         if not act("Settings")
-            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "0", "max", "10")
+            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "0", "max", "10")
         x=1622
         y=182
         PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
@@ -1066,7 +1046,7 @@ Hotspot_old()
     {
         hotspotcount+=1
         ;WinClose, Settings
-        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
+        RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
         x=1622
         y=182
         PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
@@ -1245,7 +1225,7 @@ Hotspot_old()
         {
             hotspotcount+=1
             ;WinClose, Settings
-            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodModeWindowsSettings\Mobile hotspot.lnk", "", "1", "1")
+            RunActivate("Settings", "C:\!\Paths\Sources\StartMenu_Programs_Merging_Folders\GodMode(WindowsSettings)\Mobile hotspot.lnk", "", "1", "1")
             x=1622
             y=182
             PixelGetColor, color, "1622", "187", RGB    ;   Should be black when on 0x000000
@@ -1445,6 +1425,7 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
     }
 
     end_process("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt")
+
     if ahkpanic!=0
     {
         AHKPanicExcept("1", "0", "0", "0", ahk_except)
@@ -1453,7 +1434,6 @@ KillApps(apps:="0", rocketleague:="0", light:="0", ahkpanic:="0", ahk_except:="0
     }
     runwait_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\CloseYoutubeDownloads.ahk", "fast")
     ;run, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\end_process.ahk C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\KILL_ALL_APPS_GENERATED.txt
-    FileDelete, KILL_ALL_APPS_GENERATED.txt
 
     ; kill harder and harder:
     ; PostMessage, 0x0112, 0xF060, , , WinTitle, WinText                                        ; 0x0112 = WM_SYSCOMMAND, 0xF060 = SC_CLOSE - This is like alt+F4 or pressing close button
@@ -1782,7 +1762,7 @@ BeforeShutdown()
 {
     run_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk", "dismount")
     KillApps("apps", "rocketleague", "light", "ahkpanic", "C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\mount_veracrypt_g3.ahk", "0")
-    ;WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk ahk_exe AutoHotkey.exe
+    WinClose, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\RunAsUser.ahk ahk_exe AutoHotkey.exe
     ;runwait_file_if_it_exists("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Start_NVidia_Recording.ahk", "shutdown")
     loop
     {
@@ -2587,8 +2567,8 @@ RepeatSound(sound, seconds, tooltip)
     Tooltip, 
     loop
     {
-        SoundPlay, %sound%
         sleep, %ms%
+        SoundPlay, %sound%
         WinClose, ahk_exe C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Drikkelek101.ahk
     }
 }
