@@ -371,7 +371,7 @@ if ooshutup = 4
 ooshutup(cfg)
 {
     dir=%A_WorkingDir%
-    SplitPath, cfg, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
+    SplitPath, %cfg%, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     FileCreateDir, %OutDir%
     SetWorkingDir, %OutDir%
     log("UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
