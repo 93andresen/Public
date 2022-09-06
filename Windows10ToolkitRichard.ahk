@@ -375,8 +375,8 @@ ooshutup(cfg)
     FileCreateDir, %OutDir%
     SetWorkingDir, %OutDir%
     log("UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
-    UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, OOSU10.exe
-    if not fileExist("OOSU10.exe")
+    UrlDownloadToFile, https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe, C:\temp_Windows10ToolkitRichard\Public-main\ooshutup\OOSU10.exe
+    if not fileExist("OOSU10.exe")p
         run, powershell.exe choco install ooshutup10
     log("cfg", "C:\temp_Windows10ToolkitRichard\Windows10ToolkitRichardLOG.txt")
     runwait, OOSU10.exe %cfg% /quiet
