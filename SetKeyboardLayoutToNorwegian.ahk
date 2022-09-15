@@ -13,8 +13,9 @@ SetBatchLines, 10ms
 log("Started Running")
 
 
-clipboard=$UserLanguageList = New-WinUserLanguageList -Language "no-NO"; $UserLanguageList.Add("no-NO"); Set-WinUserLanguageList -LanguageList $UserLanguageList -Force
 run, powershell.exe,,max
 winwaitactive, ahk_exe powershell.exe
+clipboard=$UserLanguageList = New-WinUserLanguageList -Language "no-NO"; $UserLanguageList.Add("no-NO"); Set-WinUserLanguageList -LanguageList $UserLanguageList -Force
 send, ^v{enter}
+WinWait
 ExitAppLog()
