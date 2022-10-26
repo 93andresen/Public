@@ -146,7 +146,7 @@ dns4a6c := inirwTOOLKIT("r", "dns4a6c")
 dns4c6a := inirwTOOLKIT("r", "dns4c6a")
 personal := inirwTOOLKIT("r", "personal")
 
-Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`n`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
+;Tooltip, nogui=%nogui%`nupdate=%update%`ndebloat=%debloat%`napps=%apps%`n`ndarktsk=%darktsk%`nreboot=%reboot%`nooshutup0=%ooshutup0%`nooshutup1=%ooshutup1%`nooshutup2=%ooshutup2%`nooshutup3=%ooshutup3%`nooshutup4=%ooshutup4%`ndns4a6a=%dns4a6a%`ndns4c6c=%dns4c6c%`ndns4a6c=%dns4a6c%`ndns4c6a=%dns4c6a%`npersonal=%personal%
 
 /*
 Scoop_App_List:
@@ -1028,5 +1028,40 @@ log(x, filename:="C:\!\Logs\LogToFile.log")
 	FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLong% %x%, %filename%
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

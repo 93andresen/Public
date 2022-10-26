@@ -26,7 +26,7 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 }
 bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 count=91
-command=powershell.exe %bypass% Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1
+command=powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 count := runwait_tooltip(command, count)
 command=powershell.exe choco feature enable -n=allowGlobalConfirmation
 count := runwait_tooltip(command, count)
@@ -227,7 +227,7 @@ ExitAppLog()
 runwait_tooltip(command, count)
 {
     Tooltip, running %command%`n%count% commands left`nlast 70 commands are fast
-    runwait, %command%,,hide
+    runwait, %command%,,max
     count-=1
     return count
 }
