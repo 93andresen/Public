@@ -11,9 +11,12 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 
 scoop config virustotal_api_key 74d630ba1d36da2977493b5921ba04cce95e359063e827473796abc549c8c949 # TODO Remove SENSITIVE INFORMATION API KEY
 scoop install modern7z
+scoop update modern7z
 scoop install git
+scoop update git
 git config --global credential.helper manager-core
 scoop install sudo
+scoop update sudo
 sudo Add-MpPreference -ExclusionPath 'C:\Users\93and\scoop'
 scoop bucket add main https://github.com/ScoopInstaller/Main
 scoop bucket add extras https://github.com/ScoopInstaller/Extras
@@ -33,11 +36,15 @@ scoop bucket add dorado https://github.com/chawyehsu/dorado
 
 
 scoop install lessmsi
+scoop update lessmsi
 scoop config MSIEXTRACT_USE_LESSMSI true
 scoop install innoextract
+scoop update innoextract
 scoop config INNOSETUP_USE_INNOEXTRACT true
 scoop install dark
+scoop update dark
 scoop install aria2
+scoop update aria2
 scoop config aria2-enabled true
 scoop config aria2-retry-wait 2
 scoop config aria2-split 16
@@ -45,12 +52,13 @@ scoop config aria2-max-connection-per-server 16
 scoop config aria2-min-split-size 4M
 scoop config aria2-warning-enabled false
 scoop install alias-additions
+scoop update alias-additions
 scoop install scoop-completion
-C:\Users\93and\scoop\apps\scoop-completion\current\add-profile-content.ps1
-
+scoop update scoop-completion
+C:\Users\93and\scoop\apps\scoop-completion\current\add-profile-content.ps1  #TODO create profile if non-existant
 scoop alias add reinstall 'scoop uninstall $args[0]; scoop install $args[0]' 'Uninstall and then install app'
 
-# git config --global --add safe.directory C:/Users/93and/scoop/apps/scoop/current TODO: make dynamic uusername
+# git config --global --add safe.directory C:/Users/93and/scoop/apps/scoop/current TODO: make dynamic username
 
 
 # Pre- and Post Install Stuff:
@@ -64,6 +72,23 @@ Autohotkey
 #    winget install Microsoft.DotNet.DesktopRuntime.6    #NESSESCARY
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<#
 
 # MAYBE scoop install UniExtract2
 # MAYBE scoop install curl
@@ -131,5 +156,13 @@ packer - Automates the creation of any type of virtual machine image.
 ahoy - Automate and organize your workflows, no matter what technology you use
 tinytask - Windows automation app for recording and repeating actions.
 scoop install gink
+
+
+#>
+
+
+
+
+
 
 
