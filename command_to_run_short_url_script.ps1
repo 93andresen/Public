@@ -22,7 +22,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 ====================================================================
 
 
-
 ooshutop1: (Essesinal Tweaks (Probably Best For Most People)) This has none other flags then ooshutup1
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; mkdir C:\temp_Windows10ToolkitRichard\Public-main -ErrorAction SilentlyContinue; Invoke-WebRequest -Uri https://git.io/J13Mt -OutFile C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ps1 -ErrorAction SilentlyContinue;C:\temp_Windows10ToolkitRichard\Public-main\Windows10ToolkitRichard.ps1 ooshutup1
 
