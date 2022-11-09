@@ -12,14 +12,15 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 scoop config virustotal_api_key 74d630ba1d36da2977493b5921ba04cce95e359063e827473796abc549c8c949 # TODO Remove SENSITIVE INFORMATION API KEY
 scoop install modern7z
 scoop update modern7z
-C:\Users\93and\scoop\apps\7zip\current\install-context.reg
+reg import "C:\Users\$env:UserName\scoop\apps\7zip\current\install-context.reg"
 scoop install git
 scoop update git
-git config --global --add safe.directory C:/Users/$env:UserName/scoop/apps/scoop/current
+#git config --global --add safe.directory C:/Users/$env:UserName/scoop/apps/scoop/current
 git config --global credential.helper manager-core
 scoop install sudo
 scoop update sudo
-sudo Add-MpPreference -ExclusionPath 'C:\Users\93and\scoop' #Not Unnatended
+sudo Add-MpPreference -ExclusionPath 'C:\ExcludedAntivirus' #Not Unnatended
+
 
 scoop bucket add main https://github.com/ScoopInstaller/Main
 scoop bucket add extras https://github.com/ScoopInstaller/Extras
@@ -56,7 +57,7 @@ scoop install alias-additions
 scoop update alias-additions
 scoop install scoop-completion
 scoop update scoop-completion
-C:\Users\93and\scoop\apps\scoop-completion\current\add-profile-content.ps1  #TODO create profile if non-existant
+powershell.exe C:\Users\$env:UserName\scoop\apps\scoop-completion\current\add-profile-content.ps1
 scoop alias add reinstall 'scoop uninstall $args[0]; scoop install $args[0]' 'Uninstall and then install app'
 
 
@@ -67,15 +68,15 @@ scoop alias add reinstall 'scoop uninstall $args[0]; scoop install $args[0]' 'Un
 
 <#
 # Pre- and Post Install Stuff:
-everything
-    reg import "C:\Users\93and\scoop\apps\everything\current\install-context.reg"
+scoop install everything
+    reg import "C:\Users\$env:UserName\scoop\apps\everything\current\install-context.reg"
 
-Autohotkey
+scoop install Autohotkey
     FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\WindowSpy.ahk, C:\Program Files\AutoHotkey\WindowSpy.ahk, 1
     FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\WindowSpyFollowMouse.ahk, C:\Program Files\AutoHotkey\WindowSpyFollowMouse.ahk, 1
 
-7tt # 7+ Taskbar Tweaker #Not Unnatended
-    Install Portable version (In default location) and move "7+ Taskbar Tweaker.ini" to "C:\Users\93and\scoop\apps\7tt\current\7+ Taskbar Tweaker\7+ Taskbar Tweaker.ini"
+scoop install 7tt # 7+ Taskbar Tweaker #Not Unnatended
+    Install Portable version (In default location) and move "7+ Taskbar Tweaker.ini" to "C:\Users\$env:UserName\scoop\apps\7tt\current\7+ Taskbar Tweaker\7+ Taskbar Tweaker.ini"
 
 
 
@@ -110,8 +111,8 @@ gpg4win 7tt LinkShellExtension-Install
 
 Since Scoop uses pwsh.exe internally, to update PowerShell Core itself,
 run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.
-Add PowerShell Core as a explorer context menu by running: 'C:\Users\93and\scoop\apps\pwsh\current\install-explorer-context.reg'
-For file context menu, run 'C:\Users\93and\scoop\apps\pwsh\current\install-file-context.reg'
+Add PowerShell Core as a explorer context menu by running: 'C:\Users\$env:UserName\scoop\apps\pwsh\current\install-explorer-context.reg'
+For file context menu, run 'C:\Users\$env:UserName\scoop\apps\pwsh\current\install-file-context.reg'
 
 
 polaris - Polaris is a music streaming application, designed to let you enjoy your music collection from any computer or mobile device. Polaris works by streaming your music directly from your own computer, without uploading it to a third-party. It is free and open-source software, without any kind of premium version. The only requirement is that your computer stays on while it streams music! 
