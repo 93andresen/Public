@@ -29,7 +29,8 @@ scoop bucket add nirsoft https://github.com/kodybrown/scoop-nirsoft
 scoop bucket add nonportable https://github.com/ScoopInstaller/Nonportable
 scoop bucket add java https://github.com/ScoopInstaller/Java    #   VirtualboxVM Crashed here
 scoop bucket add galaxy-integrations https://github.com/borger/scoop-galaxy-integrations.git
-scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps
+scoop bucket add Scoop-Apps https://github.com/ACooper81/scoop-apps
+scoop bucket add Scoop-Settings https://github.com/ACooper81/scoop-settings
 scoop bucket add nerd-fonts https://github.com/matthewjberger/scoop-nerd-fonts
 scoop bucket add games https://github.com/Calinou/scoop-games
 scoop bucket add php https://github.com/ScoopInstaller/PHP

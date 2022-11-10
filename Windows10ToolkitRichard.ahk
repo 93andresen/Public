@@ -25,6 +25,9 @@ if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
 FileCreateDir, C:\temp_Windows10ToolkitRichard
 SetWorkingDir, C:\temp_Windows10ToolkitRichard
 
+runwait, powershell.exe choco feature enable -n=allowGlobalConfirmation,, hide
+runwait, powershell.exe choco feature enable -n=allowEmptyChecksums,, hide
+runwait, powershell.exe choco config set cacheLocation C:\zzz_Chocolatey_Cache -y,, hide
 
 updating := inirwTOOLKIT("r", "updating")
 
