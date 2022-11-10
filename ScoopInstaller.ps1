@@ -1,6 +1,6 @@
 ﻿Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+# Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 # Short Version
 # iwr -useb get.scoop.sh | iex
 
@@ -19,8 +19,24 @@ scoop update git
 git config --global credential.helper manager-core
 scoop install sudo
 scoop update sudo
-sudo Add-MpPreference -ExclusionPath 'C:\ExcludedAntivirus' #Not Unnatended
+sudo Add-MpPreference -ExclusionPath 'C:\Users\$env:UserName\scoop' #Not Unnatended
 
+
+# scoop bucket rm main https://github.com/ScoopInstaller/Main
+# scoop bucket rm extras https://github.com/ScoopInstaller/Extras
+# scoop bucket rm versions https://github.com/ScoopInstaller/Versions
+# scoop bucket rm nirsoft https://github.com/kodybrown/scoop-nirsoft
+# scoop bucket rm nonportable https://github.com/ScoopInstaller/Nonportable
+# scoop bucket rm java https://github.com/ScoopInstaller/Java    #   VirtualboxVM Crashed here
+# scoop bucket rm galaxy-integrations https://github.com/borger/scoop-galaxy-integrations.git
+# scoop bucket rm Scoop-Apps https://github.com/ACooper81/scoop-apps
+# scoop bucket rm Scoop-Settings https://github.com/ACooper81/scoop-settings
+# scoop bucket rm nerd-fonts https://github.com/matthewjberger/scoop-nerd-fonts
+# scoop bucket rm games https://github.com/Calinou/scoop-games
+# scoop bucket rm php https://github.com/ScoopInstaller/PHP
+# scoop bucket rm skellygore_scoop-bucket https://github.com/skellygore/scoop-bucket
+# scoop bucket rm wangzq https://github.com/wangzq/scoop-bucket
+# scoop bucket rm dorado https://github.com/chawyehsu/dorado
 
 scoop bucket add main https://github.com/ScoopInstaller/Main
 scoop bucket add extras https://github.com/ScoopInstaller/Extras
@@ -67,7 +83,9 @@ scoop alias add reinstall 'scoop uninstall $args[0]; scoop install $args[0]' 'Un
 
 
 
+
 <#
+
 # Pre- and Post Install Stuff:
 scoop install everything
     reg import "C:\Users\$env:UserName\scoop\apps\everything\current\install-context.reg"
@@ -77,8 +95,9 @@ scoop install Autohotkey
     FileCopy, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\WindowSpyFollowMouse.ahk, C:\Program Files\AutoHotkey\WindowSpyFollowMouse.ahk, 1
 
 scoop install 7tt # 7+ Taskbar Tweaker #Not Unnatended
-    Install Portable version (In default location) and move "7+ Taskbar Tweaker.ini" to "C:\Users\$env:UserName\scoop\apps\7tt\current\7+ Taskbar Tweaker\7+ Taskbar Tweaker.ini"
-
+    Install Portable version (In default location) and move "7+ Taskbar Tweaker.ini" to "C:\Users\$env:UserName\scoop\apps\7tt\current\7+ Taskbar Tweaker.ini"
+        Standard Location (breaks persisting): C:\Users\$env:UserName\scoop\apps\7tt\current\7+ Taskbar Tweaker
+        Correct Location(fixes persisting): C:\Users\$env:UserName\scoop\apps\7tt\current
 
 
 
