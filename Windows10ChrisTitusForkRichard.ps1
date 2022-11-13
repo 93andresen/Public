@@ -253,14 +253,14 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Flyout
     New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" | Out-Null
 }
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 0
-Write-Host "Showing task manager details..."
-$taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
-Do {
-    Start-Sleep -Milliseconds 100
-    $preferences = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -ErrorAction SilentlyContinue
-} Until ($preferences)
-Stop-Process $taskmgr
-$preferences.Preferences[28] = 0
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      Write-Host "Showing task manager details..."
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      $taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      Do {
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE          Start-Sleep -Milliseconds 100
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE          $preferences = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -ErrorAction SilentlyContinue
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      } Until ($preferences)
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      Stop-Process $taskmgr
+# DISABLED CUS WINDOWS 11 FREEZEZ HERE      $preferences.Preferences[28] = 0
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -Type Binary -Value $preferences.Preferences
 Write-Host "Showing file operations details..."
 If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager")) {
