@@ -5,8 +5,6 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 
 script_bypass=Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 
-
-
 ;; If the script is not elevated, relaunch as administrator and kill current instance:
 full_command_line := DllCall("GetCommandLine", "str")
 if not (A_IsAdmin or RegExMatch(full_command_line, " /restart(?!\S)"))
