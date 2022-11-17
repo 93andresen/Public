@@ -1,4 +1,4 @@
-﻿scoop install vscode
+﻿scoop install C:\Users\$env:UserName\buckets\extras\bucket\vscode.json
 
 reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-context.reg
 reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-associations.reg
@@ -21,6 +21,36 @@ naumovs.color-highlight
 
 GO THROUGH THESE:
 C:\!\Text\ALL_EXTENSIONS_TO_GO_THROUGH.txt
+
+
+code --uninstall-extension zweack.vsc-navigator
+code --uninstall-extension yzane.markdown-pdf
+code --uninstall-extension tchayen.markdown-links
+code --uninstall-extension svsool.markdown-memo
+code --uninstall-extension mervin.markdown-formatter
+code --uninstall-extension joffreykern.markdown-toc
+code --uninstall-extension goessner.mdmath
+code --uninstall-extension DavidAnson.vscode-markdownlint
+code --uninstall-extension csholmq.excel-to-markdown-table
+code --uninstall-extension tomoki1207.pdf
+code --uninstall-extension formulahendry.docker-explorer
+code --uninstall-extension github.vscode-pull-request-github
+code --uninstall-extension henriiik.docker-linter
+code --uninstall-extension ms-python.isort
+code --uninstall-extension ms-python.python
+code --uninstall-extension ms-python.vscode-pylance
+code --uninstall-extension ms-toolsai.jupyter
+code --uninstall-extension ms-toolsai.vscode-jupyter-cell-tags
+code --uninstall-extension ms-toolsai.vscode-jupyter-slideshow
+code --uninstall-extension ms-vscode-remote.remote-wsl
+code --uninstall-extension natizyskunk.sftp
+code --uninstall-extension redhat.ansible
+code --uninstall-extension shardulm94.trailing-spaces
+code --uninstall-extension sleistner.vscode-fileutils
+code --uninstall-extension softwaredotcom.swdc-vscode
+code --uninstall-extension tombonnike.vscode-status-bar-format-toggle
+code --uninstall-extension tomoki1207.pdf
+
 
 
 
