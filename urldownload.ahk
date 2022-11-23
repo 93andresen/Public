@@ -1,4 +1,6 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿;1
+#NoTrayIcon
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 #SingleInstance, force
@@ -11,7 +13,7 @@ SetBatchLines, 10ms
 
 
 
-
+msgbox, IT WORKED
 
 
 
