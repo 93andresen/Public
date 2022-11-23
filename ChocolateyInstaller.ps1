@@ -1,4 +1,5 @@
-﻿# INSTALLING CHOCOLATEY
+﻿Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+
 if (Test-Path "C:\ProgramData\chocolatey\bin\choco.exe"){
     'Chocolatey Allready Installed'
 }  
