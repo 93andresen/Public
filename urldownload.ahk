@@ -1,4 +1,4 @@
-﻿;3
+﻿;4
 #NoTrayIcon
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
@@ -13,7 +13,7 @@ SetBatchLines, 10ms
 
 
 
-msgbox, IT WORKED3
+msgbox, IT WORKED4
 
 
 
