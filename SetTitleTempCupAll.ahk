@@ -13,8 +13,8 @@ SetBatchLines, 10ms
 log("Started Running")
 
 
-act("powershell", "60000", "min")
-if act("Administrator: Windows PowerShell", "60000", "min")
+act("powershell", "60000", "max")
+if act("Administrator: Windows PowerShell", "60000", "max")
     WinSetTitle, Administrator: Windows PowerShell, , Updating All Applications And Latest Youtube Playlist ___title_for_closing___
 ExitAppLog()
 

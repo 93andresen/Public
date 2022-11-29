@@ -1,4 +1,4 @@
-﻿;4
+﻿;5
 #NoTrayIcon
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
@@ -12,10 +12,14 @@ DetectHiddenText, On
 SetBatchLines, 10ms
 
 
-
-
-
-
+try
+{
+    run, powershell.exe scoop install extras/peazip
+}
+catch
+{
+    sleep, 1
+}
 
 
 
