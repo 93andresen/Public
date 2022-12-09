@@ -1,4 +1,4 @@
-﻿;6
+﻿;7
 #NoTrayIcon
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ;#Warn  ; Enable warnings to assist with detecting common errors.
@@ -12,14 +12,14 @@ DetectHiddenText, On
 SetBatchLines, 10ms
 
 
-try
-{
-    run, powershell.exe scoop uninstall peazip,,hide
-}
-catch
-{
-    sleep, 1
-}
+;try
+;{
+;    run, powershell.exe scoop uninstall peazip,,hide
+;}
+;catch
+;{
+;    sleep, 1
+;}
 
 
 
