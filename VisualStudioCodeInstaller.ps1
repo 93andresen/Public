@@ -1,7 +1,6 @@
 ﻿scoop install C:\Users\$env:UserName\buckets\extras\bucket\vscode.json
-
-reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-context.reg
-reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-associations.reg
+    reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-context.reg
+    reg import C:\Users\$env:UserName\scoop\apps\vscode\current\install-associations.reg
 
 
 code --install-extension %EXTENSION_HERE%

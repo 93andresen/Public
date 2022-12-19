@@ -48,9 +48,7 @@ count := runwait_tooltip(command, count)
 UrlDownloadToFile, https://raw.githubusercontent.com/93andresen/Public/main/chocolatey.config, chocolatey.config
 if FileExist("chocolatey.config")
     FileCopy, chocolatey.config, C:\ProgramData\chocolatey\config\chocolatey.config, 1
-FileCreateDir, C:\zzz_Chocolatey_Cache
 
-FileCreateDir, C:\zzz_Chocolatey_Cache
 command=powershell.exe choco config set cacheLocation C:\zzz_Chocolatey_Cache -y
 count := runwait_tooltip(command, count)
 
