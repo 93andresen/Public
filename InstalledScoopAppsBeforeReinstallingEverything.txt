@@ -28,7 +28,7 @@ dockercompletion
 eartrumpet
 electerm
 Fastcopy
-ffmpeg-yt-dlp
+ffmpeg-ytdl-patched
 fileoptimizer
 firefox
 flux
@@ -103,5 +103,5 @@ windowsdesktop-runtime-lts
 winobjex64
 wireshark
 youtube-music
-yt-dlp
+ytdl-patched
 zstd

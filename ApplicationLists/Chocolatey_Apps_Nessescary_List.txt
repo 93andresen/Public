@@ -48,7 +48,7 @@ Virtualbox
 Copyq
 Discord
 Eartrumpet
-C:\Users\93and\scoop\apps\yt-dlp\current\yt-dlp.exe
+C:\Users\93and\scoop\apps\ytdl-patched\current\ytdl-patched.exe
 Choco-Package-List-Backup
 Battle.net
 Ds4windows
