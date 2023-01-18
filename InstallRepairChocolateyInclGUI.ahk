@@ -225,12 +225,12 @@ ExitAppLog()
 runwait_tooltip(command, count)
 {
     Tooltip, running %command%`n%count% commands left`nlast 70 commands are fast
-    runwait, %command%,,max
+    runwait, %command%,,min
     count-=1
     return count
 }
 
-~Esc::
+~^Esc::
 if esc!=1
 {
     esc=1

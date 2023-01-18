@@ -93,7 +93,7 @@ ExitApp
 
 RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max", wait:="0")
 {
-    ;FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    ;FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     ;if temp_path = TimeLong_temp_path
     ;    temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
     SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive

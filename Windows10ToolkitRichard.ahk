@@ -250,7 +250,7 @@ musicxmatch
 FormatTime, TFileCreateDir, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Remember_for_Later.ahkd_HH-mm-ss
 %clipboard% > FileCreateDir, C:\!\Logs\CMD\%TIME%CMD.txt
 
-FormatTime, TIME, , yyyy-MM-dd_HH-mm-ss
+FormatTime, TIME, , yyyy-MM-dd-HH-mm-ss
 ;%clipboard% | Out-File -FilePath FileCreateDir, C:\!\Logs\Powershell\%TIME%Powershell.txt
 
 
@@ -398,7 +398,7 @@ if personal = 1
     ;f_RefreshExplorer()    ;Uncomment this line after function fix
     runwait, choco install dellcommandupdate -y
     FileCreateDir, C:\!\Logs\DellCommandUpdate
-    FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -userConsent=disable -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     Tooltip, INSTALLING DELL COMMAND UPDATES
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
@@ -874,7 +874,7 @@ PrintDebug(string:=""){
 }
 RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max")
 {
-    ;FormatTime, TimeLong,, yyyy-MM-dd_HH.mm.ss
+    ;FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     ;if temp_path = TimeLong_temp_path
     ;    temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
     SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
@@ -1026,7 +1026,7 @@ CheckInstall(path, choconame)
 
 log(x, filename:="C:\!\Logs\LogToFile.log")
 {
-	FormatTime,TimeLong,, yyyy-MM-dd_HH-mm-ss.%A_msec%
+	FormatTime,TimeLong,, yyyy-MM-dd-HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLong% %x%, %filename%
 }
 
