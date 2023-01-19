@@ -1,4 +1,4 @@
-#SingleInstance, Force
+#SingleInstance force
 SendMode Input
 SetWorkingDir, %A_ScriptDir%
 
