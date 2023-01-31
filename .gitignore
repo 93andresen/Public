@@ -1,2 +1,4 @@
-.autogit
+/.autogit
 /.history
+sync.ffs_db
+sync.ffs_lock
