@@ -248,17 +248,17 @@ musicxmatch
 --allow-empty-checksums -y
 
 FormatTime, TFileCreateDir, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Remember_for_Later.ahkd_HH-mm-ss
-%clipboard% > FileCreateDir, C:\!\Logs\CMD\%TIME%CMD.txt
+%clipboard% > FileCreateDir, C:\_\Logs\CMD\%TIME%CMD.txt
 
 FormatTime, TIME, , yyyy-MM-dd-HH-mm-ss
-;%clipboard% | Out-File -FilePath FileCreateDir, C:\!\Logs\Powershell\%TIME%Powershell.txt
+;%clipboard% | Out-File -FilePath FileCreateDir, C:\_\Logs\Powershell\%TIME%Powershell.txt
 
 
 Get-Content -Path C:\Users\pass9\OneDrive\Documents\PowerShell_transcript.DELL-G3-3579.Bw+4eX4a.20210408204538.txt
 
 Start-Transcript -IncludeInvocationHeader -NoClobber -Append
 
-Start-Transcript -Path FileCreateDir, C:\!\Logs\Powershell_Transcript.log
+Start-Transcript -Path FileCreateDir, C:\_\Logs\Powershell_Transcript.log
 -Append
 [-Force -NoClobber -IncludeInvocationHeader
 [-WhatIf]
@@ -397,7 +397,7 @@ if personal = 1
     RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, ShowSuperHidden, 1
     ;f_RefreshExplorer()    ;Uncomment this line after function fix
     runwait, choco install dellcommandupdate -y
-    FileCreateDir, C:\!\Logs\DellCommandUpdate
+    FileCreateDir, C:\_\Logs\DellCommandUpdate
     FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -userConsent=disable -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     Tooltip, INSTALLING DELL COMMAND UPDATES
@@ -872,11 +872,11 @@ PrintDebug(string:=""){
 	}
 	ControlSetText Edit1, %string%, ahk_id %A_ScriptHwnd%
 }
-RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max")
+RunPowershellLog(command, path:="C:\_\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max")
 {
     ;FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     ;if temp_path = TimeLong_temp_path
-    ;    temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
+    ;    temp_path = C:\_\Logs\Powershell\%TimeLong%_PowershellLog.txt
     SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if not FileExist(OutDir)
         FileCreateDir, %OutDir%
@@ -1024,7 +1024,7 @@ CheckInstall(path, choconame)
     return %status%
 }
 
-log(x, filename:="C:\!\Logs\LogToFile.log")
+log(x, filename:="C:\_\Logs\LogToFile.log")
 {
 	FormatTime,TimeLong,, yyyy-MM-dd-HH-mm-ss.%A_msec%
 	FileAppend, `n%TimeLong% %x%, %filename%

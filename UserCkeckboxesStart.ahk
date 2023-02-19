@@ -91,11 +91,11 @@ inirwTOOLKIT("w", "ooshutup4", ooshutup4)
 
 ExitApp
 
-RunPowershellLog(command, path:="C:\!\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max", wait:="0")
+RunPowershellLog(command, path:="C:\_\Logs\Powershell\_PowershellLog.txt", minmaxhide:="max", wait:="0")
 {
     ;FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
     ;if temp_path = TimeLong_temp_path
-    ;    temp_path = C:\!\Logs\Powershell\%TimeLong%_PowershellLog.txt
+    ;    temp_path = C:\_\Logs\Powershell\%TimeLong%_PowershellLog.txt
     SplitPath, path, OutFileName, OutDir, OutExtension, OutNameNoExt, OutDrive
     if not FileExist(OutDir)
         FileCreateDir, %OutDir%
