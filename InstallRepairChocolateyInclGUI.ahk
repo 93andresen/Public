@@ -8,7 +8,7 @@ SetTitleMatchMode, 2
 DetectHiddenWindows, On
 DetectHiddenText, On
 SetBatchLines, 10ms
-#Include, AutohotkeyFucktions.ahk
+#Include, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk
 ;CompileRun(A_ScriptFullPath)
 log("Started Running")
 
