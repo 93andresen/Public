@@ -4,6 +4,7 @@
 Windows10Perfect - ooshutup3 for Maximum Privacy
 
 iwr https://git.io/J13Mt -UseBasicParsing | iex
+iwr https://git.io/J13Mt | iex
 
 
 iwr git.io/J13Mt -UseBasicParsing | iex
