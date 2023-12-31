@@ -50,7 +50,7 @@ Iconsext
 Iconizer
 Faviconizer
 Desktopicons-winconfig
-Keepass-plugin-favicon
+keepass-plugin-favicon
 Ansicon
 Nvidia-profile-inspector
 Taskbarx

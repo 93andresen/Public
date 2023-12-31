@@ -20,10 +20,10 @@ FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
 gui, Add, Tab2,, Pick Applications to Install 2/2
-gui, add, Text,, Keepass And Plugins:
-Gui, Add, CheckBox, gGoHereWhenClicked3, Check All - Keepass and All Plugins
+gui, add, Text,, keepass And Plugins:
+Gui, Add, CheckBox, gGoHereWhenClicked3, Check All - keepass and All Plugins
 countlines += 1
-loop, read, Keepass_And_Plugins_List.txt
+loop, read, keepass_And_Plugins_List.txt
 {
     gui, Tab, 1
     if	!Mod(A_Index, 30)
@@ -65,7 +65,7 @@ gui, Tab  ; i.e. subsequently-added controls will not belong to the tab control.
 gui, Add, Button, default xm, INSTALL  ; xm puts it at the bottom left corner.
 gui, Show
 WinWaitActive, Windows10ToolkitRichard2.ahk
-WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - Keepass And Plugins Yubikey Apps and Winget Apps
+WinSetTitle, Windows10ToolkitRichard2.ahk, , Pick Applications to Install 2/2 - keepass And Plugins Yubikey Apps and Winget Apps
 check_ran=0
 GoHereWhenClicked3:
 GuiControlGet, check,, Button1
@@ -104,7 +104,7 @@ SetWorkingDir, C:\temp_Windows10ToolkitRichard\PICKEDApplicationsLists
 Filedelete, PICKED_Chocolatey_Apps_Nessescary_List.txt
 Filedelete, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 Filedelete, PICKED_Winget_List.txt
-Filedelete, PICKED_Keepass_And_Plugins_List.txt
+Filedelete, PICKED_keepass_And_Plugins_List.txt
 Filedelete, PICKED_Yubikey_Apps_List.txt
 Filedelete, PICKED_Extra_Chocolatey_Apps.txt
 
@@ -114,8 +114,8 @@ loop %countlines2%
     if checkbox3_%count% = 1
     {
         keepass_app = % appname3_%count%
-        FileAppend, %keepass_app%, PICKED_Keepass_And_Plugins_List.txt
-        FileAppend, %A_Space%, PICKED_Keepass_And_Plugins_List.txt
+        FileAppend, %keepass_app%, PICKED_keepass_And_Plugins_List.txt
+        FileAppend, %A_Space%, PICKED_keepass_And_Plugins_List.txt
     }
     count+=1
 }
@@ -156,7 +156,7 @@ runwait, powershell.exe choco feature enable -n allowEmptyChecksums -y,,max
 fileread, PICKED_Chocolatey_Apps_Nessescary_List, PICKED_Chocolatey_Apps_Nessescary_List.txt
 fileread, PICKED_Chocolatey_Apps_Maybe_And_Other_List, PICKED_Chocolatey_Apps_Maybe_And_Other_List.txt
 fileread, PICKED_Winget_List, PICKED_Winget_List.txt
-fileread, PICKED_Keepass_And_Plugins_List, PICKED_Keepass_And_Plugins_List.txt
+fileread, PICKED_keepass_And_Plugins_List, PICKED_keepass_And_Plugins_List.txt
 fileread, PICKED_Yubikey_Apps_List, PICKED_Yubikey_Apps_List.txt
 fileread, PICKED_Extra_Chocolatey_Apps, PICKED_Extra_Chocolatey_Apps.txt
 
@@ -168,7 +168,7 @@ if PICKED_Chocolatey_Apps_Nessescary_List contains Setdefaultbrowser Firefox
 {
     runwait, powershell.exe cup Setdefaultbrowser firefox --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Firefox.txt;SetDefaultBrowser.exe HKLM Firefox-308046B0AF4A39CB | Tee-Object -file Installing_Applications_Output_SetDefaultBrowser.txt,,max
 }
-runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt;choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt;choco upgrade %PICKED_Keepass_And_Plugins_List% -y | Tee-Object -file Installing_Applications_Output_Keepass_And_Plugins_List.txt;choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object -file Installing_Applications_Output_Yubikey_Apps_List.txt;choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt;%PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,max
+runwait, powershell.exe choco upgrade %PICKED_Chocolatey_Apps_Nessescary_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt;choco upgrade %PICKED_Chocolatey_Apps_Maybe_And_Other_List% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt;choco upgrade %PICKED_keepass_And_Plugins_List% -y | Tee-Object -file Installing_Applications_Output_keepass_And_Plugins_List.txt;choco upgrade %PICKED_Yubikey_Apps_List% -y | Tee-Object -file Installing_Applications_Output_Yubikey_Apps_List.txt;choco upgrade %PICKED_Extra_Chocolatey_Apps% --ignore-checksums -y | Tee-Object -file Installing_Applications_Output_Extra_Chocolatey_Apps.txt;%PICKED_Winget_List% | Tee-Object -file Installing_Applications_Output_Winget_List.txt,,max
 
 
 
@@ -176,7 +176,7 @@ AppendFileToLog("Installing_Applications_Output_Firefox.txt")
 AppendFileToLog("Installing_Applications_Output_SetDefaultBrowser.txt")
 AppendFileToLog("Installing_Applications_Output_Chocolatey_Apps_Nessescary_List.txt")
 AppendFileToLog("Installing_Applications_Output_Chocolatey_Apps_Maybe_And_Other_List.txt")
-AppendFileToLog("Installing_Applications_Output_Keepass_And_Plugins_List.txt")
+AppendFileToLog("Installing_Applications_Output_keepass_And_Plugins_List.txt")
 AppendFileToLog("Installing_Applications_Output_Yubikey_Apps_List.txt")
 AppendFileToLog("Installing_Applications_Output_Extra_Chocolatey_Apps.txt")
 AppendFileToLog("Installing_Applications_Output_Winget_List.txt")
