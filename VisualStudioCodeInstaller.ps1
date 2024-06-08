@@ -19,7 +19,7 @@ Asuka.insertnumbers
 naumovs.color-highlight
 
 GO THROUGH THESE:
-C:\!\Text\ALL_EXTENSIONS_TO_GO_THROUGH.txt
+C:\_\Text\ALL_EXTENSIONS_TO_GO_THROUGH.txt
 
 anjali.clipboard-historyWas the clipboard problem (slow)
 
