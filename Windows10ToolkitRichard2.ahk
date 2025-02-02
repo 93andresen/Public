@@ -85,7 +85,7 @@ runwait, powershell.exe cup veracrypt --ignore-checksums -y,,min
 
 
 ;SILENT_INSTALL_AFTER_THIS__________________________________________________________________________
-;Tooltip, ONLY KEEPASS (Because I don't ignore checksums on keepass)
+;Tooltip, ONLY keepass (Because I don't ignore checksums on keepass)
 runwait, powershell.exe cup keepass -y,,min
 
 ;Tooltip, c:\python39\python.exe -m pip install --upgrade pip
@@ -94,8 +94,8 @@ runwait, powershell.exe python -m pip install --upgrade pip,,min
 ;Tooltip, %NESSESCARY_APPS% --ignore-checksums -y
 runwait, powershell.exe cup %NESSESCARY_APPS% --ignore-checksums -y,,min
 
-;Tooltip, %KEEPASS_AND_PLUGINS% -y
-runwait, powershell.exe cup %KEEPASS_AND_PLUGINS% -y,,min
+;Tooltip, %keepass_AND_PLUGINS% -y
+runwait, powershell.exe cup %keepass_AND_PLUGINS% -y,,min
 
 ;Tooltip, %YUBIKEY_APPS% -y
 runwait, powershell.exe cup %YUBIKEY_APPS% --ignore-checksums -y,,min

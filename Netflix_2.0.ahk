@@ -7,6 +7,7 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 DetectHiddenWindows, On
 DetectHiddenText, On
+SetBatchLines, 10ms
 #Include C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\lib\AutohotkeyFucktions.ahk
 ;CompileRun(A_ScriptFullPath)
 log("Started Running")
@@ -105,7 +106,7 @@ else if AT contains Firefox
 {
     loop 3
     {
-        mouse_rightclick_func(mx, my)
+        mouse_click_func(mx, my, button:="right", sleep_ms:=0, speed:=0)
         sleep, 100
         send, l
         sleep, 100

@@ -397,10 +397,10 @@ if personal = 1
     runwait, choco install dellcommandupdate -y
     FileCreateDir, C:\_\Logs\DellCommandUpdate
     FormatTime, TimeLong,, yyyy-MM-dd-HH.mm.ss
-    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -userConsent=disable -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /configure -userConsent=disable -outputLog=C:\_\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     Tooltip, INSTALLING DELL COMMAND UPDATES
-    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
-    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates -outputLog=C:\!\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /driverInstall -outputLog=C:\_\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
+    runwait, cmd.exe /c "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" /applyUpdates -outputLog=C:\_\\Logs\\DellCommandUpdate\\%TimeLong%DellCommandUpdate.log,,max
     Tooltip, REBOOTING
     if reboot = 1
     {
@@ -641,7 +641,7 @@ ExitApp
     FileCreateDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
     SetWorkingDir, C:\temp_Windows10ToolkitRichard\Public-main\ApplicationLists
 
-    ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 Keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
+    ;Gui, Add, Tab2,, 1 Nessescary Apps|2 Maybe And Other|3 Maybe And Other|4 keepass|5 Yubikey Apps|15 Winget|16 Extra Chocolatey Apps (Type)  ; Tab2 vs. Tab requires [v1.0.47.05+].
     Gui, Add, Tab2,, Pick Applications to Install 1/2
     gui, add, Text,, Nessescary Apps:
     Gui, Add, CheckBox, gGoHereWhenClicked1, Check All - Nessescary Applications
@@ -677,7 +677,7 @@ ExitApp
     WinSet, AlwaysOnTop, off, Windows Toolkit Richard Console Output
     Gui, Show
     WinWaitActive, Windows10ToolkitRichard.ahk
-    WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is Keepass And Plugins Yubikey Apps and Winget Apps)
+    WinSetTitle, Windows10ToolkitRichard.ahk, , Pick Applications to Install 1/2 - Nessescary Apps and Maybe and Other (2/2 is keepass And Plugins Yubikey Apps and Winget Apps)
     check_ran=0
     return
     GoHereWhenClicked1:
