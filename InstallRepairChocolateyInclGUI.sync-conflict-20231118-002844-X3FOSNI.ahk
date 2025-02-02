@@ -7,7 +7,8 @@ CoordMode, Mouse, Screen
 SetTitleMatchMode, 2
 DetectHiddenWindows, On
 DetectHiddenText, On
-#Include C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\lib\AutohotkeyFucktions.ahk
+SetBatchLines, 10ms
+#Include, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\AutohotkeyFucktions.ahk
 ;CompileRun(A_ScriptFullPath)
 log("Started Running")
 

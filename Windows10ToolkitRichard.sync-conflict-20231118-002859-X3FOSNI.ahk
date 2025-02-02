@@ -245,7 +245,7 @@ musicxmatch
 
 --allow-empty-checksums -y
 
-FormatTime, TFileCreateDir, C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\Remember_for_Later.ahkd_HH-mm-ss
+FormatTime, TFileCreateDir, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Remember_for_Later.ahkd_HH-mm-ss
 %clipboard% > FileCreateDir, C:\_\Logs\CMD\%TIME%CMD.txt
 
 FormatTime, TIME, , yyyy-MM-dd-HH-mm-ss
@@ -267,7 +267,7 @@ C:\Users\pass9\OneDrive\Documents\WindowsPowerShell\
 https://github.com/builtbybel/CloneApp/archive/refs/heads/master.zip
 
 
-C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\Install_Scoop.ahk
+C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Install_Scoop.ahk
 
 */
 
@@ -404,10 +404,10 @@ if personal = 1
     Tooltip, REBOOTING
     if reboot = 1
     {
-        if fileExist("C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk")
+        if fileExist("C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk")
         {
-            SetWorkingDir, C:\_\Code\GitHub\93andresen_Scripts\Autohotkey
-            runwait, C:\_\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk Reboot
+            SetWorkingDir, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey
+            runwait, C:\!\Code\GitHub\93andresen_Scripts\Autohotkey\Shutdown_Restart_Reboot_Computer_Admin_Listener.ahk Reboot
         }
     }
     Tooltip, 

@@ -18,4 +18,4 @@ choco config set cacheLocation C:\zzz_Chocolatey_Cache
 [Environment]::SetEnvironmentVariable("ChocolateyAllowEmptyChecksums", $true)
 [Environment]::SetEnvironmentVariable("ChocolateyAllowEmptyChecksumsSecure", $true)
 [Environment]::SetEnvironmentVariable("ChocolateyToolsLocation", "$env:ChocolateyInstall\Tools")
-
+choco install googledrive
