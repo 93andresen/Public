@@ -273,4 +273,3 @@ Write-Host ""
 Write-Host "They know better then to deal with this shit..."
 Write-Host ""
 Write-Host "Welcome to Windows..."
-```
